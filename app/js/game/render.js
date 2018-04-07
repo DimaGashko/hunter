@@ -45,7 +45,7 @@
             self.tik();
 
             if (start == startCount) {
-               requestAnimationFrame(tik);
+               //requestAnimationFrame(tik);
             }
          });
       }
@@ -81,36 +81,47 @@
       _render() {
          var config = this.options.getRenderConfig();
          var objects = config.objects;
-         var cameraX = config.cameraX;
-         var cameraY = config.cameraY;
-
+         var camera = this._getCameraOnScreen(config.camera);
          var ctx = this.ctx;
-         var scaleX = this.options.scaleX;
-         var scaleY = this.options.scaleY;
 
          for (var i = objects.length - 1; i >= 0; i--) {
-            var obj = objects[i];
+            var obj = this._getCoordsOnScreen(objects[i], camera);
 
-            var x = obj.x * scaleX;
-            var y = obj.y * scaleY;
-            var w = obj.w * scaleX;
-            var h = obj.h * scaleY;
-
-            if (!this._isVisible(x, y, w, h, cameraX, cameraY)) {
+            if (!this._isVisible(obj)) {
                continue; 
             }
 
-            if (obj.img) {
-               ctx.drawImage(obj.img, x, y, w, h);
+            if (objects[i].img) {
+               ctx.drawImage(objects[i].img, obj.x, obj.y, obj.w, obj.h);
             } else {
-               ctx.fillRect(x, y, w, h);
+               ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
             }
            
          }
-         
+
       }
 
-      _isVisible(x, y, w, h, cameraX, cameraY) {
+      _getCameraOnScreen(camera) {
+         return {
+            x: camera.x * this.options.scaleX,
+            y: camera.y * this.options.scaleY,
+         }
+      }
+
+      _getCoordsOnScreen(obj, camera) {
+         var m = this.metrics;
+         var scaleX = this.options.scaleX;
+         var scaleY = this.options.scaleY;
+
+         return {
+            x: (obj.x * scaleX) - camera.x + m.gameW / 2,
+            y: (obj.y * scaleY) - camera.y + m.gameH / 2,
+            w: obj.w * scaleX,
+            h: obj.h * scaleY,
+         }
+      }
+
+      _isVisible(obj) {
          return true;
       }
 
