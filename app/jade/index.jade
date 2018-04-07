@@ -14,6 +14,11 @@ html
          //endbuild 
 
          //build:js js/main.js defer
+         script(defer, src="js/functions.js")
+
+         script(defer, src="js/game/game.js")
+         script(defer, src="js/game/render.js")
+
          script(defer, src="js/main.js")
          //endbuild
     
@@ -22,9 +27,9 @@ html
          header.header
             //-include components/header.jade
          main.main
-           .game__canvases
-               canvas.game__canvas.game__static_canvas 
-               canvas.game__canvas.game__dinamic_canvas     
+            .game
+               .game__canvases
+                     canvas.game__canvas.game__main_canv     
 
          .footer
             //-include components/footer.jade
