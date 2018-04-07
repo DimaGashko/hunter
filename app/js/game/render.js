@@ -45,7 +45,7 @@
             self.tik();
 
             if (start == startCount) {
-               //requestAnimationFrame(tik);
+               requestAnimationFrame(tik);
             }
          });
       }
@@ -83,7 +83,7 @@
          var objects = config.objects;
          var camera = this._getCameraOnScreen(config.camera);
          var ctx = this.ctx;
-
+         
          for (var i = objects.length - 1; i >= 0; i--) {
             var obj = this._getCoordsOnScreen(objects[i], camera);
 
@@ -122,7 +122,14 @@
       }
 
       _isVisible(obj) {
-         return true;
+         var m = this.metrics;
+
+         return (
+            obj.x + obj.w >= 0 &&
+            obj.y + obj.h >= 0 &&
+            obj.x <= m.gameW &&
+            obj.y <= m.gameH
+         );
       }
 
       _getCtx() {
