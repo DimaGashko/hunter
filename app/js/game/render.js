@@ -87,10 +87,6 @@
          for (var i = objects.length - 1; i >= 0; i--) {
             var obj = this._getCoordsOnScreen(objects[i], camera);
 
-            if (!this._isVisible(obj)) {
-               continue; 
-            }
-
             if (objects[i].img) {
                ctx.drawImage(objects[i].img, obj.x, obj.y, obj.w, obj.h);
             } else {

@@ -5,13 +5,17 @@
       constructor() {
          this._init();
 
-         this.levelManager.getLevel().then((level) => {
-            console.log(level);
+         this.levelManager.getLevel().then((levelConfig) => {
+            this._createLevel(levelConfig);
          }, () => {
             console.log("error");
          });
 
          this.render.start();
+      }
+
+      _createLevel(levelConfig) {
+         new Game.Level(levelConfig);
       }
 
       _init() {

@@ -62,13 +62,14 @@
             },
             blocks: [],
             decorates: [],
+            player: null,
          }
 
-         config.layers.forEach((layer) => {
+         config.layers.forEach(layer => {
             var name = layer.name; 
             var container = parsed[name] = parsed[name] || [];
 
-            layer.chunks.forEach((chunk) => {
+            layer.chunks.forEach(chunk => {
                var chunkResult = {
                   x: chunk.x,
                   y: chunk.y,
@@ -80,9 +81,10 @@
 
                chunk.data.forEach((item, i) => {
                   if (item === 0) return;
+                  item--;
                   
                   var tileParam = config.tilesets[0].tiles[item] || {};
-                  var type = tileParam.type;
+                  var type = (tileParam.type || '').toLowerCase();
 
                   var itemResolt = {
                      x: chunk.x + Math.floor(i / chunk.width),
@@ -98,13 +100,13 @@
                         tileid: item,
                      });
                   } else {
-                     itemResolt.animation = tileParam.animation.map((cadr) => {
+                     itemResolt.animation = tileParam.animation.map(cadr => {
                         return this._getCadrParam(config, cadr);
                      });
                   }
 
-                  data.push(itemResolt);
-
+                  if (!type) data.push(itemResolt);
+                  else parsed[type] = itemResolt;
                });
             });
 
