@@ -13,9 +13,23 @@
          this._createBlocks('blocks');
          this._createBlocks('decorates');
 
-         this.config = {};
+         if (config.player) {
+            this.player = new Game.Player(config.player, {
+               tile: this.config.tile
+            });
+         }
 
-         window.level = this;
+         this.config.blocks = {};
+         this.config.decorates = {};
+      }
+
+      getAllObjects() {
+         var objects = this._getLayerObjects(this.blocks)
+            .concat(this._getLayerObjects(this.decorates));
+   
+         objects.push(this.player);  
+
+         return objects;
       }
 
       _createBlocks(chunkName) {
@@ -24,10 +38,22 @@
                x: chunk.x,
                y: chunk.y,
                data: chunk.data.map(item => {
-                  return new Game.Block(item);
+                  return new Game.Block(item, {
+                     tile:  this.config.tile,
+                  }); 
                }),
             }
          });
+      }
+
+      _getLayerObjects(layer) {
+         var objects = [];
+
+         layer.forEach(chunk => {
+            objects = objects.concat(chunk.data);
+         });
+
+         return objects;
       }
 
       _createParametrs(options) {

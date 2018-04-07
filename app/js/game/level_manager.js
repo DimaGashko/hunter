@@ -88,8 +88,8 @@
                   var type = (tileParam.type || '').toLowerCase();
 
                   var itemResolt = {
-                     x: chunk.x + Math.floor(i / chunk.width),
-                     y: chunk.y + i % chunk.width,
+                     x: chunk.x + (i % chunk.width),
+                     y: chunk.y + Math.floor(i / chunk.width),
                      w: 1,
                      h: 1,
                      type: type,

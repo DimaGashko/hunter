@@ -4,8 +4,8 @@
    var startCount = 1;
 
    var DEF = {
-      scaleX: 30,
-      scaleY: 30, 
+      scaleX: 32,
+      scaleY: 32, 
 
       getRenderConfig: () => {
          return {};
@@ -90,10 +90,12 @@
             if (!this._isVisible(obj)) {
                continue; 
             }
-
+            
             if (objects[i].img) {
                ctx.drawImage(objects[i].img, obj.x, obj.y, obj.w, obj.h);
             } else {
+               ctx.fillStyle = objects[i].fakeImgColor;
+
                ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
             }
            
