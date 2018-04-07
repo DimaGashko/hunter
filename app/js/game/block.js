@@ -14,6 +14,11 @@
          this._createParametrs(config, options);
 
          this._paint();
+
+         setTimeout(() => {
+            if (this.img) return;
+            this._setFaceColor();
+         }, 500);
       }
 
       _paint() {
@@ -30,7 +35,7 @@
                this.options.tile.w,
                this.options.tile.h
             );
-           // this.img = this._canvas;
+            this.img = this._canvas;
          });
          
          img.src = this.options.tile.src;
@@ -53,12 +58,15 @@
          this.ctx = this._canvas.getContext('2d');
 
          this._tiles = null;
-
-         this.fakeImgColor = `rgb(${(Math.random() * 255)^0},`
-            + `${(Math.random() * 255)^0},`
-            + `${(Math.random() * 255)^0})`;
+         this.fakeColor = null;
 
          this.animation = config.animation;
+      }
+
+      _setFaceColor() {
+         this.fakeColor = `rgb(${(Math.random() * 255)^0},`
+            + `${(Math.random() * 255)^0},`
+            + `${(Math.random() * 255)^0})`;
       }
 
    }
