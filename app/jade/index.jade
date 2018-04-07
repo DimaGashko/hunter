@@ -1,0 +1,32 @@
+doctype html
+html
+   head
+      block head
+         title Hunter
+         
+         meta(charset="utf-8") 
+         meta(name="viewport", content="width=device-width, initial-scale=1") 
+         link(rel="shortcut icon", href="favicon.png", type="image/png")
+          
+         //build:css css/main.css
+         link(rel="stylesheet", href="css/lib/normalize.min.css")
+         link(rel="stylesheet", href="css/main.css")
+         //endbuild 
+
+         //build:js js/main.js defer
+         script(defer, src="js/main.js")
+         //endbuild
+    
+   body
+      .wrapper
+         header.header
+            //-include components/header.jade
+         main.main
+           .game__canvases
+               canvas.game__canvas.game__static_canvas 
+               canvas.game__canvas.game__dinamic_canvas     
+
+         .footer
+            //-include components/footer.jade
+               
+                  
