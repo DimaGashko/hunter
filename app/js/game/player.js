@@ -4,7 +4,7 @@
    class Player extends Game.Block {
       constructor(config = {}, options = {}) {
          super(config, options);
-         console.log(this.options.tile)
+         
       }
 
    }

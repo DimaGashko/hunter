@@ -13,11 +13,14 @@
          this._createBlocks('blocks');
          this._createBlocks('decorates');
 
-         if (config.player) {
-            this.player = new Game.Player(config.player, {
-               tile: this.config.tile
-            });
+         if (!config.player) {
+            throw new Error('Неполучены параметры игрока');
          }
+
+         this.player = new Game.Player(config.player, {
+            tile: this.config.tile
+         });
+        
          global.l = this;
 
          this.config.blocks = {};
@@ -25,12 +28,10 @@
       }
 
       getAllObjects() {
-         var objects = this._getLayerObjects(this.blocks)
-            .concat(this._getLayerObjects(this.decorates));
-   
-         if (this.player) {
-            objects.push(this.player);  
-         }
+         var objects = [this.player].concat(
+            this._getLayerObjects(this.blocks), 
+            this._getLayerObjects(this.decorates)
+         );
 
          return objects;
       }

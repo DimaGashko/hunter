@@ -9,7 +9,9 @@
 
       getRenderConfig: () => {
          return {};
-      }
+      },
+
+      beforeRender: () => {},
    }
 
    class Render {
@@ -74,6 +76,8 @@
       }
 
       tik() {
+         this.options.beforeRender();
+
          this.clear();
          this._render()
       }
