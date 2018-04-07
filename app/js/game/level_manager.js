@@ -49,12 +49,30 @@
       _parseLevel(JSONLelevel) {
          var config = JSON.parse(JSONLelevel);
 
-         var blocks = [];
-         var decorate = [];
+         var parsed = {
+            tiles: {
+               src: config.tilesets[0].image,
+            },
+            tile: {
+               w: config.tilewidth,
+               h: config.tileheight
+            },
+            chunk: {
+               w: config.layers[0].chunks[0].width,
+               h: config.layers[0].chunks[0].width,
+            }
+         }
 
-         
+         config.layers.forEach((layer) => {
+            var name = layer.name;
+            var container = parsed[name] = parsed[name] || {};
 
-         console.log(level);
+            layer.chunks.forEach(() => {
+
+            });
+         });
+
+         this.levels[this.curLevel] = parsed;
       }
 
       _createParametrs(options) {
