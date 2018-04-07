@@ -121,8 +121,8 @@
 
          return {
             duration: cadr.duration || 0,
-            startX: config.tilewidth * Math.floor(cadr.tileid / columns),
-            startY: config.tileheight * (cadr.tileid % columns),
+            startX: config.tilewidth * (cadr.tileid % columns),
+            startY: config.tileheight * Math.floor(cadr.tileid / columns),
             id: cadr.tileid,
          }
       }

@@ -18,6 +18,7 @@
                tile: this.config.tile
             });
          }
+         global.l = this;
 
          this.config.blocks = {};
          this.config.decorates = {};
@@ -27,7 +28,9 @@
          var objects = this._getLayerObjects(this.blocks)
             .concat(this._getLayerObjects(this.decorates));
    
-         objects.push(this.player);  
+         if (this.player) {
+            objects.push(this.player);  
+         }
 
          return objects;
       }

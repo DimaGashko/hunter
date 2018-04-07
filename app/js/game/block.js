@@ -12,13 +12,7 @@
    class Block {
       constructor(config = {}, options = {}) {
          this._createParametrs(config, options);
-
          this._paint();
-
-         setTimeout(() => {
-            if (this.img) return;
-            this._setFaceColor();
-         }, 500);
       }
 
       _paint() {
@@ -37,6 +31,10 @@
             );
             this.img = this._canvas;
          });
+
+         img.addEventListener('error', () => {
+            this._setFaceColor();
+         })
          
          img.src = this.options.tile.src;
       }
