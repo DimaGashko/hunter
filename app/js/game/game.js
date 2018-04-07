@@ -7,6 +7,7 @@
 
          this.levelManager.getLevel().then((levelConfig) => {
             this._createLevel(levelConfig);
+            console.timeEnd('create');
          }, () => {
             console.log("error");
          });

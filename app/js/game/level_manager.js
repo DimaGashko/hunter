@@ -33,13 +33,14 @@
       //Загрузка карты текущего уровня (JSON)
       _loadMap() {
          return new Promise((resolve, reject) => {
+            console.time('load');
             var xhr = new XMLHttpRequest();
             xhr.open('GET', this.options.levelsSrc[this.curLevel], true);
             xhr.send();
 
             xhr.onreadystatechange = () => {
                if (xhr.readyState != 4) return;
-            
+               console.timeEnd('load');
                if (xhr.status != 200) reject();
                else resolve(xhr.responseText);
             }
