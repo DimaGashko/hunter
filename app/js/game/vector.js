@@ -6,7 +6,7 @@
          this.x = x;
          this.y = y;
       }
-   
+    
       plus(addVector) {
          if ( !(addVector instanceof Vector) ) {
             throw new SyntaxError('Можно прибавлять к вектору только вектор типа Vector');
