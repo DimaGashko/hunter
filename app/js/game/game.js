@@ -5,6 +5,12 @@
       constructor() {
          this._init();
 
+         this.levelManager.getLevel().then((level) => {
+            console.log(level);
+         }, () => {
+            console.log("error");
+         });
+
          this.render.start();
       }
 
@@ -13,6 +19,10 @@
             getRenderConfig: () => {
                return this.getRenderConfig();
             }
+         });
+
+         this.levelManager = new Game.LevelManager({
+            
          });
 
          global.img = new Image();
@@ -36,7 +46,7 @@
                {x: 5, y: 5, w: 1, h: 1},
                {x: 6, y: 6, w: 1, h: 1},
                {x: 20, y: 20, w: 5, h: 1},
-               {x: 50, y: 20, w: 10, h: 10, img: global.img}
+               {x: 50, y: 20, w: 1.2, h: 1.2, img: global.img}
             ],
          }
       }

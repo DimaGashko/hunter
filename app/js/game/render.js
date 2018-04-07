@@ -4,8 +4,8 @@
    var startCount = 1;
 
    var DEF = {
-      scaleX: 10,
-      scaleY: 10, 
+      scaleX: 30,
+      scaleY: 30, 
 
       getRenderConfig: () => {
          return {};
@@ -13,7 +13,7 @@
    }
 
    class Render {
-      constructor(options) {
+      constructor(options = {}) {
          this._createParametrs(options);
          this._init();
          this._initEvents();
