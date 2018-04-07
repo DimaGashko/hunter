@@ -126,6 +126,7 @@
             id: cadr.tileid,
          }
       }
+      
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
          this.curLevel = this.options.curLevel;

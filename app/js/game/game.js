@@ -34,8 +34,7 @@
             
          });
 
-         global.img = new Image();
-         global.img.src = 'favicon.png';
+         this.camera = new Game.Camera();
       }
 
       _initEvents() {
@@ -49,8 +48,15 @@
       }
 
       _beforeRender() {
-        this. _movePlayer();
+         this. _movePlayer();
+         this._moveCamera();
+      }
 
+      _moveCamera() {
+         var player = this.level.player;
+
+         this.camera.x = player.x + player.w / 2;
+         this.camera.y = player.y + player.h / 2;
       }
 
       _movePlayer() {
@@ -72,10 +78,7 @@
 
       _getRenderConfig() {
          return {
-            camera: {
-               x: 40,
-               y: 20,
-            },
+            camera: this.camera,
             objects: this.level.getAllObjects(),
          }
       }

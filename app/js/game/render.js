@@ -4,8 +4,8 @@
    var startCount = 1;
 
    var DEF = {
-      scaleX: 32,
-      scaleY: 32, 
+      scaleX: 64,
+      scaleY: 64, 
 
       getRenderConfig: () => {
          return {};
