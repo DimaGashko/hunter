@@ -48,33 +48,81 @@
 
       _parseLevel(JSONLelevel) {
          var config = JSON.parse(JSONLelevel);
+         global.config = config;
 
          var parsed = {
-            tiles: {
-               src: config.tilesets[0].image,
-            },
             tile: {
                w: config.tilewidth,
-               h: config.tileheight
+               h: config.tileheight,
+               src: config.tilesets[0].image,
             },
             chunk: {
                w: config.layers[0].chunks[0].width,
                h: config.layers[0].chunks[0].width,
-            }
+            },
+            blocks: [],
+            decorates: [],
          }
 
          config.layers.forEach((layer) => {
-            var name = layer.name;
-            var container = parsed[name] = parsed[name] || {};
+            var name = layer.name; 
+            var container = parsed[name] = parsed[name] || [];
 
-            layer.chunks.forEach(() => {
+            layer.chunks.forEach((chunk) => {
+               var chunkResult = {
+                  x: chunk.x,
+                  y: chunk.y,
+                  data: [],
+               };
 
+               container.push(chunkResult);
+               var data = chunkResult.data;
+
+               chunk.data.forEach((item, i) => {
+                  if (item === 0) return;
+                  
+                  var tileParam = config.tilesets[0].tiles[item] || {};
+                  var type = tileParam.type;
+
+                  var itemResolt = {
+                     x: chunk.x + Math.floor(i / chunk.width),
+                     y: chunk.y + i % chunk.width,
+                     w: 1,
+                     h: 1,
+                     type: type,
+                     animation: [],
+                  }
+
+                  if (!tileParam.animation || tileParam.animation.length == 0) {
+                     itemResolt.animation[0] = this._getCadrParam(config, {
+                        tileid: item,
+                     });
+                  } else {
+                     itemResolt.animation = tileParam.animation.map((cadr) => {
+                        return this._getCadrParam(config, cadr);
+                     });
+                  }
+
+                  data.push(itemResolt);
+
+               });
             });
+
          });
 
          this.levels[this.curLevel] = parsed;
       }
 
+      _getCadrParam(config, cadr) {
+         var columns = config.tilesets[0].columns;
+
+         return {
+            duration: cadr.duration || 0,
+            startX: config.tilewidth * Math.floor(cadr.tileid / columns),
+            startY: config.tileheight * (cadr.tileid % columns),
+            id: cadr.tileid,
+         }
+      }
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
          this.curLevel = this.options.curLevel;
