@@ -24,7 +24,8 @@
             x: this.coords.x,
             y: this.coords.y,
             w: this.size.x,
-            h: this.size.y
+            h: this.size.y,
+            img: this.img,
          }
       }
 

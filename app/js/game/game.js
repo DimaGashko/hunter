@@ -56,22 +56,22 @@
       }
 
       _tik() {
-         this._moveCamera();
-         this.level.findVisibleObjects();
-         //console.log(this.level.visibleObjects)
          this._movePlayer();
+         this._moveCamera();  
 
-         //this._rerender();
+         this.level.findVisibleObjects();
+
+         this._rerender();
       }
 
       _rerender() {
-         this.render.render(this.level.getAllObjects());
+         this.render.render(this.level.getObjectsToRender());
       }
 
       _moveCamera() {
          var player = this.level.player;
-         this.camera.coords = player.coords.scale(player.size.div(2));
 
+         this.camera.coords = player.coords.plus(player.size.div(2));
          this.render.setCamera(this.camera.coords);
       }
 
@@ -79,13 +79,13 @@
          var player = this.level.player;
          
          if (this.keysPress[this.KEYS.left]) {
-            player.coords.x -= 0.2;
-         }
-         if (this.keysPress[this.KEYS.top]) {
-            player.coords.y -= 0.2;
+            player.goToLeft();
          }
          if (this.keysPress[this.KEYS.right]) {
-            player.coords.x += 0.2;
+            player.goToRight();
+         }
+         if (this.keysPress[this.KEYS.top]) {
+            player.jump();
          }
          if (this.keysPress[this.KEYS.bottom]) {
             player.coords.y += 0.2;

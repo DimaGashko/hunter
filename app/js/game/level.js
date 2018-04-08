@@ -19,6 +19,7 @@
       _init() {
          this._createAllObjects();
          this._createPlayer();
+         this.findVisibleObjects()
       }
 
       _createAllObjects() {
@@ -43,15 +44,13 @@
 
       _createBlocks(chunkName) {
          this.objects[chunkName] = this.config[chunkName].map(chunk => {
-            return {
-               x: chunk.x,
-               y: chunk.y,
-               data: chunk.data.map(item => {
-                  return new Game.Block(item, {
-                     tile:  this.config.tile,
-                  }); 
-               }),
-            }
+            chunk.data = chunk.data.map(item => {
+               return new Game.Block(item, {
+                  tile:  this.config.tile,
+                });
+            });
+
+            return chunk;
          });
       }
 
@@ -59,7 +58,6 @@
          this._findVisible('blocks');
          this._findVisible('actors');
          this._findVisible('decorates');
-         console.log('---')
       }
 
       _findVisible(type) {
@@ -75,36 +73,21 @@
                if (!isVisible(item.convertToRender())) return;
 
                container.push(item);
-
             });
          });
-
-         console.log(container.length);
       }
 
-      _getLayerObjects(layer) {
-         var objects = [];
-         
-         layer.forEach(chunk => {
-            //Если сектор карты не виден
-            var shunkObj = {
-               x: chunk.x, 
-               y: chunk.y, 
-               w: this.config.chunk.w,
-               h:  this.config.chunk.h
-            }
-            
-            if (!this.options.isVisible(shunkObj)) return;
-            //objects.push(shunkObj); //отрисовывать области секторов
+      getObjectsToRender() {
+         var objects = [this.player.convertToRender()];
 
-            chunk.data.forEach((item) => {
-               if (this.options.isVisible(item)) {
-                  objects.push(item);
-               }
+         ['blocks', 'actors', 'decorates'].forEach(type => {
+            this.visibleObjects[type].forEach((obj) => {
+               objects.push(obj.convertToRender());
             });
          });
 
-         return objects;
+         return objects
+
       }
 
       _clearConfig() {

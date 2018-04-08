@@ -42,7 +42,7 @@
             self.tik();
 
             if (start == startCount) {
-               //requestAnimationFrame(tik);
+               requestAnimationFrame(tik);
             }
          });
       }
@@ -104,7 +104,7 @@
          var m = this.metrics;
          var scaleX = this.options.scale.x;
          var scaleY = this.options.scale.y;
-
+         
          return {
             x: (obj.x * scaleX) - this.camera.x + m.gameW / 2,
             y: (obj.y * scaleY) - this.camera.y + m.gameH / 2,
@@ -114,14 +114,12 @@
       }
 
       isVisible(config) {
-         var m = this.metrics;
          var obj = this._getObjOnScreen(config);
+         //console.log(obj);
 
-         return (
-            (obj.x + obj.w >= 0) ==
-            (obj.y + obj.h >= 0) ==
-            (obj.x <= m.gameW) ==
-            (obj.y <= m.gameH)
+         return isIntersectRect(
+            0, this.metrics.gameW, 0, this.metrics.gameH,
+            obj.x, obj.x + obj.w, obj.y, obj.y + obj.h
          );
       }
 

@@ -62,10 +62,6 @@
                h: config.tileheight,
                src: config.tilesets[0].image,
             },
-            chunk: {
-               w: config.layers[0].chunks[0].width,
-               h: config.layers[0].chunks[0].width,
-            },
             blocks: [],
             decorates: [],
             actors: [],
@@ -80,8 +76,8 @@
                var chunkResult = {
                   x: chunk.x,
                   y: chunk.y,
-                  w: chunk.w,
-                  h: chunk.h,
+                  w: chunk.width,
+                  h: chunk.height,
                   data: [],
                };
 
