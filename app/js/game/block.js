@@ -79,16 +79,23 @@
          this.animation = config.animation;
       }
 
-      get left() {return this.coords.x;}
-      get top() {return this.coords.y;}
-      get right() {return this.coords.x + this.size.x;}
-      get bottom() {return this.coords.y + this.size.y;}
-
       _setFaceColor() {
          this.fakeColor = `rgb(${(Math.random() * 255)^0},`
             + `${(Math.random() * 255)^0},`
             + `${(Math.random() * 255)^0})`;
       }
+
+      get left() { return this.coords.x; }
+      set left(val) { this.coords.x = val; }
+
+      get top() { return this.coords.y; }
+      set top(val) { this.coords.y = val; }
+
+      get right() { return this.coords.x + this.size.x; }
+      set right(val) { this.coords.x = val - this.size.x; }
+
+      get bottom() { return this.coords.y + this.size.y; }
+      set bottom(val) { this.coords.y = val - this.size.y; }
 
    }
 

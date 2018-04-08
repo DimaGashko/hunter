@@ -69,7 +69,7 @@
             actor.updateCoords();
          });
 
-         this.collisions.fix(actors, blocks);
+         this.collisions.findAndfix(actors, blocks);
 
          this._moveCamera();  
 
@@ -100,9 +100,6 @@
          if (this.keysPress[this.KEYS.top]) {
             player.jump();
          }
-         if (this.keysPress[this.KEYS.bottom]) {
-            player.coords.y += 0.2;
-         }
       }
 
       _createParametrs() {
@@ -111,7 +108,6 @@
          this.KEYS = {
             top: 87,
             right: 68,
-            bottom: 83,
             left: 65,
          };
       }

@@ -34,7 +34,7 @@
          if (speed.y > max.y) speed.y = max.y;
          else if (speed.y < min.y) speed.y = min.y;
 
-         this.speed = this.speed.div(10);
+         //this.speed = this.speed.div(10);
       }
 
       _createParametrs() {
