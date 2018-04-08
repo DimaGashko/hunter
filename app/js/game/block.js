@@ -12,24 +12,14 @@
    class Block {
       constructor(config = {}, options = {}) {
          this._createParametrs(config, options);
-         this._paint();
+         this._init();
       }
 
-      _paint() {
+      _init() {
          var img = this.tiles = new Image();
          
          img.addEventListener('load', () => {
-            this.ctx.drawImage(
-               img,
-               this.animation[0].startX,
-               this.animation[0].startY,
-               this.options.tile.w,
-               this.options.tile.h,
-               0, 0,
-               this.options.tile.w,
-               this.options.tile.h
-            );
-            this.img = this._canvas;
+            this._createSprite(img);
          });
 
          img.addEventListener('error', () => {
@@ -37,6 +27,17 @@
          })
          
          img.src = this.options.tile.src;
+      }
+
+      _createSprite(img) {
+            this.sprite = new Sprite({
+                  w: this.options.tile.w,
+                  h: this.options.tile.h,
+                  sprite: img,
+                  animation: this.animation,
+            });
+            
+            this.img = this.sprite.canv;
       }
 
       _createParametrs(config, options) {
@@ -47,13 +48,8 @@
          this.w = config.w;
          this.h = config.h;
 
+         this.sprite = null;
          this.img = null;
-
-         this._canvas = document.createElement('canvas');
-         this._canvas.width = this.options.tile.w;
-         this._canvas.height = this.options.tile.h;
-
-         this.ctx = this._canvas.getContext('2d');
 
          this._tiles = null;
          this.fakeColor = null;
