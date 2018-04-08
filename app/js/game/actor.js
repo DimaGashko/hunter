@@ -42,10 +42,10 @@
 
          this.speed = new Vector(0, 0);
 
-         this.maxSpeed = new Vector(2/60, 10/60);
-         this.minSpeed = new Vector(-2/60, -5/60);
+         this.maxSpeed = new Vector(4/60, 10/60);
+         this.minSpeed = new Vector(-4/60, -10/60);
 
-         this.a = new Vector(0.01, 0.1);
+         this.a = new Vector(0.01, 1000);
          this.gravity = new Vector(0, 0);
       }
 

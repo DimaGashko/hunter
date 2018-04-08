@@ -15,8 +15,8 @@
             }
             
             intersectBlocks.forEach((obj, i) => {
-               this._fixCollision(actor, obj, 'x');
                this._fixCollision(actor, obj, 'y');
+               //this._fixCollision(actor, obj, 'x');
             });
          });
 
@@ -33,6 +33,8 @@
          if (speed === 0) {
             return; //Если скорость по оси - 0, то не трогаем
          }
+
+         actor.speed[axis] = 0;
          
          if (axis == 'x') {
             if (speed > 0) actor.right = obj.left;
