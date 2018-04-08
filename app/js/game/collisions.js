@@ -13,23 +13,18 @@
             if (intersectBlocks.length === 0) {
                return //нет пересечений с блоками
             }
-
+            
             intersectBlocks.forEach((block) => {
 
             });
          });
       }
 
+      //Возвращает массив из переданный объектов, которые пересекаются с actor 
       getIntersectObjects(actor, objects) {
-         var result = [];
-
-         objects.forEach((obj) => {
-            if (this.intersetObjs(actor, obj)) {
-               result.push(obj);
-            }
+         return objects.filter((obj) => {
+            return this.intersetObjs(actor, obj);
          });
-
-         return result;
       }
 
       intersetObjs(obj1, obj2) {
