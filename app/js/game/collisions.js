@@ -9,8 +9,14 @@
       //Устраняет все столкновения на карте
       fix(actors, blocks) {
          actors.forEach((actor) => {
-            var intersectBlocks = this.getIntersectObjects(actor, blocks);
-            console.log(intersectBlocks);
+            var intersectBlocks = this.getIntersectObjects(actor, blocks); 
+            if (intersectBlocks.length === 0) {
+               return //нет пересечений с блоками
+            }
+
+            intersectBlocks.forEach((block) => {
+
+            });
          });
       }
 
@@ -22,6 +28,8 @@
                result.push(obj);
             }
          });
+
+         return result;
       }
 
       intersetObjs(obj1, obj2) {
