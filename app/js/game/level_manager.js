@@ -18,7 +18,6 @@
          return new Promise((resolve, reject) => {
             this._loadMap().then((JSONLelevel) => {
                var config = this._parseLevel(JSONLelevel);
-               console.log(config)
                resolve(config);
             }, () => {
                reject("Не удалось загрузить уровень");
@@ -81,6 +80,8 @@
                var chunkResult = {
                   x: chunk.x,
                   y: chunk.y,
+                  w: chunk.w,
+                  h: chunk.h,
                   data: [],
                };
 

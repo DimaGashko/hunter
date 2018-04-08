@@ -56,41 +56,39 @@
       }
 
       _tik() {
-         this.level.updateVisibleObjects();
-
-         this._movePlayer();
          this._moveCamera();
+         this.level.findVisibleObjects();
+         //console.log(this.level.visibleObjects)
+         this._movePlayer();
 
-         this._rerender();
+         //this._rerender();
       }
 
-   _rerender() {
-      this.render.setCamera(this.camera);
-
-      this.render.render(this.level.getAllObjects());
-   }
+      _rerender() {
+         this.render.render(this.level.getAllObjects());
+      }
 
       _moveCamera() {
          var player = this.level.player;
+         this.camera.coords = player.coords.scale(player.size.div(2));
 
-         this.camera.x = player.x + player.w / 2;
-         this.camera.y = player.y + player.h / 2;
+         this.render.setCamera(this.camera.coords);
       }
 
       _movePlayer() {
          var player = this.level.player;
          
          if (this.keysPress[this.KEYS.left]) {
-            player.x -= 0.2;
+            player.coords.x -= 0.2;
          }
          if (this.keysPress[this.KEYS.top]) {
-            player.y -= 0.2;
+            player.coords.y -= 0.2;
          }
          if (this.keysPress[this.KEYS.right]) {
-            player.x += 0.2;
+            player.coords.x += 0.2;
          }
          if (this.keysPress[this.KEYS.bottom]) {
-            player.y += 0.2;
+            player.coords.y += 0.2;
          }
       }
 

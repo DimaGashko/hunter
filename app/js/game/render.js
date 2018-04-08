@@ -4,8 +4,7 @@
    var startCount = 1;
 
    var DEF = {
-      scaleX: 64,
-      scaleY: 64, 
+      scale: new Vector(64, 64),
 
       beforeRender: () => {},
    }
@@ -43,7 +42,7 @@
             self.tik();
 
             if (start == startCount) {
-               requestAnimationFrame(tik);
+               //requestAnimationFrame(tik);
             }
          });
       }
@@ -98,16 +97,13 @@
       }
 
       _getCameraOnScreen(camera) {
-         return {
-            x: camera.x * this.options.scaleX,
-            y: camera.y * this.options.scaleY,
-         }
+         return camera.scale(this.options.scale);
       }
 
       _getObjOnScreen(obj) {
          var m = this.metrics;
-         var scaleX = this.options.scaleX;
-         var scaleY = this.options.scaleY;
+         var scaleX = this.options.scale.x;
+         var scaleY = this.options.scale.y;
 
          return {
             x: (obj.x * scaleX) - this.camera.x + m.gameW / 2,

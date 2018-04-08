@@ -19,6 +19,15 @@
          this.status.run = false;
       }
 
+      convertToRender() {
+         return {
+            x: this.coords.x,
+            y: this.coords.y,
+            w: this.size.x,
+            h: this.size.y
+         }
+      }
+
       _init() {
          var img = this.tiles = new Image();
          
@@ -53,7 +62,7 @@
             tileSrc: options.tile.src,
          }
 
-         this.xy = new Vector(config.x, config.y);
+         this.coords = new Vector(config.x, config.y);
          this.size = new Vector(config.w, config.h);
 
          this.sprite = null;

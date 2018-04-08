@@ -41,15 +41,6 @@
          }); 
       }
 
-      getAllObjects() {
-         var objects = [this.player].concat(
-            this._getLayerObjects(this.blocks), 
-            this._getLayerObjects(this.decorates)
-         );
-
-         return objects;
-      }
-
       _createBlocks(chunkName) {
          this.objects[chunkName] = this.config[chunkName].map(chunk => {
             return {
@@ -62,6 +53,33 @@
                }),
             }
          });
+      }
+
+      findVisibleObjects() {
+         this._findVisible('blocks');
+         this._findVisible('actors');
+         this._findVisible('decorates');
+         console.log('---')
+      }
+
+      _findVisible(type) {
+         var container = this.visibleObjects[type];
+         var isVisible = this.options.isVisible;
+
+         container.length = 0; //Очищаем массив
+         
+         this.objects[type].forEach((chunk) => {
+            if (!isVisible(chunk)) return;
+            
+            chunk.data.forEach((item) => {
+               if (!isVisible(item.convertToRender())) return;
+
+               container.push(item);
+
+            });
+         });
+
+         console.log(container.length);
       }
 
       _getLayerObjects(layer) {
@@ -103,6 +121,13 @@
             decorates: [],
             actors: [],
          }
+
+         this.visibleObjects = {
+            blocks: [],
+            decorates: [],
+            actors: [],
+         }
+
       }
 
    }

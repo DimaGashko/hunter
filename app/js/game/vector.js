@@ -18,10 +18,24 @@
          );
       }
    
-      times(n) {
+      mul(n) {
          return new Vector(
             this.x * n,
             this.y * n
+         );
+      }
+
+      div(n) {
+         return new Vector(
+            this.x / n,
+            this.y / n
+         );
+      }
+
+      scale(scale) {
+         return new Vector(
+            this.x * scale.x,
+            this.y * scale.y,
          );
       }
    }  
