@@ -16,14 +16,10 @@
       //Получение карты текущего уровня
       getLevel() {
          return new Promise((resolve, reject) => {
-            if (this.levels[this.curLevel]) {
-               resolve(this.levels[this.curLevel]);
-               return;
-            }
-
             this._loadMap().then((JSONLelevel) => {
-               this._parseLevel(JSONLelevel);
-               resolve(this.levels[this.curLevel]);
+               var config = this._parseLevel(JSONLelevel);
+               console.log(config)
+               resolve(config);
             }, () => {
                reject("Не удалось загрузить уровень");
             });
@@ -33,16 +29,26 @@
       //Загрузка карты текущего уровня (JSON)
       _loadMap() {
          return new Promise((resolve, reject) => {
+            var src = this.options.levelsSrc[this.curLevel];
+
+            /*if (src in localStorage) {
+               resolve(localStorage[src]);
+               return;
+            }*/
+
             console.time('load');
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', this.options.levelsSrc[this.curLevel], true);
+            xhr.open('GET', src, true);
             xhr.send();
 
             xhr.onreadystatechange = () => {
                if (xhr.readyState != 4) return;
                console.timeEnd('load');
                if (xhr.status != 200) reject();
-               else resolve(xhr.responseText);
+               else {
+                  localStorage[src] = xhr.responseText;
+                  resolve(xhr.responseText);
+               }
             }
          });
       }
@@ -63,6 +69,7 @@
             },
             blocks: [],
             decorates: [],
+            actors: [],
             player: null,
          }
 
@@ -106,14 +113,14 @@
                      });
                   }
 
-                  if (!type) data.push(itemResolt);
-                  else parsed[type] = itemResolt;
+                  if (type == 'player') parsed[type] = itemResolt;
+                  else data.push(itemResolt); 
                });
             });
 
          });
          
-         this.levels[this.curLevel] = parsed;
+         return parsed;
       }
 
       _getCadrParam(config, cadr) {
