@@ -17,7 +17,13 @@
       }
 
       _createLevel(levelConfig) {
-         this.level = new Game.Level(levelConfig);
+         var self = this;
+
+         this.level = new Game.Level(levelConfig, {
+            isVisible: function() {
+               return self.render.isVisible.apply(self.render, arguments);
+            },
+         });
       }
 
       _init() {

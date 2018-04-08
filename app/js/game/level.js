@@ -2,7 +2,9 @@
    "use strict"
 
    var DEF = {
-      
+      isVisible: () => {
+         return true;
+      },
    }
 
    class Level {
@@ -52,9 +54,13 @@
 
       _getLayerObjects(layer) {
          var objects = [];
-
+         
          layer.forEach(chunk => {
-            objects = objects.concat(chunk.data);
+            chunk.data.forEach((item) => {
+               if (this.options.isVisible(item)) {
+                  objects.push(item);
+               }
+            });
          });
 
          return objects;
@@ -62,6 +68,7 @@
 
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
+         this.render = this.options.render;
 
          this.blocks = [];
          this.decorates = [];

@@ -81,13 +81,9 @@
 
       render(objects) {
          var ctx = this.ctx;
-         
+         console.log(objects.length);
          for (var i = objects.length - 1; i >= 0; i--) {
-            var obj = this._getCoordsOnScreen(objects[i]);
-
-            if (!this._isVisible(obj)) {
-               continue; 
-            }
+            var obj = this._getObjOnScreen(objects[i]);
             
             if (objects[i].img) {
                ctx.drawImage(objects[i].img, obj.x, obj.y, obj.w, obj.h);
@@ -107,7 +103,7 @@
          }
       }
 
-      _getCoordsOnScreen(obj) {
+      _getObjOnScreen(obj) {
          var m = this.metrics;
          var scaleX = this.options.scaleX;
          var scaleY = this.options.scaleY;
@@ -120,8 +116,9 @@
          }
       }
 
-      _isVisible(obj) {
+      isVisible(config) {
          var m = this.metrics;
+         var obj = this._getObjOnScreen(config);
 
          return (
             obj.x + obj.w >= 0 &&
