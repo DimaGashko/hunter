@@ -21,12 +21,7 @@
 
          this.player = new Game.Player(config.player, {
             tile: this.config.tile
-         });
-        
-         global.l = this;
-
-         this.config.blocks = {};
-         this.config.decorates = {};
+         }); 
       }
 
       getAllObjects() {
@@ -56,6 +51,17 @@
          var objects = [];
          
          layer.forEach(chunk => {
+            //Если сектор карты не виден
+            var shunkObj = {
+               x: chunk.x, 
+               y: chunk.y, 
+               w: this.config.chunk.w,
+               h:  this.config.chunk.h
+            }
+            
+            if (!this.options.isVisible(shunkObj)) return;
+            //objects.push(shunkObj); //отрисовывать области секторов
+
             chunk.data.forEach((item) => {
                if (this.options.isVisible(item)) {
                   objects.push(item);

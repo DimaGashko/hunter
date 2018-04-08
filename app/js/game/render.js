@@ -81,7 +81,8 @@
 
       render(objects) {
          var ctx = this.ctx;
-         console.log(objects.length);
+         //console.log(objects.length);
+
          for (var i = objects.length - 1; i >= 0; i--) {
             var obj = this._getObjOnScreen(objects[i]);
             
@@ -121,10 +122,10 @@
          var obj = this._getObjOnScreen(config);
 
          return (
-            obj.x + obj.w >= 0 &&
-            obj.y + obj.h >= 0 &&
-            obj.x <= m.gameW &&
-            obj.y <= m.gameH
+            (obj.x + obj.w >= 0) ==
+            (obj.y + obj.h >= 0) ==
+            (obj.x <= m.gameW) ==
+            (obj.y <= m.gameH)
          );
       }
 

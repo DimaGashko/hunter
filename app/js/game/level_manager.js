@@ -112,7 +112,7 @@
             });
 
          });
-
+         
          this.levels[this.curLevel] = parsed;
       }
 
