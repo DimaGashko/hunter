@@ -4,13 +4,12 @@ function isIntersectRect(ax1, ax2, ay1, ay2, bx1, bx2, by1, by2) {
 }
 
 function isIntersectLines(a1, a2, b1, b2) {
-if (a1 === b1 && a2 == b2) return true;
 
-return (b1 > a1 === b1 < a2) 
-	|| (b2 > a1 === b2 < a2) 
-	|| (a1 > b1 === a1 < b2) 
-	|| (a2 > b1 === a2 < b2);
-}
+	return (b1 >= a1 === b1 <= a2) 
+		|| (b2 >= a1 === b2 <= a2) 
+		|| (a1 >= b1 === a1 <= b2) 
+		|| (a2 >= b1 === a2 <= b2);
+	}
 
 /**
  * Cлияние свойств всех переданных объектов в первый
