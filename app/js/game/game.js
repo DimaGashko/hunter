@@ -60,7 +60,6 @@
          this._moveCamera();  
 
          this.level.findVisibleObjects();
-
          this._rerender();
       }
 

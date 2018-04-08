@@ -79,6 +79,11 @@
          this.animation = config.animation;
       }
 
+      get left() {return this.pos.x;}
+      get top() {return this.pos.y;}
+      get right() {return this.pos.x + this.size.x;}
+      get bottom() {return this.pos.y + this.size.y;}
+
       _setFaceColor() {
          this.fakeColor = `rgb(${(Math.random() * 255)^0},`
             + `${(Math.random() * 255)^0},`
