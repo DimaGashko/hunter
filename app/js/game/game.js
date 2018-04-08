@@ -35,6 +35,7 @@
          this.camera = new Game.Camera();
 
          this.gravity = new Game.Gravity;
+         this.collisions = new Game.Collisions;
       }
 
       _initEvents() {
@@ -59,6 +60,7 @@
 
       _tik() {
          var actors = this.level.visibleObjects.actors;
+         var blocks = this.level.visibleObjects.blocks;
 
          this.gravity.use(actors);
          this._movePlayer();
@@ -66,6 +68,8 @@
          actors.forEach((actor) => {
             actor.updateCoords();
          });
+
+         this.collisions.fix(actors, blocks);
 
          this._moveCamera();  
 

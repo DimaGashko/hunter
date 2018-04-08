@@ -18,9 +18,9 @@
          this.speed.y -= this.a.y;
       }
 
-      getNewCoords(times = 1) {
+      updateCoords(times = 1) {
          this._correctSpeed();
-         return this.coords.plus(this.speed.mul(times));
+         this.coords = this.coords.plus(this.speed.mul(times));
       }
 
       _correctSpeed() {
