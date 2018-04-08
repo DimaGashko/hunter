@@ -1,18 +1,22 @@
 ;(function(global){
    "use strict"
 
-   var DEF = {
-      tile: {
-         w: 32,
-         h: 32,
-         src: '',
-      },
-   }
-
    class Block {
       constructor(config = {}, options = {}) {
          this._createParametrs(config, options);
-         this._init();
+         this.start();
+      }
+
+      start() {
+         if (!this.status.init) {
+            this._init();
+         }
+
+         this.status.run = true;
+      }
+
+      stop() {
+         this.status.run = false;
       }
 
       _init() {
@@ -26,13 +30,15 @@
             this._setFaceColor();
          })
          
-         img.src = this.options.tile.src;
+         img.src = this.options.tileSrc;
+
+         this.status.init = true;
       }
 
       _createSprite(img) {
             this.sprite = new Sprite({
-                  w: this.options.tile.w,
-                  h: this.options.tile.h,
+                  w: this.options.tileW,
+                  h: this.options.tileH,
                   sprite: img,
                   animation: this.animation,
             });
@@ -41,18 +47,24 @@
       }
 
       _createParametrs(config, options) {
-         this.options = extend(true, {}, DEF, options);
+         this.options = {
+            tileW: options.tile.w,
+            tileH: options.tile.h,
+            tileSrc: options.tile.src,
+         }
 
-         this.x = config.x;
-         this.y = config.y;
-         this.w = config.w;
-         this.h = config.h;
+         this.xy = new Vector(config.x, config.y);
+         this.size = new Vector(config.w, config.h);
 
          this.sprite = null;
          this.img = null;
 
-         this._tiles = null;
          this.fakeColor = null;
+
+         this.status = {
+            init: false,
+            run: false,
+         };
 
          this.animation = config.animation;
       }

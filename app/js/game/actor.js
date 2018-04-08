@@ -5,6 +5,7 @@
       constructor(config = {}, options = {}) {
          super(config, options);
          
+         this.speed = new Vector(0, 0);
       }
 
    }

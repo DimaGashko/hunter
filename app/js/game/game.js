@@ -7,23 +7,21 @@
          this._init();
          this._initEvents();
 
+         this.start();
+      }
+
+      start() {
          this.levelManager.getLevel().then((levelConfig) => {
             this._createLevel(levelConfig);
             this.render.start();
-            console.timeEnd('create');
          }, () => {
             console.log("error");
          });
       }
 
-      _createLevel(levelConfig) {
-         var self = this;
-
-         this.level = new Game.Level(levelConfig, {
-            isVisible: function() {
-               return self.render.isVisible.apply(self.render, arguments);
-            },
-         });
+      won() {
+         //- - - -
+         this.render.stop();
       }
 
       _init() {
@@ -47,8 +45,18 @@
          });
       }
 
+      _createLevel(levelConfig) {
+         var self = this;
+
+         this.level = new Game.Level(levelConfig, {
+            isVisible: function() {
+               return self.render.isVisible.apply(self.render, arguments);
+            },
+         });
+      }
+
       _tik() {
-         //this.level.updateVisibleObjects();
+         this.level.updateVisibleObjects();
 
          this._movePlayer();
          this._moveCamera();
