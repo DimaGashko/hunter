@@ -22,6 +22,33 @@
          this.findVisibleObjects()
       }
 
+      forEachActor(f) {
+         this.visibleObjects.forEach((obj) => {
+            f(obj);
+         });
+
+         f(this.player);
+      }
+
+      findVisibleObjects() {
+         this._findVisible('blocks');
+         this._findVisible('actors');
+         this._findVisible('decorates');
+      }
+
+      getObjectsToRender() {
+         var objects = [this.player.convertToRender()];
+
+         ['blocks', 'actors', 'decorates'].forEach(type => {
+            this.visibleObjects[type].forEach((obj) => {
+               objects.push(obj.convertToRender());
+            });
+         });
+
+         return objects
+
+      }
+
       _createAllObjects() {
          this._createBlocks('blocks');
          this._createBlocks('decorates');
@@ -40,6 +67,7 @@
          this.player = new Game.Player(this.config.player, {
             tile: this.config.tile
          }); 
+
       }
 
       _createBlocks(chunkName) {
@@ -52,12 +80,6 @@
 
             return chunk;
          });
-      }
-
-      findVisibleObjects() {
-         this._findVisible('blocks');
-         this._findVisible('actors');
-         this._findVisible('decorates');
       }
 
       _findVisible(type) {
@@ -75,19 +97,6 @@
                container.push(item);
             });
          });
-      }
-
-      getObjectsToRender() {
-         var objects = [this.player.convertToRender()];
-
-         ['blocks', 'actors', 'decorates'].forEach(type => {
-            this.visibleObjects[type].forEach((obj) => {
-               objects.push(obj.convertToRender());
-            });
-         });
-
-         return objects
-
       }
 
       _clearConfig() {
