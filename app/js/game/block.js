@@ -91,6 +91,10 @@
       }
 
    }
+
+   Object.defineProperty(Block.prototype, 'type', {
+      value: 'block',
+   });
    
    global.Game.Block = Block;   
    

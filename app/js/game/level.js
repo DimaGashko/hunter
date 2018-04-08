@@ -18,22 +18,16 @@
 
       _init() {
          this._createAllObjects();
-         this._createPlayer();
+         this._findPlayer();
          this.findVisibleObjects()
-      }
-
-      forEachActor(f) {
-         this.visibleObjects.forEach((obj) => {
-            f(obj);
-         });
-
-         f(this.player);
       }
 
       findVisibleObjects() {
          this._findVisible('blocks');
          this._findVisible('actors');
          this._findVisible('decorates');
+
+         this.visibleObjects.actors.push(this.player);
       }
 
       getObjectsToRender() {
@@ -54,31 +48,30 @@
          this._createBlocks('decorates');
          this._createBlocks('actors');
       }
-      
-      _createPlayer() {
-         if (!this.config.player) {
-            throw new Error('Неполучены параметры игрока');
-
-            this.config.player = {
-               x: 0, y: 0,  w: 1, h: 1,
-            }
-         }
-
-         this.player = new Game.Player(this.config.player, {
-            tile: this.config.tile
-         }); 
-
-      }
 
       _createBlocks(chunkName) {
          this.objects[chunkName] = this.config[chunkName].map(chunk => {
             chunk.data = chunk.data.map(item => {
-               return new Game.Block(item, {
-                  tile:  this.config.tile,
+               var Constr = this.objectTypes[item.type] || (function() {
+                  return (chunkName === 'actors') ? Game.Actor : Game.Block;
+               }()); 
+               
+               return new Constr(item, {
+                  tile: this.config.tile,
                 });
             });
 
             return chunk;
+         });
+      }
+
+      _findPlayer() {
+         this.objects.actors.forEach(chunk => {
+            if (this.player) return;
+            chunk.data.forEach(actor => {
+               if (this.player) return;
+               if (actor.type === 'player') this.player = actor;
+            });
          });
       }
 
@@ -118,6 +111,11 @@
             blocks: [],
             decorates: [],
             actors: [],
+         }
+
+         this.objectTypes = {
+            Player: Game.Player,
+            Block: Game.Block,
          }
 
       }

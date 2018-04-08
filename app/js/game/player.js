@@ -9,6 +9,10 @@
 
    }
    
+   Object.defineProperty(Player.prototype, 'type', {
+      value: 'player',
+   });
+
    global.Game.Player = Player;   
    
 }(window));

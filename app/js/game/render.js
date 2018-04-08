@@ -4,7 +4,7 @@
    var startCount = 1;
 
    var DEF = {
-      scale: new Vector(64, 64),
+      scale: new Vector(10, 10),
 
       beforeRender: () => {},
    }

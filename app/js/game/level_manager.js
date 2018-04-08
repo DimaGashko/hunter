@@ -89,7 +89,7 @@
                   item--;
                   
                   var tileParam = config.tilesets[0].tiles[item] || {};
-                  var type = (tileParam.type || '').toLowerCase();
+                  var type = tileParam.type;
 
                   var itemResolt = {
                      x: chunk.x + (i % chunk.width),
@@ -110,8 +110,7 @@
                      });
                   }
 
-                  if (type == 'player') parsed[type] = itemResolt;
-                  else data.push(itemResolt); 
+                  data.push(itemResolt); 
                });
             });
 

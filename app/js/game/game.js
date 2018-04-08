@@ -33,6 +33,8 @@
 
          this.levelManager = new Game.LevelManager();
          this.camera = new Game.Camera();
+
+         this.gravity = new Game.Gravity;
       }
 
       _initEvents() {
@@ -56,7 +58,15 @@
       }
 
       _tik() {
+         var actors = this.level.visibleObjects.actors;
+
+         this.gravity.use(actors);
          this._movePlayer();
+         
+         actors.forEach((actor) => {
+            actor.updateCoords();
+         });
+
          this._moveCamera();  
 
          this.level.findVisibleObjects();
