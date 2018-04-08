@@ -7,10 +7,6 @@
       scaleX: 64,
       scaleY: 64, 
 
-      getRenderConfig: () => {
-         return {};
-      },
-
       beforeRender: () => {},
    }
 
@@ -56,7 +52,6 @@
          startCount++;
       }
 
-      
       resize() {
          this.updateMetrics();
 
@@ -76,20 +71,19 @@
       }
 
       tik() {
-         this.options.beforeRender();
-
          this.clear();
-         this._render()
+         this.options.beforeRender();
       }
 
-      _render() {
-         var config = this.options.getRenderConfig();
-         var objects = config.objects;
-         var camera = this._getCameraOnScreen(config.camera);
+      setCamera(camera) {
+         this.camera = this._getCameraOnScreen(camera);
+      }
+
+      render(objects) {
          var ctx = this.ctx;
          
          for (var i = objects.length - 1; i >= 0; i--) {
-            var obj = this._getCoordsOnScreen(objects[i], camera);
+            var obj = this._getCoordsOnScreen(objects[i]);
 
             if (!this._isVisible(obj)) {
                continue; 
@@ -113,14 +107,14 @@
          }
       }
 
-      _getCoordsOnScreen(obj, camera) {
+      _getCoordsOnScreen(obj) {
          var m = this.metrics;
          var scaleX = this.options.scaleX;
          var scaleY = this.options.scaleY;
 
          return {
-            x: (obj.x * scaleX) - camera.x + m.gameW / 2,
-            y: (obj.y * scaleY) - camera.y + m.gameH / 2,
+            x: (obj.x * scaleX) - this.camera.x + m.gameW / 2,
+            y: (obj.y * scaleY) - this.camera.y + m.gameH / 2,
             w: obj.w * scaleX,
             h: obj.h * scaleY,
          }
@@ -150,6 +144,7 @@
 
          this.canv = null;
          this.ctx = null;
+         this.camera = {};
 
          this.metrics = {};
       }

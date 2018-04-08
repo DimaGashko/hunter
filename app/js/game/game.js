@@ -22,18 +22,12 @@
 
       _init() {
          this.render = new Game.Render({
-            getRenderConfig: () => {
-               return this._getRenderConfig();
-            },
             beforeRender: () => {
-               this._beforeRender();
+               this._tik();
             }
          });
 
-         this.levelManager = new Game.LevelManager({
-            
-         });
-
+         this.levelManager = new Game.LevelManager();
          this.camera = new Game.Camera();
       }
 
@@ -47,10 +41,20 @@
          });
       }
 
-      _beforeRender() {
-         this. _movePlayer();
+      _tik() {
+         //this.level.updateVisibleObjects();
+
+         this._movePlayer();
          this._moveCamera();
+
+         this._rerender();
       }
+
+   _rerender() {
+      this.render.setCamera(this.camera);
+
+      this.render.render(this.level.getAllObjects());
+   }
 
       _moveCamera() {
          var player = this.level.player;
@@ -73,13 +77,6 @@
          }
          if (this.keysPress[this.KEYS.bottom]) {
             player.y += 0.2;
-         }
-      }
-
-      _getRenderConfig() {
-         return {
-            camera: this.camera,
-            objects: this.level.getAllObjects(),
          }
       }
 
