@@ -19,6 +19,8 @@
       }
 
       updateCoords(times = 1) {
+         this.prevCoords = this.coords.copy();
+         
          this._correctSpeed();
          this.coords = this.coords.plus(this.speed.mul(times));
       }

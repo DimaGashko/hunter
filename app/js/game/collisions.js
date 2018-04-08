@@ -15,15 +15,46 @@
             }
             
             intersectBlocks.forEach((obj, i) => {
-               this._fixCollision(actor, obj, 'y');
-               //this._fixCollision(actor, obj, 'x');
+               this._fixCollision(actor, obj);
             });
          });
 
       }
 
+      _fixCollision(actor, obj) {
+         var deg = this._getDegName(actor.speed);
+         var a1 = this._getDegCoords(deg, actor.coords, actor.size);
+         var a2 = this._getDegCoords(deg, actor.coords.minus(actor.speed), actor.size);
+
+         
+      }
+
+      //Возвращает координаты угла actor по его названию
+      _getDegCoords(deg, coords, size) {
+         if (deg === 'leftBottom') {
+            return new Vector(coords.x, coords.y + size.y);
+         }
+         if (deg === 'rightBottom') {
+            return new Vector(coords.x + size.x, coords.y + size.y);
+         }
+         if (deg === 'rightTop') {
+            return new Vector(coords.x + size.x, coords.y);
+         }
+         if (deg === 'leftTop') {
+            return coords.copy();
+         }
+      }
+
+      //Возвращает индек угла actor-а, которым он приближается к объекту
+      _getDegName(speed) {
+         if (speed.x <= 0 && speed.y >= 0) return 'leftBottom';
+         if (speed.x >= 0 && speed.y >= 0) return 'rightBottom';
+         if (speed.x >= 0 && speed.y <= 0) return 'rightTop';
+         if (speed.x <= 0 && speed.y <= 0) return 'leftTop';
+      }
+
       //Решает столкновение между actor и obj по оси axis (в проекции на эту ось)
-      _fixCollision(actor, obj, axis) {
+      /*_fixCollision(actor, obj, axis) {
          if (!this.intersetObjs(actor, obj)) {
             return; //если объекты уже не пересекаются
          }
@@ -44,7 +75,7 @@
             if (speed > 0) actor.bottom = obj.top;
             else actor.top = obj.bottom;
          }
-      }
+      }*/
 
       //Возвращает массив из переданный объектов, которые пересекаются с actor 
       getIntersectObjects(actor, objects) {

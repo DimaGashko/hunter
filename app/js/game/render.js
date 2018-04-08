@@ -42,7 +42,7 @@
             self.tik();
 
             if (start == startCount) {
-               requestAnimationFrame(tik);
+               requestAnimationFrame(tik); 
             }
          });
       }

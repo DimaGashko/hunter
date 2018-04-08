@@ -7,17 +7,27 @@
          this.y = y;
       }
     
-      plus(addVector) {
-         if ( !(addVector instanceof Vector) ) {
-            throw new SyntaxError('Можно прибавлять к вектору только вектор типа Vector');
-         }
-    
+      plus(vector) {    
          return new Vector(
-            this.x + addVector.x,
-            this.y + addVector.y
+            this.x + vector.x,
+            this.y + vector.y
          );
       }
-   
+
+      minus(vector) {    
+         return new Vector(
+            this.x - vector.x,
+            this.y - vector.y
+         );
+      }
+      
+      copy() {
+         return new Vector(
+            this.x,
+            this.y
+         );
+      }
+
       mul(n) {
          return new Vector(
             this.x * n,

@@ -4,7 +4,9 @@
    class Player extends Game.Actor {
       constructor(config = {}, options = {}) {
          super(config, options);
-         
+         setInterval(() => {
+            //console.log(this.coords.x ^ 0, this.coords.y ^ 0)
+         }, 500);
       }
 
    }
