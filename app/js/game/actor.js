@@ -8,14 +8,33 @@
 
       goToLeft() {
          this.speed.x -= this.a.x;
+         this.status.left = false;
       }
 
       goToRight() {
          this.speed.x += this.a.x;
+         this.status.right = false;
       }
 
       jump() {
          this.speed.y -= this.a.y;
+         this.status.jump = false;
+      }
+
+      //Наносит урон (этому объекту)
+      pain(val) {
+         if (val < this.minPain) return;
+         
+         this.life -= val;
+         this._checkLife();
+
+         console.log(`Был нанесен урон: ${val^0}`,  `Осталось: ${Math.round(((this.life > 0 ? this.life : 0)/this.startLife)*100)}%`);
+      }
+
+      _checkLife() {
+         if (this.life < 0) {
+            console.log('die');
+         }
       }
 
       updateCoords(times = 1) {
@@ -42,15 +61,33 @@
          //this.speed = this.speed.div(2);
       }
 
+      clearStatus() {
+         this.status = {
+            left: false,
+            right: false,
+            jump: false,
+         }
+      }
+
       _createParametrs() {
          super._createParametrs.apply(this, arguments);
 
          this.speed = new Vector(0, 0);
 
-         this.maxSpeed = new Vector(4/60, 1/60);
-         this.minSpeed = new Vector(-4/60, -1/60);
+         this.startLife = 1000;
+         this.life = this.startLife;
+         this.minPain = 50;
 
-         this.a = new Vector(0.01, 1);
+         this.maxSpeed = new Vector(5/60, 100/60);
+         this.minSpeed = new Vector(-5/60, -100/60);
+
+         this.a = new Vector(0.15, 0.4);
+
+         this.status = {
+            left: false,
+            right: false,
+            jump: false,
+         }
       }
 
    }

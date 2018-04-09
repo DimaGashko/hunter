@@ -70,6 +70,7 @@
          });
 
          this.collisions.findAndfix(actors, blocks);
+         this.level.player.clearStatus();
 
          this._moveCamera();  
 
@@ -92,16 +93,16 @@
          var player = this.level.player;
          
          if (this.keysPress[this.KEYS.left]) {
-            player.goToLeft();
+            player.status.left = true;
          }
          if (this.keysPress[this.KEYS.right]) {
-            player.goToRight();
+            player.status.right = true;
          }
          if (this.keysPress[this.KEYS.top]) {
-            player.jump();
+            player.status.jump = true;
          }
          if (this.keysPress[this.KEYS.bottom]) {
-            player.speed.y += 0.01;
+            //player.speed.y += 0.01;
          }
       }
 

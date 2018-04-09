@@ -15,6 +15,11 @@
                if (!this.intersetObjs(actor, obj)) {
                   return; //Если actor уже не пересекается с obj
                }
+
+               if (this._isOnDeg(actor, obj)) {
+                  return; //Если на углу - то это не пересечение
+               }
+
                this._fixCollision(actor, obj);
             });
          });
@@ -22,31 +27,62 @@
 
       _fixCollision(actor, obj) {
          if (this._isTopCotact(actor, obj)) {
+            actor.pain(Math.pow(actor.speed.y * 5, 4));
             actor.speed.y = 0;
             actor.bottom = obj.top;
+
+            //Оттолкнувшись от земли actor может:
+            if (actor.status.left) {
+               actor.goToLeft(); //пойти на лево
+            }
+
+            if (actor.status.right) {
+               actor.goToRight(); //пойти на право
+            }
+            
+            if (actor.status.jump) {
+               actor.jump(); //прыгнуть
+            }
+
             //console.log('top')
+         
          } else if (this._isLeftContact(actor, obj)) {
+            actor.pain(Math.pow(actor.speed.x * 5, 3));
             actor.speed.x = 0;
             actor.right = obj.left;
+
+            //Оттолкнувшись от левой стенки actor может:
+            if (actor.status.right) {
+               actor.goToRight(); //пойти на право
+            }
             //console.log('left')
+         
          } else if (this._isBottomContact(actor, obj)) {
+            actor.pain(Math.pow(actor.speed.y * 5, 3));
             actor.speed.y = 0;
             actor.top = obj.bottom;
-            console.log('bottom')
+            //console.log('bottom')
+         
          } else if (this._isRightContact(actor, obj)) {
+            actor.pain(Math.pow(actor.speed.x * 5, 3));
             actor.speed.x = 0;
             actor.left = obj.right;
-            console.log('right')
-         } else {
-            //console.error('Ошибка в определении столкновений или столкновения небыло');
+
+            //Оттолкнувшись от правой стенки actor может:
+            if (actor.status.left) {
+               actor.goToLeft(); //пойти на лево
+            }
+
+            //console.log('right')
+         
          }
 
       }
 
       _isTopCotact(actor, obj) {
          var prev = this._getFakeActor(actor.prevCoords, actor.size);
-         
-         if (prev.bottom > obj.top || actor.right === obj.left || actor.left === obj.right) {
+
+         if (prev.bottom > obj.top) {
             
             return false; //actor находится ниже верхней стороны obj 
                //(y-координата у него больше)
@@ -63,7 +99,7 @@
       _isLeftContact(actor, obj) {
          var prev = this._getFakeActor(actor.prevCoords, actor.size);
 
-         if (prev.right > obj.left || actor.bottom === obj.top || actor.top === obj.right) {
+         if (prev.right > obj.left) {
             return false;
          }
 
@@ -76,8 +112,22 @@
 
       _isBottomContact(actor, obj) {
          var prev = this._getFakeActor(actor.prevCoords, actor.size);
+         
+         if (prev.top < obj.bottom) {
+            return false; 
+         }
 
-         if (prev.right > obj.left || actor.bottom === obj.top || actor.top === obj.right) {
+         if (prev.right >= obj.left || prev.left <= obj.right) {
+            return true;
+         }
+
+         return false;
+      }
+
+      _isRightContact(actor, obj) {
+         var prev = this._getFakeActor(actor.prevCoords, actor.size);
+
+         if (prev.left < obj.right) {
             return false;
          }
 
@@ -88,9 +138,11 @@
          return false;
       }
 
-      _isRightContact(actor, obj) {
-         var prev = this._getFakeActor(actor.prevCoords, actor.size);
-         return false;
+      _isOnDeg(actor, obj) {
+         return actor.right === obj.left 
+            || actor.left === obj.right 
+            || actor.top === obj.bottom
+            || actor.bottom === obj.top;
       }
 
       _getFakeActor(coords, size) {

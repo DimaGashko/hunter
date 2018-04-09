@@ -82,10 +82,10 @@
          container.length = 0; //Очищаем массив
          
          this.objects[type].forEach((chunk) => {
-            if (!isVisible(chunk)) return;
+            if (!isVisible(chunk) && 0) return;
             
             chunk.data.forEach((item) => {
-               if (!isVisible(item.convertToRender())) return;
+               if (!isVisible(item.convertToRender()) && 0) return;
 
                container.push(item);
             });

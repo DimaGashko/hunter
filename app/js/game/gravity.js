@@ -13,7 +13,7 @@
       }
       
       _createParametrs() {
-         this.g = new Vector(0, 9.8/60/30);
+         this.g = new Vector(0.1, -9.8/60/10);
       }
 
    }
