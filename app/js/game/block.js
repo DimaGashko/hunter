@@ -1,8 +1,10 @@
 ;(function(global){
    "use strict"
 
-   class Block {
+   class Block extends Game.Rect {
       constructor(config = {}, options = {}) {
+         super(config.x, config.y, config.w, config.h);
+
          this._createParametrs(config, options);
          this.start();
       }
@@ -63,9 +65,6 @@
             tileSrc: options.tile.src,
          }
 
-         this.coords = new Vector(config.x, config.y);
-         this.size = new Vector(config.w, config.h);
-
          this.sprite = null;
          this.img = null;
 
@@ -84,18 +83,6 @@
             + `${(Math.random() * 255)^0},`
             + `${(Math.random() * 255)^0})`;
       }
-
-      get left() { return this.coords.x; }
-      set left(val) { this.coords.x = val; }
-
-      get top() { return this.coords.y; }
-      set top(val) { this.coords.y = val; }
-
-      get right() { return this.coords.x + this.size.x; }
-      set right(val) { this.coords.x = val - this.size.x; }
-
-      get bottom() { return this.coords.y + this.size.y; }
-      set bottom(val) { this.coords.y = val - this.size.y; }
 
    }
 

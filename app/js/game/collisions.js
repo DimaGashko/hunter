@@ -7,54 +7,136 @@
       }
 
       //Находит и устраняет все столкновения на карте
-      findAndfix(actors, blocks) {
+      findAndfix(actors, blocks) {         
          actors.forEach((actor) => {
             var intersectBlocks = this.getIntersectObjects(actor, blocks); 
-            if (intersectBlocks.length === 0) {
-               return //нет пересечений с блоками
-            }
             
             intersectBlocks.forEach((obj, i) => {
+               if (!this.intersetObjs(actor, obj)) {
+                  return; //Если actor уже не пересекается с obj
+               }
                this._fixCollision(actor, obj);
             });
          });
-
       }
 
       _fixCollision(actor, obj) {
-         var deg = this._getDegName(actor.speed);
-         var a1 = this._getDegCoords(deg, actor.coords, actor.size);
-         var a2 = this._getDegCoords(deg, actor.coords.minus(actor.speed), actor.size);
+         if (this._isTopCotact(actor, obj)) {
+            actor.speed.y = 0;
+            actor.bottom = obj.top;
+           // console.log('top')
+         } else if (this._isLeftContact(actor, obj)) {
+            actor.speed.x = 0;
+            actor.right = obj.left;
+            //console.log('left')
+         } else if (this._isBottomContact(actor, obj)) {
+            actor.speed.y = 0;
+            actor.top = obj.bottom;
+            //console.log('bottom')
+         } else if (this._isRightContact(actor, obj)) {
+            actor.speed.x = 0;
+            actor.left = obj.right;
+            //console.log('right')
+         } else {
+            //console.error('Ошибка в определении столкновений или столкновения небыло');
+         }
 
-         
       }
 
-      //Возвращает координаты угла actor по его названию
-      _getDegCoords(deg, coords, size) {
-         if (deg === 'leftBottom') {
-            return new Vector(coords.x, coords.y + size.y);
+      _isTopCotact(actor, obj) {
+         var prev = this._getFakeActor(actor.prevCoords, actor.size);
+        // console.log(prev.bottom, actor.bottom);
+         if (prev.bottom > obj.top) {
+            
+            return false; //actor находится ниже верхней стороны obj 
+               //(y-координата у него больше)
          }
-         if (deg === 'rightBottom') {
-            return new Vector(coords.x + size.x, coords.y + size.y);
+
+         if (prev.right >= obj.left || prev.left <= obj.right) {
+            return true; //actor находится над obj (он не может 
+               //коснуться obj никак, кроме как сверху)
          }
-         if (deg === 'rightTop') {
-            return new Vector(coords.x + size.x, coords.y);
+
+         return false;
+      }
+
+      _isLeftContact(actor, obj) {
+         var prev = this._getFakeActor(actor.prevCoords, actor.size);
+
+         if (prev.right > obj.left) {
+            return false;
          }
-         if (deg === 'leftTop') {
-            return coords.copy();
+
+         if (prev.bottom >= obj.top || prev.top <= obj.bottom) {
+            return true; 
          }
+
+         return false;
+      }
+
+      _isBottomContact(actor, obj) {
+         var prev = this._getFakeActor(actor.prevCoords, actor.size);
+         return false;
+      }
+
+      _isRightContact(actor, obj) {
+         var prev = this._getFakeActor(actor.prevCoords, actor.size);
+         return false;
+      }
+
+      _getFakeActor(coords, size) {
+         return new Game.Rect(coords.x, coords.y, size.x, size.y);
+      }
+
+     /* _fixCollision(actor, obj) {
+         while (this.intersetObjs(actor, obj)) {
+            console.log('intersect')
+            actor.coords = actor.coords.minus(actor.speed.div(20));
+         }
+         
+         return;
+         var deg = this._getDegIndex(actor.speed);
+         var prevActor = new Game.Rect();
+
+         prevActor.coords = actor.prevCoords;
+         prevActor.size = actor.size.copy();
+
+         var a1 = actor.getDegCoords(deg);
+         var a2 = prevActor.getDegCoords(deg);
+         console.log(deg);
+         var lines = {
+            0: [[2, 3], [1, 2]],
+            1: [[2, 3], [3, 0]],
+            2: [[0, 1], [3, 0]],
+            3: [[0, 1], [1, 2]],
+         }
+
+         for (var i = 0; i < 2; i++) {
+            var degs = lines[deg][0];
+
+            var b1 = obj.getDegCoords(degs[0]);
+            var b2 = obj.getDegCoords(degs[1]);
+            //console.log(isIntersectRect(a1.x, a2.x, b1.x, b2.x, a1.y, a2.y, b1.y, b2.y));
+            if (isIntersectRect(a1.x, a2.x, b1.x, b2.x, a1.y, a2.y, b1.y, b2.y)) {
+
+               this._fixCollisionAxis(actor, obj, (i == 0) ? 'x' : 'y');
+               return;
+            }
+         }
+
       }
 
       //Возвращает индек угла actor-а, которым он приближается к объекту
-      _getDegName(speed) {
-         if (speed.x <= 0 && speed.y >= 0) return 'leftBottom';
-         if (speed.x >= 0 && speed.y >= 0) return 'rightBottom';
-         if (speed.x >= 0 && speed.y <= 0) return 'rightTop';
-         if (speed.x <= 0 && speed.y <= 0) return 'leftTop';
+      //(Индексы из Vctor.fn.getDegCoords)
+      _getDegIndex(speed) {
+         if (speed.x <= 0 && speed.y >= 0) return 3;
+         if (speed.x >= 0 && speed.y >= 0) return 2;
+         if (speed.x >= 0 && speed.y <= 0) return 1;
+         if (speed.x <= 0 && speed.y <= 0) return 0;
       }
 
       //Решает столкновение между actor и obj по оси axis (в проекции на эту ось)
-      /*_fixCollision(actor, obj, axis) {
+      _fixCollisionAxis(actor, obj, axis) {
          if (!this.intersetObjs(actor, obj)) {
             return; //если объекты уже не пересекаются
          }

@@ -22,7 +22,10 @@
          this.prevCoords = this.coords.copy();
          
          this._correctSpeed();
-         this.coords = this.coords.plus(this.speed.mul(times));
+         //console.log(this.speed.x, this.speed.y);
+         
+         //this.speed.mul(times);
+         this.coords = this.coords.plus(this.speed);
       }
 
       _correctSpeed() {
@@ -35,8 +38,8 @@
 
          if (speed.y > max.y) speed.y = max.y;
          else if (speed.y < min.y) speed.y = min.y;
-
-         //this.speed = this.speed.div(10);
+         
+         //this.speed = this.speed.div(2);
       }
 
       _createParametrs() {
@@ -44,11 +47,10 @@
 
          this.speed = new Vector(0, 0);
 
-         this.maxSpeed = new Vector(4/60, 10/60);
-         this.minSpeed = new Vector(-4/60, -10/60);
+         this.maxSpeed = new Vector(4/60, 1/60);
+         this.minSpeed = new Vector(-4/60, -1/60);
 
-         this.a = new Vector(0.01, 1000);
-         this.gravity = new Vector(0, 0);
+         this.a = new Vector(0.01, 1);
       }
 
    }

@@ -26,11 +26,11 @@
          this._findVisible('blocks');
          this._findVisible('actors');
          this._findVisible('decorates');
-
-         this.visibleObjects.actors.push(this.player);
       }
 
       getObjectsToRender() {
+         //Сейчас игрок рисуется 2 раза, так как он уже есть в actors
+         //(что бы он был на переднем плане)
          var objects = [this.player.convertToRender()];
 
          ['blocks', 'actors', 'decorates'].forEach(type => {
@@ -39,7 +39,7 @@
             });
          });
 
-         return objects
+         return objects;
 
       }
 
