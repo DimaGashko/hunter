@@ -24,7 +24,7 @@
          if (this._isTopCotact(actor, obj)) {
             actor.speed.y = 0;
             actor.bottom = obj.top;
-           // console.log('top')
+            //console.log('top')
          } else if (this._isLeftContact(actor, obj)) {
             actor.speed.x = 0;
             actor.right = obj.left;
@@ -32,11 +32,11 @@
          } else if (this._isBottomContact(actor, obj)) {
             actor.speed.y = 0;
             actor.top = obj.bottom;
-            //console.log('bottom')
+            console.log('bottom')
          } else if (this._isRightContact(actor, obj)) {
             actor.speed.x = 0;
             actor.left = obj.right;
-            //console.log('right')
+            console.log('right')
          } else {
             //console.error('Ошибка в определении столкновений или столкновения небыло');
          }
@@ -45,8 +45,8 @@
 
       _isTopCotact(actor, obj) {
          var prev = this._getFakeActor(actor.prevCoords, actor.size);
-        // console.log(prev.bottom, actor.bottom);
-         if (prev.bottom > obj.top) {
+         
+         if (prev.bottom > obj.top || actor.right === obj.left || actor.left === obj.right) {
             
             return false; //actor находится ниже верхней стороны obj 
                //(y-координата у него больше)
@@ -63,7 +63,7 @@
       _isLeftContact(actor, obj) {
          var prev = this._getFakeActor(actor.prevCoords, actor.size);
 
-         if (prev.right > obj.left) {
+         if (prev.right > obj.left || actor.bottom === obj.top || actor.top === obj.right) {
             return false;
          }
 
@@ -76,6 +76,15 @@
 
       _isBottomContact(actor, obj) {
          var prev = this._getFakeActor(actor.prevCoords, actor.size);
+
+         if (prev.right > obj.left || actor.bottom === obj.top || actor.top === obj.right) {
+            return false;
+         }
+
+         if (prev.bottom >= obj.top || prev.top <= obj.bottom) {
+            return true; 
+         }
+
          return false;
       }
 

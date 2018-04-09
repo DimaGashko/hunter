@@ -63,7 +63,7 @@
          var blocks = this.level.visibleObjects.blocks;
 
          this.gravity.use(actors);
-         //this._movePlayer();
+         this._movePlayer();
          
          actors.forEach((actor) => {
             actor.updateCoords();
@@ -83,7 +83,6 @@
 
       _moveCamera() {
          var player = this.level.player;
-         var player = this.level.visibleObjects.actors[2];
 
          this.camera.coords = player.coords.plus(player.size.div(2));
          this.render.setCamera(this.camera.coords);
