@@ -33,7 +33,7 @@
          //(что бы он был на переднем плане)
          var objects = [this.player.convertToRender()];
 
-         ['blocks', 'actors', 'decorates'].forEach(type => {
+         ['actors', 'decorates', 'blocks'].forEach(type => {
             this.visibleObjects[type].forEach((obj) => {
                objects.push(obj.convertToRender());
             });
