@@ -136,14 +136,14 @@
                  "x":64,
                  "y":16
                 }],
-         "height":128,
+         "height":240,
          "name":"blocks",
          "opacity":1,
          "startx":-672,
-         "starty":-64,
+         "starty":-176,
          "type":"tilelayer",
          "visible":true,
-         "width":1328,
+         "width":1520,
          "x":0,
          "y":0
         }, 

@@ -31,6 +31,8 @@
             actor.speed.y = 0;
             actor.bottom = obj.top;
 
+            actor.speed.x /= 2;
+
             //Оттолкнувшись от земли actor может:
             if (actor.status.left) {
                actor.goToLeft(); //пойти на лево
@@ -72,7 +74,7 @@
             }
             
             if (actor.status.jump) {
-               actor.jumpDown(); //прыгнуть
+              //actor.jumpDown(); //прыгнуть
             }
 
             //console.log('bottom')
