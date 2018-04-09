@@ -61,13 +61,27 @@
             actor.pain(Math.pow(actor.speed.y * 5, 3));
             actor.speed.y = 0;
             actor.top = obj.bottom;
+
+            //Оттолкнувшись от земли actor может:
+            if (actor.status.left) {
+               actor.goToLeft(); //пойти на лево
+            }
+
+            if (actor.status.right) {
+               actor.goToRight(); //пойти на право
+            }
+            
+            if (actor.status.jump) {
+               actor.jumpDown(); //прыгнуть
+            }
+
             //console.log('bottom')
          
          } else if (this._isRightContact(actor, obj)) {
             actor.pain(Math.pow(actor.speed.x * 5, 3));
             actor.speed.x = 0;
             actor.left = obj.right;
-
+            
             //Оттолкнувшись от правой стенки actor может:
             if (actor.status.left) {
                actor.goToLeft(); //пойти на лево
@@ -87,7 +101,7 @@
             return false; //actor находится ниже верхней стороны obj 
                //(y-координата у него больше)
          }
-
+         
          if (prev.right >= obj.left || prev.left <= obj.right) {
             return true; //actor находится над obj (он не может 
                //коснуться obj никак, кроме как сверху)

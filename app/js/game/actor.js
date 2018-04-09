@@ -21,6 +21,11 @@
          this.status.jump = false;
       }
 
+      jumpDown() {
+         this.speed.y += this.a.y;
+         this.status.jump = false;
+      }
+
       //Наносит урон (этому объекту)
       pain(val) {
          if (val < this.minPain) return;
