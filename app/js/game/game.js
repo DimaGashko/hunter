@@ -109,7 +109,7 @@
             player.coords.x += 1 * (player.speed.x > 0 ? 1 : -1);
          }
          if (this.keysPress[32]) {
-            player.coords.y += 1 * (player.speed.y > 0 ? 1 : -1);
+            player.coords.y += 1 * (player.speed.y > 0 ? 1 : -1);                                                                    
          }*/
       }
 

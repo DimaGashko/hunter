@@ -85,7 +85,7 @@
             if (!isVisible(chunk) && 0) return;
             
             chunk.data.forEach((item) => {
-               if (!isVisible(item.convertToRender()) && 0) return;
+               if (!isVisible(item.convertToRender()) && item.type !== 'player') return;
 
                container.push(item);
             });

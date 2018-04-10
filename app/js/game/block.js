@@ -28,6 +28,7 @@
             w: this.size.x,
             h: this.size.y,
             img: this.img,
+            fillStyle: this.fakeColor,
          }
       }
 

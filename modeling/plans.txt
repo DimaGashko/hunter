@@ -19,12 +19,15 @@
 - coin
 - фаербол
 - двигающиеся блоки
+- night (setVisible)
 
 
 
+- производительность проверки расстояния и пересечения
 
-
-
+-style
+80 symbols
+{} - in the same line
 
 
 //Термины
@@ -35,6 +38,7 @@ Camera/камера
 Gravity/Гравитация
 render
 
+dilation/замедление
 Реальные координаты
 Координаты на экране
 collision/столкновение
@@ -43,3 +47,6 @@ intersect
 vector
 rect
 coin
+
+x, y, w, h
+size, coords
