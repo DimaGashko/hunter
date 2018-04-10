@@ -115,6 +115,8 @@
 
          this.objectTypes = {
             Player: Game.Player,
+            Coin: Game.Coin,
+
             Block: Game.Block,
          }
 

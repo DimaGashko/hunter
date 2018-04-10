@@ -8,7 +8,8 @@
          if (created) {
             throw new Error('Игрок уже созда');
          }
-
+         config.w = 1;
+         config.h = 1;
          super(config, options);
          console.log('player')
          setInterval(() => {
