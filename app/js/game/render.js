@@ -1,14 +1,28 @@
 ;(function(global){
    "use strict"
 
-   var startCount = 1;
+   var startCount = 1; //испльзутеся для корректного старта и паузы отрисовки 
+      //(зашита от несколькоих stop/start за время одного кадра)
 
    var DEF = {
-      scale: new Vector(64, 64),
+      scale: new Vector(64, 64), //масштаб игры по осям
 
-      beforeRender: () => {},
+      beforeRender: () => {}, //будер выполнятся перед каждой переросовкой
    }
 
+   window.p = () => {
+      console.log(startCount)
+   }
+
+   console.log(100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
+   /**
+    * Управление отрисовкой игры
+    * 
+    * @constructor 
+    * @param {object} options - настройки (по умолчанию DEF)
+    * 
+    * Для начала отрисовки необходимо вызвать метод start
+    */
    class Render {
       constructor(options = {}) {
          this._createParametrs(options);
@@ -17,9 +31,17 @@
       }
 
       _initEvents() {
+
+         var resizeTimer = 0;
          global.addEventListener('resize', () => {
-            this.resize();
-            this.tik();
+            clearInterval(resizeTimer);
+
+            resizeTimer = setTimeout(() => {
+               requestAnimationFrame(() => {
+                  this.resize();
+                  this.tik();
+               })
+            }, 150);
          });
 
          global.addEventListener('load', () => {
@@ -35,6 +57,9 @@
       }
 
       start() {
+         if (this.status.start) return;
+         this.status.start = true;
+
          var self = this;
          var start = startCount;
 
@@ -48,6 +73,7 @@
       }
 
       stop() {
+         this.status.start = false;
          startCount++;
       }
 
@@ -61,8 +87,8 @@
       updateMetrics() {
          var m = this.metrics;
 
-         m.gameW = document.body.offsetWidth;
-         m.gameH = document.body.offsetHeight;
+         m.gameW = window.innerWidth;
+         m.gameH = window.innerHeight;
       }
 
       clear() {
@@ -137,6 +163,10 @@
          this.canv = null;
          this.ctx = null;
          this.camera = {};
+
+         this.status = {
+            start: false,
+         }
 
          this.metrics = {};
       }

@@ -19,3 +19,27 @@
 - coin
 - фаербол
 - двигающиеся блоки
+
+
+
+
+
+
+
+
+//Термины
+Блок
+Actor
+Player/игрок
+Camera/камера
+Gravity/Гравитация
+render
+
+Реальные координаты
+Координаты на экране
+collision/столкновение
+sprite
+intersect
+vector
+rect
+coin
