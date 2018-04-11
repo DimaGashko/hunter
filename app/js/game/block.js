@@ -40,9 +40,9 @@
          });
 
          img.addEventListener('error', () => {
-            this._setFaceColor();
-         })
-         
+               this._setFaceColor();
+         });
+      
          img.src = this.options.tileSrc;
 
          this.status.init = true;

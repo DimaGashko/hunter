@@ -27,7 +27,7 @@
             tile: {
                w: config.tilewidth,
                h: config.tileheight,
-               src: config.tilesets[0].image,
+               src: config.tilesets[0].image.slice(3),
             },
             blocks: [],
             decorates: [],
@@ -101,7 +101,6 @@
          this.options = extend(true, {}, DEF, options);
          
       }
-
 
    }  
    
