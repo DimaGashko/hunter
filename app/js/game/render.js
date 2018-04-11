@@ -6,7 +6,7 @@
 
    var DEF = {
       scale: new Vector(64, 64), //масштаб игры по осям
-      beforeRender: () => {}, //будер выполнятся перед каждой переросовкой
+      eachTik: () => {}, //будер выполнятся на каждом кадра (в tik())
    }
 
   /**
@@ -104,7 +104,7 @@
          if (!this.status.start) return;
 
          this.clear();
-         this.options.beforeRender();
+         this.options.eachTik();
       }
 
       /**

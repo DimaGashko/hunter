@@ -26,7 +26,7 @@
 
       _init() {
          this.render = new Game.Render({
-            beforeRender: () => {
+            eachTik: () => {
                this._tik();
             }
          });
