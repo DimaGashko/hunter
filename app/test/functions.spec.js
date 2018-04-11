@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Functins.js', () => {
+describe('Functiоns.js', () => {
   
   describe('isIntersectLines()', () => {
     it('(1;4) и (3;6) - пересекаются', () => {

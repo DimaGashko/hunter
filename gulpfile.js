@@ -85,9 +85,10 @@ gulp.task('watch', () => {
    gulp.watch('app/sass/**/*.sass', gulp.parallel('css'));
    gulp.watch('app/jade/**/*.jade', gulp.parallel('html'));
    gulp.watch('app/js/**/*.js', gulp.parallel('js'));
-   gulp.watch('app/maps/**/*.json', gulp.parallel('js'));
-
    gulp.watch('app/img/icons/*.*', gulp.parallel('sprites'));
+
+   gulp.watch('app/maps/**/*.json', gulp.parallel('js'));
+   gulp.watch('app/test/**/*.*', gulp.parallel('test'));
 });
 
 //DEFAULT

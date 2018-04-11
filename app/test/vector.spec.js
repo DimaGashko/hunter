@@ -21,16 +21,6 @@ describe('Класс Vector', () => {
   });
 
   describe('Метод plus()', () => {
-    it('бросает исключение, если передать не вектор', () => {
-      const position = new Vector(x, y);
-
-      function fn() {
-        position.plus({ left, top });
-      }
-
-      expect(fn).to.throw(Error);
-    });
-
     it('создает новый вектор', () => {
       const position = new Vector(x, y);
 
@@ -49,6 +39,25 @@ describe('Класс Vector', () => {
     });
   });
 
+  describe('Метод minus()', () => {
+    it('создает новый вектор', () => {
+      const position = new Vector(x, y);
+
+      const newPosition = position.minus(new Vector(left, top));
+
+      expect(newPosition).is.instanceof(Vector);
+    });
+
+    it('координаты нового вектора равны разнице координат суммируемых', () => {
+      const position = new Vector(10, 20);
+
+      const newPosition = position.minus(new Vector(5, 6));
+
+      expect(newPosition.x).is.equal(5);
+      expect(newPosition.y).is.equal(14);
+    });
+  });
+
   describe('Метод mul()', () => {
     it('создает новый вектор', () => {
       const position = new Vector(x, y);
@@ -59,12 +68,12 @@ describe('Класс Vector', () => {
     });
 
     it('координаты нового вектора увеличины в n раз', () => {
-      const position = new Vector(x, y);
+      const position = new Vector(4, 5);
 
-      const newPosition = position.mul(n);
+      const newPosition = position.mul(5);
 
-      expect(newPosition.x).is.equal(15);
-      expect(newPosition.y).is.equal(35);
+      expect(newPosition.x).is.equal(20);
+      expect(newPosition.y).is.equal(25);
     });
   });
 
@@ -77,13 +86,51 @@ describe('Класс Vector', () => {
       expect(newPosition).is.instanceof(Vector);
     });
 
-    it('координаты нового вектора увеличины в n раз', () => {
-      const position = new Vector(x, y);
+    it('координаты нового вектора уменьшены в n раз', () => {
+      const position = new Vector(20, 25);
 
-      const newPosition = position.div(2);
+      const newPosition = position.div(5);
 
-      expect(newPosition.x).is.equal(1.5);
-      expect(newPosition.y).is.equal(3.5);
+      expect(newPosition.x).is.equal(4);
+      expect(newPosition.y).is.equal(5);
+    });
+  });
+
+  describe('Метод scale()', () => {
+    it('создает новый вектор', () => {
+      const position = new Vector(10, 20);
+
+      const newPosition = position.scale(3, 2);
+
+      expect(newPosition).is.instanceof(Vector);
+    });
+
+    it('Координаты нового вектора увеличены на n и m', () => {
+      const position = new Vector(10, 20);
+      
+      const newPosition = position.scale(new Vector(3, 2));
+
+      expect(newPosition.x).is.equal(30);  
+      expect(newPosition.y).is.equal(40);   
+    });
+  });
+
+  describe('Метод copy()', () => {
+    it('создает новый вектор', () => {
+      const position = new Vector(10, 20);
+
+      const newPosition = position.copy();
+
+      expect(newPosition).is.instanceof(Vector);
+    });
+
+    it('Координаты нового вектора такие же как у начального', () => {
+      const position = new Vector(10, 20);
+
+      const newPosition = position.copy();
+
+      expect(newPosition.x).is.equal(10);  
+      expect(newPosition.y).is.equal(20);   
     });
   });
 

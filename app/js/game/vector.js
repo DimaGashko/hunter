@@ -20,13 +20,6 @@
             this.y - vector.y
          );
       }
-      
-      copy() {
-         return new Vector(
-            this.x,
-            this.y
-         );
-      }
 
       mul(n) {
          return new Vector(
@@ -46,6 +39,13 @@
          return new Vector(
             this.x * scale.x,
             this.y * scale.y,
+         );
+      }
+
+      copy() {
+         return new Vector(
+            this.x,
+            this.y
          );
       }
    }  
