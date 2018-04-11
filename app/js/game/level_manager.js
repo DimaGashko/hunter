@@ -6,10 +6,11 @@
       //Пути к картам
       levelsSrc: [
          "maps/test.json",
+         "maps/test2.json",
       ],
 
-      //Текущая карта
-      curLevel: 0,
+      //Текущий уровень
+      curLevel: 1,
    }
 
 
