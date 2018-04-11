@@ -101,6 +101,8 @@
 
       //Кадр анимации
       tik(dilation) {
+         if (!this.status.start) return;
+
          this.clear();
          this.options.beforeRender();
       }
@@ -222,18 +224,21 @@
          });
       }
 
+      //Создает основные параметры испльзуемые конструктором
+      //options - передаются из конструктора при иницилизации
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
 
          this.canv = null;
          this.ctx = null;
-         this.camera = {};
 
+         this.camera = {};
+         this.metrics = {};
+      
          this.status = {
             start: false,
          }
 
-         this.metrics = {};
       }
       
    }
