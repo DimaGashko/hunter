@@ -92,7 +92,7 @@
             if (objects[i].img) {
                ctx.drawImage(objects[i].img, obj.x, obj.y, obj.w, obj.h);
             } else {
-               ctx.fillStyle = objects[i].bgcolor || 'rgba(0,0,0,0.3)';
+               ctx.fillStyle = objects[i].fillStyle || 'rgba(0,0,0,0.3)';
                ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
             }
            

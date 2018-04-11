@@ -66,6 +66,10 @@
          //this.speed = this.speed.div(2);
       }
 
+      _setFaceColor() { 
+         this.fakeColor = 'rgba(255,0,0,0.5)';
+      }
+
       clearStatus() {
          this.status = {
             left: false,

@@ -15,9 +15,13 @@
          this._createParametrs(options);
       }
 
+      /**
+       * Возвращает разпарсенную карту в нужном игре формате
+       * 
+       * @param {JSON string} JSONLelevel - строка карты в формате JSON
+       */
       parse(JSONLelevel) {
          var config = JSON.parse(JSONLelevel);
-         global.config = config;
 
          var parsed = {
             tile: {

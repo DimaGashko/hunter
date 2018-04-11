@@ -80,9 +80,7 @@
       }
 
       _setFaceColor() {
-         this.fakeColor = `rgb(${(Math.random() * 255)^0},`
-            + `${(Math.random() * 255)^0},`
-            + `${(Math.random() * 255)^0})`;
+            this.fakeColor = '';
       }
 
    }

@@ -18,6 +18,10 @@
          }, 500);
       }
 
+      _setFaceColor() {
+         this.fakeColor = 'rgba(0,0,255,0.5)';
+      }
+
    }
    
    Object.defineProperty(Player.prototype, 'type', {
