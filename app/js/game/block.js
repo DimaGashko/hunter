@@ -80,7 +80,7 @@
       }
 
       _setFaceColor() {
-            this.fakeColor = '';
+         this.fakeColor = '';
       }
 
    }
