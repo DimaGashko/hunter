@@ -38,6 +38,10 @@ lrTask('map', './tasks/js', {
    src: 'app/maps/**/*.json',
 });
 
+lrTask('test', './tasks/test', {
+   src: 'app/test/**/*.*',
+});
+
 //BUILD
 lrTask('build:useref', './tasks/build_useref', {
    src: 'app/index.html',
