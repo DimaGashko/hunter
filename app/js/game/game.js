@@ -13,6 +13,9 @@
       start() {
          this.levelManager.getLevel().then((levelConfig) => {
             this._createLevel(levelConfig);
+
+            this.camera.coords =
+               this.level.player.coords.plus(this.level.player.size.div(2));
             this.render.start();
          }, () => {
             console.log("error");
@@ -33,7 +36,7 @@
 
          this.levelManager = new Game.LevelManager();
          this.camera = new Game.Camera({
-            type: 'simple',
+            type: 'smart',
          });
 
          this.gravity = new Game.Gravity;
@@ -85,7 +88,11 @@
       }
 
       _moveCamera() {
-         this.camera.updateCoords(this.level.player);
+         this.camera.updateCoords(
+            this.level.player,
+            this.render.metrics.realGameSize
+         );
+
          this.render.setCamera(this.camera.coords);
       }
 

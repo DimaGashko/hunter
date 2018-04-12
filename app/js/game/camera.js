@@ -3,7 +3,7 @@
 
    var DEF = {
       type: 'smart',
-
+      offsetScale: new Vector(0.2, 0.3),
    }
 
    /**
@@ -17,6 +17,7 @@
          this.coords = new Vector(0, 0);
 
          this._createParametrs(options);
+         this._init();
       }
 
       updateCoords(player, gameSize) {
@@ -25,11 +26,15 @@
          method(this, ...arguments);
       }
 
-      _createParametrs(options) {
-         this.options = extend(true, {}, DEF, options);
-         
+      _init() {
+         this._initMoveMethod();
+      }
+
+      _initMoveMethod() {
+         var type = this.options.type;
+
          //Если нету переданного метода движения камеры
-         if (!(this.options.type in Camera._moveMethods)) {
+         if (!(type in Camera._moveMethods)) {
             console.error(
                'Несуществующий метод движения камеры. Выбран simple'
             );
@@ -37,7 +42,11 @@
             this.options.type = 'static';
          }
 
-         console.log(this.options.type, options)
+      }
+
+      _createParametrs(options) {
+         this.options = extend(true, {}, DEF, options);
+         
       }
 
    }
@@ -51,7 +60,24 @@
       },
 
       smart: function (camera, player, gameSize) {
-         console.log('smart');
+         var offset = gameSize.scale(camera.options.offsetScale).scalarAbs();
+      
+         //Horizontal;
+         if (player.right > camera.coords.x + offset.x) {
+            camera.coords.x = player.right - offset.x;
+
+         }  if (camera.coords.x > player.coords.x + offset.x) {
+            camera.coords.x = player.left + offset.x;
+         }
+
+         //Vectical
+         if (player.bottom > camera.coords.y + offset.y) {
+            camera.coords.y = player.bottom - offset.y;
+
+         } if (camera.coords.y > player.coords.y + offset.y) {
+            camera.coords.y = player.top + offset.y;
+         }
+
       },
    }
    
