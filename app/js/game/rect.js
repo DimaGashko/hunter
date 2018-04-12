@@ -39,6 +39,18 @@
          this.coords.y = val - this.size.y; 
       }
 
+      getCenter() {
+         return new Vector(
+            this.coords.x + this.size.x / 2,
+            this.coords.y + this.size.y / 2
+         );
+      }
+
+      setCenter(center) {
+         this.coords.x = center.x - this.size.x / 2;
+         this.coords.y = center.y - this.size.y / 2;
+      }
+
    }
 
    Object.defineProperty(Rect.prototype, 'type', {

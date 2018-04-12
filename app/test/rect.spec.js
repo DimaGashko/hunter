@@ -91,4 +91,36 @@ describe('Класс Game.Rect', () => {
     });
 
   });
+
+  describe('Метод getCenter()', () => {
+    it('Возвращает вектор', () => {
+      var rect = new Game.Rect(1, 2, 3, 4);
+
+      var center = rect.getCenter();
+
+      expect(center).is.instanceof(Vector);
+    });
+    
+    it('Возвращает координаты центра прямоугольника', () => {
+      var rect = new Game.Rect(1, 2, 3, 4);
+
+      var center = rect.getCenter();      
+
+      assert.strictEqual(center.x, 2.5);
+      assert.strictEqual(center.y, 4);
+    });
+  });
+
+  describe('Метод setCenter()', () => {
+    it('Ставит прямоугольник центром на коортинаты переданного вектора', () => {
+      var rect = new Game.Rect(1, 2, 4, 8);
+
+      rect.setCenter(new Vector(10, 10));      
+
+      assert.strictEqual(rect.coords.x, 8);
+      assert.strictEqual(rect.coords.y, 6);
+    });
+  });
+
+
 });
