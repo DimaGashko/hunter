@@ -99,13 +99,16 @@
          var player = this.level.player;
          
          if (this.keysPress[this.KEYS.left]) {
-            player.status.left = true;
+            //player.status.left = true;
+            player.goToLeft()
          }
          if (this.keysPress[this.KEYS.right]) {
-            player.status.right = true;
+            //player.status.right = true;
+            player.goToRight();
          }
          if (this.keysPress[this.KEYS.top]) {
             player.status.jump = true;
+            //player.jump()
          }
          if (this.keysPress[this.KEYS.bottom]) {
             //player.speed.y += 0.01;
