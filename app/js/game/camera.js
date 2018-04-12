@@ -56,7 +56,7 @@
     */
    Camera._moveMethods = {
       simple: function (camera, player) {
-         camera.coords = player.coords.plus(player.size.div(2));
+         camera.coords = player.getCenter();
       },
 
       smart: function (camera, player, gameSize) {

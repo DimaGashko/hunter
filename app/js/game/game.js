@@ -14,8 +14,7 @@
          this.levelManager.getLevel().then((levelConfig) => {
             this._createLevel(levelConfig);
 
-            this.camera.coords =
-               this.level.player.coords.plus(this.level.player.size.div(2));
+            this.camera.coords = this.level.player.getCenter();
             this.render.start();
          }, () => {
             console.log("error");
