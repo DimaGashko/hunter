@@ -42,6 +42,20 @@
          );
       }
 
+      diScale(scale) {
+         return new Vector(
+            this.x / scale.x,
+            this.y / scale.y,
+         );
+      }
+
+      scalarAbs() {
+         return new Vector(
+            Math.abs(this.x),
+            Math.abs(this.y)
+         ); 
+      }
+
       copy() {
          return new Vector(
             this.x,

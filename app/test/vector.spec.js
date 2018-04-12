@@ -115,6 +115,25 @@ describe('Класс Vector', () => {
     });
   });
 
+  describe('Метод diScale()', () => {
+    it('создает новый вектор', () => {
+      const position = new Vector(10, 20);
+
+      const newPosition = position.diScale(3, 2);
+
+      expect(newPosition).is.instanceof(Vector);
+    });
+
+    it('Координаты нового вектора уменьшены на n и m', () => {
+      const position = new Vector(10, 20);
+      
+      const newPosition = position.diScale(new Vector(2, 4));
+
+      expect(newPosition.x).is.equal(5);  
+      expect(newPosition.y).is.equal(5);   
+    });
+  });
+
   describe('Метод copy()', () => {
     it('создает новый вектор', () => {
       const position = new Vector(10, 20);
@@ -128,6 +147,48 @@ describe('Класс Vector', () => {
       const position = new Vector(10, 20);
 
       const newPosition = position.copy();
+
+      expect(newPosition.x).is.equal(10);  
+      expect(newPosition.y).is.equal(20);   
+    });
+  });
+
+  describe('Метод scalarAbs()', () => {
+    it('создает новый вектор', () => {
+      const position = new Vector(10, 20);
+
+      const newPosition = position.copy();
+
+      expect(newPosition).is.instanceof(Vector);
+    });
+
+    it('Vector(-10, -20) => Vector(10, 20)', () => {
+      const position = new Vector(-10, -20);
+      const newPosition = position.scalarAbs();
+
+      expect(newPosition.x).is.equal(10);  
+      expect(newPosition.y).is.equal(20);   
+    });
+
+    it('Vector(10, 20) => Vector(10, 20)', () => {
+      const position = new Vector(10, 20);
+      const newPosition = position.scalarAbs();
+
+      expect(newPosition.x).is.equal(10);  
+      expect(newPosition.y).is.equal(20);   
+    });
+
+    it('Vector(-10, 20) => Vector(10, 20)', () => {
+      const position = new Vector(-10, 20);
+      const newPosition = position.scalarAbs();
+
+      expect(newPosition.x).is.equal(10);  
+      expect(newPosition.y).is.equal(20);   
+    });
+
+    it('Vector(10, -20) => Vector(10, 20)', () => {
+      const position = new Vector(10, -20);
+      const newPosition = position.scalarAbs();
 
       expect(newPosition.x).is.equal(10);  
       expect(newPosition.y).is.equal(20);   

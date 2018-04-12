@@ -119,20 +119,25 @@
       resize() {
          this.updateMetrics();
 
-         this.canv.width = this.metrics.gameW;
-         this.canv.height = this.metrics.gameH;
+         this.canv.width = this.metrics.gameSize.x;
+         this.canv.height = this.metrics.gameSize.y;
       }
 
       //Обновляет размеры используемые для расчетов
-      //(не исопльзовать размеры получая их от DOM-элементов!)
       updateMetrics() {
-         this.metrics.gameW = window.innerWidth;
-         this.metrics.gameH = window.innerHeight;
+         var m = this.metrics;
+
+         m.gameSize = new Vector(
+            window.innerWidth,
+            window.innerHeight
+         );
+
+         m.realGameSize = m.gameSize.diScale(this.options.scale);
       }
 
       //Очищает игровое поле
       clear() {
-         this.ctx.clearRect(0, 0, this.metrics.gameW, this.metrics.gameH);
+         this.ctx.clearRect(0, 0, this.metrics.gameSize.x, this.metrics.gameSize.y);
       }
       
       /**
@@ -145,8 +150,8 @@
          var scale = this.options.scale;
          
          return {
-            x: (obj.x * scale.x) - this.camera.x + this.metrics.gameW / 2,
-            y: (obj.y * scale.y) - this.camera.y + this.metrics.gameH / 2,
+            x: (obj.x * scale.x) - this.camera.x + this.metrics.gameSize.x / 2,
+            y: (obj.y * scale.y) - this.camera.y + this.metrics.gameSize.y / 2, 
             w: obj.w * scale.x,
             h: obj.h * scale.y,
          }
@@ -174,13 +179,13 @@
 
          if (k === 0) {
             return isIntersectRect(
-               0, this.metrics.gameW, 0, this.metrics.gameH,
+               0, this.metrics.gameSize.x, 0, this.metrics.gameSize.y,
                obj.x, obj.x + obj.w, obj.y, obj.y + obj.h
             );
          }
 
-         var gw = this.metrics.gameW;
-         var gh = this.metrics.gameH;
+         var gw = this.metrics.gameSize.x;
+         var gh = this.metrics.gameSize.y;
 
          //Дополнительные размеры области
          k /= 2;

@@ -32,7 +32,9 @@
          });
 
          this.levelManager = new Game.LevelManager();
-         this.camera = new Game.Camera();
+         this.camera = new Game.Camera({
+            type: 'simple',
+         });
 
          this.gravity = new Game.Gravity;
          this.collisions = new Game.Collisions;
@@ -83,9 +85,7 @@
       }
 
       _moveCamera() {
-         var player = this.level.player;
-
-         this.camera.coords = player.coords.plus(player.size.div(2));
+         this.camera.updateCoords(this.level.player);
          this.render.setCamera(this.camera.coords);
       }
 
