@@ -15,13 +15,7 @@ describe('Класс Game.Rect', () => {
       assert.strictEqual(rect.coords.x, 1);
       assert.strictEqual(rect.coords.y, 2);
     });
-
-    it('Содержит свойство type равное rect', () => {
-      var rect = new Game.Rect();
-
-      assert.strictEqual(rect.type, 'rect');
-    });
-
+ 
     it('size содержит координаты равны вторым 2 аргументам конструктора', () => {
       var rect = new Game.Rect(1, 2, 3, 4);
 
