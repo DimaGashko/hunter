@@ -8,22 +8,44 @@
 //
 // At the bottom of this section, we provide information about the spritesheet itself
 // $spritesheet: width height image $spritesheet-sprites
-$favicon-name: 'favicon'
-$favicon-x: 0px
-$favicon-y: 0px
-$favicon-offset-x: 0px
-$favicon-offset-y: 0px
-$favicon-width: 32px
-$favicon-height: 32px
-$favicon-total-width: 32px
-$favicon-total-height: 32px
-$favicon-image: '/img/sprite.png'
-$favicon: (0px, 0px, 0px, 0px, 32px, 32px, 32px, 32px, '/img/sprite.png', 'favicon', )
-$spritesheet-width: 32px
-$spritesheet-height: 32px
+$player-go-name: 'player-go'
+$player-go-x: 0px
+$player-go-y: 38px
+$player-go-offset-x: 0px
+$player-go-offset-y: -38px
+$player-go-width: 25px
+$player-go-height: 44px
+$player-go-total-width: 44px
+$player-go-total-height: 82px
+$player-go-image: '/img/sprite.png'
+$player-go: (0px, 38px, 0px, -38px, 25px, 44px, 44px, 82px, '/img/sprite.png', 'player-go', )
+$player-jump-name: 'player-jump'
+$player-jump-x: 0px
+$player-jump-y: 0px
+$player-jump-offset-x: 0px
+$player-jump-offset-y: 0px
+$player-jump-width: 33px
+$player-jump-height: 38px
+$player-jump-total-width: 44px
+$player-jump-total-height: 82px
+$player-jump-image: '/img/sprite.png'
+$player-jump: (0px, 0px, 0px, 0px, 33px, 38px, 44px, 82px, '/img/sprite.png', 'player-jump', )
+$player-stop-name: 'player-stop'
+$player-stop-x: 33px
+$player-stop-y: 0px
+$player-stop-offset-x: -33px
+$player-stop-offset-y: 0px
+$player-stop-width: 11px
+$player-stop-height: 44px
+$player-stop-total-width: 44px
+$player-stop-total-height: 82px
+$player-stop-image: '/img/sprite.png'
+$player-stop: (33px, 0px, -33px, 0px, 11px, 44px, 44px, 82px, '/img/sprite.png', 'player-stop', )
+$spritesheet-width: 44px
+$spritesheet-height: 82px
 $spritesheet-image: '/img/sprite.png'
-$spritesheet-sprites: ($favicon, )
-$spritesheet: (32px, 32px, '/img/sprite.png', $spritesheet-sprites, )
+$spritesheet-sprites: ($player-go, $player-jump, $player-stop, )
+$spritesheet: (44px, 82px, '/img/sprite.png', $spritesheet-sprites, )
 
 // The provided mixins are intended to be used with the array-like variables
 //

@@ -9,7 +9,7 @@
       //Находит и устраняет все столкновения на карте
       findAndfix(actors, blocks) {         
          actors.forEach((actor) => {
-            var intersectBlocks = this.getIntersectObjects(actor, blocks); 
+            var intersectBlocks = this.getIntersectObjects(actor, blocks.concat(actors)); 
             
             intersectBlocks.forEach((obj, i) => {
                if (!this.intersetObjs(actor, obj)) {
@@ -168,7 +168,7 @@
       //Возвращает массив из переданный объектов, которые пересекаются с actor 
       getIntersectObjects(actor, objects) {
          return objects.filter((obj) => {
-            return this.intersetObjs(actor, obj);
+            return (actor !== obj && this.intersetObjs(actor, obj));
          });
       }
 
