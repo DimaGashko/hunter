@@ -1,11 +1,23 @@
 ;(function(global){
    "use strict"
 
+   /**
+    * Класс для работы с прямоугольниками
+    * 
+    * @constructor
+    * 
+    * Аргументами в конструктор передаются координаты и размеры прямоугольника
+    */
    class Rect {
       constructor(x = 0, y = 0, w = 0, h = 0) {
          this.coords = new Vector(x, y);
          this.size = new Vector(w, h);
       }
+
+      //Геттеры возвращают значение соответствующей стороны или др.
+
+      //Сеттеры ставят прямоугольник в нужное место нужной стороной 
+      //(меняя координаты, размеры при этмо НЕ меняются)
 
       get left() {
          return this.coords.x;
@@ -52,10 +64,6 @@
       }
 
    }
-
-   Object.defineProperty(Rect.prototype, 'type', {
-      value: 'rect',
-   });
    
    global.Game.Rect = Rect;   
    
