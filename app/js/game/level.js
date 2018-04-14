@@ -29,8 +29,8 @@
 
       getObjectsToRender() {
          var objects = [this.player.person.convertToRender()];
-
-         ['decorates', 'statis', 'blocks'].forEach(type => {
+      
+         ['dinamic', 'static', 'decorates'].forEach(type => {
             this.objects.blocks[type].forEach((obj) => {
                objects.push(obj.convertToRender());
             });
@@ -50,20 +50,28 @@
          this._createBlocks('decorates');
 
          this._createActors();
-        
+         this._createPlayer();
       }
 
-      _createBlocks(chunkName) {
-         this.objects[chunkName] = this.config.blocks[chunkName].map(chunk => {
-            chunk.data = chunk.data.map(item => {
-               var Constr = this.objectTypes[item.type] || Game.Block;
-               
-               return new Constr(item, {
-                  tile: this.config.tile,
-               });
-            });
+      _createBlocks(type) {
+         var container = this.allObjects.blocks[type];
 
-            return chunk;
+         this.config.blocks[type].forEach(chunk => {
+            var res = {
+               x: chunk.x,
+               y: chunk.y,
+               w: chunk.w,
+               h: chunk.h,
+               data: chunk.data.map(item => {
+                  var Constr = this.objectTypes[item.type] || Game.Block;
+                  
+                  return new Constr(item, {
+                     tile: this.config.tile,
+                  });
+               }),
+            }
+
+            container.push(res);
          });
       }
 
@@ -77,7 +85,14 @@
          });
       }
 
+      _createPlayer() {
+         this.player = new Game.Player({
+            personConfig: this.config.player,
+         });
+      }
+
       _findVisibleBlocks(type) {
+         //console.log(this)
          var container = this.objects.blocks[type];
          var isVisible = this.options.isVisible;
 
@@ -85,9 +100,9 @@
          
          this.allObjects.blocks[type].forEach((chunk) => {
             if (!isVisible(chunk) && 0) return;
-            
+         
             chunk.data.forEach((item) => {
-               if (!isVisible(item.convertToRender())) return;
+               //if (!isVisible(item.convertToRender())) return;
 
                container.push(item);
             });

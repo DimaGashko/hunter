@@ -19,8 +19,8 @@
       start() {
          var o = this.options;
          var self = this;
-         
-         if (o.animation.length === 0) {
+
+         if (!o.animation || o.animation.length === 0) {
             throw new Error(`Cant't start animation (0 cadrs)`);
          }
          else if (o.animation.length === 1) {

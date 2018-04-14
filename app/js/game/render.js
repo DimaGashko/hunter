@@ -81,7 +81,7 @@
        * 
        */
       render(objects) {
-         var ctx = this.ctx;
+        var ctx = this.ctx;
 
          //проверка количества отрисовываемых объектов
          //console.log(objects.length); 

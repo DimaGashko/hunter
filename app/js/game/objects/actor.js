@@ -3,7 +3,20 @@
 
    class Actor extends Game.Block {
       constructor(config = {}, options = {}) {
-         super(config, options);
+         super({
+            animation: [{
+               duration: 0,
+               id: 37,
+               startX: 160,
+               startY: 64
+            }],
+            x: config.x,
+            y: config.y,
+            w: 1,
+            h: 1
+         }, {
+            tile: {w: 32, h: 32, src: "img/minecraft-sprite.png"}   
+         });
       }
 
       goToLeft() {
