@@ -17,24 +17,27 @@
 
       _init() {
          this._createAllObjects();
-         this.findVisibleObjects()
+         this.findVisible()
       }
 
-      findVisibleObjects() {
-         this._findVisible('blocks');
-         this._findVisible('actors');
-         this._findVisible('decorates');
+      findVisible() {
+         this._findVisibleBlocks('static');
+         this._findVisibleBlocks('dinamic');
+         this._findVisibleBlocks('decorates');
+         this._findVisibleActors();
       }
 
       getObjectsToRender() {
-         //Сейчас игрок рисуется 2 раза, так как он уже есть в actors
-         //(что бы он был на переднем плане)
-         var objects = [this.player.convertToRender()];
+         var objects = [this.player.person.convertToRender()];
 
-         ['actors', 'decorates', 'blocks'].forEach(type => {
-            this.visibleObjects[type].forEach((obj) => {
+         ['decorates', 'statis', 'blocks'].forEach(type => {
+            this.objects.blocks[type].forEach((obj) => {
                objects.push(obj.convertToRender());
             });
+         });
+
+         this.objects.actors.forEach((obj) => {
+            objects.push(obj.convertToRender()); 
          });
 
          return objects;
@@ -65,8 +68,6 @@
       }
 
       _createActors() {
-         console.log(this.config.actors);
-         
          this.allObjects.actors = this.config.actors.map((item) => {
             var Constr = this.objectTypes[item.type] || Game.Actor;
 
@@ -76,8 +77,8 @@
          });
       }
 
-      _findVisible(type) {
-         var container = this.visibleObjects[type];
+      _findVisibleBlocks(type) {
+         var container = this.objects.blocks[type];
          var isVisible = this.options.isVisible;
 
          container.length = 0; //Очищаем массив
@@ -86,10 +87,23 @@
             if (!isVisible(chunk) && 0) return;
             
             chunk.data.forEach((item) => {
-               if (!isVisible(item.convertToRender()) && item.type !== 'player') return;
+               if (!isVisible(item.convertToRender())) return;
 
                container.push(item);
             });
+         });
+      }
+
+      _findVisibleActors(type) {
+         var container = this.objects.actors;
+         var isVisible = this.options.isVisible;
+
+         container.length = 0; //Очищаем массив
+         
+         this.allObjects.actors.forEach((actor) => {
+            if (!isVisible(actor.convertToRender()), 2) return;
+
+            container.push(actor);
          });
       }
 

@@ -1,33 +1,48 @@
 ;(function(global){
-   "use strict"
+   'use strict'
+   
+   var DEF = {
+      
+   }
+   
 
-   var created = false;
-
-   class Player extends Game.Actor {
-      constructor(config = {}, options = {}) {
-         if (created) {
-            throw new Error('Игрок уже созда');
-         }
-         config.w = 1;
-         config.h = 1;
-         super(config, options);
-         console.log('player')
-         setInterval(() => {
-            //console.log(this.speed);
-            //console.log(this.coords.x ^ 0, this.coords.y ^ 0)
-         }, 500);
+   /**
+    * Player
+    *
+    * @constructor
+    * @param {object} options - настройки (по умолчанию DEF)
+   */
+   class A {
+      constructor(options = {}) {
+         this._createParametrs(options);
+         this._init();
+         this._initEvents();
       }
+   
 
-      _setFaceColor() {
-         this.fakeColor = 'rgba(0,0,255,0.5)';
+      _init() {
+         
       }
+   
+      //Иницилизирует DOM-события
+      _initEvents() {
+      
+      }
+   
+
+      //Создает основные параметры испльзуемые конструктором
+      //options - передаются из конструктора при иницилизации
+      _createParametrs(options) {
+         this.options = extend(true, {}, DEF, options);
+         this.person = null;
+   
+
+      }
+   
 
    }
    
-   Object.defineProperty(Player.prototype, 'type', {
-      value: 'player',
-   });
-
-   global.Game.Player = Player;   
+   global.Game.Player = Player;
    
+
 }(window));
