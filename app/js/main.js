@@ -1,8 +1,8 @@
 ﻿;(function(global){
    "use strict"
    
-   var game = window.g = new Game();
-   return
+   //var game = window.g = new Game();
+
    var render = new Game.Render({
       scale: new Vector(50, 50),
       eachTik: () => {
@@ -14,10 +14,15 @@
 
    render.setCamera(new Vector(0, 0));
 
-   
+   var block = new Game.Block();
 
    function tik() {
-      render.render();
+      render.render([{
+         x: -1,
+         y: -2,
+         w: 3,
+         h: 4,
+      }]);
    }
 
    

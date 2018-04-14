@@ -1,6 +1,10 @@
 ;(function(global){
    "use strict"
 
+   
+   /**
+    * Класс для создания игрового блока
+    */
    class Block extends Game.Rect {
       constructor(config = {}, options = {}) {
          super(config.x, config.y, config.w, config.h);
@@ -49,14 +53,14 @@
       }
 
       _createSprite(img) {
-            this.sprite = new Sprite({
-                  w: this.options.tileW,
-                  h: this.options.tileH,
-                  sprite: img,
-                  animation: this.animation,
-            });
-            
-            this.img = this.sprite.canv;
+         this.sprite = new Sprite({
+               w: this.options.tileW,
+               h: this.options.tileH,
+               sprite: img,
+               animation: this.animation,
+         });
+         
+         this.img = this.sprite.canv;
       }
 
       _createParametrs(config, options) {

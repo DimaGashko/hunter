@@ -83,7 +83,7 @@
        * Если есть свойство img, то fillStyle не используется
        * 
        */
-      render(objects) {
+      render(objects = []) {
         var ctx = this.ctx;
 
          //проверка количества отрисовываемых объектов
