@@ -10,11 +10,11 @@
       ],
 
       //Текущий уровень
-      curLevel: 1,
+      curLevel: 0,
    }
 
 
-   class LevelManager {
+   class MapManager {
       constructor(options = {}) {
          this._createParametrs(options);
       }
@@ -64,12 +64,12 @@
 
          this.levels = [];
 
-         this.parser = new Game.LevelParser();
+         this.parser = new Game.MapParser();
       }
 
 
    }  
    
-   global.Game.LevelManager = LevelManager;   
+   global.Game.MapManager = MapManager;   
    
 }(window));

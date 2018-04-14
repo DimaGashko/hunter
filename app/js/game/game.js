@@ -11,7 +11,7 @@
       }
 
       start() {
-         this.levelManager.getLevel().then((levelConfig) => {
+         this.mapManager.getLevel().then((levelConfig) => {
             this._createLevel(levelConfig);
 
             this.camera.coords = this.level.player.getCenter();
@@ -33,7 +33,7 @@
             }
          });
 
-         this.levelManager = new Game.LevelManager();
+         this.mapManager = new Game.MapManager();
          this.camera = new Game.Camera({
             type: 'smart',
          });

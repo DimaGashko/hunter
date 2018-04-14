@@ -10,7 +10,7 @@
     * 
     * @constructor
     */
-   class LevelParser {
+   class MapParser {
       constructor(options = {}) {
          this._createParametrs(options);
       }
@@ -104,6 +104,6 @@
 
    }  
    
-   global.Game.LevelParser = LevelParser;   
+   global.Game.MapParser = MapParser;   
    
 }(window));
