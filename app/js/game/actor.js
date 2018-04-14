@@ -87,10 +87,10 @@
          this.life = this.startLife;
          this.minPain = 50;
 
-         this.maxSpeed = new Vector(5/60, 100/60);
-         this.minSpeed = new Vector(-5/60, -100/60);
+         this.maxSpeed = new Vector(8/60, 100/60);
+         this.minSpeed = new Vector(-8/60, -100/60);
 
-         this.a = new Vector(0.15, 0.4);
+         this.a = new Vector(0.2, 0.4);
 
          this.status = {
             left: false,
