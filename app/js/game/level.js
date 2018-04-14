@@ -13,12 +13,10 @@
          this.config = config;
 
          this._init();
-         this._clearConfig();
       }
 
       _init() {
          this._createAllObjects();
-         this._findPlayer();
          this.findVisibleObjects()
       }
 
@@ -44,33 +42,36 @@
       }
 
       _createAllObjects() {
-         this._createBlocks('blocks');
+         this._createBlocks('static');
+         this._createBlocks('dinamic');
          this._createBlocks('decorates');
-         this._createBlocks('actors');
+
+         this._createActors();
+        
       }
 
       _createBlocks(chunkName) {
-         this.objects[chunkName] = this.config[chunkName].map(chunk => {
+         this.objects[chunkName] = this.config.blocks[chunkName].map(chunk => {
             chunk.data = chunk.data.map(item => {
-               var Constr = this.objectTypes[item.type] || (function() {
-                  return (chunkName === 'actors') ? Game.Actor : Game.Block;
-               }()); 
+               var Constr = this.objectTypes[item.type] || Game.Block;
                
                return new Constr(item, {
                   tile: this.config.tile,
-                });
+               });
             });
 
             return chunk;
          });
       }
 
-      _findPlayer() {
-         this.objects.actors.forEach(chunk => {
-            if (this.player) return;
-            chunk.data.forEach(actor => {
-               if (this.player) return;
-               if (actor.type === 'player') this.player = actor;
+      _createActors() {
+         console.log(this.config.actors);
+         
+         this.allObjects.actors = this.config.actors.map((item) => {
+            var Constr = this.objectTypes[item.type] || Game.Actor;
+
+            return new Constr(item, {
+               tile: this.config.tile,
             });
          });
       }
@@ -81,7 +82,7 @@
 
          container.length = 0; //Очищаем массив
          
-         this.objects[type].forEach((chunk) => {
+         this.allObjects.blocks[type].forEach((chunk) => {
             if (!isVisible(chunk) && 0) return;
             
             chunk.data.forEach((item) => {
@@ -92,24 +93,24 @@
          });
       }
 
-      _clearConfig() {
-         this.config.blocks = {};
-         this.config.actors = {};
-         this.config.decorates = {};
-      }
-
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
 
-         this.objects = {
-            blocks: [],
-            decorates: [],
+         this.allObjects = {
+            blocks: {
+               static: [],
+               dinamic: [],
+               decorates: []
+            },
             actors: [],
          }
 
-         this.visibleObjects = {
-            blocks: [],
-            decorates: [],
+         this.objects = {
+            blocks: {
+               static: [],
+               dinamic: [],
+               decorates: []
+            },
             actors: [],
          }
 

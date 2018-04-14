@@ -8,18 +8,6 @@
          "objects":[
                 {
                  "height":0,
-                 "id":21,
-                 "name":"Player",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":-33,
-                 "y":-1
-                }, 
-                {
-                 "height":0,
                  "id":22,
                  "name":"Actor",
                  "point":true,
@@ -29,6 +17,36 @@
                  "width":0,
                  "x":126,
                  "y":-62
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"player",
+         "objects":[
+                {
+                 "height":0,
+                 "id":26,
+                 "name":"Stiven",
+                 "point":true,
+                 "properties":
+                    {
+                     "m":100
+                    },
+                 "propertytypes":
+                    {
+                     "m":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":-28,
+                 "y":5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -89,7 +107,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":26,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.4",
@@ -206,6 +224,53 @@
              "70":
                 {
                  "damage":"int"
+                }
+            },
+         "tiles":
+            {
+             "240":
+                {
+                 "animation":[
+                        {
+                         "duration":100,
+                         "tileid":240
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":241
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":242
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":243
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":244
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":245
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":246
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":247
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":248
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":249
+                        }]
                 }
             },
          "tilewidth":32

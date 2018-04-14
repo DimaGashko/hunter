@@ -11,8 +11,10 @@
       }
 
       start() {
-         this.mapManager.getLevel().then((levelConfig) => {
-            this._createLevel(levelConfig);
+         this.mapManager.getLevel().then((mapConfig) => {
+            console.log(mapConfig);
+            
+            this._createLevel(mapConfig);
 
             this.camera.coords = this.level.player.getCenter();
             this.render.start();
