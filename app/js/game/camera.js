@@ -3,7 +3,7 @@
 
    var DEF = {
       type: 'smart',
-      offsetScale: new Vector(0.2, 0.3),
+      offsetScale: new Vector(0.1, 0.2),
    }
 
    /**
@@ -53,37 +53,114 @@
 
    /**
     * Методы движения камеры
-    */
-   Camera._moveMethods = {
-      simple: function (camera, player) {
-         camera.coords = player.getCenter();
-      },
+   */
+   var m = Camera._moveMethods = {}; 
+   
+   (function () { 
 
-      smart: function smart (camera, player, gameSize) {
+      m.simple = function(camera, player) {
+         camera.coords = player.getCenter();
+      }
+
+   }());  
+   
+   (function () { 
+
+      var lastPlayerX;
+      var lastPlayerY;
+      var timeUpdate;
+
+      m.smart = function(camera, player, gameSize) {
          var offset = gameSize.scale(camera.options.offsetScale).scalarAbs();
-         var time = Date.now();
-         var backSpeed = 0.02;
-         var wait = 2000;
          
          //Horizontal;
          if (player.right > camera.coords.x + offset.x) {
             camera.coords.x = player.right - offset.x;
-            smart.changeX = time;
+
+         } else if (camera.coords.x > player.coords.x + offset.x) {
+            camera.coords.x = player.left + offset.x;
+         }
+
+         //Vectical
+         if (player.bottom > camera.coords.y + offset.y) {
+            camera.coords.y = player.bottom - offset.y;
+
+         } else if (camera.coords.y > player.coords.y + offset.y) {
+            camera.coords.y = player.top + offset.y;
+         }
+
+         //Correct
+         if (lastPlayerX != player.coords.x) {
+            lastPlayerX = player.coords.x;
+            timeUpdate = Date.now();
+         }
+         if (lastPlayerY != player.coords.y) {
+            lastPlayerY = player.coords.y;
+            timeUpdate = Date.now();
+         }
+
+         if (Date.now() - timeUpdate > 0) {
+            //stepTo(camera, player);
+         }
+         
+      }
+
+      function stepTo(camera, player) {
+         var xStep = Math.abs(player.coords.x - camera.coords.x) / 1000;
+         var yStep = Math.abs(player.coords.y - camera.coords.y) / 1000;
+
+         if (player.coords.x > camera.coords.x + 0.1) {
+            camera.coords.x += xStep;
+         }
+         else if (camera.coords.x > player.coords.x + 0.1) {
+            camera.coords.x -= xStep;
+         }
+
+         if (player.coords.y > camera.coords.y + 0.1) {
+            camera.coords.y += yStep;
+         }
+         else if (camera.coords.y > player.coords.y + 0.1) {
+            camera.coords.y -= yStep;
+         }
+
+      }
+
+   }());  
+   
+   global.Game.Camera = Camera;   
+   
+}(window));
+
+
+
+
+/*
+smart: function smart (camera, player, gameSize) {
+         var offset = gameSize.scale(camera.options.offsetScale).scalarAbs();
+         var time = Date.now();
+         var backSpeed = 0.01;
+         var wait = 500;    
+         
+         //Horizontal;
+         if (player.right > camera.coords.x + offset.x) {
+            camera.coords.x = player.right - offset.x;
+            smart.change = time;
             smart.coordsX = camera.coords.x;
 
          } else if (camera.coords.x > player.coords.x + offset.x) {
             camera.coords.x = player.left + offset.x;
-            smart.changeX = time;
+            smart.change = time;
             smart.coordsX = camera.coords.x;
 
-         } else if(time - smart.changeX > wait) {
-            console.log(camera.coords.x, smart.coordsX)
+         } else if(camera.coords.x === smart.coordsX && time - smart.change > wait) {
             if (player.coords.x > camera.coords.x) {
                camera.coords.x += backSpeed;
 
                if (camera.coords.x > player.coords.x) {
                   camera.coords.x = player.coords.x;
                }
+
+               smart.coordsX = camera.coords.x;
 
             } else if (camera.coords.x > player.coords.x) {
                camera.coords.x -= backSpeed;
@@ -92,21 +169,23 @@
                   camera.coords.x = player.coords.x;
                }
 
+               smart.coordsX = camera.coords.x;
+
             }
          }
 
          //Vectical
          if (player.bottom > camera.coords.y + offset.y) {
             camera.coords.y = player.bottom - offset.y;
-            smart.changeY = time;
+            smart.change = time;
             smart.coordsY = camera.coords.y;
 
          } else if (camera.coords.y > player.coords.y + offset.y) {
             camera.coords.y = player.top + offset.y;
-            smart.changeY = time;
+            smart.change = time;
             smart.coordsY = camera.coords.y;
          
-         } else if(camera.coords.y != smart.coordsY && time - smart.changeY > wait) {
+         } else if(camera.coords.y === smart.coordsY && time - smart.change > wait) {
 
             if (player.coords.y > camera.coords.y) {
                camera.coords.y += backSpeed;
@@ -115,6 +194,8 @@
                   camera.coords.y = player.coords.y;
                }
 
+               smart.coordsY = camera.coords.y;
+
             } else if (camera.coords.y > player.coords.y) {
                camera.coords.y -= backSpeed;
 
@@ -122,12 +203,13 @@
                   camera.coords.y = player.coords.y;
                }
 
+               smart.coordsY = camera.coords.y;
+
             }
          }
 
       },
-   }
-   
-   global.Game.Camera = Camera;   
-   
-}(window));
+
+
+
+*/
