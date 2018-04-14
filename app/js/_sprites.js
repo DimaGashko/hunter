@@ -1,0 +1,1 @@
+var SPRITES = {"player-go":{"x":0,"y":38,"width":25,"height":44},"player-jump":{"x":0,"y":0,"width":33,"height":38},"player-stop":{"x":33,"y":0,"width":11,"height":44}}
