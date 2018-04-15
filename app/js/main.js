@@ -48,7 +48,26 @@
    }); 
 
    function setSprite() {
-      
+      var stand = true;
+
+      if (keysPress[KEYS.left]) {
+         sprite.start('goToLeft');
+         stand = false;
+      }
+
+      if (keysPress[KEYS.right]) {
+         sprite.start('goToRight');
+         stand = false;
+      }
+
+      if (keysPress[KEYS.top]) {
+         sprite.start('jump');
+         stand = false;
+      }
+
+      if (stand) {
+         sprite.start('stand');
+      }
    }
 
    function tik() {
@@ -64,5 +83,11 @@
       }]);
    }
 
+   var KEYS = {
+      top: 87,
+      right: 68,
+      bottom: 83,
+      left: 65,
+   };
    
 }(window));

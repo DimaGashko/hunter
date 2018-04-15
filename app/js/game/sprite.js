@@ -98,14 +98,15 @@
             type = 'base';
          }
 
+         //Таже анимация
+         if (type === this.curAnimateType) {
+            return;
+         }
+
+         this.curAnimateType = type;
+
          //Если какая-то анимация уже запущена
          if (this.timer != 0) {
-            //И она такого-же типа
-            if (this.curAnimateType === type) {
-               return;
-            }
-
-            //И если нет, то останавливаем предыдущюю анимацию
             this.stop();
          }
 
@@ -143,6 +144,7 @@
       //Останавливает анимацию
       stop() {
          clearTimeout(this.timer);
+         this.curAnimateType = '';
          this.timer = 0;
       }
 
@@ -284,7 +286,7 @@
          this.sprite = null; //canvas содержащий спрайт
          this.ctx = null;
 
-         this.curAnimateType = null; //Текущий тип анимации
+         this.curAnimateType = ''; //Текущий тип анимации
       }
    }
     
