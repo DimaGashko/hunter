@@ -15,7 +15,7 @@
    render.setCamera(new Vector(0, 0));
    render.start();
 
-   var block = new Game.DinamicBlock({
+   var block = new Game.Block({
       x: 2,
       y: 1,
       w: 2,

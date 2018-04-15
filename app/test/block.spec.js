@@ -58,32 +58,8 @@ describe('Класс Game.Block', () => {
             });
 
             assert.strictEqual(block.options.props.ro, 2500);
-         });
-
-         it('Геттер ro - возвращает плотность', () => {
-            var block = new Game.Block({
-               props: {
-                  ro: 2500,
-               }
-            });
-
             assert.strictEqual(block.ro, 2500);
-            assert.strictEqual(block.ro, block.options.props.ro);
          });
-
-         it('Сеттер ro - устанавливает плотность', () => {
-            var block = new Game.Block({
-               props: {
-                  ro: 2500,
-               }
-            });
-
-            block.ro = 2800;
-
-            assert.strictEqual(block.ro, 2800);
-            assert.strictEqual(block.options.props.ro, 2800);
-         });
-
       });
 
       describe('Объем (V)', () => {

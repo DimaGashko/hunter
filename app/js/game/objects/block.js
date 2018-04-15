@@ -76,15 +76,6 @@
          }
       }
 
-      //Плотность
-      get ro() {
-         return this.options.props.ro 
-      }
-
-      set ro(val) {
-         this.options.props.ro = val;
-      }
-
       //Объем
       get V() {
          return this.size.x * this.size.y * 1;
@@ -126,6 +117,8 @@
          this.coords.y = this.options.y;
          this.size.x = this.options.w;
          this.size.y = this.options.h; 
+
+         this.ro = this.options.props.ro;
  
          this.sprite = null;
       }
