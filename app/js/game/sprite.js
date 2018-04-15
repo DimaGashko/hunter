@@ -56,13 +56,38 @@
        * 
        * @param {string} type типа анимации
        * Праметры типа - options.cadrs[type]
+       * Параметры должны содержать параметры хотя бы одного кадра
        * 
        * Пока не загружен tileste ничего не делает.
        */
       start(type) {
          if (this.tileset === null) return;
 
+         var config = this.options.cadrs[type];
 
+         if (!config || config.length === 0) {
+            console.error('Нет кадров в анимации типа', type);
+            return;
+         }
+
+         if (config.length === 1) {
+            this._draw(config[0]);
+            return;
+         }
+
+         var self = this;
+         var cadrIndex = 0;
+
+         this.timer = setTimeout(function drawNext() { 
+            self._draw(config[cadrIndex]);
+
+            selft.timer = setTimeout(drawNext, config[cadrIndex].duration);
+         }, config[cadrIndex].duration);
+      }
+
+      //Останавливает анимацию
+      stop() {
+         this.timer = 0;
       }
 
       /**
@@ -93,7 +118,7 @@
 
             //Закешированно, но не было загруженно
             if (loaded === null) {
-               
+
                reject();
 
                return;
