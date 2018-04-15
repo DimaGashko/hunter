@@ -17,6 +17,8 @@
       tileset: 'img/sprite.png',
    });
 
+   sprite.start(); 
+
    function tik() {
       render.render([{
          x: -1,

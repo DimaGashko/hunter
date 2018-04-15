@@ -73,6 +73,17 @@
       start(type) {
          if (this.tileset === null) return;
 
+         //Если какая-то анимация уже запущена
+         if (this.timer != 0) {
+            //И она такого-же типа
+            if (this.curAnimateType === type) {
+               return;
+            }
+
+            //И если нет, то останавливаем предыдущюю анимацию
+            this.stop();
+         }
+
          var config = this.options.cadrs[type];
 
          if (!config || config.length === 0) {
@@ -99,6 +110,7 @@
 
       //Останавливает анимацию
       stop() {
+         clearTimeout(this.timer);
          this.timer = 0;
       }
 
@@ -220,6 +232,8 @@
          this.tileset = null;
          this.canvas = null;
          this.ctx = null;
+
+         this.curAnimateType = null; //Текущий тип анимации
       }
    }
     
