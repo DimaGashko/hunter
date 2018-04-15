@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Класс Game.Block', () => {  
-   describe('Конструктор new Game.Game()', () => {
+   describe('Конструктор new Game.Block()', () => {
       it('Наследует от Game.Rect', () => {
          var block = new Game.Block();
 
@@ -23,7 +23,7 @@ describe('Класс Game.Block', () => {
             w: 11,
             h: 22,
          });
-
+         
          assert.strictEqual(block.size.x, 11);
          assert.strictEqual(block.size.y, 22);
       });
@@ -111,7 +111,7 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.V, 6);
          });
 
-         it('Нельзя поменять на прямую', () => {
+         it('Нельзя поменять напрямую', () => {
             var block = new Game.Block({
                w: 11,
                h: 4
@@ -170,7 +170,7 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.V, 120);
          });
 
-         it('Нельзя поменять на прямую', () => {
+         it('Нельзя поменять напрямую', () => {
             var block = new Game.Block({
                w: 11,
                h: 4,

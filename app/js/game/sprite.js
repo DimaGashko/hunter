@@ -71,8 +71,8 @@
 
          }, () => {
             console.error(
-               'Не удалось загрузить tileset:',
-               this.options.tileset
+               'Не удалось загрузить tileset: "',
+               this.options.tileset, '"'
             );
          });
       }

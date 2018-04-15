@@ -46,14 +46,25 @@
          this._init();
       }
 
+      /**
+       * Включает все процессы, которые выполняются периодично
+       * (Например, отрисовку спрайта)
+       */
       start() {
          this.sprite.start('base');
       }
 
+      /**
+       * Выключает все процессы, которые выполняются периодично
+       * (Например, отрисовку спрайта)
+       */
       stop() {
          this.sprite.stop();
       }
 
+      /**
+       * Возвращает объект параметров для рендера
+       */
       convertToRender() { 
          return {
             x: this.coords.x,
@@ -85,7 +96,7 @@
          this.options = extend(true, {}, DEF, options);
 
          this.coords.x = this.options.x;
-         this.coords.x = this.options.y;
+         this.coords.y = this.options.y;
          this.size.x = this.options.w;
          this.size.y = this.options.h; 
  
