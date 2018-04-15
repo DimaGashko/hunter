@@ -1,7 +1,5 @@
 ﻿;(function(global){
    "use strict"
-   
-   //var game = window.g = new Game();
 
    var render = new Game.Render({
       scale: new Vector(50, 50),
@@ -13,7 +11,7 @@
    render.setCamera(new Vector(0, 0));
    render.start();
 
-   var sprite = new Sprite({
+   var sprite = new Game.Sprite({
       tileset: 'img/sprite.png',
       cadrs: {
          'stand': [{
@@ -45,41 +43,26 @@
             duration: 150,
          }]
       },
-   }); 
-
-   function setSprite() {
-      var stand = true;
-
-      if (keysPress[KEYS.left]) {
-         sprite.start('goToLeft');
-         stand = false;
-      }
-
-      if (keysPress[KEYS.right]) {
-         sprite.start('goToRight');
-         stand = false;
-      }
-
-      if (keysPress[KEYS.top]) {
-         sprite.start('jump');
-         stand = false;
-      }
-
-      if (stand) {
+      onTilesetLoaded: () => {
          sprite.start('stand');
       }
-   }
+   }); 
+
+   var types = ['goToLeft', 'goToRight', 'jump', 'stand'];
+   var cur = 0;
+
+   setInterval(() => {
+      sprite.start(types[cur]);
+      cur = (cur + 1) % types.length;
+   }, 2500);
 
    function tik() {
-      setSprite();
-
       render.render([{
          x: -1,
          y: -2,
          w: 1,
          h: 1,
          img: sprite.sprite,
-         fillStyle: 'green',
       }]);
    }
 

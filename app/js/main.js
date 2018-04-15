@@ -13,7 +13,7 @@
    render.setCamera(new Vector(0, 0));
    render.start();
 
-   var sprite = new Sprite({
+   var sprite = new Game.Sprite({
       tileset: 'img/sprite.png',
       cadrs: {
          'stand': [{
