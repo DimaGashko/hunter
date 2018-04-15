@@ -26,13 +26,7 @@ describe('Класс Game.DinamicBlock', () => {
          
          assert.strictEqual(block.size.x, 11);
          assert.strictEqual(block.size.y, 22);
-      });
-
-      it('По умолчанию поле speed равно вектору', () => {
-         var block = new Game.DinamicBlock({});
-
-         expect(block.speed).is.instanceof(Vector);
-      });
+      });   
 
       it('По умолчанию поле speed равно (0:0)', () => {
          var block = new Game.DinamicBlock({});

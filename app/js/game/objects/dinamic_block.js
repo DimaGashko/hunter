@@ -11,12 +11,19 @@
     */
    class DinamicBlock extends Game.Block { 
       constructor(options = {}) {
+         options = extend(true, {}, DEF, options);
          super(options);
       }
 
       updateCoords() {
          this.prevCoords = this.coords.copy();
          this.coords = this.coords.plus(this.speed);
+      }
+
+      _createParametrs(options) {
+         super._createParametrs(options);
+
+         this.speed = this.options.speed;
       }
       
    }
