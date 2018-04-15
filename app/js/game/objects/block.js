@@ -43,17 +43,10 @@
          super();
 
          this._createParametrs(options);
+         this._init();
       }
 
       start() {
-         if (!this.status.init) {
-            this._init();
-         }
-
-         this._startUpdate();
-      }
-
-      _startUpdate() {
          this.sprite.start('base');
       }
 
@@ -61,13 +54,13 @@
          this.sprite.stop();
       }
 
-      convertToRender() {
+      convertToRender() { 
          return {
             x: this.coords.x,
             y: this.coords.y,
             w: this.size.x,
             h: this.size.y,
-            //img: this.sprite.sprite,
+            img: this.sprite.sprite,
             fillStyle: this.options.fillStyle,
          }
       }

@@ -10,21 +10,51 @@
       }
    });
 
+   var gravity = new Game.Gravity();
+
    render.setCamera(new Vector(0, 0));
    render.start();
 
-   var block = new Game.Block();
-   console.log(block.size)
+   var block = new Game.Block({
+      x: 2,
+      y: 1,
+      w: 2,
+      h: 2,
+      animation: [{
+         metrics: {
+            x: 64,
+            y: 0,
+            w: 32,
+            h: 32,
+         },
+         duration: 250,
+      }, {
+         metrics: {
+            x: 96,
+            y: 0,
+            w: 32,
+            h: 32,
+         },
+         duration: 250,
+      }],
+      tileset: 'img/minecraft-sprite.png',
+      tileW: 32,
+      tileH: 32,
+   });
+
    function tik() { 
-      render.render([{
-         x: -2,
-         y: -1,
-         w: 1,
-         h: 1,
-      },
-       
-      block.convertToRender()
-         
+      block.start();
+
+      render.render([
+
+         block.convertToRender(),
+      
+         {
+            x: -2,
+            y: -1,
+            w: 1,
+            h: 1,
+         }
       ]);
    }
 
