@@ -10,17 +10,11 @@
       }
    });
 
+   render.setCamera(new Vector(0, 0));
    render.start();
 
-   render.setCamera(new Vector(0, 0));
-
-   var block = new Game.Block({
-      x: 1,
-      y: 2,
-      w: 2,
-      h: 1,
-      fillStyle: '',
-      
+   var sprite = new Sprite({
+      tileset: 'img/sprite.png',
    });
 
    function tik() {
@@ -29,6 +23,8 @@
          y: -2,
          w: 3,
          h: 4,
+         img: sprite.canvas,
+         fillStyle: 'green',
       }]);
    }
 

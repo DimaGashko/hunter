@@ -51,11 +51,11 @@
       _init() {
          this._loadTileset().then(() => {
             this._createCanvas();
-            this._setSize();
+            this._setSize();            
 
          }, () => {
             console.error(
-               'Не удалось загрузить tileset',
+               'Не удалось загрузить tileset:',
                this.options.tileset
             );
          });
@@ -127,10 +127,9 @@
          return new Promise((resolve, reject) => {
             //Проверка закешированных tileset-ов
             var loaded = loadedTilests[src];
-
+            
             //Закешированно, но не было загруженно
             if (loaded === null) {
-
                reject();
 
                return;
@@ -138,7 +137,7 @@
             //Закешированно и удачно загруженно
             } else if (loaded instanceof Image) {
                this.tileset = loaded;
-
+               
                resolve();
 
                return;
@@ -192,10 +191,19 @@
       }
 
       _clear() {
-         this.ctx.clearRect(0, 0, this.options.w, this.options.h);
+         if (!this.ctx) return;
+
+         this.ctx.clearRect(
+            0,
+            0,
+            this.options.w,
+            this.options.h
+         );
       }
 
       _setSize() {
+         if (!this.canv) return;
+
          this.canv.width = this.options.w;
          this.canv.height = this.options.h;
       }
