@@ -76,6 +76,33 @@
          }
       }
 
+      //Плотность
+      get ro() {
+         return this.options.props.ro 
+      }
+
+      set ro(val) {
+         this.options.props.ro = val;
+      }
+
+      //Объем
+      get V() {
+         return this.size.x * this.size.y * 1;
+      }
+
+      set V(val) {
+         console.error('Менять объем напрямую нельзя');
+      }
+
+      //Масса
+      get m() {
+         return this.V * this.ro;
+      }
+
+      set m(val) {
+         console.error('Менять массу напрямую нельзя');
+      }
+
       _init() {
          this._initSprite();
       }

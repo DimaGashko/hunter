@@ -60,7 +60,7 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.options.props.ro, 2500);
          });
 
-         it('Геттер ro', () => {
+         it('Геттер ro - возвращает плотность', () => {
             var block = new Game.Block({
                props: {
                   ro: 2500,
@@ -71,7 +71,7 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.ro, block.options.props.ro);
          });
 
-         it('Сеттер ro', () => {
+         it('Сеттер ro - устанавливает плотность', () => {
             var block = new Game.Block({
                props: {
                   ro: 2500,
@@ -96,7 +96,7 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.V, 44);
          });
 
-         it('Меняет при изменении размеров)', () => {
+         it('Меняется при изменении размеров', () => {
             var block = new Game.Block({
                w: 11,
                h: 4
@@ -137,7 +137,7 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.m, (11*4) * 1000);
          });
 
-         it('Меняется при изменении размеров)', () => {
+         it('Меняется при изменении размеров', () => {
             var block = new Game.Block({
                w: 2,
                h: 3,
@@ -149,13 +149,13 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.m, 60);
 
             block.size.x = 3;
-            assert.strictEqual(block.V, 90);
+            assert.strictEqual(block.m, 90);
 
             block.size.y = 1;
-            assert.strictEqual(block.V, 30);
+            assert.strictEqual(block.m, 30);
          });
 
-         it('Меняется при изменении плотности)', () => {
+         it('Меняется при изменении плотности', () => {
             var block = new Game.Block({
                w: 2,
                h: 3,
@@ -167,7 +167,7 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.m, 60);
 
             block.ro = 20;
-            assert.strictEqual(block.V, 120);
+            assert.strictEqual(block.m, 120);
          });
 
          it('Нельзя поменять напрямую', () => {
