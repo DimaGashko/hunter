@@ -219,6 +219,11 @@
        * Очищает холст перед рисованием очищает
        */
       _draw(metrics, transforms) {
+
+         if (this._isSameCadr(metrics, transforms)) {
+            return;
+         }
+
          this._clear();
 
          var startX = 0;
@@ -253,8 +258,26 @@
          );
 
          this.ctx.restore();
+
+         this.prevDrawCofig.metrics = metrics;
+         this.prevDrawCofig.transforms = transforms;
       }
 
+      /**
+       * Возвращает true, если переданны парамеры кадра 
+       * Точно такие же как и у предыдущего
+       * 
+       * @param {object} metrics метрики кадра 
+       * @param {object} transforms трансформации кадра
+       */
+      _isSameCadr(metrics, transforms) {
+         return (
+            this.prevDrawCofig.metrics === metrics &&
+            this.prevDrawCofig.transforms === transforms
+         );   
+      }
+
+      //Очищает канвас спрайта
       _clear() {
          if (!this.ctx) return;
 
@@ -287,6 +310,14 @@
          this.ctx = null;
 
          this.curAnimateType = ''; //Текущий тип анимации
+
+
+         //Параметры последнего отрисованного кадра
+         //Используется, что бы не отрисовывать подряд одинковые кадры
+         this.prevDrawCofig = {
+            metrics: {},
+            transforms: {},
+         }
       }
    }
     
