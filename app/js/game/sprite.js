@@ -80,6 +80,15 @@
       start(type) {
          if (this.tileset === null) return;
 
+         if (!type) {
+            console.error(
+               'Неправильный тип анимации (', type,
+               '). Будет использован тип "base"'
+            );
+
+            type = 'base';
+         }
+
          //Если какая-то анимация уже запущена
          if (this.timer != 0) {
             //И она такого-же типа
@@ -192,7 +201,7 @@
        * Очищает холст перед рисованием очищает
        */
       _draw(config) {
-         _clear();
+         this._clear();
 
          this.ctx.drawImage(
             this.tileset,
@@ -221,15 +230,15 @@
       }
 
       _setSize() {
-         if (!this.canv) return;
+         if (!this.sprite) return;
 
-         this.canv.width = this.options.w;
-         this.canv.height = this.options.h;
+         this.sprite.width = this.options.size.x;
+         this.sprite.height = this.options.size.y;
       }
 
       _createCanvas() {
-         this.canv = document.createElement('canvas');
-         this.ctx = this.canv.getContext('2d');
+         this.sprite = document.createElement('canvas');
+         this.ctx = this.sprite.getContext('2d');
       }
 
       _createParametrs(options) {
@@ -237,7 +246,7 @@
          this.timer = 0; //Таймер, используемый для setTimeout
 
          this.tileset = null;
-         this.canvas = null;
+         this.sprite = null; //canvas содержащий спрайт
          this.ctx = null;
 
          this.curAnimateType = null; //Текущий тип анимации

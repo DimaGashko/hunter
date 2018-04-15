@@ -32,12 +32,12 @@ module.exports = function(options) {
                   spritesObj[sprite.name] = {
                      x: sprite.x,
                      y: sprite.y,
-                     width: sprite.width,
-                     height: sprite.height,
+                     w: sprite.width,
+                     h: sprite.height,
                   };
                });
 
-               return `var SPRITES = ${JSON.stringify(spritesObj)}`;
+               return `var SPRITES = ${JSON.stringify(spritesObj, 0, 3)}`;
             }
          }));
 

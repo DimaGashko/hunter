@@ -15,9 +15,12 @@
 
    var sprite = new Sprite({
       tileset: 'img/sprite.png',
+      cadrs: {
+         
+      },
       onTilesetLoaded: () => {
-         //sprite.start(); 
-      }
+         sprite.start('stand');
+      },
    }); 
 
    function tik() {
@@ -26,7 +29,7 @@
          y: -2,
          w: 3,
          h: 4,
-         img: sprite.canvas,
+         img: sprite.sprite,
          fillStyle: 'green',
       }]);
    }
