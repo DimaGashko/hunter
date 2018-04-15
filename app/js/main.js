@@ -26,23 +26,23 @@
 
          'goToLeft': [{
             metrics: SPRITES['player-go'],
-            duration: 200,
+            duration: 150,
             transforms: {
                mirrorX: true,
             },
          }, {
             metrics: SPRITES['player-stand'],
-            duration: 200,
+            duration: 150,
             transforms: {
                mirrorX: true,
             },
          }],
          'goToRight': [{
             metrics: SPRITES['player-go'],
-            duration: 200,
+            duration: 150,
          }, {
             metrics: SPRITES['player-stand'],
-            duration: 200,
+            duration: 150,
          }]
       },
    }); 
@@ -76,8 +76,8 @@
       render.render([{
          x: -1,
          y: -2,
-         w: 0.8,
-         h: 1.8,
+         w: 1,
+         h: 1,
          img: sprite.sprite,
          fillStyle: 'green',
       }]);
