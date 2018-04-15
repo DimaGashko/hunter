@@ -2,25 +2,47 @@
    "use strict"
 
    var DEF = {
+      //Метрики блока
       x: 0,
       y: 0,
       w: 0,
       h: 0,
 
+      //Физические параметры блока
+      props: {
+         ro: 5500,
+      },
+
       fillStyle: '', //Цвет, что будет использоваться, когда нет картинки
 
-      animation: {} //Настройки для спрайтов передаваемые в Sprite
+      //Настройки для спрайтов передаваемые в new Sprite
+      //Должен содержать массив объектов кадров в формета 
+      //Указанном в Game.Sprite
+      //Непосредственно для Block-ов будет записан 
+      //В тип кадров 'base' (cadrs.base)
+      animation: [{
+         metrics: {
+            x: 0,
+            y: 0,
+            w: 32,
+            h: 32,
+         },
+         duration: 0,
+      }],
+
+      tileset: '', //Адресс к tileset-у
+      tileW: 32,
+      tileH: 32,
    }
       
    /**
     * Класс для создания игрового блока
     */
-   class Block extends Game.Rect {
-      constructor(config = {}, options = {}) {
-         super(config.x, config.y, config.w, config.h);
+   class Block extends Game.Rect { 
+      constructor(options = {}) {
+         super(options.x, options.y, options.w, options.h);
 
-         this._createParametrs(config, options);
-         this.start();
+         this._createParametrs(options);
       }
 
       start() {
@@ -28,11 +50,15 @@
             this._init();
          }
 
-         this.status.run = true;
+         this._startUpdate();
+      }
+
+      _startUpdate() {
+         this.sprite.start('base');
       }
 
       stop() {
-         this.status.run = false;
+         this.sprite.stop();
       }
 
       convertToRender() {
@@ -41,56 +67,31 @@
             y: this.coords.y,
             w: this.size.x,
             h: this.size.y,
-            img: this.img,
-            fillStyle: this.fakeColor,
+            img: this.sprite.sprite,
+            fillStyle: this.options.fillStyle,
          }
       }
 
       _init() {
-         var img = this.tiles = new Image();
-         
-         img.addEventListener('load', () => {
-            this._createSprite(img);
-         });
-
-         img.addEventListener('error', () => {
-               this._setFaceColor();
-         });
-      
-         img.src = this.options.tileSrc;
-
-         this.status.init = true;
+         this._initSprite();
       }
 
-      _createSprite(img) {
-         this.sprite = new Sprite({
-               w: this.options.tileW,
-               h: this.options.tileH,
-               sprite: img,
-               animation: this.animation,
+      _initSprite() {
+         var o = this.options;
+
+         this.sprite = new Game.Sprite({
+            tileset: o.tileset,
+            size: new Vector(o.tileW, o.tileH),
+            cadrs: {
+               base: this.options.animation,
+            }
          });
-         
-         this.img = this.sprite.canv;
       }
 
-      _createParametrs(config, options) {
-         this.options = {
-            tileW: options.tile.w,
-            tileH: options.tile.h,
-            tileSrc: options.tile.src,
-         }
+      _createParametrs(options) {
+         this.options = extend(true, {}, DEF, options);
 
          this.sprite = null;
-         this.img = null;
-
-         this.fakeColor = null;
-
-         this.status = {
-            init: false,
-            run: false,
-         };
-
-         this.animation = config.animation;
       }
 
    }

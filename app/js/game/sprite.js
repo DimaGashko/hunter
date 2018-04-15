@@ -321,6 +321,6 @@
       }
    }
     
-   global.Sprite = Sprite;   
+   global.Game.Sprite = Sprite;   
    
 }(window));
