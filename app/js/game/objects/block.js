@@ -1,7 +1,17 @@
 ;(function(global){
    "use strict"
 
-   
+   var DEF = {
+      x: 0,
+      y: 0,
+      w: 0,
+      h: 0,
+
+      fillStyle: '', //Цвет, что будет использоваться, когда нет картинки
+
+      animation: {} //Настройки для спрайтов передаваемые в Sprite
+   }
+      
    /**
     * Класс для создания игрового блока
     */
@@ -81,10 +91,6 @@
          };
 
          this.animation = config.animation;
-      }
-
-      _setFaceColor() {
-         this.fakeColor = '';
       }
 
    }

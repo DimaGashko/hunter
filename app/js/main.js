@@ -14,7 +14,14 @@
 
    render.setCamera(new Vector(0, 0));
 
-   var block = new Game.Block();
+   var block = new Game.Block({
+      x: 1,
+      y: 2,
+      w: 2,
+      h: 1,
+      fillStyle: '',
+      
+   });
 
    function tik() {
       render.render([{
