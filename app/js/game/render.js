@@ -92,12 +92,16 @@
          for (var i = objects.length - 1; i >= 0; i--) {
             var obj = this._getObjOnScreen(objects[i]);
             
+            this.ctx.save();
+
             if (objects[i].img) {
                ctx.drawImage(objects[i].img, obj.x, obj.y, obj.w, obj.h);
             } else {
                ctx.fillStyle = objects[i].fillStyle || 'rgba(0,0,0,0.3)';
                ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
             }
+
+            this.ctx.restore();
            
          }
       }

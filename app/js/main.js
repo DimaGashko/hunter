@@ -24,20 +24,36 @@
             metrics: SPRITES['player-jump'],
          }],
 
-         'go': [{
+         'goToLeft': [{
+            metrics: SPRITES['player-go'],
+            duration: 200,
+            transforms: {
+               mirrorX: true,
+            },
+         }, {
+            metrics: SPRITES['player-stand'],
+            duration: 200,
+            transforms: {
+               mirrorX: true,
+            },
+         }],
+         'goToRight': [{
             metrics: SPRITES['player-go'],
             duration: 200,
          }, {
             metrics: SPRITES['player-stand'],
-            duration: 200,   
-         },]
-      },
-      onTilesetLoaded: () => {
-         sprite.start('go');
+            duration: 200,
+         }]
       },
    }); 
 
+   function setSprite() {
+      
+   }
+
    function tik() {
+      setSprite();
+
       render.render([{
          x: -1,
          y: -2,

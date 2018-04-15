@@ -28,6 +28,12 @@
                w: 32,
                h: 32,
             },
+
+            //Трансформации спрайта
+            transforms: {
+               mirrorX: true, //Отзеркаливать ли по горизонтали
+               mirrorY: true, //Отзеркаливать ли по вертикали
+            },
             
             //Длительность показа данного кадра
             duration: 0,
@@ -111,7 +117,11 @@
          }
 
          if (config.length === 1) {
-            this._draw(config[0].metrics);
+            this._draw(
+               config[0].metrics,
+               config[0].transforms
+            );
+
             return;
          }
 
@@ -119,7 +129,10 @@
          var cadrIndex = 0;
 
          this.timer = setTimeout(function drawNext() { 
-            self._draw(config[cadrIndex].metrics);
+            self._draw(
+               config[cadrIndex].metrics,
+               config[cadrIndex].transforms
+            );
 
             cadrIndex = (cadrIndex  + 1) % config.length;
 
@@ -198,27 +211,46 @@
       /**
        * Рисует кадр спрайта
        * 
-       * @param {Object} config парамерты карда
-       * (из options.cadrs[type][index])
+       * @param {Object} metrics положение и размеры спрайта в tileset-e
+       * @param {Vector} transform трансформации (формат из options.cadr)
        * 
        * Очищает холст перед рисованием очищает
        */
-      _draw(config) {
+      _draw(metrics, transforms) {
          this._clear();
+
+         var startX = 0;
+         var startY = 0;
+         
+         this.ctx.save();
+         
+         if (transforms) {
+            if (transforms.mirrorX) {
+               this.ctx.translate(this.options.size.x, 0);
+               this.ctx.scale(-1, 1);
+            }
+   
+            if (transforms.mirrorY) {
+               this.ctx.translate(0, this.options.size.y);
+               this.ctx.scale(1, -1);
+            }
+         }
 
          this.ctx.drawImage(
             this.tileset,
 
-            config.x,
-            config.y,
-            config.w,
-            config.h,
+            metrics.x,
+            metrics.y,
+            metrics.w,
+            metrics.h,
 
             0,
             0,
             this.options.size.x,
             this.options.size.y
          );
+
+         this.ctx.restore();
       }
 
       _clear() {
