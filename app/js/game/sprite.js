@@ -29,7 +29,12 @@
             h: 32,
             duration: 0,
          }],
-      }
+      },
+
+      //Выполнится после загрузки tileset-a
+      onTilesetLoaded: () => {
+         
+      },
    }
 
    /**
@@ -51,7 +56,9 @@
       _init() {
          this._loadTileset().then(() => {
             this._createCanvas();
-            this._setSize();            
+            this._setSize(); 
+
+            this.options.onTilesetLoaded();
 
          }, () => {
             console.error(

@@ -15,9 +15,10 @@
 
    var sprite = new Sprite({
       tileset: 'img/sprite.png',
-   });
-
-   sprite.start(); 
+      onTilesetLoaded: () => {
+         //sprite.start(); 
+      }
+   }); 
 
    function tik() {
       render.render([{
