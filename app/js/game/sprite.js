@@ -32,6 +32,16 @@
       }
    }
 
+   /**
+    * Класс для работы со спрайтами и их анимациями
+    * 
+    * Конструктор получает объект настроек в формате DEF
+    * 
+    * Порядок работы:
+    * - содание екземпляра
+    * - вызов метода start(type), когда нужно начать анимацию нужного типа
+    * - вызов метода stop(), когда нужно остановить анимацию
+    */
    class Sprite {
       constructor(options = {}) {
          this._createParametrs(options);
@@ -81,6 +91,8 @@
          this.timer = setTimeout(function drawNext() { 
             self._draw(config[cadrIndex]);
 
+            cadrIndex = (cadrIndex  + 1) % config.length;
+
             selft.timer = setTimeout(drawNext, config[cadrIndex].duration);
          }, config[cadrIndex].duration);
       }
@@ -105,9 +117,9 @@
       /**
        * Загружает tileset по адресу из options.tileset
        * 
-       * Возвращает промис
-       * 
        * Кеширует tileset-ы, которые удалось и не удалось загрузить 
+       * 
+       * Возвращает промис
        */
       _loadTileset() {
          var src = this.options.tileset;
@@ -153,6 +165,32 @@
          });
       }
 
+      /**
+       * Рисует кадр спрайта
+       * 
+       * @param {Object} config парамерты карда
+       * (из options.cadrs[type][index])
+       * 
+       * Очищает холст перед рисованием очищает
+       */
+      _draw(config) {
+         _clear();
+
+         this.ctx.drawImage(
+            this.tileset,
+
+            config.x,
+            config.y,
+            config.w,
+            config.h,
+
+            0,
+            0,
+            this.options.size.x,
+            this.options.size.y
+         );
+      }
+
       _clear() {
          this.ctx.clearRect(0, 0, this.options.w, this.options.h);
       }
@@ -174,97 +212,6 @@
          this.tileset = null;
          this.canvas = null;
          this.ctx = null;
-      }
-   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   class Sprite {
-      constructor(options = {}) {
-         this._createParametrs(options);
-         this._setSize();
-         this.start();
-      }
-
-      start() {
-         var o = this.options;
-         var self = this;
-
-         if (!o.animation || o.animation.length === 0) {
-            throw new Error(`Cant't start animation (0 cadrs)`);
-         }
-         else if (o.animation.length === 1) {
-            this.options.cur = 0;
-            this._draw();
-         }
-
-         this._draw();
-
-         setTimeout(function tik() {
-            o.cur = (o.cur + 1) % o.animation.length;
-            self._clear();
-            self._draw();
-
-            setTimeout(tik, o.animation[o.cur].duration);
-         }, o.animation[o.cur].duration);
-      }
-
-      _draw() {
-         var o = this.options;
-         var anim = o.animation[o.cur];
-
-         this.ctx.drawImage(
-            o.sprite,
-            anim.startX,
-            anim.startY,
-            o.w, o.h,
-            0, 0,
-            o.w, o.h
-         );
-      }
-
-      _createParametrs(options) {
-         this.options = extend(true, {}, DEF, options);
-         this.canv = document.createElement('canvas');
-         this.ctx = this.canv.getContext('2d');
       }
    }
     
