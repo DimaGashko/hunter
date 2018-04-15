@@ -219,16 +219,13 @@
        * Очищает холст перед рисованием очищает
        */
       _draw(metrics, transforms) {
-
+         //Проверки
          if (this._isSameCadr(metrics, transforms)) {
             return;
          }
 
          this._clear();
 
-         var startX = 0;
-         var startY = 0;
-         
          this.ctx.save();
          
          if (transforms) {

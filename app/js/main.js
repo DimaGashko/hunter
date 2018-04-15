@@ -13,81 +13,19 @@
    render.setCamera(new Vector(0, 0));
    render.start();
 
-   var sprite = new Game.Sprite({
-      tileset: 'img/sprite.png',
-      cadrs: {
-         'stand': [{
-            metrics: SPRITES['player-stand'],
-         }],
-
-         'jump': [{
-            metrics: SPRITES['player-jump'],
-         }],
-
-         'goToLeft': [{
-            metrics: SPRITES['player-go'],
-            duration: 150,
-            transforms: {
-               mirrorX: true,
-            },
-         }, {
-            metrics: SPRITES['player-stand'],
-            duration: 150,
-            transforms: {
-               mirrorX: true,
-            },
-         }],
-         'goToRight': [{
-            metrics: SPRITES['player-go'],
-            duration: 150,
-         }, {
-            metrics: SPRITES['player-stand'],
-            duration: 150,
-         }]
-      },
-   }); 
-
-   function setSprite() {
-      var stand = true;
-
-      if (keysPress[KEYS.left]) {
-         sprite.start('goToLeft');
-         stand = false;
-      }
-
-      if (keysPress[KEYS.right]) {
-         sprite.start('goToRight');
-         stand = false;
-      }
-
-      if (keysPress[KEYS.top]) {
-         sprite.start('jump');
-         stand = false;
-      }
-
-      if (stand) {
-         sprite.start('stand');
-      }
-   }
-
-   function tik() {
-      setSprite();
-
+   var block = new Game.Block();
+   console.log(block.size)
+   function tik() { 
       render.render([{
-         x: -1,
-         y: -2,
+         x: -2,
+         y: -1,
          w: 1,
          h: 1,
-         img: sprite.sprite,
-         fillStyle: 'green',
-      }]);
+      },
+       
+      block.convertToRender()
+         
+      ]);
    }
 
-   var KEYS = {
-      top: 87,
-      right: 68,
-      bottom: 83,
-      left: 65,
-   };
-   
 }(window));

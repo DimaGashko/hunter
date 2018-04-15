@@ -5,8 +5,8 @@
       //Метрики блока
       x: 0,
       y: 0,
-      w: 0,
-      h: 0,
+      w: 1,
+      h: 1,
 
       //Физические параметры блока
       props: {
@@ -40,7 +40,7 @@
     */
    class Block extends Game.Rect { 
       constructor(options = {}) {
-         super(options.x, options.y, options.w, options.h);
+         super();
 
          this._createParametrs(options);
       }
@@ -67,7 +67,7 @@
             y: this.coords.y,
             w: this.size.x,
             h: this.size.y,
-            img: this.sprite.sprite,
+            //img: this.sprite.sprite,
             fillStyle: this.options.fillStyle,
          }
       }
@@ -91,6 +91,11 @@
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
 
+         this.coords.x = this.options.x;
+         this.coords.x = this.options.y;
+         this.size.x = this.options.w;
+         this.size.y = this.options.h; 
+ 
          this.sprite = null;
       }
 
