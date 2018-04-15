@@ -19,14 +19,17 @@
 
          //Каждый тип - этом массив, содержащий объекты вида:
          base: [{
-            //x, y - точки на tileset-e с которых начинается кадр
-            //w, h - ширина и высота тайла
-            //duration - длительность показа данного кадра
+            metrics: {
+               //x, y - точки на tileset-e с которых начинается кадр
+               //w, h - ширина и высота тайла
 
-            x: 0, 
-            y: 0,
-            w: 32,
-            h: 32,
+               x: 0, 
+               y: 0,
+               w: 32,
+               h: 32,
+            },
+            
+            //Длительность показа данного кадра
             duration: 0,
          }],
       },
@@ -108,7 +111,7 @@
          }
 
          if (config.length === 1) {
-            this._draw(config[0]);
+            this._draw(config[0].metrics);
             return;
          }
 
@@ -116,11 +119,11 @@
          var cadrIndex = 0;
 
          this.timer = setTimeout(function drawNext() { 
-            self._draw(config[cadrIndex]);
+            self._draw(config[cadrIndex].metrics);
 
             cadrIndex = (cadrIndex  + 1) % config.length;
 
-            selft.timer = setTimeout(drawNext, config[cadrIndex].duration);
+            self.timer = setTimeout(drawNext, config[cadrIndex].duration);
          }, config[cadrIndex].duration);
       }
 
@@ -224,8 +227,8 @@
          this.ctx.clearRect(
             0,
             0,
-            this.options.w,
-            this.options.h
+            this.options.size.x,
+            this.options.size.y
          );
       }
 

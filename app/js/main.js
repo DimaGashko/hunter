@@ -16,10 +16,24 @@
    var sprite = new Sprite({
       tileset: 'img/sprite.png',
       cadrs: {
-         
+         'stand': [{
+            metrics: SPRITES['player-stand'],
+         }],
+
+         'jump': [{
+            metrics: SPRITES['player-jump'],
+         }],
+
+         'go': [{
+            metrics: SPRITES['player-go'],
+            duration: 200,
+         }, {
+            metrics: SPRITES['player-stand'],
+            duration: 200,   
+         },]
       },
       onTilesetLoaded: () => {
-         sprite.start('stand');
+         sprite.start('go');
       },
    }); 
 
@@ -27,8 +41,8 @@
       render.render([{
          x: -1,
          y: -2,
-         w: 3,
-         h: 4,
+         w: 0.8,
+         h: 1.8,
          img: sprite.sprite,
          fillStyle: 'green',
       }]);

@@ -11,7 +11,7 @@ var SPRITES = {
       "w": 33,
       "h": 38
    },
-   "player-stop": {
+   "player-stand": {
       "x": 33,
       "y": 0,
       "w": 11,
