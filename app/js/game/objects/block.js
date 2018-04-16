@@ -167,15 +167,6 @@
          obj.fullF.plus(N);
          obj.fullF.plus(Ffr);
       }
-      
-      /**
-       * Возвращает 
-       * 
-       * @param {Block} obj 
-       */
-      _getN(obj) {
-
-      }
 
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
