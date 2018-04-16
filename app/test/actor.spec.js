@@ -44,6 +44,8 @@ describe('Класс Actor', () => {
          assert.strictEqual(block.speed.x, 10);
          assert.strictEqual(block.speed.y, 5);
       });
+
+      
    });
-   
+
 });

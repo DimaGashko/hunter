@@ -2,7 +2,7 @@
    "use strict"
 
    var DEF = {
-
+      
 
       fillStyle: 'rgba(255,0,0,0.5)', //Цвет при отсутствии tileset-a
    }

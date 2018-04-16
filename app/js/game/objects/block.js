@@ -11,6 +11,7 @@
       //Физические параметры блока
       props: {
          ro: 5500,
+         mu: 0.01,
       },
 
       fillStyle: '', //Цвет, что будет использоваться, когда нет картинки
@@ -110,6 +111,10 @@
          });
       }
 
+      updateCoords() { 
+         //Для Block-а ничего не делает
+      }
+
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
 
@@ -119,6 +124,9 @@
          this.size.y = this.options.h; 
 
          this.ro = this.options.props.ro;
+         this.mu = this.options.props.mu;
+
+         this.speed = new Vector(0, 0);
  
          this.sprite = null;
       }

@@ -47,6 +47,29 @@ describe('Класс Game.Block', () => {
       });
    });
 
+   describe('Методы updateCoords()', () => {
+      it('Метод updateCoords() есть', () => {
+         var block = new Game.Block();
+
+         assert.strictEqual(typeof block.updateCoords, 'function');
+      });
+      
+      it('Не меняет координаты', () => {
+         var block = new Game.Block({
+            x: 1,
+            y: 2,
+
+            speedX: 2, 
+            speedY: 3
+         });
+
+         block.updateCoords();
+
+         assert.strictEqual(block.coords.x, 1);
+         assert.strictEqual(block.coords.y, 2);
+      });
+   });
+
    describe('Физические свойства', () => {
 
       describe('Плотность (ro)', () => {
@@ -160,7 +183,25 @@ describe('Класс Game.Block', () => {
             assert.strictEqual(block.m, 440);
          });
 
-      });      
+      }); 
+      
+      describe('Коэффициент трения (mu)', () => {
+         it('Есть по умолчанию', () => {
+            var block = new Game.Block();
+
+            assert(block.mu);
+         });
+
+         it('Равен переданному значению', () => {
+            var block = new Game.Block({
+               props: {
+                  mu: 0.1,
+               }
+            });
+
+            assert.strictEqual(block.mu, 0.1);
+         });
+      });
 
    });
 
