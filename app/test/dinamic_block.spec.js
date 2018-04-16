@@ -85,4 +85,21 @@ describe('Класс Game.DinamicBlock', () => {
       });
    });
 
+   describe('Методы updateSpeed()', () => {
+      it('Добавляет к вектору скорости вектор ускорения', () => {
+         var block = new Game.DinamicBlock({
+            speedX: 2, 
+            speedY: 3,
+         });
+
+         block.fullF = new Vector(300, 200);
+         
+         block.updateSpeed();
+
+         assert.strictEqual(block.speed.x, 2 + block.fullA.x);
+         assert.strictEqual(block.speed.y, 3 + block.fullA.y);
+      });
+      
+   });
+
 });

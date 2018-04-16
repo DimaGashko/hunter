@@ -20,6 +20,10 @@
          this.coords = this.coords.plus(this.speed);
       }
 
+      updateSpeed() { 
+         this.speed = this.speed.plus(this.fullA);
+      }
+
       _createParametrs(options) {
          super._createParametrs(options);
          

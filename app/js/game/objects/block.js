@@ -120,6 +120,63 @@
          //Для Block-а ничего не делает
       }
 
+      updateSpeed() { 
+         //Для Block-а ничего не делает
+      }
+
+      /**
+       * Реакия на взаимодействие с другим объектом 
+       * (изменяет параметры переданного объека)
+       * 
+       * Обеспечивает такие эффекти на переданный обект:
+       * - нормальная реакция опоры 
+       * - сила трения
+       * - нанесение урона
+       * - и др.
+       * 
+       * @param {Block} obj - другой объект (наследующий от Block)
+       * (на объекты типа block не влияет
+       * влияет на объекты dinamicBlock и их наследников)
+       * 
+       * @param {Block} side - cторона взаимодействия (left, top, right, bottom)
+       */
+      respondInteraction(obj, side) {
+         //Реакция опоры по осям
+         var N = new Vector(0, 0);
+
+         if (
+            (side === 'top' && obj.fullF.y > 0) ||
+            (side === 'bottom' && obj.fullF.y < 0)
+         ) {
+            N.y = -obj.m * obj.fullF.y;
+         }
+
+         if (
+            (side === 'left' && obj.fullF.x > 0) ||
+            (side === 'right' && obj.fullF.y < 0)
+         ) {
+            N.y = -obj.m * obj.fullF.x;
+         }
+
+         //Трение
+         var Ffr = new Vector(
+            this.mu * N.x,
+            this.mu * N.y
+         );
+
+         obj.fullF.plus(N);
+         obj.fullF.plus(Ffr);
+      }
+      
+      /**
+       * Возвращает 
+       * 
+       * @param {Block} obj 
+       */
+      _getN(obj) {
+
+      }
+
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
 
@@ -128,11 +185,10 @@
          this.size.x = this.options.w;
          this.size.y = this.options.h; 
 
+         this.speed = new Vector(0, 0);
+
          this.ro = this.options.props.ro;
          this.mu = this.options.props.mu;
-
-         this.speed = new Vector(0, 0);
-         this.ownF = new Vector(0, 0);
 
          //Вектор сумарной силы приложеной к телу
          this.fullF = new Vector(0, 0);
