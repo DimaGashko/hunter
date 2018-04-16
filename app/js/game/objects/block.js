@@ -95,6 +95,11 @@
          console.error('Менять массу напрямую нельзя');
       }
 
+      //Полное ускорение
+      get fullA() {
+         return this.fullF.div(this.m); //2 закон Ньютора
+      }
+
       _init() {
          this._initSprite();
       }
@@ -127,6 +132,10 @@
          this.mu = this.options.props.mu;
 
          this.speed = new Vector(0, 0);
+         this.ownF = new Vector(0, 0);
+
+         //Вектор сумарной силы приложеной к телу
+         this.fullF = new Vector(0, 0);
  
          this.sprite = null;
       }

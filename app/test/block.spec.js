@@ -203,6 +203,51 @@ describe('Класс Game.Block', () => {
          });
       });
 
+      describe('Сумарная сила приложенная к телу (fullF)', () => {
+         it('Есть по умолчанию', () => {
+            var block = new Game.Block();
+
+            assert(block.mu);
+         });
+
+         it('Равен переданному значению', () => {
+            var block = new Game.Block({
+               props: {
+                  mu: 0.1,
+               }
+            });
+
+            assert.strictEqual(block.mu, 0.1);
+         });
+      });
+
+      describe('Полное ускорение (fullA)', () => {
+         it('Равно fullF/m', () => {
+            var block = new Game.Block({
+
+            });
+
+            block.fullF = new Vector(10, 5);
+
+            assert.strictEqual(block.fullA.x, block.fullF.div(block.m).x);
+            assert.strictEqual(block.fullA.y, block.fullF.div(block.m).y);
+         });
+
+         it('Меняется при изменении значения fullF', () => {
+            var block = new Game.Block({
+      
+            });
+
+            block.fullF = new Vector(10, 5);
+            assert.strictEqual(block.fullA.x, block.fullF.div(block.m).x);
+            assert.strictEqual(block.fullA.y, block.fullF.div(block.m).y);
+            
+            block.fullF = new Vector(5, 10);
+            assert.strictEqual(block.fullA.x, block.fullF.div(block.m).x);
+            assert.strictEqual(block.fullA.y, block.fullF.div(block.m).y);
+         });
+      });
+
    });
 
 
