@@ -148,24 +148,23 @@
             (side === 'top' && obj.fullF.y > 0) ||
             (side === 'bottom' && obj.fullF.y < 0)
          ) {
-            N.y = -obj.m * obj.fullF.y;
+            N.y = -obj.fullF.y;
          }
 
          if (
             (side === 'left' && obj.fullF.x > 0) ||
-            (side === 'right' && obj.fullF.y < 0)
+            (side === 'right' && obj.fullF.x < 0)
          ) {
-            N.y = -obj.m * obj.fullF.x;
+            N.x = -obj.fullF.x;
          }
 
          //Трение
          var Ffr = new Vector(
-            this.mu * N.x,
-            this.mu * N.y
+            Math.abs(this.mu * N.y) * (obj.fullF.x > 0 ? -1 : 1),
+            Math.abs(this.mu * N.x) * (obj.fullF.y > 0 ? -1 : 1),
          );
 
-         obj.fullF.plus(N);
-         obj.fullF.plus(Ffr);
+         obj.fullF = obj.fullF.plus(N).plus(Ffr);
       }
 
       _createParametrs(options) {

@@ -316,29 +316,54 @@ describe('Класс Game.Block', () => {
             var block1 = new Game.Block(config);
             var block2 = new Game.Block(config);
    
-            block1.fullF = new Vector(10, 15);
+            block1.fullF = new Vector(10, 5);
    
             block2.respondInteraction(block1, 'top');
    
-            assert.strictEqual(block.mu, 0.1);
+            assert.strictEqual(block1.fullF.x, 7.5);
+            assert.strictEqual(block1.fullF.y, 0);
          });
 
          it('При взаимодействии снизу - меняется приложенная сила', () => {
             //у блоков ro = 2, V = 1, m = 2, mu = 0.5
    
+            var block1 = new Game.Block(config);
+            var block2 = new Game.Block(config);
    
+            block1.fullF = new Vector(10, -5);
+   
+            block2.respondInteraction(block1, 'bottom');
+   
+            assert.strictEqual(block1.fullF.x, 7.5);
+            assert.strictEqual(block1.fullF.y, 0);
          });
 
          it('При взаимодействии слева - меняется приложенная сила', () => {
             //у блоков ro = 2, V = 1, m = 2, mu = 0.5
    
+            var block1 = new Game.Block(config);
+            var block2 = new Game.Block(config);
    
+            block1.fullF = new Vector(10, 5);
+   
+            block2.respondInteraction(block1, 'left');
+   
+            assert.strictEqual(block1.fullF.x, 0);
+            assert.strictEqual(block1.fullF.y, 0);
          });
 
          it('При взаимодействии справа - меняется приложенная сила', () => {
             //у блоков ro = 2, V = 1, m = 2, mu = 0.5
    
+            var block1 = new Game.Block(config);
+            var block2 = new Game.Block(config);
    
+            block1.fullF = new Vector(-10, 5);
+   
+            block2.respondInteraction(block1, 'right');
+   
+            assert.strictEqual(block1.fullF.x, 0);
+            assert.strictEqual(block1.fullF.y, 0);
          });
       });
 
@@ -347,25 +372,57 @@ describe('Класс Game.Block', () => {
          it('При взаимодействии сверху - не меняется приложенная сила', () => {
             //у блоков ro = 2, V = 1, m = 2, mu = 0.5
 
-
+            var block1 = new Game.Block(config);
+            var block2 = new Game.Block(config);
+   
+            block1.fullF = new Vector(10, -5);
+   
+            block2.respondInteraction(block1, 'top');
+   
+            assert.strictEqual(block1.fullF.x, 10);
+            assert.strictEqual(block1.fullF.y, -5);
          });
 
          it('При взаимодействии снизу - не меняется приложенная сила', () => {
             //у блоков ro = 2, V = 1, m = 2, mu = 0.5
 
-
+            var block1 = new Game.Block(config);
+            var block2 = new Game.Block(config);
+   
+            block1.fullF = new Vector(10, 5);
+   
+            block2.respondInteraction(block1, 'bottom');
+   
+            assert.strictEqual(block1.fullF.x, 10);
+            assert.strictEqual(block1.fullF.y, 5);
          });
 
          it('При взаимодействии слева - не меняется приложенная сила', () => {
             //у блоков ro = 2, V = 1, m = 2, mu = 0.5
 
-
+            var block1 = new Game.Block(config);
+            var block2 = new Game.Block(config);
+   
+            block1.fullF = new Vector(-10, 5);
+   
+            block2.respondInteraction(block1, 'left');
+   
+            assert.strictEqual(block1.fullF.x, -10);
+            assert.strictEqual(block1.fullF.y, 5);
          });
 
          it('При взаимодействии справа - не меняется приложенная сила', () => {
             //у блоков ro = 2, V = 1, m = 2, mu = 0.5
 
-
+            var block1 = new Game.Block(config);
+            var block2 = new Game.Block(config);
+   
+            block1.fullF = new Vector(10, 5);
+   
+            block2.respondInteraction(block1, 'right');
+   
+            assert.strictEqual(block1.fullF.x, 10);
+            assert.strictEqual(block1.fullF.y, 5);
          });
       
       });
