@@ -2,7 +2,8 @@
    "use strict"
 
    var DEF = {
-      speed: new Vector(0, 0),
+      speedX: 0,
+      speedY: 0,
    }
       
    /**
@@ -16,14 +17,17 @@
       }
 
       updateCoords() {
-         this.prevCoords = this.coords.copy();
          this.coords = this.coords.plus(this.speed);
       }
 
       _createParametrs(options) {
          super._createParametrs(options);
-
-         this.speed = this.options.speed;
+         
+         this.speed = new Vector(
+            this.options.speedX,
+            this.options.speedY
+         );
+         
       }
       
    }

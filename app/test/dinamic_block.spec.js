@@ -37,7 +37,8 @@ describe('Класс Game.DinamicBlock', () => {
 
       it('Поле speed содержит переданную скорость', () => {
          var block = new Game.DinamicBlock({
-            speed: new Vector(10, 5),
+            speedX: 10,
+            speedY: 5,
          });
 
          assert.strictEqual(block.speed.x, 10);
@@ -51,7 +52,23 @@ describe('Класс Game.DinamicBlock', () => {
             x: 1,
             y: 2,
 
-            speedX: new Vector(2, 3),
+            speedX: 2, 
+            speedY: 3
+         });
+
+         block.updateCoords();
+
+         assert.strictEqual(block.coords.x, 3);
+         assert.strictEqual(block.coords.y, 5);
+      });
+
+      it('Корректно работает при нескольких изменениях', () => {
+         var block = new Game.DinamicBlock({
+            x: 1,
+            y: 2,
+
+            speedX: 2, 
+            speedY: 3
          });
 
          block.updateCoords();
@@ -59,12 +76,12 @@ describe('Класс Game.DinamicBlock', () => {
          assert.strictEqual(block.coords.x, 3);
          assert.strictEqual(block.coords.y, 5);
 
-         block.speed = block.speed.plus(8, 7);
+         block.speed = block.speed.plus(new Vector(1, 1));
 
          block.updateCoords();
 
-         assert.strictEqual(block.speed.x, 13);
-         assert.strictEqual(block.speed.y, 15);
+         assert.strictEqual(block.coords.x, 6);
+         assert.strictEqual(block.coords.y, 9);
       });
    });
 
