@@ -4,22 +4,22 @@
    //var game = window.g = new Game();
 
    var render = new Game.Render({
-      scale: new Vector(4, 4),
+      scale: new Vector(10, 10),
       eachTik: () => {
          tik();
       }
    });
 
    var gravity = new Game.Gravity({
-      g: new Vector(0, 9.8/60/100)
+      g: new Vector(0, 9.8/60/200)
    });
 
    render.setCamera(new Vector(0, 0));
    render.start();
 
-   var block = new Game.DinamicBlock({
+   var block = new Game.Actor({
       x: 0,
-      y: -80,
+      y: -30,
       w: 1,
       h: 1,
       animation: [{

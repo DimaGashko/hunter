@@ -9,7 +9,7 @@ describe('Класс Game.DinamicBlock', () => {
       });
 
       it('Поле coords содержит переданные координаты', () => {
-         var block = new Game.Block({
+         var block = new Game.DinamicBlock({
             x: 11,
             y: 22,
          });
@@ -19,7 +19,7 @@ describe('Класс Game.DinamicBlock', () => {
       });
 
       it('Поле size содержит переданные размеры', () => {
-         var block = new Game.Block({
+         var block = new Game.DinamicBlock({
             w: 11,
             h: 22,
          });

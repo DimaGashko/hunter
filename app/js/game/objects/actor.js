@@ -1,6 +1,48 @@
 ;(function(global){
    "use strict"
 
+   var DEF = {
+
+
+      fillStyle: 'rgba(255,0,0,0.5)', //Цвет при отсутствии tileset-a
+   }
+   
+   /**
+    * Базовый класс игрового персонажа
+    */
+   class Actor extends Game.DinamicBlock {
+      constructor(options = {}) {
+         options = extend(true, {}, DEF, options);
+         super(options);
+      }
+
+
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   /*
    class Actor extends Game.Block {
       constructor(config = {}, options = {}) {
          super({
@@ -112,7 +154,7 @@
          }
       }
 
-   }
+   }*/
 
    Object.defineProperty(Actor.prototype, 'type', {
       value: 'actor',
