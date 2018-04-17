@@ -107,6 +107,10 @@
       _initSprite() {
          var o = this.options;
 
+         if (!o.tileset) {
+            return; 
+         }
+
          this.sprite = new Game.Sprite({
             tileset: o.tileset,
             size: new Vector(o.tileW, o.tileH),

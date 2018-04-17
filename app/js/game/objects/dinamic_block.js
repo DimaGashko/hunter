@@ -16,12 +16,24 @@
          super(options);
       }
 
+      /**
+       * Обновляет координаты блока
+       * (прибавляет текущую скорость)
+       */
       updateCoords() {
          this.coords = this.coords.plus(this.speed);
       }
 
-      updateSpeed() { 
-         this.speed = this.speed.plus(this.fullA);
+      /**
+       * Обновляет скорость блока
+       * (прибавляет к текущей скорости вектор ускорения)
+       * @param {number} times отклонение времени кадра от нормы (16 ms)
+       * times === 2 - длительность кадра 32ms
+       * times === 0.5 длительность кадра 8ms
+       */
+      updateSpeed(times = 1) { 
+         var a = this.fullA.mul(times);
+         this.speed = this.speed.plus(a);
       }
 
       _createParametrs(options) {
