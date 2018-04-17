@@ -86,9 +86,9 @@
                   y: chunk.y + Math.floor(i / chunk.width),
                   w: 1,
                   h: 1,
-                  type: type,
+                  type: type || '',
                   animation: [],
-                  props: config.tilesets[0].tileproperties[item],
+                  props: config.tilesets[0].tileproperties[item] || {},
                }
 
                if (!tileParam.animation || tileParam.animation.length == 0) {

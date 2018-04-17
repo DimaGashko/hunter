@@ -26,6 +26,26 @@
       }
 
       _fixCollision(actor, obj) {
+         var side = '';
+               
+         if (this._isTopCotact(actor, obj)) {
+            side = 'top';
+         
+         } else if (this._isLeftContact(actor, obj)) {
+            side = 'left';
+         
+         } else if (this._isBottomContact(actor, obj)) {
+            side = 'bottom';
+         
+         } else if (this._isRightContact(actor, obj)) {
+            side = 'right';
+            
+         }
+
+         obj.respondInteraction(actor, side);
+      }
+/*
+      _fixCollision(actor, obj) {
          if (this._isTopCotact(actor, obj)) {
             actor.pain(Math.pow(actor.speed.y * 5, 4));
             actor.speed.y = 0;
@@ -93,7 +113,7 @@
          
          }
 
-      }
+      }*/
 
       _isTopCotact(actor, obj) {
          var prev = this._getFakeActor(actor.prevCoords, actor.size);

@@ -21,6 +21,7 @@
        * (прибавляет текущую скорость)
        */
       updateCoords() {
+         this.prevCoords = this.coords;
          this.coords = this.coords.plus(this.speed);
       }
 

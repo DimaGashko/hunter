@@ -23,7 +23,7 @@
 
       goToRight() {
          console.log('right');
-
+         
       }
 
       jump() {

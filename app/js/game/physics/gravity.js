@@ -2,7 +2,7 @@
    "use strict"
 
    var DEF = {
-      g: new Vector(0, 9.8/60/10),
+      g: new Vector(0, 9.8/600/20),
    }
 
    /**
@@ -21,12 +21,17 @@
        */
       use(actors) {
          actors.forEach((actor) => {
-            actor.speed = actor.speed.plus(this.options.g);
+            actor.fullF = actor.fullF.plus(this.g.mul(actor.m));
          });
       }
       
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
+
+         this.g = new Vector(
+            this.options.g.x,
+            this.options.g.y,
+         );
       }
 
    }

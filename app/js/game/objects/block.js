@@ -107,10 +107,6 @@
       _initSprite() {
          var o = this.options;
 
-         if (!o.tileset) {
-            return; 
-         }
-
          this.sprite = new Game.Sprite({
             tileset: o.tileset,
             size: new Vector(o.tileW, o.tileH),
@@ -145,6 +141,7 @@
        * @param {Block} side - cторона взаимодействия (left, top, right, bottom)
        */
       respondInteraction(obj, side) {
+         //console.log(side)
          //Реакция опоры по осям
          var N = new Vector(0, 0);
 
@@ -167,8 +164,28 @@
             Math.abs(this.mu * N.y) * (obj.fullF.x > 0 ? -1 : 1),
             Math.abs(this.mu * N.x) * (obj.fullF.y > 0 ? -1 : 1),
          );
-
+         //console.log('---', obj.fullF.x, obj.fullF.y);
          obj.fullF = obj.fullF.plus(N).plus(Ffr);
+         //console.log(obj.fullF.x, obj.fullF.y, '---');
+
+
+         if (side === 'top') {
+            obj.speed.y = 0;
+            obj.bottom = this.top;
+
+         } else if (side === 'bottom') {
+            obj.speed.y = 0;
+            obj.top = this.bottom;
+         
+         } else if (side === 'left') {
+            obj.speed.x = 0;
+            obj.right = this.left;
+         
+         } else if (side === 'right') {
+            obj.speed.x = 0;
+            obj.left = this.right;
+         
+         }
       }
 
       _createParametrs(options) {

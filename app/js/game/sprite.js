@@ -1,7 +1,7 @@
 ;(function(global){
    "use strict"
 
-   //Кеширование tileset
+   //Кеширование tileset-ов
    //Содержит поля у который ключ - это путь к картинке
    //А значение - либо DOM элемент tileset-a (Image)
    //Либо null если картинку с таким адресом загрузить не удалось
@@ -70,6 +70,7 @@
             this.options.onTilesetLoaded();
 
          }, () => {
+            return;
             console.error(
                'Не удалось загрузить tileset: "',
                this.options.tileset, '"'
