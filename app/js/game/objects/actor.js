@@ -23,12 +23,28 @@
 
       goToRight() {
          console.log('right');
-         
+
       }
 
       jump() {
          console.log('jump');
          
+      }
+
+      _createParametrs() {
+         super._createParametrs.apply(this, arguments);
+
+         //Состояние перемещения персонажа
+         //То есть, что он сейчас делает
+         //Идет или прыгает и тп.
+         //Используется, что бы во время взаимодействия с другими объектами
+         //Понимать, что персонаж должен переместиться
+         //(Block.fn.respondInteraction)
+         this.moveStatus = {
+            goToLeft: false,
+            goToRight: false,
+            jump: false,
+         }
       }
    }
    
