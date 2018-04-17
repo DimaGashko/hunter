@@ -60,14 +60,15 @@
          this.gravity.use(actors);
 
          this.level.player.move();
-         
          actors.forEach((actor) => {
             actor.updateSpeed();
             actor.updateCoords();
          });
-
          this.collisions.findAndfix(actors, blocks);
-         //this.level.player.person.clearStatus();
+
+         actors.forEach((actor) => {
+            actor._clearMoveStatus();
+         });
 
          this._moveCamera();  
 

@@ -141,6 +141,9 @@
        * @param {Block} side - cторона взаимодействия (left, top, right, bottom)
        */
       respondInteraction(obj, side) {
+         //Если это именно блок
+         if (obj.type === 'block') return;
+
          //console.log(side)
          //Реакция опоры по осям
          var N = new Vector(0, 0);
@@ -165,10 +168,10 @@
             Math.abs(this.mu * N.x) * (obj.fullF.y > 0 ? -1 : 1),
          );
          //console.log('---', obj.fullF.x, obj.fullF.y);
-         obj.fullF = obj.fullF.plus(N).plus(Ffr);
+         obj.fullF = obj.fullF.plus(N)//.plus(Ffr);
          //console.log(obj.fullF.x, obj.fullF.y, '---');
 
-
+         //- - - -
          if (side === 'top') {
             obj.speed.y = 0;
             obj.bottom = this.top;
@@ -185,6 +188,24 @@
             obj.speed.x = 0;
             obj.left = this.right;
          
+         }        
+
+         // - - - -
+         //Если это персонаж или его наследники
+         if (obj instanceof Game.Actor) {
+            if (side === 'top') {
+               obj.jump();
+               obj.goToLeft();
+               obj.goToRight();
+
+            } else if (side === 'left') {
+               obj.goToRight();
+
+            } else if (side === 'right') {
+               obj.goToLeft();
+
+            }
+
          }
       }
 

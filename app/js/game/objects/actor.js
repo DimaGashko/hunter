@@ -2,7 +2,12 @@
    "use strict"
 
    var DEF = {
-      
+      //Содержит значение различных сил персонажа
+      powers: {
+         goToLeft: 10, //сила при ходьбе на лево
+         goToRight: 10, //при ходьбе на право
+         jump: 80, //при прижке
+      },      
 
       fillStyle: 'rgba(255,0,0,0.5)', //Цвет при отсутствии tileset-a
    }
@@ -17,20 +22,42 @@
       }
 
       goToLeft() {
-         console.log('left');
-         
+         if (this.moveStatus.goToLeft) {
+            this.moveStatus.goToLeft = false;
+            this.speed.x -= 0.2;
+         }
       }
 
       goToRight() {
-         console.log('right');
-
+         if (this.moveStatus.goToRight) {
+            this.moveStatus.goToRight = false;
+            this.speed.x += 0.2
+         }
       }
 
       jump() {
-         console.log('jump');
+         if (this.moveStatus.jump) {
+            this.moveStatus.jump = false;
+            this.speed.y -= 0.25;
+         }
          
       }
 
+      /**
+       * (Game.DinamicBlock.fn.updateCoords)
+       */
+      updateCoords() {
+         super.updateCoords.apply(this, arguments);
+
+         
+      }
+
+      _clearMoveStatus() {
+         this.moveStatus.goToLeft = false;
+         this.moveStatus.goToRight = false;
+         this.moveStatus.jump = false;
+      }
+ 
       _createParametrs() {
          super._createParametrs.apply(this, arguments);
 
@@ -45,6 +72,7 @@
             goToRight: false,
             jump: false,
          }
+
       }
    }
    
