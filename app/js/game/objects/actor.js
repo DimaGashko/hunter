@@ -16,7 +16,20 @@
          super(options);
       }
 
-      
+      goToLeft() {
+         console.log('left');
+         
+      }
+
+      goToRight() {
+         console.log('right');
+
+      }
+
+      jump() {
+         console.log('jump');
+         
+      }
    }
    
    
