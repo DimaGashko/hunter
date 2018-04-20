@@ -150,7 +150,7 @@
             }
 
             if (side === 'top' || side === 'bottom') {
-               
+               obj.speed.x /= 10;
             }
 
          }
