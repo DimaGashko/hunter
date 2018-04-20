@@ -2,7 +2,7 @@
    "use strict"
 
    var DEF = {
-      g: new Vector(0, 9.8/600/20),
+      g: new Vector(0, 9.8/60/10),
    }
 
    /**
@@ -21,7 +21,7 @@
        */
       use(actors) {
          actors.forEach((actor) => {
-            actor.fullF = actor.fullF.plus(this.g.mul(actor.m));
+            actor.speed = actor.speed.plus(this.g);
          });
       }
       

@@ -10,8 +10,7 @@
 
       //Физические параметры блока
       props: {
-         ro: 5500,
-         mu: 0.01,
+         
       },
 
       fillStyle: '', //Цвет, что будет использоваться, когда нет картинки
@@ -77,29 +76,6 @@
          }
       }
 
-      //Объем
-      get V() {
-         return this.size.x * this.size.y * 1;
-      }
-
-      set V(val) {
-         console.error('Менять объем напрямую нельзя');
-      }
-
-      //Масса
-      get m() {
-         return this.V * this.ro;
-      }
-
-      set m(val) {
-         console.error('Менять массу напрямую нельзя');
-      }
-
-      //Полное ускорение
-      get fullA() {
-         return this.fullF.div(this.m); //2 закон Ньютора
-      }
-
       _init() {
          this._initSprite();
       }
@@ -117,10 +93,6 @@
       }
 
       updateCoords() { 
-         //Для Block-а ничего не делает
-      }
-
-      updateSpeed() { 
          //Для Block-а ничего не делает
       }
 
@@ -144,34 +116,6 @@
          //Если это именно блок
          if (obj.type === 'block') return;
 
-         //console.log(side)
-         //Реакция опоры по осям
-         var N = new Vector(0, 0);
-
-         if (
-            (side === 'top' && obj.fullF.y > 0) ||
-            (side === 'bottom' && obj.fullF.y < 0)
-         ) {
-            N.y = -obj.fullF.y;
-         }
-
-         if (
-            (side === 'left' && obj.fullF.x > 0) ||
-            (side === 'right' && obj.fullF.x < 0)
-         ) {
-            N.x = -obj.fullF.x;
-         }
-
-         //Трение
-         var Ffr = new Vector(
-            Math.abs(this.mu * N.y) * (obj.fullF.x > 0 ? -1 : 1),
-            Math.abs(this.mu * N.x) * (obj.fullF.y > 0 ? -1 : 1),
-         );
-         //console.log('---', obj.fullF.x, obj.fullF.y);
-         obj.fullF = obj.fullF.plus(N)//.plus(Ffr);
-         //console.log(obj.fullF.x, obj.fullF.y, '---');
-
-         //- - - -
          if (side === 'top') {
             obj.speed.y = 0;
             obj.bottom = this.top;
@@ -190,7 +134,6 @@
          
          }        
 
-         // - - - -
          //Если это персонаж или его наследники
          if (obj instanceof Game.Actor) {
             if (side === 'top') {
@@ -206,6 +149,10 @@
 
             }
 
+            if (side === 'top' || side === 'bottom') {
+               
+            }
+
          }
       }
 
@@ -218,12 +165,6 @@
          this.size.y = this.options.h; 
 
          this.speed = new Vector(0, 0);
-
-         this.ro = this.options.props.ro;
-         this.mu = this.options.props.mu;
-
-         //Вектор сумарной силы приложеной к телу
-         this.fullF = new Vector(0, 0);
  
          this.sprite = null;
       }

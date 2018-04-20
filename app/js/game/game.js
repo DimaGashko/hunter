@@ -61,7 +61,6 @@
 
          this.level.player.move();
          actors.forEach((actor) => {
-            actor.updateSpeed();
             actor.updateCoords();
          });
          this.collisions.findAndfix(actors, blocks);

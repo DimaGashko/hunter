@@ -7,10 +7,11 @@
       levelsSrc: [
          "maps/test.json",
          "maps/test2.json",
+         "maps/test3.json",
       ],
 
       //Текущий уровень
-      curLevel: 1,
+      curLevel: 2,
    }
 
 

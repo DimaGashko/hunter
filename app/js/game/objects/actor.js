@@ -1,15 +1,9 @@
 ;(function(global){
    "use strict"
 
-   var DEF = {
-      //Содержит значение различных сил персонажа
-      powers: {
-         goToLeft: 10, //сила при ходьбе на лево
-         goToRight: 10, //при ходьбе на право
-         jump: 80, //при прижке
-      },      
-
+   var DEF = {   
       fillStyle: 'rgba(255,0,0,0.5)', //Цвет при отсутствии tileset-a
+
    }
    
    /**
@@ -24,21 +18,27 @@
       goToLeft() {
          if (this.moveStatus.goToLeft) {
             this.moveStatus.goToLeft = false;
-            this.speed.x -= 0.2;
+            if (this.maxSpeed.x > -this.speed.x) {
+               this.speed.x -= 0.1;
+            }
          }
       }
 
       goToRight() {
          if (this.moveStatus.goToRight) {
             this.moveStatus.goToRight = false;
-            this.speed.x += 0.2
+            if (this.maxSpeed.x > this.speed.x) {
+               this.speed.x += 0.1;
+            }   
          }
       }
 
       jump() {
          if (this.moveStatus.jump) {
             this.moveStatus.jump = false;
-            this.speed.y -= 0.25;
+            if (this.maxSpeed.y > -this.speed.y) {
+               this.speed.y -= 0.4;
+            }   
          }
          
       }
@@ -51,6 +51,20 @@
 
          
       }
+
+      /*
+      _correctSpeed() {
+         var speed = this.speed.scalarAbs();
+         var max = this.maxSpeed;
+
+         if (speed.x > max.x) speed.x = max.x;
+         if (speed.y > max.y) speed.y = max.y;
+
+         if (this.speed.x < 0) speed.x = -speed.x;
+         if (this.speed.y < 0) speed.y = -speed.y;
+
+         this.speed = speed;
+      }*/
 
       _clearMoveStatus() {
          this.moveStatus.goToLeft = false;
@@ -72,6 +86,8 @@
             goToRight: false,
             jump: false,
          }
+
+         this.maxSpeed = new Vector(0.1, 0.1);
 
       }
    }

@@ -42,18 +42,18 @@
 
       move() {
          if (keysPress[this.KEYS.left]) {
-            //this.person.goToLeft();
             this.person.moveStatus.goToLeft = true;
+            this.person.goToLeft();
          }
 
          if (keysPress[this.KEYS.right]) {
-            //this.person.goToRight();
             this.person.moveStatus.goToRight = true;
+            this.person.goToRight();
          }
 
          if (keysPress[this.KEYS.top]) {
-            //this.person.jump()
             this.person.moveStatus.jump = true;
+            //this.person.jump()
          }
       }
    
