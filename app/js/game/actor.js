@@ -8,7 +8,6 @@
 
       goToLeft() {
          this.speed.x -= this.a.x;
-         
          this.status.left = false;
       }
 
