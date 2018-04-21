@@ -23,6 +23,101 @@
       parse(JSONMap) {
          var config = JSON.parse(JSONMap);
 
+         //Параменты тайлов
+         var tileConfig = {
+            col: config.tilesets[0].columns,
+            w: config.tilesets[0].tilewidth,
+            h: config.tilesets[0].tileheight,
+            props: config.tilesets[0].tileproperties,
+            tiles: config.tilesets[0].tiles,
+            img: config.tilesets[0].image.slice(3),
+         }
+
+         //Результат обработки
+         var parsed = {
+            bg: config.backgroundcolor,
+            
+            blocks: {
+               static: [],
+               dinamic: [],
+               decorates: [],
+            },
+            actors: [],
+            player: null,
+         }
+
+         //Перебор слоев
+         config.layers.forEach(layer => {
+            if (layer.type === 'tilelayer') {
+               //Слои блоков
+               
+
+            } else if (layer.type === 'objectgroup') {
+               if (layer.name === 'player') {
+                  //Слой плеера
+               
+               } else {
+                  //Слой персонажей
+
+               }
+           
+            }
+         });
+
+         return parsed;
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
          var parsed = {
             tile: {
                w: config.tilewidth,
@@ -126,7 +221,7 @@
             id: cadr.tileid,
          }
       }
-      
+     */ 
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
          

@@ -17,13 +17,13 @@
          this._init();
 
          setInterval(() => {
-            console.log(this.person.coords)
+            //console.log(this.person.coords)
          }, 5000);
       }
 
       _init() {
          var config = this.options.personConfig;
-         console.log('--', config)
+         
          this.person = new Game.Actor({
             animation: [{
                duration: 0,
