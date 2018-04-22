@@ -24,15 +24,15 @@
          metrics: {
             x: 0,
             y: 0,
-            w: 32,
-            h: 32,
+            w: 16,
+            h: 16,
          },
          duration: 0,
       }],
 
       tileset: '', //Адресс к tileset-у
-      tileW: 0,
-      tileH: 0,
+      tileW: 16,
+      tileH: 16,
    }
       
    /**
@@ -82,7 +82,7 @@
       
       _initSprite() {
          var o = this.options;
-
+         
          this.sprite = new Game.Sprite({
             tileset: o.tileset,
             size: new Vector(o.tileW, o.tileH),

@@ -24,9 +24,9 @@
       }
 
       _init() {
-         this.person.sprite.addEvent('tileset_load', (sprite) => { 
+         this.person.sprite.addEvent('tileset_load', (sprite) => {
             sprite.start();
-         })
+         });
       }
 
       move() {
