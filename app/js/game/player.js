@@ -24,7 +24,7 @@
       }
 
       _init() {
-         
+         this.person.start();
       }
 
       move() {
