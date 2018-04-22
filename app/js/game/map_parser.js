@@ -8,7 +8,7 @@
    /**
     * Разбирает карту из формата json в необходимый игре формат
     * 
-    * @constructor
+    * @class
     */
    class MapParser {
       constructor(options = {}) {
@@ -106,6 +106,12 @@
          }
       }
 
+      /**
+       * Парсит переданый объект Actor-а
+       * 
+       * @param {object} config разпарсенная карта
+       * @param {object} actor параметры actor-a
+       */
       _parseActor(config, actor) { 
          var result = (actor.gid) ?
             this._parseObjByTileIndex(config, actor.gid) : {}
