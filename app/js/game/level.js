@@ -77,16 +77,16 @@
          this.allObjects.actors = this.config.actors.map((item) => {
             var Constr = this.objectTypes[item.type] || Game.Actor;
 
-            return new Constr(item, {
-               tile: this.config.tile,
-            });
+            return new Constr(item);
          });
       }
 
       _createPlayer() {
-         this.player = new Game.Player({
-            personConfig: this.config.player,
-         });
+         var config = this.config.player;
+         var Constr = this.objectTypes[config.type] || Game.Actor;
+         var person = new Constr(config);
+
+         this.player = new Game.Player(person, {});
       }
 
       _findVisibleBlocks(type) {
@@ -107,7 +107,6 @@
                } else {
                   item.stop();
                }
-
                
             });
          });
@@ -120,9 +119,16 @@
          container.length = 0; //Очищаем массив
          
          this.allObjects.actors.forEach((actor) => {
-            if (!isVisible(actor.convertToRender()), 2) return;
+            if (isVisible(actor.convertToRender()), 3) {
+               container.push(actor);
+               actor.start();
 
-            container.push(actor);
+            } else {
+               actor.stop();
+
+            }
+
+            
          });
       }
 
