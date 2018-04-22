@@ -31,6 +31,8 @@
       }],
 
       tileset: '', //Адресс к tileset-у
+      tileW: 0,
+      tileH: 0,
    }
       
    /**
@@ -86,6 +88,9 @@
             size: new Vector(o.tileW, o.tileH),
             cadrs: {
                base: this.options.animation,
+            },
+            onTilesetLoaded: (sprite) => {
+               sprite.start('base');
             }
          });
       }

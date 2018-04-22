@@ -64,10 +64,8 @@
                h: chunk.h,
                data: chunk.data.map(item => {
                   var Constr = this.objectTypes[item.type] || Game.Block;
-                  
-                  return new Constr(item, {
-                     tile: this.config.tile,
-                  });
+                  //console.log(item)
+                  return new Constr(item);
                }),
             }
 

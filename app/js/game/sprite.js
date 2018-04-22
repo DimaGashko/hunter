@@ -41,7 +41,8 @@
       },
 
       //Выполнится после загрузки tileset-a
-      onTilesetLoaded: () => {
+      //В параметры передается текущий екземпляр Sprite
+      onTilesetLoaded: (sprite) => {
          
       },
    }
@@ -67,7 +68,7 @@
             this._createCanvas();
             this._setSize(); 
 
-            this.options.onTilesetLoaded();
+            this.options.onTilesetLoaded(this);
 
          }, () => {
             
@@ -85,7 +86,7 @@
        */
       start(type) {
          if (this.tileset === null) return;
-
+         
          if (!type) {
             console.error(
                'Неправильный тип анимации (', type,
@@ -119,7 +120,7 @@
                config[0].metrics,
                config[0].transforms
             );
-
+            
             return;
          }
 
@@ -190,7 +191,6 @@
 
             tileset.onload = () => {
                loadedTilests[src] = tileset; //кешируем tilest
-
                this.tileset = tileset;
 
                resolve();

@@ -121,6 +121,8 @@
          result.y = actor.y;
          result.name = actor.name;
          result.type = actor.type;
+         result.tileW = config.tilewidth;
+         result.tileH = config.tileheight;
 
          return result;
       }
@@ -146,6 +148,8 @@
             props: tileset.tileproperties[item] || {},
             tileset: tileset.image.slice(3),
             animation: [],
+            tileW: config.tilewidth,
+            tileH: config.tileheight,
          }
 
          if (chunk) { 
