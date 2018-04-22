@@ -7,8 +7,12 @@
     * @constructor
     * 
     * Аргументами в конструктор передаются координаты и размеры прямоугольника
+    * 
+    * - - - - -
+    * Наследует от Events, то этот класс, и все классы, 
+    * Что наследуют от него имеют поддержку событий
     */
-   class Rect {
+   class Rect extends Events {
       constructor(x = 0, y = 0, w = 0, h = 0) {
          this.coords = new Vector(x, y);
          this.size = new Vector(w, h);
