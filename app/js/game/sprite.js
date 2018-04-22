@@ -145,12 +145,12 @@
 
       //Останавливает анимацию
       stop() {
-         if (this.timer) {
-            clearTimeout(this.timer);
-         }
+         if (this.timer === 0) return; 
+
+         clearTimeout(this.timer);
+         this.timer = 0;
          
          this.curAnimateType = '';
-         this.timer = 0;
       }
 
       /**

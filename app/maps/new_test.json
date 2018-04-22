@@ -672,16 +672,16 @@
          "name":"player",
          "objects":[
                 {
-                 "gid":129,
+                 "gid":625,
                  "height":16,
-                 "id":6,
+                 "id":9,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":-4474,
-                 "y":-242
+                 "x":-4324,
+                 "y":-294
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -689,7 +689,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":7,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.4",
@@ -728,6 +728,54 @@
                         {
                          "duration":100,
                          "tileid":573
+                        }]
+                },
+             "624":
+                {
+                 "animation":[
+                        {
+                         "duration":100,
+                         "tileid":624
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":625
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":626
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":627
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":628
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":629
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":630
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":631
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":632
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":633
+                        }, 
+                        {
+                         "duration":100,
+                         "tileid":635
                         }]
                 }
             },
