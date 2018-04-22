@@ -158,7 +158,7 @@
             itemResolt.y = chunk.y + Math.floor(index / chunk.width);
          }
 
-         //Обработка паарметров канимации
+         //Обработка парaметров анимации
          if (!tileParam.animation || tileParam.animation.length == 0) {
             //Если анимации нет, то добавляем хотя бы один кадр, который 
             //Будет состоять самого текущего тайла

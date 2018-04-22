@@ -100,9 +100,15 @@
             if (!isVisible(chunk) && 0) return;
          
             chunk.data.forEach((item) => {
-               //if (!isVisible(item.convertToRender())) return;
+               if (isVisible(item.convertToRender())) { 
+                  container.push(item);
+                  item.start();
+               
+               } else {
+                  //item.stop();
+               }
 
-               container.push(item);
+               
             });
          });
       }

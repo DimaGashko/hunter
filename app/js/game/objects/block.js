@@ -89,9 +89,6 @@
             cadrs: {
                base: this.options.animation,
             },
-            onTilesetLoaded: (sprite) => {
-               sprite.start('base');
-            }
          });
       }
 
