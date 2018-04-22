@@ -5,6 +5,29 @@
     * Events - класс, реализующий события
     *
     * @class
+    * 
+    * Использование:
+    * 1) Можно задавать явно:
+    * 
+    * var events = new Events();
+    * events.addEvent('eventName', () => {
+    *    console.log('ok');
+    * })
+    * event.trigger('eventName');
+    * 
+    * -----------------------------------------------------
+    * 2) Также можно наследовать от Events в своих классах:
+    * 
+    * class A extends Events {...}
+    * 
+    * В таком случае класс А будет обретать все возможности Events
+    * 
+    * var a = new A();
+    * a.addEvent('eventName', () => {
+    *    console.log('ok');
+    * })
+    * a.trigger('eventName');
+    * 
    */
    class Events {
       constructor() {         
