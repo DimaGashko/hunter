@@ -60,8 +60,8 @@
        * @param {object} parsed результат обработки
        * @param {object} layer обрабатываемый слой
        */
-      _parseBlocks(config, parsed, layer) { 
-         var name = layer.name; 
+      _parseBlocks(config, parsed, layer) {
+         var name = layer.name;
 
          //Каждый слой блоков состоит из отдельных блоков (chunks)
          parsed.blocks[name] = layer.chunks.map(chunk => {
@@ -74,7 +74,7 @@
             };
 
             //Перебираем, не map-ом, так как многие элементы нужно отбрасывать
-            chunk.data.forEach((item, i) => { 
+            chunk.data.forEach((item, i) => {
                if (item === 0) return;
 
                var obj = this._parseObjByTileIndex(config, item - 1, chunk, i);
@@ -96,11 +96,26 @@
       _parseObjects(config, parsed, layer) { 
          if (layer.name === 'player') {
             //Слой плеера
+            parsed.player = this._parseActor(config, layer.objects[0]);
          
          } else {
             //Слой персонажей
-   
+            parsed[layer.name] = layer.objects.map((actor) => {
+               return this._parseActor(config, actor);
+            });
          }
+      }
+
+      _parseActor(config, actor) { 
+         var result = (actor.gid) ?
+            this._parseObjByTileIndex(config, actor.gid) : {}
+         
+         result.x = actor.x;
+         result.y = actor.y;
+         result.name = actor.name;
+         result.type = actor.type;
+
+         return result;
       }
 
       /**
