@@ -58,6 +58,7 @@
     * 
     * Поддерживаемые события:
     * "tileset_load" - вызывается, после загрузки тайлсета
+    * "before_chande_cadr" - вызывается перед смене кадра
     */
    class Sprite extends Events {
       constructor(options = {}) {
@@ -120,6 +121,8 @@
          }
 
          if (config.length === 1) {
+            this.trigger('before_chande_cadr', config[0]);
+
             this._draw(
                config[0].metrics,
                config[0].transforms
@@ -132,6 +135,8 @@
          var cadrIndex = 0;
 
          this.timer = setTimeout(function drawNext() { 
+            self.trigger('before_chande_cadr', config[cadrIndex]);
+
             self._draw(
                config[cadrIndex].metrics,
                config[cadrIndex].transforms

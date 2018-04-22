@@ -30,8 +30,6 @@
       constructor(options = {}) {
          options = extend(true, {}, DEF, options);
          super(options);
-
-         console.log(this.convertToRender())
       }
 
       start() { 
@@ -43,7 +41,7 @@
          
          this.sprite = new Game.Sprite({
             tileset: o.tileset,
-            size: this.size,
+            size: this.tileSize,
             cadrs: {
                'base': [{
                   metrics: SPRITES['steve_stand'],
@@ -54,21 +52,44 @@
                   metrics: SPRITES['steve_stand'],
                   duration: 0,
                }],
+
+               'steve_go': [{
+                  metrics: SPRITES['steve_go'],
+                  duration: 250,
+               }, {
+                  metrics: SPRITES['steve_stand'],
+                  duration: 250,
+               }],
             },
          });
-
       }
 
-      _init() { 
-         super._init.apply(this, arguments); 
-
+      _init() {
          this._setSize();
+
+         super._init.apply(this, arguments);
+         
+         this._initEvents();
       }
 
-      _createParametrs() { 
-         super._createParametrs.apply(this, arguments);
+      _initEvents() { 
+         this.sprite.addEvent('before_chande_cadr', (config) => {
+            //var bottom = this.bottom;
+            var center = this.getCenter();
 
-         this._state = 'steve_stand'; //cостояние персонажа (стоит, идет...)
+            this.size = new Vector(
+               config.metrics.w,
+               config.metrics.h,
+            ).diScale(this.tileSize);
+
+            this.sprite.changeSize(new Vector(
+               config.metrics.w,
+               config.metrics.h,
+            ));
+
+            this.setCenter(center);
+           // this.bottom = bottom;
+         });
       }
 
       /**
@@ -85,10 +106,18 @@
             SPRITES[this._state].h,
          );
 
-         this.size = this.spriteSize.diScale(
+         this.size = this.spriteSize.diScale(this.tileSize);
+      }
+
+      _createParametrs() { 
+         super._createParametrs.apply(this, arguments);
+
+         this.tileSize = new Vector(
             this.options.tileW,
             this.options.tileH,
          );
+
+         this._state = 'steve_stand'; //cостояние персонажа (стоит, идет...)
       }
 
    }
