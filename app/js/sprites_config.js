@@ -23,19 +23,19 @@ var SPRITES = {
       "w": 45,
       "h": 45
    },
-   "player_go": {
+   "steve_go": {
       "x": 90,
       "y": 0,
       "w": 19,
       "h": 31
    },
-   "player_jump": {
+   "steve_jump": {
       "x": 45,
       "y": 45,
       "w": 23,
       "h": 27
    },
-   "player_stand": {
+   "steve_stand": {
       "x": 109,
       "y": 0,
       "w": 8,

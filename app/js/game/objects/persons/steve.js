@@ -2,32 +2,40 @@
    "use strict"
 
    var DEF = {
-      fillStyle: 'rgba(255,255,0,0.8)', //Цвет при отсутствии tileset-a
-
+      tileset: 'img/sprite.png',
       tileW: 16,
       tileH: 16,
-
-      tileset: 'img/sprite.png',
    }
 
    /**
     * Игровой персонаж - Стив 
     * 
+    * @class
+    * 
     * В options обязательно должны быть параметры tileW, tileH
     * Они используются, для привидения размеров персонажа 
     * Из размеров в пикселях к реальным размерам 
     * 
-    * @class
+    * После иницилизации нужно вызвать метод start.
+    * Метод start нужно вызвыать, после загрузки тайлсера
+    * Например так:
+    * 
+    * var steve = new Steve({...});
+    * 
+    * steve.sprite.addEvent('tileset_load', () => {
+    *    steve.start();
+    * });
     */
    class Steve extends Game.Actor {
       constructor(options = {}) {
          options = extend(true, {}, DEF, options);
          super(options);
 
-         this.size.x = 0.5;
-         this.size.y = 2;
-
          console.log(this.convertToRender())
+      }
+
+      start() { 
+         this.sprite.start(this._state);
       }
 
       _initSprite() { 
@@ -35,20 +43,52 @@
          
          this.sprite = new Game.Sprite({
             tileset: o.tileset,
-            size: new Vector(16, 32),
+            size: this.size,
             cadrs: {
-               base: [{
-                  metrics: SPRITES['player_stand'],
+               'base': [{
+                  metrics: SPRITES['steve_stand'],
+                  duration: 0,
+               }],
+
+               'steve_stand': [{
+                  metrics: SPRITES['steve_stand'],
                   duration: 0,
                }],
             },
          });
-         this.sprite.start();
-         this.sprite.addEvent('tileset_load', (sprite) => {
-            //sprite.start();
-            console.log('load');
-         });
 
+      }
+
+      _init() { 
+         super._init.apply(this, arguments); 
+
+         this._setSize();
+      }
+
+      _createParametrs() { 
+         super._createParametrs.apply(this, arguments);
+
+         this._state = 'steve_stand'; //cостояние персонажа (стоит, идет...)
+      }
+
+      /**
+       * Устанавливает размеры персонажа, 
+       * В зависимости от состояния (стоит, идет...)
+       * 
+       * Устанавливает два свойства:
+       * this.size - реальные размеры персонажа
+       * this.spriteSize - размеры спрайта
+       */
+      _setSize() { 
+         this.spriteSize = new Vector(
+            SPRITES[this._state].w,
+            SPRITES[this._state].h,
+         );
+
+         this.size = this.spriteSize.diScale(
+            this.options.tileW,
+            this.options.tileH,
+         );
       }
 
    }
