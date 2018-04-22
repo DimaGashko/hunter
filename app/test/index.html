@@ -10,22 +10,25 @@
 </head>
 <body>
   <div id="mocha"></div>
-
-  <script defer src="../js/functions.js"></script>
-  <script defer src="../js/sprite.js"></script>
-  <script defer src="../js/game/vector.js"></script>
-  <script defer src="../js/game/game.js"></script>
-  <script defer src="../js/game/gravity.js"></script>
-  <script defer src="../js/game/collisions.js"> </script>
-  <script defer src="../js/game/render.js"></script>
-  <script defer src="../js/game/level_manager.js"></script>
-  <script defer src="../js/game/level_parser.js"></script>
-  <script defer src="../js/game/level.js"></script>
-  <script defer src="../js/game/rect.js"></script>
-  <script defer src="../js/game/block.js"></script>
-  <script defer src="../js/game/actor.js"></script>
-  <script defer src="../js/game/player.js"></script>
-  <script defer src="../js/game/camera.js"></script>
+  
+  <script defer src="/js/functions.js"></script>
+  <script defer src="/js/_sprites_config.js"></script>
+  <script defer src="/js/game/game.js"></script>
+  <script defer src="/js/game/geometry/vector.js"></script>
+  <script defer src="/js/game/geometry/rect.js"></script>
+  <script defer src="/js/game/sprite.js"></script>
+  <script defer src="/js/game/render.js"></script>
+  <script defer src="/js/game/camera.js"> </script>
+  <script defer src="/js/game/physics/gravity.js"></script>
+  <script defer src="/js/game/physics/collisions.js"> </script>
+  <script defer src="/js/game/map_manager.js"></script>
+  <script defer src="/js/game/map_parser.js"></script>
+  <script defer src="/js/game/level.js"></script>
+  <script defer src="/js/game/objects/block.js"></script>
+  <script defer src="/js/game/objects/dinamic_block.js"></script>
+  <script defer src="/js/game/objects/actor.js"></script>
+  <script defer src="/js/game/player.js"></script>
+  <script defer src="/js/main.js"></script>
 
   <!--<script src="http://chaijs.com/chai.js"></script>-->
   <!--<script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>-->
@@ -33,20 +36,24 @@
   <script src="lib/mocha.js"></script>
 
   <script>mocha.setup('bdd')</script>
-  <script src="./vector.spec.js"></script>
-  <script src="./rect.spec.js"></script>
-  <script src="./functions.spec.js"></script>
+
+  <script src="actor.spec.js"></script>
+  <script src="dinamic_block.spec.js"></script>
+  <script src="block.spec.js"></script>
+  <script src="rect.spec.js"></script>
+  <script src="gravity.spec.js"></script>
+  <script src="vector.spec.js"></script>
+  <script src="functions.spec.js"></script>
 
 
-  <script src="./actor.spec.js"></script>
-  <script src="./level.spec.js"></script>
-  <script src="./parser.spec.js"></script>
-  <script src="./fireball.spec.js"></script>
-  <script src="./horizontalfireball.spec.js"></script>
-  <script src="./verticalfireball.spec.js"></script>
-  <script src="./firerain.spec.js"></script>
-  <script src="./coin.spec.js"></script>
-  <script src="./player.spec.js"></script>
+  <script src="level.spec.js"></script>
+  <script src="parser.spec.js"></script>
+  <script src="fireball.spec.js"></script>
+  <script src="horizontalfireball.spec.js"></script>
+  <script src="verticalfireball.spec.js"></script>
+  <script src="firerain.spec.js"></script>
+  <script src="coin.spec.js"></script>
+  <script src="player.spec.js"></script>
   
   <script>
     const expect = chai.expect;

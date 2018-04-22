@@ -20,10 +20,10 @@ module.exports = function(options) {
       spriteData.css.pipe(gulp.dest(options.dstSass));
 
       //json
-      /*spriteData = gulp.src(options.src)
+      spriteData = gulp.src(options.src)
          .pipe($.spritesmith({
             imgName: 'sprite.png',
-            cssName: '_sprites.js',
+            cssName: '_sprites_config.js',
 
             cssTemplate: (data) => {
                var spritesObj = {};
@@ -32,16 +32,16 @@ module.exports = function(options) {
                   spritesObj[sprite.name] = {
                      x: sprite.x,
                      y: sprite.y,
-                     width: sprite.width,
-                     height: sprite.height,
+                     w: sprite.width,
+                     h: sprite.height,
                   };
                });
 
-               return `var SPRITES = ${JSON.stringify(spritesObj)}`;
+               return `var SPRITES = ${JSON.stringify(spritesObj, 0, 3)}`;
             }
          }));
 
-      spriteData.css.pipe(gulp.dest(options.dstJS));*/
+      spriteData.css.pipe(gulp.dest(options.dstJS));
 
       return spriteData;
       

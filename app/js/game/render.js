@@ -7,13 +7,16 @@
    var DEF = {
       scale: new Vector(32, 32), //масштаб игры по осям
       eachTik: () => {}, //будер выполнятся на каждом кадра (в tik())
-   }
+   } 
 
   /**
     * Управление отрисовкой игры
     * 
     * @constructor 
-    * @param {object} options - настройки (по умолчанию DEF)
+    * @param {object} options настройки (по умолчанию DEF)
+    * 
+    * При рендере указываются реальные координаты
+    * При работе с классом нужно следить за положением камеры (метод setCamera)
     * 
     * Для начала отрисовки необходимо вызвать метод start()
     */
@@ -75,13 +78,13 @@
        * Также функция не проверяет, будет ли объект виден на экране
        * Это нужно проверять самостоятельно с помщью метода isVisible()
        * 
-       * @param {array} objects - массив отрисовываемых объектов
+       * @param {array} objects массив отрисовываемых объектов
        * Каждый объект должен иметь вид: {x, y, w, h, img, fillStyle}
        * Если есть свойство img, то fillStyle не используется
        * 
        */
-      render(objects) {
-         var ctx = this.ctx;
+      render(objects = []) {
+        var ctx = this.ctx;
 
          //проверка количества отрисовываемых объектов
          //console.log(objects.length); 
@@ -89,12 +92,16 @@
          for (var i = objects.length - 1; i >= 0; i--) {
             var obj = this._getObjOnScreen(objects[i]);
             
+            this.ctx.save();
+
             if (objects[i].img) {
                ctx.drawImage(objects[i].img, obj.x, obj.y, obj.w, obj.h);
             } else {
                ctx.fillStyle = objects[i].fillStyle || 'rgba(0,0,0,0.3)';
                ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
             }
+
+            this.ctx.restore();
            
          }
       }
@@ -236,8 +243,8 @@
 
          this.canv = null;
          this.ctx = null;
-
-         this.camera = {};
+        
+         this.camera = new Vector(0, 0);
          this.metrics = {};
       
          this.status = {

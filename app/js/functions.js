@@ -9,7 +9,23 @@ function isIntersectLines(a1, a2, b1, b2) {
 		|| (b2 >= a1 === b2 <= a2) 
 		|| (a1 >= b1 === a1 <= b2) 
 		|| (a2 >= b1 === a2 <= b2);
-	}
+}
+
+(function (global) {
+	var keysPress = {};
+
+	global.addEventListener('keydown', (event) => {
+		keysPress[event.keyCode] = true;
+	});
+
+	global.addEventListener('keyup', (event) => {
+		keysPress[event.keyCode] = false;
+	});
+
+	global.keysPress = keysPress;
+
+}(window));
+
 
 /**
  * Cлияние свойств всех переданных объектов в первый

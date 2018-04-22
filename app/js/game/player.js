@@ -1,33 +1,81 @@
 ;(function(global){
-   "use strict"
+   'use strict'
+   
+   var DEF = {
+      personConfig: {},
+   }
+   
+   /**
+    * Player
+    *
+    * @constructor
+    * @param {object} options - настройки (по умолчанию DEF)
+   */
+   class Player {
+      constructor(options = {}) {
+         this._createParametrs(options);
+         this._init();
 
-   var created = false;
-
-   class Player extends Game.Actor {
-      constructor(config = {}, options = {}) {
-         if (created) {
-            throw new Error('Игрок уже созда');
-         }
-         config.w = 1;
-         config.h = 1;
-         super(config, options);
-         console.log('player')
          setInterval(() => {
-            //console.log(this.speed);
-            //console.log(this.coords.x ^ 0, this.coords.y ^ 0)
-         }, 500);
+            //console.log(this.person.coords)
+         }, 5000);
       }
 
-      _setFaceColor() {
-         this.fakeColor = 'rgba(0,0,255,0.5)';
+      _init() {
+         var config = this.options.personConfig;
+         
+         this.person = new Game.Actor({
+            animation: [{
+               duration: 0,
+               id: 37,
+               startX: 160,
+               startY: 64
+            }],
+            x: config.x / 32,
+            y: config.y / 32,
+            w: 1,
+            h: 1
+         }, {
+            tile: {w: 32, h: 32, src: "img/minecraft-sprite.png"}   
+         });
       }
+
+      move() {
+         if (keysPress[this.KEYS.left]) {
+            this.person.moveStatus.goToLeft = true;
+            this.person.goToLeft();
+         }
+
+         if (keysPress[this.KEYS.right]) {
+            this.person.moveStatus.goToRight = true;
+            this.person.goToRight();
+         }
+
+         if (keysPress[this.KEYS.top]) {
+            this.person.moveStatus.jump = true;
+            //this.person.jump()
+         }
+      }
+   
+
+      //Создает основные параметры испльзуемые конструктором
+      //options - передаются из конструктора при иницилизации
+      _createParametrs(options) {
+         this.options = extend(true, {}, DEF, options);
+         this.person = null;
+         
+         this.KEYS = {
+            top: 87,
+            right: 68,
+            bottom: 83,
+            left: 65,
+         };
+
+      }
+   
 
    }
    
-   Object.defineProperty(Player.prototype, 'type', {
-      value: 'player',
-   });
-
-   global.Game.Player = Player;   
+   global.Game.Player = Player;
    
 }(window));

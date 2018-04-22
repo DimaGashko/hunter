@@ -7,14 +7,15 @@
       levelsSrc: [
          "maps/test.json",
          "maps/test2.json",
+         "maps/test3.json",
       ],
 
       //Текущий уровень
-      curLevel: 1,
+      curLevel: 2,
    }
 
 
-   class LevelManager {
+   class MapManager {
       constructor(options = {}) {
          this._createParametrs(options);
       }
@@ -22,11 +23,10 @@
       //Получение карты текущего уровня
       getLevel() {
          return new Promise((resolve, reject) => {
-            this._loadMap().then((JSONLelevel) => {
-               var config = this.parser.parse(JSONLelevel);
-               resolve(config);
+            this._loadMap().then((JSONMap) => {
+               resolve( this.parser.parse(JSONMap) );
             }, () => {
-               reject("Не удалось загрузить уровень");
+               reject("Не удалось загрузить карту");
             });
          });
       }
@@ -41,17 +41,22 @@
                return;
             }*/
 
-            console.time('load');
+            //console.time('load');
+
             var xhr = new XMLHttpRequest();
             xhr.open('GET', src, true);
             xhr.send();
 
             xhr.onreadystatechange = () => {
                if (xhr.readyState != 4) return;
-               console.timeEnd('load');
-               if (xhr.status != 200) reject();
+
+               //console.timeEnd('load');
+
+               if (xhr.status != 200) {
+                  reject();
+               }
                else {
-                  localStorage[src] = xhr.responseText;
+                  //localStorage[src] = xhr.responseText;
                   resolve(xhr.responseText);
                }
             }
@@ -64,12 +69,12 @@
 
          this.levels = [];
 
-         this.parser = new Game.LevelParser();
+         this.parser = new Game.MapParser();
       }
 
 
    }  
    
-   global.Game.LevelManager = LevelManager;   
+   global.Game.MapManager = MapManager;   
    
 }(window));

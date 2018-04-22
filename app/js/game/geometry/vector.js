@@ -1,12 +1,23 @@
 ;(function(global){
    "use strict"
 
+   /**
+    * Класс для работы с векторами
+    * 
+    * @constructor
+    * 
+    * Аргументами конструктора являются координаты x, y вектора
+    * По умолчанию координаты равны 0:0
+    * 
+    * Все методы возвращают новый вектор
+    */
    class Vector {
       constructor(x = 0, y = 0) {
          this.x = x;
          this.y = y;
       }
-    
+      
+      //Cумма векторв
       plus(vector) {    
          return new Vector(
             this.x + vector.x,
@@ -14,6 +25,7 @@
          );
       }
 
+      //Разница векторов
       minus(vector) {    
          return new Vector(
             this.x - vector.x,
@@ -21,6 +33,7 @@
          );
       }
 
+      //Умножение на число
       mul(n) {
          return new Vector(
             this.x * n,
@@ -28,6 +41,7 @@
          );
       }
 
+      //Деление на число
       div(n) {
          return new Vector(
             this.x / n,
@@ -35,6 +49,7 @@
          );
       }
 
+      //Умножение на соответствующую координату
       scale(scale) {
          return new Vector(
             this.x * scale.x,
@@ -42,6 +57,7 @@
          );
       }
 
+      //Деление на соответствующую координату
       diScale(scale) {
          return new Vector(
             this.x / scale.x,
@@ -49,6 +65,7 @@
          );
       }
 
+      //Модуль к всем координатам
       scalarAbs() {
          return new Vector(
             Math.abs(this.x),
@@ -56,6 +73,7 @@
          ); 
       }
 
+      //Копирование
       copy() {
          return new Vector(
             this.x,
