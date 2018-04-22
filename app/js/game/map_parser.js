@@ -122,8 +122,14 @@
          //(Перевод происходит делением на tilewidth/tileheight)
          result.x = actor.x / config.tilewidth; 
          result.y = actor.y / config.tileheight;
-         result.w = actor.width / config.tilewidth;
-         result.h = actor.height / config.tileheight;
+         
+         if (actor.point) { 
+            result.w = 1;
+            result.h = 1;
+         } else {
+            result.w = actor.width / config.tilewidth;
+            result.h = actor.height / config.tileheight;
+         }
          
          result.name = actor.name;
          result.type = actor.type;

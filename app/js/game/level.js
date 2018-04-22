@@ -84,14 +84,14 @@
 
       _createPlayer() {
          var config = this.config.player;
-         var Constr = this.objectTypes[config.type] || Game.Actor;
+         
+         var Constr = this.objectTypes[config.name] || Game.Actor;
          var person = new Constr(config);
 
          this.player = new Game.Player(person, {});
       }
 
       _findVisibleBlocks(type) {
-         //console.log(this)
          var container = this.objects.blocks[type];
          var isVisible = this.options.isVisible;
 
@@ -155,9 +155,9 @@
          }
 
          this.objectTypes = {
-            Player: Game.Player,
+            Steve: Game.Steve,
+            Actor: Game.Actor,
             Coin: Game.Coin,
-
             Block: Game.Block,
          }
 

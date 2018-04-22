@@ -4,7 +4,7 @@
    /**
     * Класс для работы с прямоугольниками
     * 
-    * @constructor
+    * @class
     * 
     * Аргументами в конструктор передаются координаты и размеры прямоугольника
     * 
@@ -14,6 +14,8 @@
     */
    class Rect extends Events {
       constructor(x = 0, y = 0, w = 0, h = 0) {
+         super();
+
          this.coords = new Vector(x, y);
          this.size = new Vector(w, h);
       }

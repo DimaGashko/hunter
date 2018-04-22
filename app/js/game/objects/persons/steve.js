@@ -6,14 +6,15 @@
    }
 
    class Steve extends Game.Actor {
-      constructor(config = {}, options = {}) {
+      constructor(options = {}) {
          options = extend(true, {}, DEF, options);
          super(options);
+         console.log(this.options); 
       }
 
    }
    
-   Object.defineProperty(Player.prototype, 'type', {
+   Object.defineProperty(Steve.prototype, 'type', {
       value: 'Steve',
    });
 

@@ -672,16 +672,16 @@
          "name":"player",
          "objects":[
                 {
-                 "gid":553,
-                 "height":21,
-                 "id":10,
-                 "name":"",
+                 "height":0,
+                 "id":11,
+                 "name":"Steve",
+                 "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":22,
-                 "x":-4265,
-                 "y":-341
+                 "width":0,
+                 "x":-4193,
+                 "y":-269
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -689,7 +689,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":11,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.4",
