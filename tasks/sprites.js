@@ -23,7 +23,7 @@ module.exports = function(options) {
       spriteData = gulp.src(options.src)
          .pipe($.spritesmith({
             imgName: 'sprite.png',
-            cssName: '_sprites_config.js',
+            cssName: 'sprites_config.js',
 
             cssTemplate: (data) => {
                var spritesObj = {};
