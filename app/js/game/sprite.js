@@ -70,11 +70,7 @@
             this.options.onTilesetLoaded();
 
          }, () => {
-            return;
-            console.error(
-               'Не удалось загрузить tileset: "',
-               this.options.tileset, '"'
-            );
+            
          });
       }
 
@@ -201,7 +197,17 @@
             }
 
             tileset.onerror = () => {
-               loadedTilests[src] = null; //кешируем, что такого tileset-a нет
+               //Проверка обязательно должно произмодиться не через 
+               //Логическое преобразование(так как в проверяемом объекте 
+               //Могут содержатсья занчения null, которые тоже нужно учитывть)
+               if ( !(src in loadedTilests) ) { 
+                  console.error(
+                     'Не удалось загрузить tileset: "',
+                     this.options.tileset, '"'
+                  );
+
+                  loadedTilests[src] = null; //кешируем, что такого tileset-a нет
+               } 
                
                reject();
             }
