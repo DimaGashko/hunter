@@ -105,7 +105,7 @@
                   item.start();
                
                } else {
-                  //item.stop();
+                  item.stop();
                }
 
                

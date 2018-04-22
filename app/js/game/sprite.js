@@ -246,7 +246,7 @@
                this.ctx.scale(1, -1);
             }
          }
-
+         
          this.ctx.drawImage(
             this.tileset,
 
