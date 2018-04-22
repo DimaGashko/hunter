@@ -129,13 +129,15 @@
        * chunk передается только при обработке тайлов
        */
       _parseObjByTileIndex(config, item, chunk, index) { 
-         var tileParam = config.tilesets[0].tiles[item] || {};
+         var tileset = config.tilesets[0];
+         var tileParam = tileset.tiles[item] || {};
 
          var itemResolt = {
             w: 1,
             h: 1,
             type: tileParam.type || '',
-            props: config.tilesets[0].tileproperties[item] || {},
+            props: tileset.tileproperties[item] || {},
+            tileset: tileset.image.slice(3),
             animation: [],
          }
 

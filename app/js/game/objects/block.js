@@ -31,8 +31,6 @@
       }],
 
       tileset: '', //Адресс к tileset-у
-      tileW: 32,
-      tileH: 32,
    }
       
    /**
