@@ -117,12 +117,14 @@
          var result = (actor.gid) ?
             this._parseObjByTileIndex(config, actor.gid - 1) : {};
          
-         //Координаты в карте указаны в пикселях. 
+         //Координаты и размеры на карте указаны в пикселях. 
          //Поэтому их нужно перевести в реальные 
          //(Перевод происходит делением на tilewidth/tileheight)
          result.x = actor.x / config.tilewidth; 
          result.y = actor.y / config.tileheight;
-
+         result.w = actor.width / config.tilewidth;
+         result.h = actor.height / config.tileheight;
+         
          result.name = actor.name;
          result.type = actor.type;
          result.tileW = config.tilewidth;
