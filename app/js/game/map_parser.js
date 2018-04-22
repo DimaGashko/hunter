@@ -74,11 +74,11 @@
             };
 
             //Перебираем, не map-ом, так как многие элементы нужно отбрасывать
-            chunk.data.forEach((item) => { 
+            chunk.data.forEach((item, i) => { 
                if (item === 0) return;
 
                var obj = this._parseObjByTileIndex(config, item - 1, chunk, i);
-               chunkResult.push(obj);
+               chunkResult.data.push(obj);
             });
 
             return chunkResult;
@@ -124,9 +124,9 @@
             animation: [],
          }
 
-         if (!chunk) { 
-            item.chunkResult.x = chunk.x + (index % chunk.width);
-            item.chunkResult.y = chunk.y + Math.floor(index / chunk.width);
+         if (chunk) { 
+            itemResolt.x = chunk.x + (index % chunk.width);
+            itemResolt.y = chunk.y + Math.floor(index / chunk.width);
          }
 
          if (!tileParam.animation || tileParam.animation.length == 0) {
@@ -138,6 +138,8 @@
                return this._getCadrParam(config, cadr);
             });
          }
+
+         return itemResolt;
       }
 
       /**
