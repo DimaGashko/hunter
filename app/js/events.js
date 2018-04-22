@@ -40,9 +40,9 @@
          if (!this._handlers[type]) return;
 
          var args = Array.from(arguments).slice(1);
-
+         
          this._handlers[type].forEach((handler) => { 
-            handler.apply(args);
+            handler.apply(null, args);
          });
       }
    }
