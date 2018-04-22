@@ -39,12 +39,6 @@
             duration: 0,
          }],
       },
-
-      //Выполнится после загрузки tileset-a
-      //В параметры передается текущий екземпляр Sprite
-      onTilesetLoaded: (sprite) => {
-         
-      },
    }
 
    /**
@@ -56,9 +50,19 @@
     * - содание екземпляра
     * - вызов метода start(type), когда нужно начать анимацию нужного типа
     * - вызов метода stop(), когда нужно остановить анимацию
+    * 
+    * - - - - -
+    * Класс Sprite наследует от Events
+    * Поэтому у него есть методы события
+    * (addEvent, trigger...)
+    * 
+    * Поддерживаемые события:
+    * "tileset_load" - вызывается, после загрузки тайлсета
     */
-   class Sprite {
+   class Sprite extends Events {
       constructor(options = {}) {
+         super();
+         
          this._createParametrs(options);
          this._init();
       }
@@ -68,7 +72,7 @@
             this._createCanvas();
             this._setSize(); 
 
-            this.options.onTilesetLoaded(this);
+            this.trigger('tileset_load', this);
 
          }, () => {
             
