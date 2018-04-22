@@ -13,6 +13,7 @@
          this.config = config;
 
          this._init();
+         this.config = {};
       }
 
       _init() {

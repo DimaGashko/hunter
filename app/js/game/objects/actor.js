@@ -13,7 +13,6 @@
       constructor(options = {}) {
          options = extend(true, {}, DEF, options);
          super(options);
-         console.log(this.coords)
       }
 
       goToLeft() {

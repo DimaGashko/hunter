@@ -145,7 +145,10 @@
 
       //Останавливает анимацию
       stop() {
-         clearTimeout(this.timer);
+         if (this.timer) {
+            clearTimeout(this.timer);
+         }
+         
          this.curAnimateType = '';
          this.timer = 0;
       }
