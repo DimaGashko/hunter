@@ -39,11 +39,11 @@
          //Перебор слоев
          config.layers.forEach(layer => {
             if (layer.type === 'tilelayer') {
-               //Блоки (tiles)
+               //Слои блоков (tiles)
                this._parseBlocks(config, parsed, layer);
                
             } else if (layer.type === 'objectgroup') {
-               //Объекты (actors)
+               //Слои объектов (actors)
                this._parseObjects(config, parsed, layer);
            
             }
@@ -86,8 +86,9 @@
       }
 
       /**
-       * Парсит переданный объектов. 
+       * Парсит переданный слой объектов. 
        * Результат заносит в parsed.actors или в parsed.player
+       * (В зависимости от имени слоя)
        * 
        * @param {object} config разпарсенная карта
        * @param {object} parsed результат обработки
@@ -114,7 +115,7 @@
        */
       _parseActor(config, actor) { 
          var result = (actor.gid) ?
-            this._parseObjByTileIndex(config, actor.gid) : {}
+            this._parseObjByTileIndex(config, actor.gid) : {};
          
          result.x = actor.x;
          result.y = actor.y;
@@ -148,18 +149,24 @@
          }
 
          if (chunk) { 
+            //Координаты (определяются по положению в объекте сектора карты)
             itemResolt.x = chunk.x + (index % chunk.width);
             itemResolt.y = chunk.y + Math.floor(index / chunk.width);
          }
 
+         //Обработка паарметров канимации
          if (!tileParam.animation || tileParam.animation.length == 0) {
+            //Если анимации нет, то добавляем хотя бы один кадр, который 
+            //Будет состоять самого текущего тайла
             itemResolt.animation[0] = this._getCadrParam(config, {
                tileid: item,
             });
+
          } else {
             itemResolt.animation = tileParam.animation.map(cadr => {
                return this._getCadrParam(config, cadr);
             });
+            
          }
 
          return itemResolt;
