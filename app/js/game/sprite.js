@@ -31,14 +31,24 @@
 
             //Трансформации спрайта
             transforms: {
-               mirrorX: true, //Отзеркаливать ли по горизонтали
-               mirrorY: true, //Отзеркаливать ли по вертикали
+               mirrorX: false, //Отзеркаливать ли по горизонтали
+               mirrorY: false, //Отзеркаливать ли по вертикали
             },
             
             //Длительность показа данного кадра
             duration: 0,
          }],
       },
+
+      //Общие для всех кадров трансформации
+      //Можно менять из внешнего кода
+      //Например:
+      //var sprite = new Sprite({...})
+      //sprite.options.transform.mirrorX = true;
+      transforms: {
+         mirrorX: false, //Отзеркаливать ли по горизонтали
+         mirrorY: false, //Отзеркаливать ли по вертикали
+      }
    }
 
    /**
@@ -247,18 +257,9 @@
 
          this.ctx.save();
          
-         if (transforms) {
-            if (transforms.mirrorX) {
-               this.ctx.translate(this.options.size.x, 0);
-               this.ctx.scale(-1, 1);
-            }
-   
-            if (transforms.mirrorY) {
-               this.ctx.translate(0, this.options.size.y);
-               this.ctx.scale(1, -1);
-            }
-         }
-         
+         this._setTransform(transforms);
+         this._setTransform(this.options.transforms);
+
          this.ctx.drawImage(
             this.tileset,
 
@@ -291,6 +292,25 @@
             this.prevDrawCofig.metrics === metrics &&
             this.prevDrawCofig.transforms === transforms
          );   
+      }
+
+      /**
+       * Устанавливает трансформации для кадра
+       * 
+       * @param {object} transforms трансформации кадра
+       */
+      _setTransform(transforms) { 
+         if (transforms) {
+            if (transforms.mirrorX) {
+               this.ctx.translate(this.options.size.x, 0);
+               this.ctx.scale(-1, 1);
+            }
+   
+            if (transforms.mirrorY) {
+               this.ctx.translate(0, this.options.size.y);
+               this.ctx.scale(1, -1);
+            }
+         }
       }
 
       //Очищает канвас спрайта

@@ -610,14 +610,14 @@
                  "x":-240,
                  "y":-16
                 }],
-         "height":48,
+         "height":32,
          "name":"decorates",
          "opacity":1,
-         "startx":-416,
+         "startx":-336,
          "starty":-32,
          "type":"tilelayer",
          "visible":true,
-         "width":208,
+         "width":112,
          "x":0,
          "y":0
         }, 
@@ -689,7 +689,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.4",

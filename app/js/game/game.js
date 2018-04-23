@@ -57,6 +57,8 @@
          var actors = this.level.objects.actors.concat(this.level.player.person);
          var blocks = this.level.objects.blocks.static;
 
+         this._moveCamera();
+
          this.gravity.use(actors);
 
          this.level.player.move();
@@ -67,9 +69,7 @@
 
          actors.forEach((actor) => {
             actor._clearMoveStatus();
-         });
-
-         this._moveCamera();  
+         }); 
 
          this.level.findVisible();
          this._rerender();

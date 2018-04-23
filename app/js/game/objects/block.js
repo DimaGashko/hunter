@@ -138,15 +138,6 @@
          if (obj instanceof Game.Actor) {
             if (side === 'top') {
                obj.jump();
-               obj.goToLeft();
-               obj.goToRight();
-
-            } else if (side === 'left') {
-               obj.goToRight();
-
-            } else if (side === 'right') {
-               obj.goToLeft();
-
             }
 
             if (side === 'top' || side === 'bottom') {

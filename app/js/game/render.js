@@ -5,7 +5,7 @@
       //(зашита от несколькоих stop/start за время одного кадра)
 
    var DEF = {
-      scale: new Vector(32, 32), //масштаб игры по осям
+      scale: new Vector(16, 16), //масштаб игры по осям
       eachTik: () => {}, //будер выполнятся на каждом кадра (в tik())
    } 
 
@@ -95,10 +95,10 @@
             this.ctx.save();
 
             if (objects[i].img) {
-               ctx.drawImage(objects[i].img, obj.x, obj.y, obj.w, obj.h);
+               ctx.drawImage(objects[i].img, obj.x^0, obj.y^0, obj.w^0, obj.h^0);
             } else {
                ctx.fillStyle = objects[i].fillStyle || 'rgba(0,0,0,0.3)';
-               ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+               ctx.fillRect(obj.x^0, obj.y^0, obj.w^0, obj.h^0);
             }
 
             this.ctx.restore();

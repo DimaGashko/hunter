@@ -32,6 +32,23 @@
          super(options);
       }
 
+      goToLeft() {
+         super.goToLeft.apply(this, arguments);
+
+         this._state = 'steve_go';
+         this.sprite.start('steve_go');
+         
+         this.sprite.options.transforms.mirrorX = true;
+      }
+
+      goToRight() {
+         super.goToRight.apply(this, arguments);
+         
+         this._state = 'steve_go';
+         this.sprite.start('steve_go');
+         this.sprite.options.transforms.mirrorX = false;
+      }
+
       start() { 
          this.sprite.start(this._state);
       }
@@ -43,22 +60,21 @@
             tileset: o.tileset,
             size: this.tileSize,
             cadrs: {
-               'base': [{
-                  metrics: SPRITES['steve_stand'],
-                  duration: 0,
-               }],
-
                'steve_stand': [{
                   metrics: SPRITES['steve_stand'],
-                  duration: 0,
                }],
 
                'steve_go': [{
                   metrics: SPRITES['steve_go'],
-                  duration: 250,
+                  duration: 300,
                }, {
                   metrics: SPRITES['steve_stand'],
-                  duration: 250,
+                  duration: 300,
+               }],
+               
+               'base': [{
+                  metrics: SPRITES['steve_stand'],
+                  duration: 0,
                }],
             },
          });
@@ -74,7 +90,6 @@
 
       _initEvents() { 
          this.sprite.addEvent('before_chande_cadr', (config) => {
-            //var bottom = this.bottom;
             var center = this.getCenter();
 
             this.size = new Vector(
@@ -88,7 +103,6 @@
             ));
 
             this.setCenter(center);
-           // this.bottom = bottom;
          });
       }
 
@@ -117,7 +131,7 @@
             this.options.tileH,
          );
 
-         this._state = 'steve_stand'; //cостояние персонажа (стоит, идет...)
+         this._state = 'steve_jump'; //cостояние персонажа (стоит, идет...)
       }
 
    }
