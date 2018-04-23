@@ -30,30 +30,23 @@
       }
 
       move() {
-         var stand = true;
+         this.person.beforeMove();
+
 
          if (keysPress[this.KEYS.left]) {
-            this.person.moveStatus.goToLeft = true;
             this.person.goToLeft();
-            
-            stand = false;
          }
 
          if (keysPress[this.KEYS.right]) {
-            this.person.moveStatus.goToRight = true;
             this.person.goToRight();
-
-            stand = false;
          }
 
          if (keysPress[this.KEYS.top]) {
             this.person.moveStatus.jump = true;
-            //this.person.jump()
+            this.person.moveParametrs.jump = true;
          }
 
-         if (stand) { 
-            this.person._setState('stand');
-         }
+         this.person.afterMove();
       }
    
 

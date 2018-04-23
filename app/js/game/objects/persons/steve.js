@@ -35,21 +35,62 @@
       goToLeft() {
          super.goToLeft.apply(this, arguments);
 
-         this._setState('go');
-         
-         this.sprite.options.mirrorX = true;
+         this.moveParametrs.go = true;
+         this.moveParametrs.left = true;
       }
 
       goToRight() {
          super.goToRight.apply(this, arguments);
          
-         this._setState('go');
+         this.moveParametrs.go = true;
+         this.moveParametrs.left = false;
+      }
 
-         this.sprite.options.mirrorX = false;
+      jump() {
+         this.moveParametrs.jump = true;
+
+         if (!this.moveStatus.jump) return;
+
+         super.jump.apply(this, arguments);
       }
 
       start() { 
          this.sprite.start(this._state);
+      }
+
+      //Внешний код вызывает перед перемещением
+      beforeMove() { 
+         this.moveParametrs = {
+            left: this.prevMoveParametrs.left,
+            go: false,
+            jump: false,
+         }
+      }
+
+      //Врешний код вызывает после перемещения
+      afterMove() { 
+         var param = this.moveParametrs;
+         var prev = this.prevMoveParametrs;
+         console.log(param.left === prev.left);
+         if (this._isSameMoveParametrs(param,  prev)) { 
+            return;
+         }
+         this.prevMoveParametrs = param;
+
+         var type = 'stand';
+         
+         this.sprite.options.mirrorX = param.left;
+         console.log('---');
+         
+         this._setState(type, param.left !== prev.left);
+      }
+
+      _isSameMoveParametrs(param1, param2) { 
+         return (
+            param1.left === param2.left &&
+            param1.go === param2.go &&
+            param1.jump === param2.jump
+         );
       }
 
       /**
@@ -57,7 +98,7 @@
        * 
        * @param {string} state 
        */
-      _setState(state) { 
+      _setState(state) {
          this._state = state;
          this.sprite.start(state);
       }
@@ -132,13 +173,18 @@
 
             'go': [{
                metrics: SPRITES['steve_go'],
-               duration: 200,
+               duration: 250,
             }, {
                metrics: SPRITES['steve_stand'],
-               duration: 200,
+               duration: 250,
             }],
          }
 
+         this.prevMoveParametrs = {
+            left: false,
+            go: false,
+            jump: false,
+         }
       }
 
    }

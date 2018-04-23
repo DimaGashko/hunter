@@ -104,10 +104,14 @@
          }
 
          //Таже анимация
-         if (type === this.curAnimateType) {
-           return;
+         if (!requiredStart && type === this.curAnimateType) {            
+            return; //убирает возможность многократного вызова аниации 
+            //одного вида, из-за чего может зациклится первый кадр
+         
+            //что бы запустить анимацию, не смотря на тот же тип, 
+            //необходимо вторым параметром передать true
          }
-
+         //console.log('!same');
          this.curAnimateType = type;
 
          //Если какая-то анимация уже запущена
@@ -312,7 +316,7 @@
        */
       _isSameDrawConfig(config1, config2) { 
          if (!config1 || !config2) return;
-         console.log('asdf')
+         
          return (
             config1.x === config2.x &&
             config1.y === config2.y &&
