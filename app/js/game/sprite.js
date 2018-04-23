@@ -115,7 +115,7 @@
 
          //Таже анимация
          if (!requiredStart && type === this.curAnimateType) {
-            return;
+           // return;
          }
 
          this.curAnimateType = type;
