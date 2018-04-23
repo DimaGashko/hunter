@@ -89,10 +89,10 @@
                config.metrics.h,
             ).diScale(this.tileSize);
 
-            this.sprite.changeSize(new Vector(
+            /*this.sprite.changeSize(new Vector(
                config.metrics.w,
                config.metrics.h,
-            ));
+            ));*/
 
             this.setCenter(center);
          });
@@ -132,10 +132,10 @@
 
             'go': [{
                metrics: SPRITES['steve_go'],
-               duration: 300,
+               duration: 200,
             }, {
                metrics: SPRITES['steve_stand'],
-               duration: 300,
+               duration: 200,
             }],
          }
 
