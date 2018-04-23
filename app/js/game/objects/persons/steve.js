@@ -35,8 +35,7 @@
       goToLeft() {
          super.goToLeft.apply(this, arguments);
 
-         this._state = 'steve_go';
-         this.sprite.start('steve_go');
+         this._setState('go');
          
          this.sprite.options.transforms.mirrorX = true;
       }
@@ -44,13 +43,23 @@
       goToRight() {
          super.goToRight.apply(this, arguments);
          
-         this._state = 'steve_go';
-         this.sprite.start('steve_go');
+         this._setState('go');
+
          this.sprite.options.transforms.mirrorX = false;
       }
 
       start() { 
          this.sprite.start(this._state);
+      }
+
+      /**
+       * Устанавливает состояние персонажа
+       * 
+       * @param {string} state 
+       */
+      _setState(state) { 
+         this._state = state;
+         this.sprite.start(state);
       }
 
       _initSprite() { 
@@ -59,24 +68,7 @@
          this.sprite = new Game.Sprite({
             tileset: o.tileset,
             size: this.tileSize,
-            cadrs: {
-               'steve_stand': [{
-                  metrics: SPRITES['steve_stand'],
-               }],
-
-               'steve_go': [{
-                  metrics: SPRITES['steve_go'],
-                  duration: 300,
-               }, {
-                  metrics: SPRITES['steve_stand'],
-                  duration: 300,
-               }],
-               
-               'base': [{
-                  metrics: SPRITES['steve_stand'],
-                  duration: 0,
-               }],
-            },
+            cadrs: this._cadrsConfig,
          });
       }
 
@@ -116,8 +108,8 @@
        */
       _setSize() { 
          this.spriteSize = new Vector(
-            SPRITES[this._state].w,
-            SPRITES[this._state].h,
+            this._cadrsConfig[this._state].w,
+            this._cadrsConfig[this._state].h,
          );
 
          this.size = this.spriteSize.diScale(this.tileSize);
@@ -131,7 +123,22 @@
             this.options.tileH,
          );
 
-         this._state = 'steve_jump'; //cостояние персонажа (стоит, идет...)
+         this._state = 'stand'; //cостояние персонажа (стоит, идет...)
+      
+         this._cadrsConfig = {
+            'stand': [{
+               metrics: SPRITES['steve_stand'],
+            }],
+
+            'go': [{
+               metrics: SPRITES['steve_go'],
+               duration: 300,
+            }, {
+               metrics: SPRITES['steve_stand'],
+               duration: 300,
+            }],
+         }
+
       }
 
    }

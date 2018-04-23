@@ -16,23 +16,15 @@
       }
 
       goToLeft() {
-         if (this.moveStatus.goToLeft) {
-            this.moveStatus.goToLeft = false;
-            
-            if (this.ownSpeed.x > -this.speed.x) {
-               this.speed.x -= this.ownSpeed.x;
-            }
+         if (this.ownSpeed.x > -this.speed.x) {
+            this.speed.x -= this.ownSpeed.x;
          }
       }
 
       goToRight() {
-         if (this.moveStatus.goToRight) {
-            this.moveStatus.goToRight = false;
             if (this.ownSpeed.x > this.speed.x) {
                this.speed.x += this.ownSpeed.x;
-            }   
-         
-         } 
+            } 
       }
 
       jump() {

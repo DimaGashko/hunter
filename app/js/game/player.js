@@ -30,19 +30,29 @@
       }
 
       move() {
+         var stand = true;
+
          if (keysPress[this.KEYS.left]) {
             this.person.moveStatus.goToLeft = true;
             this.person.goToLeft();
+            
+            stand = false;
          }
 
          if (keysPress[this.KEYS.right]) {
             this.person.moveStatus.goToRight = true;
             this.person.goToRight();
+
+            stand = false;
          }
 
          if (keysPress[this.KEYS.top]) {
             this.person.moveStatus.jump = true;
             //this.person.jump()
+         }
+
+         if (stand) { 
+            this.person._setState('stand');
          }
       }
    

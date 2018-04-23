@@ -94,12 +94,14 @@
        * Начинает анимацию спрайта переданного типа
        * 
        * @param {string} type типа анимации
+       * @param {bool} requiredStart запустить в любом случае
+       * 
        * Праметры типа - options.cadrs[type]
        * Параметры должны содержать параметры хотя бы одного кадра
        * 
        * Пока не загружен tileste ничего не делает.
        */
-      start(type) {
+      start(type, requiredStart) {
          if (this.tileset === null) return;
          
          if (!type) {
@@ -112,7 +114,7 @@
          }
 
          //Таже анимация
-         if (type === this.curAnimateType) {
+         if (!requiredStart && type === this.curAnimateType) {
             return;
          }
 
@@ -131,32 +133,34 @@
          }
 
          if (config.length === 1) {
-            this.trigger('before_chande_cadr', config[0]);
-
-            this._draw(
-               config[0].metrics,
-               config[0].transforms
-            );
-            
+            this._drawNext(config[0]);
             return;
          }
 
          var self = this;
          var cadrIndex = 0;
 
-         this.timer = setTimeout(function drawNext() { 
-            self.trigger('before_chande_cadr', config[cadrIndex]);
-
-            self._draw(
-               config[cadrIndex].metrics,
-               config[cadrIndex].transforms
-            );
+         this._drawNext(config[cadrIndex]);
+         this.timer = setTimeout(function timerFunc() {
+            self._drawNext(config[cadrIndex]);
 
             cadrIndex = (cadrIndex  + 1) % config.length;
-
-            self.timer = setTimeout(drawNext, config[cadrIndex].duration);
+            self.timer = setTimeout(timerFunc, config[cadrIndex].duration);
          }, config[cadrIndex].duration);
+
       }
+
+      /**
+       * Отрисовывает кадр, с переданными параметрами
+       * Выполняя все необходыми дополнительные действия
+       * (непосредственно рисует, и вызвает события)
+       * 
+       * @param {object} config 
+       */
+      _drawNext(config) { 
+         this.trigger('before_chande_cadr', config);
+         this._draw(config.metrics, config.transforms);
+      };
 
       //Останавливает анимацию
       stop() {
