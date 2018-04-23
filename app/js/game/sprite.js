@@ -29,26 +29,16 @@
                h: 32,
             },
 
-            //Трансформации спрайта
-            transforms: {
-               mirrorX: false, //Отзеркаливать ли по горизонтали
-               mirrorY: false, //Отзеркаливать ли по вертикали
-            },
-            
+            mirrorX: false, //Отзеркаливать по горизонтали (кадр)
+            mirrorY: false, //Отзеркаливать по вертикали (кадр)
+
             //Длительность показа данного кадра
             duration: 0,
          }],
       },
 
-      //Общие для всех кадров трансформации
-      //Можно менять из внешнего кода
-      //Например:
-      //var sprite = new Sprite({...})
-      //sprite.options.transform.mirrorX = true;
-      transforms: {
-         mirrorX: false, //Отзеркаливать ли по горизонтали
-         mirrorY: false, //Отзеркаливать ли по вертикали
-      }
+      mirrorX: false, //Отзеркаливать по горизонтали (все кадры)
+      mirrorY: false, //Отзеркаливать по вертикали (все кадры)
    }
 
    /**
@@ -114,8 +104,8 @@
          }
 
          //Таже анимация
-         if (!requiredStart && type === this.curAnimateType) {
-           // return;
+         if (type === this.curAnimateType) {
+           return;
          }
 
          this.curAnimateType = type;
@@ -252,25 +242,27 @@
        * Очищает холст перед рисованием очищает
        */
       _draw(metrics, transforms) {
-         //Проверки
-         if (this._isSameCadr(metrics, transforms)) {
+         var config = this._getDrawConfig(metrics, transforms);
+         
+         if (this._isSameDrawConfig(config, this._prevDrawCofig)) {
             return;
          }
+         
+         this._prevDrawCofig = config;
 
          this._clear();
 
          this.ctx.save();
          
-         this._setTransform(transforms);
-         this._setTransform(this.options.transforms);
+         this._setMirror(config);
 
          this.ctx.drawImage(
             this.tileset,
 
-            metrics.x,
-            metrics.y,
-            metrics.w,
-            metrics.h,
+            config.x,
+            config.y,
+            config.w,
+            config.h,
 
             0,
             0,
@@ -279,42 +271,73 @@
          );
 
          this.ctx.restore();
-
-         this.prevDrawCofig.metrics = metrics;
-         this.prevDrawCofig.transforms = transforms;
       }
 
       /**
-       * Возвращает true, если переданны парамеры кадра 
-       * Точно такие же как и у предыдущего
+       * Возвращает параметры кадра
        * 
-       * @param {object} metrics метрики кадра 
+       * @param {object} metrics метрики кадра
        * @param {object} transforms трансформации кадра
        */
-      _isSameCadr(metrics, transforms) {
+      _getDrawConfig(metrics, transforms = {}) { 
+         return {
+            x: metrics.x,
+            y: metrics.y,
+            w: metrics.w,
+            h: metrics.h,
+            mirrorX: transforms.mirrorX ^ this.options.mirrorX,
+            mirrorY: transforms.mirrorY ^ this.options.mirrorY,
+         }
+      
+         /*
+            Смысл использования XOR в даной фукцнии:
+
+            Отзеркаливание в спрайтах можно применять непоследственно для 
+            кадра, а также для всех кадров. При этом отзеркаливания 
+            не переназначаются а налаживаются.
+            Если кадр не отзеркален, при при глобальном отзеркаливании
+            он будет отзеркален, а если отзеркален, то он будет отзеркален 
+            дважды - то есть он не будт отзеркален.
+            Проанализировав можно сделать вывод, что это и есть XOR
+
+            Если разные - то отзеркаливаем. Если одинаковые - то нет
+         */
+      }
+
+      /**
+       * Возвращает одинаковые ли переданные drawConfig-и
+       * 
+       * @param {object} config1 первый drawConfig
+       * @param {object} config2 второй drawConfig
+       */
+      _isSameDrawConfig(config1, config2) { 
+         if (!config1 || !config2) return;
+         console.log('asdf')
          return (
-            this.prevDrawCofig.metrics === metrics &&
-            this.prevDrawCofig.transforms === transforms
-         );   
+            config1.x === config2.x &&
+            config1.y === config2.y &&
+            config1.w === config2.w &&
+            config1.h === config2.h &&
+            config1.mirrorX === config2.mirrorX &&
+            config1.mirrorY === config2.mirrorY
+         );
       }
 
       /**
-       * Устанавливает трансформации для кадра
+       * Устанавливает отзеркаливание кадра
        * 
-       * @param {object} transforms трансформации кадра
+       * @param {object} config drawConfig кадра
        */
-      _setTransform(transforms) { 
-         if (transforms) {
-            if (transforms.mirrorX) {
+      _setMirror(config) { 
+            if (config.mirrorX) {
                this.ctx.translate(this.options.size.x, 0);
                this.ctx.scale(-1, 1);
             }
    
-            if (transforms.mirrorY) {
+            if (config.mirrorY) {
                this.ctx.translate(0, this.options.size.y);
                this.ctx.scale(1, -1);
             }
-         }
       }
 
       //Очищает канвас спрайта
@@ -351,13 +374,13 @@
 
          this.curAnimateType = ''; //Текущий тип анимации
 
-
          //Параметры последнего отрисованного кадра
          //Используется, что бы не отрисовывать подряд одинковые кадры
          this.prevDrawCofig = {
             metrics: {},
             transforms: {},
          }
+
       }
    }
     

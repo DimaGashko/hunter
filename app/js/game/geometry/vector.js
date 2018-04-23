@@ -80,6 +80,16 @@
             this.y
          );
       }
+
+      /**
+       * Проверяет, одинаковые ли параметры у ветора с переданным
+       * 
+       * @param {vector} vector сравниваемый вектор
+       */
+      isSame(vector) { 
+         return this.x === vector.x
+            && this.y === vector.y;
+      }
       
    }  
    

@@ -37,7 +37,7 @@
 
          this._setState('go');
          
-         this.sprite.options.transforms.mirrorX = true;
+         this.sprite.options.mirrorX = true;
       }
 
       goToRight() {
@@ -45,7 +45,7 @@
          
          this._setState('go');
 
-         this.sprite.options.transforms.mirrorX = false;
+         this.sprite.options.mirrorX = false;
       }
 
       start() { 
@@ -75,7 +75,7 @@
       _init() {
          this._setSize();
 
-         super._init.apply(this, arguments);
+         super._init.apply(this, arguments); 
          
          this._initEvents();
       }
