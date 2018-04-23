@@ -104,16 +104,13 @@
          }
 
          //Таже анимация
-         if (!requiredStart && type === this.curAnimateType) {            
+         if (type === this.curAnimateType) {            
             return; //убирает возможность многократного вызова аниации 
             //одного вида, из-за чего может зациклится первый кадр
-         
-            //что бы запустить анимацию, не смотря на тот же тип, 
-            //необходимо вторым параметром передать true
          }
-         //console.log('!same');
+         
          this.curAnimateType = type;
-
+         
          //Если какая-то анимация уже запущена
          if (this.timer != 0) {
             this.stop();
@@ -133,12 +130,12 @@
 
          var self = this;
          var cadrIndex = 0;
-
+         
          this._drawNext(config[cadrIndex]);
-         this.timer = setTimeout(function timerFunc() {
+         this.timer = setTimeout(function timerFunc() {           
+            cadrIndex = (cadrIndex + 1) % config.length;
             self._drawNext(config[cadrIndex]);
-
-            cadrIndex = (cadrIndex  + 1) % config.length;
+               
             self.timer = setTimeout(timerFunc, config[cadrIndex].duration);
          }, config[cadrIndex].duration);
 
@@ -297,9 +294,10 @@
             Смысл использования XOR в даной фукцнии:
 
             Отзеркаливание в спрайтах можно применять непоследственно для 
-            кадра, а также для всех кадров. При этом отзеркаливания 
-            не переназначаются а налаживаются.
-            Если кадр не отзеркален, при при глобальном отзеркаливании
+            кадра, а также для всех кадров.
+            При этом отзеркаливания налаживаются.
+
+            Если кадр не отзеркален, при глобальном отзеркаливании
             он будет отзеркален, а если отзеркален, то он будет отзеркален 
             дважды - то есть он не будт отзеркален.
             Проанализировав можно сделать вывод, что это и есть XOR

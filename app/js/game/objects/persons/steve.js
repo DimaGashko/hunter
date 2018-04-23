@@ -35,15 +35,15 @@
       goToLeft() {
          super.goToLeft.apply(this, arguments);
 
+         this.mirrorX = true;
          this.moveParametrs.go = true;
-         this.moveParametrs.left = true;
       }
 
       goToRight() {
          super.goToRight.apply(this, arguments);
          
+         this.mirrorX = false;
          this.moveParametrs.go = true;
-         this.moveParametrs.left = false;
       }
 
       jump() {
@@ -61,7 +61,6 @@
       //Внешний код вызывает перед перемещением
       beforeMove() { 
          this.moveParametrs = {
-            left: this.prevMoveParametrs.left,
             go: false,
             jump: false,
          }
@@ -69,28 +68,14 @@
 
       //Врешний код вызывает после перемещения
       afterMove() { 
-         var param = this.moveParametrs;
-         var prev = this.prevMoveParametrs;
-         console.log(param.left === prev.left);
-         if (this._isSameMoveParametrs(param,  prev)) { 
-            return;
-         }
-         this.prevMoveParametrs = param;
+         var req = this.mirrorX !== this.sprite.options.mirrorX;
 
          var type = 'stand';
-         
-         this.sprite.options.mirrorX = param.left;
-         console.log('---');
-         
-         this._setState(type, param.left !== prev.left);
-      }
 
-      _isSameMoveParametrs(param1, param2) { 
-         return (
-            param1.left === param2.left &&
-            param1.go === param2.go &&
-            param1.jump === param2.jump
-         );
+         if (this.moveParametrs.go) type = 'go';
+
+         this.sprite.options.mirrorX = this.mirrorX;
+         this._setState(type);
       }
 
       /**
@@ -165,6 +150,7 @@
          );
 
          this._state = 'stand'; //cостояние персонажа (стоит, идет...)
+         this.mirrorX = false;
       
          this._cadrsConfig = {
             'stand': [{
@@ -180,11 +166,6 @@
             }],
          }
 
-         this.prevMoveParametrs = {
-            left: false,
-            go: false,
-            jump: false,
-         }
       }
 
    }
