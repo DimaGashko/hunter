@@ -29,8 +29,8 @@
 
       _init() {
          this.render = new Game.Render({
-            eachTik: () => {
-               this._tik();
+            eachTik: (dilation) => {
+               this._tik(dilation);
             }
          });
 
@@ -53,7 +53,7 @@
          });
       }
 
-      _tik() {
+      _tik(dilation) {
          var actors = this.level.objects.actors.concat(this.level.player.person);
          var blocks = this.level.objects.blocks.static;
 
@@ -63,14 +63,13 @@
 
          this.level.player.move();
          actors.forEach((actor) => {
-            actor.updateCoords();
+            actor.updateCoords(dilation);
          });
          this.collisions.findAndfix(actors, blocks);
 
          actors.forEach((actor) => {
             actor._clearMoveStatus();
          }); 
-         this._moveCamera();
 
          this.level.findVisible();
          this._rerender();

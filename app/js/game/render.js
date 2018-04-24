@@ -5,7 +5,7 @@
       //(зашита от несколькоих stop/start за время одного кадра)
 
    var DEF = {
-      scale: new Vector(16, 16), //масштаб игры по осям
+      scale: new Vector(32, 32), //масштаб игры по осям
       eachTik: () => {}, //будер выполнятся на каждом кадра (в tik())
    } 
 
@@ -111,7 +111,7 @@
          if (!this.status.start) return;
 
          this.clear();
-         this.options.eachTik();
+         this.options.eachTik(dilation);
       }
 
       /**

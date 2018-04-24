@@ -20,7 +20,7 @@
        * Обновляет координаты блока
        * (прибавляет текущую скорость)
        */
-      updateCoords() {
+      updateCoords(dilation) {
          this.prevCoords = this.coords;
          this.coords = this.coords.plus(this.speed);
       }

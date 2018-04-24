@@ -68,25 +68,19 @@
 
       m.smart = function(camera, player, gameSize) {
          var offset = gameSize.scale(camera.options.offsetScale).scalarAbs();
-         
          var center = player.getCenter();
             
-         //Horizontal;
-         if (center.x > camera.coords.x + offset.x) {
-            camera.coords.x = center.x - offset.x;
+         setCamaraByAxis(camera, center, offset, 'x');
+         setCamaraByAxis(camera, center, offset, 'y');
+      }
 
-         } else if (camera.coords.x > center.x + offset.x) {
-            camera.coords.x = center.x + offset.x;
+      function setCamaraByAxis(camera, playerCenter, offset, axis) {
+         if (playerCenter[axis] > camera.coords[axis] + offset[axis]) {
+            camera.coords[axis] = playerCenter[axis] - offset[axis];
+
+         } else if (camera.coords[axis] > playerCenter[axis] + offset[axis]) {
+            camera.coords[axis] = playerCenter[axis] + offset[axis];
          }
-
-         //Vectical
-         if (center.y > camera.coords.y + offset.y) {
-            camera.coords.y = center.y - offset.y;
-
-         } else if (camera.coords.y > center.y + offset.y) {
-            camera.coords.y = center + offset.y;
-         }
-
       }
 
    }());  
