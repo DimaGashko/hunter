@@ -21,6 +21,29 @@
          this.findVisible()
       }
 
+      /**
+       * Возвращает все реальные (те которые учавствуют в коллизиях) объекты
+       * (возвращаются только объекты, отобранные методом findVisible())
+       */
+      getRealObjects() { 
+         return this.getDinamicObjects()
+            .concat(this.objects.blocks.static);
+      }
+
+      /**
+       * Возвращает все динамические (те на которые действует сила тяжести) 
+       * объекты (возвращаются только объекты, отобранные методом findVisible())
+       */
+      getDinamicObjects() { 
+         var objects =  this.objects.actors.concat(
+            this.objects.blocks.dinamic || []
+         );
+
+         objects.push(this.player.person);
+         
+         return objects;
+      }
+
       findVisible() {
          this._findVisibleBlocks('static');
          this._findVisibleBlocks('dinamic');
@@ -47,14 +70,14 @@
 
       _createAllObjects() {
          this._createBlocks('static');
-         this._createBlocks('dinamic');
+         this._createBlocks('dinamic', Game.DinamicBlock);
          this._createBlocks('decorates');
 
          this._createActors();
          this._createPlayer();
       }
 
-      _createBlocks(type) {
+      _createBlocks(type, defConstr) {
          var container = this.allObjects.blocks[type];
 
          this.config.blocks[type].forEach(chunk => {
@@ -64,8 +87,9 @@
                w: chunk.w,
                h: chunk.h,
                data: chunk.data.map(item => {
-                  var Constr = this.objectTypes[item.type] || Game.Block;
-                  //console.log(item)
+                  var Constr = this.objectTypes[item.type]
+                     || defConstr || Game.Block;
+                  
                   return new Constr(item);
                }),
             }

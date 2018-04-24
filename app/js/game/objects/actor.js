@@ -60,7 +60,7 @@
          this.speed = speed;
       }*/
 
-      _clearMoveStatus() {
+      clearMoveStatus() {
          this.moveStatus.goToLeft = false;
          this.moveStatus.goToRight = false;
          this.moveStatus.jump = false;

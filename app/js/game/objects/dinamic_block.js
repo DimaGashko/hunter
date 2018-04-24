@@ -25,6 +25,11 @@
          this.coords = this.coords.plus(this.speed);
       }
 
+      //Для DinamicBlock ничего не делает
+      clearMoveStatus() { 
+
+      }
+
       _createParametrs(options) {
          super._createParametrs(options);
          

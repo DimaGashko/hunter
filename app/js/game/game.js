@@ -54,24 +54,26 @@
       }
 
       _tik(dilation) {
-         var actors = this.level.objects.actors.concat(this.level.player.person);
-         var blocks = this.level.objects.blocks.static;
-
-         this._moveCamera();
-
-         this.gravity.use(actors);
+         this.level.findVisible();
+         
+         var realObjects = this.level.getRealObjects();
+         var dinamicObjects = this.level.getDinamicObjects();
 
          this.level.player.move();
-         actors.forEach((actor) => {
-            actor.updateCoords(dilation);
-         });
-         this.collisions.findAndfix(actors, blocks);
 
-         actors.forEach((actor) => {
-            actor._clearMoveStatus();
+         this.gravity.use(dinamicObjects);
+
+         dinamicObjects.forEach((obj) => {
+            obj.updateCoords(dilation);
+         });
+
+         //this.collisions.findAndfix();
+
+         dinamicObjects.forEach((obj) => {
+            obj.clearMoveStatus();
          }); 
 
-         this.level.findVisible();
+         this._moveCamera();
          this._rerender();
       }
 
