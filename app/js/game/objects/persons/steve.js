@@ -111,30 +111,36 @@
 
       _initEvents() { 
          this.sprite.addEvent('before_chande_cadr', (config, disallow) => {
-            var prevCenter = this.getCenter();
+            var center = this.getCenter();
+
             var prevCoords = this.coords;
             var prevSize = this.size;
 
-            this.size = new Vector(
+            var newSize = new Vector(
                config.metrics.w,
                config.metrics.h,
             ).diScale(this.tileSize);
 
+            //Немного уменьшаем, что бы не считать касания
+            this.size = newSize.mul(0.999);
+            this.setCenter(center);
+
             if (this.collisions.objectAt(this)) { 
-               console.log('asdf')
                disallow();
 
                this.size = prevSize;
                this.coords = prevCoords;
+               this.setCenter(center);
                return;
             }
+
+            this.size = newSize;
+            this.setCenter(center);
 
             /*this.sprite.changeSize(new Vector(
                config.metrics.w,
                config.metrics.h,
             ));*/
-
-            this.setCenter(prevCenter);
          });
       }
 
