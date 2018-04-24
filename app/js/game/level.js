@@ -53,20 +53,35 @@
       }
 
       getObjectsToRender() {
-         var objects = [this.player.person.convertToRender()];
-      
-         ['dinamic', 'static', 'decorates'].forEach(type => {
-            this.objects.blocks[type].forEach((obj) => {
-               objects.push(obj.convertToRender());
-            });
-         });
+         return [this.player.person.convertToRender()].concat(
+            this._getActorsForRender(),
+            this._getBlocksForRender('dinamic'),
+            this._getBlocksForRender('static'),
+            this._getBlocksForRender('decorates')
+         );
 
-         this.objects.actors.forEach((obj) => {
-            objects.push(obj.convertToRender()); 
-         });
+      }
 
-         return objects;
+      _getActorsForRender() { 
+         var actors = this.objects.actors;
+         var res = [];
 
+         for (var i = actors.length - 1; i >= 0; i--) {
+            res.push(actors[i].convertToRender());
+         }
+         
+         return res;
+      }
+
+      _getBlocksForRender(type = 'static') { 
+         var blocks = this.objects.blocks[type];
+         var res = [];
+
+         for (var i = blocks.length - 1; i >= 0; i--) {
+            res.push(blocks[i].convertToRender());
+         }
+         
+         return res;
       }
 
       _createAllObjects() {
@@ -80,8 +95,11 @@
 
       _createBlocks(type, defConstr) {
          var container = this.allObjects.blocks[type];
+         var chunks = this.config.blocks[type];
 
-         this.config.blocks[type].forEach(chunk => {
+         for (var i = chunks.length - 1; i >= 0; i--) {
+            var chunk = chunks[i];
+
             var res = {
                x: chunk.x,
                y: chunk.y,
@@ -96,7 +114,7 @@
             }
 
             container.push(res);
-         });
+         }
       }
 
       _createActors() {
@@ -122,10 +140,16 @@
 
          container.length = 0; //Очищаем массив
          
-         this.allObjects.blocks[type].forEach((chunk) => {
-            if (!isVisible(chunk) && 0) return;
-         
-            chunk.data.forEach((item) => {
+         var blocks = this.allObjects.blocks[type];
+
+         for (var i = blocks.length - 1; i >= 0; i--) {
+            var chunk = blocks[i];
+
+            if (!isVisible(chunk) && 0) continue;
+            
+            for (var j = chunk.data.length - 1; j >= 0; j--) {
+               var item = chunk.data[j];
+
                if (isVisible(item.convertToRender())) { 
                   container.push(item);
                   item.start();
@@ -133,9 +157,10 @@
                } else {
                   item.stop();
                }
-               
-            });
-         });
+            }
+            
+         }
+
       }
 
       _findVisibleActors(type) {
@@ -144,7 +169,11 @@
 
          container.length = 0; //Очищаем массив
          
-         this.allObjects.actors.forEach((actor) => {
+         var actors = this.allObjects.actors;
+
+         for (var i = actors.length - 1; i >= 0; i--) {
+            var actor = actors[i];
+
             if (isVisible(actor.convertToRender())) {
                container.push(actor);
                actor.start();
@@ -153,9 +182,8 @@
                actor.stop();
 
             }
-
-            
-         });
+         }
+      
       }
 
       _createParametrs(options) {
