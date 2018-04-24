@@ -39,9 +39,16 @@
     * Класс для создания игрового блока
     */
    class Block extends Game.Rect { 
-      constructor(options = {}) {
+
+      /**
+       * @param {object} options опции
+       * @param {Collisions} collisions - collisions 
+       */
+      constructor(options = {}, collisions) {
          super();
 
+         this.collisions = collisions;
+         
          this._createParametrs(options);
          this._init();
       }

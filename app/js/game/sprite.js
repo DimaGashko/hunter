@@ -149,8 +149,26 @@
        * @param {object} config 
        */
       _drawNext(config) { 
-         this.trigger('before_chande_cadr', config);
-         this._draw(config.metrics, config.transforms);
+         var allow = true; //разрешение на рисование кадра
+
+
+         //Вызывается событие "before_chande_cadr"
+         //В hendlers передается 2 параметра
+         //Первый - параметры кадра
+         //Вротой - фукнция, для запрета отрисовки кадра
+         //Для этого ее нужно вызвать:
+
+         //sprite.addEvent('before_chande_cadr', (config, disallow) => {
+         // disallow();
+         //});
+         
+         this.trigger('before_chande_cadr', config, function disallow() { 
+            allow = false;
+         });
+
+         if (allow) {
+            this._draw(config.metrics, config.transforms);
+         }
       };
 
       //Останавливает анимацию

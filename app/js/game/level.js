@@ -8,9 +8,10 @@
    }
 
    class Level {
-      constructor(config, options = {}) {
+      constructor(game, config, options = {}) {
          this._createParametrs(options);
          this.config = config;
+         this.game = game;
 
          this._init();
          this.config = {};
@@ -90,7 +91,7 @@
                   var Constr = this.objectTypes[item.type]
                      || defConstr || Game.Block;
                   
-                  return new Constr(item);
+                  return new Constr(item, this.game.collisions);
                }),
             }
 
@@ -102,7 +103,7 @@
          this.allObjects.actors = this.config.actors.map((item) => {
             var Constr = this.objectTypes[item.type] || Game.Actor;
 
-            return new Constr(item);
+            return new Constr(item, this.game.collisions);
          });
       }
 
@@ -144,7 +145,7 @@
          container.length = 0; //Очищаем массив
          
          this.allObjects.actors.forEach((actor) => {
-            if (isVisible(actor.convertToRender()), 3) {
+            if (isVisible(actor.convertToRender())) {
                container.push(actor);
                actor.start();
 
