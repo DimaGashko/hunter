@@ -1,28 +1,41 @@
 ;(function(global){
    "use strict"
 
+   var DEF = {
+
+   }
+
    class Collisions {
-      constructor() {
-         
+      constructor(options = {}) {
+         this._createParametrs(options);
       }
 
       //Находит и устраняет все столкновения на карте
-      findAndfix(actors, blocks) {         
-         actors.forEach((actor) => {
-            var intersectBlocks = this.getIntersectObjects(actor, blocks.concat(actors)); 
+      findAndfix() {        
+         this._objects.forEach((obj) => {
+            var intersectBlocks = this.getIntersectObjects(obj, this._objects); 
             
-            intersectBlocks.forEach((obj, i) => {
-               if (!this.intersetObjs(actor, obj)) {
-                  return; //Если actor уже не пересекается с obj
+            intersectBlocks.forEach((otherObj, i) => {
+               if (!this.intersetObjs(obj, otherObj)) {
+                  return; //Если obj уже не пересекается с otherObj
                }
 
-               if (this._isOnDeg(actor, obj)) {
+               if (this._isOnDeg(obj, otherObj)) {
                   return; //Если на углу - то это не пересечение
                }
 
-               this._fixCollision(actor, obj);
+               this._fixCollision(obj, otherObj);
             });
          });
+      }
+
+      /**
+       * Устанавливает объекты, которые буду учавствовать в колизиях
+       * 
+       * @param {array} objects передаваемые объекты (Block и его наследники)
+       */
+      setObjects(objects) { 
+         this._objects = objects;
       }
 
       _fixCollision(actor, obj) {
@@ -181,8 +194,9 @@
             || actor.bottom === obj.top;
       }
 
-      _getFakeActor(coords, size) {
-         return new Game.Rect(coords.x, coords.y, size.x, size.y);
+      _getFakeActor(coords = new Vector(0, 0), size) {
+         return new Game.Rect(coords.x, coords.y,
+            size.x, size.y);
       }
       
       //Возвращает массив из переданный объектов, которые пересекаются с actor 
@@ -199,9 +213,11 @@
          );
       }
       
+      _createParametrs(options) {
+         this.options = extend(true, {}, DEF, options);
 
-      _createParametrs() {
-         
+         this._objects = []; //содержит объекты, которые участвуют в колизиях
+            //передается во внешнем коде методом setObjects()
       }
 
    }

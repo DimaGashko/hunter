@@ -61,13 +61,15 @@
 
          this.level.player.move();
 
+         this.collisions.setObjects(realObjects);
+
          this.gravity.use(dinamicObjects);
 
          dinamicObjects.forEach((obj) => {
             obj.updateCoords(dilation);
          });
 
-         //this.collisions.findAndfix();
+         this.collisions.findAndfix();
 
          dinamicObjects.forEach((obj) => {
             obj.clearMoveStatus();
