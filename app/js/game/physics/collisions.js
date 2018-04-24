@@ -43,10 +43,13 @@
        * (проверят, будет ли пересечения с каким-то объектом)
        * 
        * @param {Rect} rect проверяемая область
+       * @param {Rect} except какой объект не учитывать
        */
-      objectAt(rect) { 
+      objectAt(rect, except) {
+         except = except || rect;
+
          return this._objects.some((obj) => { 
-            return this.intersetObjs(rect, obj);
+            return obj !== except && this.intersetObjs(rect, obj);
          });
       }
 

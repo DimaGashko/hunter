@@ -111,7 +111,7 @@
          var config = this.config.player;
          
          var Constr = this.objectTypes[config.name] || Game.Actor;
-         var person = new Constr(config);
+         var person = new Constr(config, this.game.collisions);
 
          this.player = new Game.Player(person, {});
       }

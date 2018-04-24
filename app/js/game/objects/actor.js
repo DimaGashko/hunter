@@ -10,9 +10,9 @@
     * Базовый класс игрового персонажа
     */
    class Actor extends Game.DinamicBlock {
-      constructor(options = {}) {
+      constructor(options = {}, collisions) {
          options = extend(true, {}, DEF, options);
-         super(options);
+         super(options, collisions);
       }
 
       goToLeft() {

@@ -27,9 +27,9 @@
     * });
     */
    class Steve extends Game.Actor {
-      constructor(options = {}) {
+      constructor(options = {}, collisions) {
          options = extend(true, {}, DEF, options);
-         super(options);
+         super(options, collisions);
       }
 
       goToLeft() {
@@ -110,20 +110,31 @@
       }
 
       _initEvents() { 
-         this.sprite.addEvent('before_chande_cadr', (config) => {
-            var center = this.getCenter();
+         this.sprite.addEvent('before_chande_cadr', (config, disallow) => {
+            var prevCenter = this.getCenter();
+            var prevCoords = this.coords;
+            var prevSize = this.size;
 
             this.size = new Vector(
                config.metrics.w,
                config.metrics.h,
             ).diScale(this.tileSize);
 
+            if (this.collisions.objectAt(this)) { 
+               console.log('asdf')
+               disallow();
+
+               this.size = prevSize;
+               this.coords = prevCoords;
+               return;
+            }
+
             /*this.sprite.changeSize(new Vector(
                config.metrics.w,
                config.metrics.h,
             ));*/
 
-            this.setCenter(center);
+            this.setCenter(prevCenter);
          });
       }
 

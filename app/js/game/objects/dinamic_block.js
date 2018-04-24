@@ -11,9 +11,9 @@
     * (содержит интерфейс для изменения положения)
     */
    class DinamicBlock extends Game.Block { 
-      constructor(options = {}) {
+      constructor(options = {}, collisions) {
          options = extend(true, {}, DEF, options);
-         super(options);
+         super(options, collisions);
       }
 
       /**
