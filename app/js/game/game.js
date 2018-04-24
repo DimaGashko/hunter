@@ -70,6 +70,7 @@
          actors.forEach((actor) => {
             actor._clearMoveStatus();
          }); 
+         this._moveCamera();
 
          this.level.findVisible();
          this._rerender();

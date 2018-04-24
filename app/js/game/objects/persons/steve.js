@@ -72,7 +72,10 @@
 
          var type = 'stand';
 
-         if (this.moveParametrs.go) type = 'go';
+         var p = this.moveParametrs;
+
+         if (p.go && p.jump) type = 'jump';
+         else if (p.go) type = 'go';
 
          this.sprite.options.mirrorX = this.mirrorX;
          this._setState(type);
@@ -157,12 +160,16 @@
                metrics: SPRITES['steve_stand'],
             }],
 
+            'jump': [{
+               metrics: SPRITES['steve_go'],
+            }],
+
             'go': [{
                metrics: SPRITES['steve_go'],
-               duration: 250,
+               duration: 200,
             }, {
                metrics: SPRITES['steve_stand'],
-               duration: 250,
+               duration: 200,
             }],
          }
 
