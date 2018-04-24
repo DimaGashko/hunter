@@ -37,6 +37,19 @@
       setObjects(objects) { 
          this._objects = objects;
       }
+      
+      /**
+       * Возвращает, находится ли в переданном прямоугольнике какой-либо объект
+       * (проверят, будет ли пересечения с каким-то объектом)
+       * 
+       * @param {Rect} rect проверяемая область
+       * @param {Rect} except какой объект не учитывать
+       */
+      objectAt(rect, except) { 
+         return this._objects.some((obj) => { 
+            return obj !== except && this.intersetObjs(rect, obj);
+         });
+      }
 
       _fixCollision(actor, obj) {
          var side = '';
