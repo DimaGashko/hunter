@@ -11,38 +11,59 @@
       }
 
       //Находит и устраняет все столкновения на карте
-      findAndfix() {        
-         for (var i = this._objects.length - 1; i >= 0; i--) {
-            var obj = this._objects[i];
+      findAndfix() {
+         for (var i = this._dinamic.length - 1; i >= 0; i--) {
+            this._fixObject(this._dinamic[i], this._dinamic);   
+            this._fixObject(this._dinamic[i], this._static); 
+         }
+      }
 
-            var intersectBlocks = this.getIntersectObjects(obj, this._objects); 
+      /**
+       * Исправляет столкновения переданого блока с передаными блоками
+       * 
+       * @param {Block} obj блок, столконовение котого ищуются
+       * @param {Array<Block>} objects блоки, с которыми 
+       * проверяются столкновения
+       */
+      _fixObject(obj, objects) { 
+         var intersectBlocks = this.getIntersectObjects(obj, objects); 
             
-            for (var j = intersectBlocks.length - 1; j >= 0; j--) {
-               var otherObj = intersectBlocks[j];
-               
-               if (!this.intersetObjs(obj, otherObj)) {
-                  continue; //Если obj уже не пересекается с otherObj
-               }
-
-               if (this._isOnDeg(obj, otherObj)) {
-                  continue; //Если на углу - то это не пересечение
-               }
-               
-               this._fixCollision(obj, otherObj);
+         for (var j = intersectBlocks.length - 1; j >= 0; j--) {
+            var otherObj = intersectBlocks[j];
+            
+            if (!this.intersetObjs(obj, otherObj)) {
+               continue; //Если obj уже не пересекается с otherObj
             }
-   
+
+            if (this._isOnDeg(obj, otherObj)) {
+               continue; //Если на углу - то это не пересечение
+            }
+            
+            this._fixCollision(obj, otherObj);
          }
       }
 
       /**
        * Устанавливает объекты, которые буду учавствовать в колизиях
+       * (и являются динамическими объектамми)
+       * 
+       * @param {array} objects передаваемые объекты
+       *  (DinamicBlock и его наследники)
+       */
+      setDinamicObjects(objects) { 
+         this._dinamic = objects;
+      }
+      
+      /**
+       * Устанавливает объекты, которые буду учавствовать в колизиях
+       * (и являются статическими объектами - не взаимодействую друг с другом)
        * 
        * @param {array} objects передаваемые объекты (Block и его наследники)
        */
-      setObjects(objects) { 
-         this._objects = objects;
+      setStaticObjects(objects) { 
+         this._static = objects;
       }
-      
+
       /**
        * Возвращает, находится ли в переданном прямоугольнике какой-либо объект
        * (проверят, будет ли пересечения с каким-то объектом)
@@ -53,9 +74,15 @@
       objectAt(rect, except) {
          except = except || rect;
 
-         return this._objects.some((obj) => { 
-            return obj !== except && this.intersetObjs(rect, obj);
-         });
+         return (
+            this._dinamic.some((obj) => { 
+               return obj !== except && this.intersetObjs(rect, obj);
+            })
+            ||
+            this._static.some((obj) => { 
+               return this.intersetObjs(rect, obj);
+            })
+         );
       }
 
       _fixCollision(actor, obj) {
@@ -248,8 +275,9 @@
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
 
-         this._objects = []; //содержит объекты, которые участвуют в колизиях
-            //передается во внешнем коде методом setObjects()
+         //содержит объекты, которые участвуют в колизиях
+         this._dinamic = []; 
+         this._static
       }
 
    }

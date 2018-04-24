@@ -55,13 +55,13 @@
 
       _tik(dilation) {
          this.level.findVisible();
-         
-         var realObjects = this.level.getRealObjects();
+      
          var dinamicObjects = this.level.getDinamicObjects();
 
          this.level.player.move();
 
-         this.collisions.setObjects(realObjects);
+         this.collisions.setDinamicObjects(dinamicObjects); 
+         this.collisions.setStaticObjects(this.level.objects.blocks.static);
 
          this.gravity.use(dinamicObjects);
 

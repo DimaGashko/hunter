@@ -23,15 +23,6 @@
       }
 
       /**
-       * Возвращает все реальные (те которые учавствуют в коллизиях) объекты
-       * (возвращаются только объекты, отобранные методом findVisible())
-       */
-      getRealObjects() { 
-         return this.getDinamicObjects()
-            .concat(this.objects.blocks.static);
-      }
-
-      /**
        * Возвращает все динамические (те на которые действует сила тяжести) 
        * объекты (возвращаются только объекты, отобранные методом findVisible())
        */
@@ -141,13 +132,15 @@
          container.length = 0; //Очищаем массив
          
          var blocks = this.allObjects.blocks[type];
+         var blocksLen = blocks.length;
 
-         for (var i = blocks.length - 1; i >= 0; i--) {
+         for (var i = 0; i < blocksLen; i++) {
             var chunk = blocks[i];
 
-            if (!isVisible(chunk) && 0) continue;
+            if (!isVisible(chunk)) continue;
             
-            for (var j = chunk.data.length - 1; j >= 0; j--) {
+            var dataLen = chunk.data.length; 
+            for (var j = 0; j < dataLen; j++) {
                var item = chunk.data[j];
 
                if (isVisible(item.convertToRender())) { 
