@@ -12,21 +12,26 @@
 
       //Находит и устраняет все столкновения на карте
       findAndfix() {        
-         this._objects.forEach((obj) => {
+         for (var i = this._objects.length - 1; i >= 0; i--) {
+            var obj = this._objects[i];
+
             var intersectBlocks = this.getIntersectObjects(obj, this._objects); 
             
-            intersectBlocks.forEach((otherObj, i) => {
+            for (var j = intersectBlocks.length - 1; j >= 0; j--) {
+               var otherObj = intersectBlocks[j];
+               
                if (!this.intersetObjs(obj, otherObj)) {
-                  return; //Если obj уже не пересекается с otherObj
+                  continue; //Если obj уже не пересекается с otherObj
                }
 
                if (this._isOnDeg(obj, otherObj)) {
-                  return; //Если на углу - то это не пересечение
+                  continue; //Если на углу - то это не пересечение
                }
-
+               
                this._fixCollision(obj, otherObj);
-            });
-         });
+            }
+   
+         }
       }
 
       /**
@@ -214,11 +219,23 @@
             size.x, size.y);
       }
       
-      //Возвращает массив из переданный объектов, которые пересекаются с actor 
-      getIntersectObjects(actor, objects) {
-         return objects.filter((obj) => {
-            return (actor !== obj && this.intersetObjs(actor, obj));
-         });
+      //Возвращает массив из переданный объектов, которые пересекаются с actor
+
+      //Вначале была реализация через filter,
+      //Но performance в параметрах разработчика хрома 
+      //Показал, что он занимает очень много вермени
+
+      getIntersectObjects(obj, objects) {
+         var intersects = [];
+
+         for (var i = objects.length - 1; i >= 0; i--) {
+            if (obj !== objects[i] && this.intersetObjs(obj, objects[i])) { 
+               intersects.push(objects[i]);
+            }
+
+         }
+         
+         return intersects;
       }
 
       intersetObjs(obj1, obj2) {
