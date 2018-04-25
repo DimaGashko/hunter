@@ -1,6 +1,6 @@
 ﻿;(function(global){
    "use strict"
    
-   var game = window.g = new Game();
+   var game = new Game();
 
 }(window));

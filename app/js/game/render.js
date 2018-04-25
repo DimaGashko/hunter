@@ -221,13 +221,13 @@
          var resizeTimer = 0;
          global.addEventListener('resize', () => {
             clearInterval(resizeTimer);
-
+            
             resizeTimer = setTimeout(() => {
                requestAnimationFrame(() => {
                   this.resize();
                   this.tik();
                })
-            }, 150);
+            }, 16);
          });
 
          global.addEventListener('load', () => {
