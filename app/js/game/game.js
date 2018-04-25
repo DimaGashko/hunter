@@ -60,6 +60,9 @@
 
          this.level.player.move();
 
+         dinamicObjects.forEach(obj => obj.tik());  
+         this.level.objects.blocks.static.forEach(obj => obj.tik());  
+
          this.collisions.setDinamicObjects(dinamicObjects); 
          this.collisions.setStaticObjects(this.level.objects.blocks.static);
 

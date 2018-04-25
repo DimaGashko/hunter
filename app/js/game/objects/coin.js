@@ -1,12 +1,19 @@
 ;(function(global){
    "use strict"
 
-   class Coin extends Game.Actor {
-      constructor(config = {}, options = {}) {
-         super(config, options);
+   class Coin extends Game.Block {
+      constructor(options, collisions) {
+         super(options, collisions);
       }
 
-      
+      tik() { 
+         super.tik.apply(this, arguments);
+         
+      }
+
+      respondInteraction(obj, side) {
+         
+      }
 
    }
 
