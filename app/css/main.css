@@ -37,20 +37,20 @@ html, body {
               transform: scale(1.2); }
     .game__move_left {
       left: 10px;
-      background-image: url(img/sprite.png);
+      background-image: url(../img/sprite.png);
       background-position: -64px 0px;
       width: 64px;
       height: 64px; }
     .game__move_right {
       right: 10px;
-      background-image: url(img/sprite.png);
+      background-image: url(../img/sprite.png);
       background-position: 0px -64px;
       width: 64px;
       height: 64px; }
     .game__move_jump {
       left: 10px;
       bottom: 84px;
-      background-image: url(img/sprite.png);
+      background-image: url(../img/sprite.png);
       background-position: 0px 0px;
       width: 64px;
       height: 64px; }
