@@ -10,7 +10,7 @@ module.exports = function(options) {
       var spriteData = gulp.src(options.src)
          .pipe($.spritesmith({
             imgName: 'sprite.png',
-            imgPath: '/img/sprite.png',
+            imgPath: 'img/sprite.png',
             cssName: '_sprite.sass',
             cssFormat: 'sass',
             algorithm: 'binary-tree',
