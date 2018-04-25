@@ -33,30 +33,30 @@
       }
 
       _initEvents() { 
-         touchDown(this.els.goLeft, () => { 
-            this._moves.left = true;
-            console.log('down')
+         touchDown(this.els.root, (target) => {
+            if (target.classList.contains('game__move_left')) {
+               this._moves.left = true;
+
+            } else if (target.classList.contains('game__move_right')) {
+               this._moves.right = true;
+
+            } else {
+               this._moves.jump = true;
+
+            }
          });
 
-         touchDown(this.els.goRight, () => { 
-            this._moves.right = true
-         });
+         touchUp(this.els.root, (target) => { 
+            if (target.classList.contains('game__move_left')) {
+               this._moves.left = false;
 
-         touchDown(this.els.goJump, () => { 
-            this._moves.jump = true;
-         });
+            } else if (target.classList.contains('game__move_right')) {
+               this._moves.right = false;
 
-         touchUp(this.els.goLeft, () => { 
-            this._moves.left = false;
-            console.log('up')
-         });
+            } else {
+               this._moves.jump = false;
 
-         touchUp(this.els.goRight, () => { 
-            this._moves.right = false;
-         });
-
-         touchUp(this.els.goJump, () => { 
-            this._moves.jump = false;
+            } 
          });
       }
 
@@ -81,9 +81,7 @@
       }
 
       _getElements() { 
-         this.els.goLeft = document.querySelector('.game__move_left');
-         this.els.goRight = document.querySelector('.game__move_right');
-         this.els.goJump = document.querySelector('.game__move_jump');
+         this.els.root = document.querySelector('.game');
       }
    
 

@@ -47,12 +47,5 @@ html, body {
       background-position: 0px -64px;
       width: 64px;
       height: 64px; }
-    .game__move_jump {
-      left: 50%;
-      margin-left: -32px;
-      background-image: url(../img/sprite.png);
-      background-position: 0px 0px;
-      width: 64px;
-      height: 64px; }
   .game__statuses {
     display: none; }

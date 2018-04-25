@@ -29,25 +29,25 @@ function isIntersectLines(a1, a2, b1, b2) {
 (function (global) {
 	var isTouches = 'ontouchstart' in window;
 
-	function touchUp(el, handler) {
+	function touchUp(el, handler, className) {
 		el.addEventListener('touchend', function(event) {
 			event.preventDefault();
-			handler();
+			handler(event.target);
 		});
 
-		el.addEventListener('mouseup', () => { 
-			handler();
+		el.addEventListener('mouseup', (event) => { 
+			handler(event.target);
 		});
 	}
 
 	function touchDown(el, handler) {
 		el.addEventListener('touchstart', function(event) {
 			event.preventDefault();
-			handler();
+			handler(event.target);
 		});
 
-		el.addEventListener('mousedown', () => { 
-			handler();
+		el.addEventListener('mousedown', (event) => { 
+			handler(event.target);
 		});
 	}
 
