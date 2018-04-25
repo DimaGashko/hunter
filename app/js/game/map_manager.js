@@ -9,10 +9,11 @@
          "maps/test2.json",
          "maps/test3.json",
          "maps/new_test.json",
+         "maps/new_test2.json",
       ],
 
       //Текущий уровень
-      curLevel: 3,
+      curLevel: 4,
    }
 
 
