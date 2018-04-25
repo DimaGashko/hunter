@@ -32,7 +32,7 @@ html, body {
     @media screen and (max-width: 850px) {
       .game__move {
         display: block; } }
-    .game__move:active {
+    .game__move:active, .game__move-active {
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
     .game__move_left {

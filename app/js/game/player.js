@@ -36,8 +36,10 @@
          touchDown(this.els.root, (target) => {
             if (target.classList.contains('game__move_left')) {
                this._moves.left = true;
+               target.classList.add('game__move-active');
 
             } else if (target.classList.contains('game__move_right')) {
+               target.classList.add('game__move-active');
                this._moves.right = true;
 
             } else {
@@ -48,9 +50,11 @@
 
          touchUp(this.els.root, (target) => { 
             if (target.classList.contains('game__move_left')) {
+               target.classList.remove('game__move-active');
                this._moves.left = false;
 
             } else if (target.classList.contains('game__move_right')) {
+               target.classList.remove('game__move-active');
                this._moves.right = false;
 
             } else {
