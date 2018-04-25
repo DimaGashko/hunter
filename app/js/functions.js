@@ -26,6 +26,35 @@ function isIntersectLines(a1, a2, b1, b2) {
 
 }(window));
 
+(function (global) {
+	var isTouches = 'ontouchstart' in window;
+
+	function touchUp(el, handler) {
+		el.addEventListener('touchend', function(event) {
+			event.preventDefault();
+			handler();
+		});
+
+		el.addEventListener('mouseup', () => { 
+			handler();
+		});
+	}
+
+	function touchDown(el, handler) {
+		el.addEventListener('touchstart', function(event) {
+			event.preventDefault();
+			handler();
+		});
+
+		el.addEventListener('mousedown', () => { 
+			handler();
+		});
+	}
+
+	global.touchDown = touchDown;
+	global.touchUp = touchUp;
+
+}(window));
 
 /**
  * Cлияние свойств всех переданных объектов в первый

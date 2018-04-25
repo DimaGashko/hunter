@@ -8,55 +8,88 @@
 //
 // At the bottom of this section, we provide information about the spritesheet itself
 // $spritesheet: width height image $spritesheet-sprites
+$go-jump-name: 'go_jump'
+$go-jump-x: 0px
+$go-jump-y: 0px
+$go-jump-offset-x: 0px
+$go-jump-offset-y: 0px
+$go-jump-width: 64px
+$go-jump-height: 64px
+$go-jump-total-width: 128px
+$go-jump-total-height: 128px
+$go-jump-image: '/img/sprite.png'
+$go-jump: (0px, 0px, 0px, 0px, 64px, 64px, 128px, 128px, '/img/sprite.png', 'go_jump', )
+$go-to-left-name: 'go_to_left'
+$go-to-left-x: 64px
+$go-to-left-y: 0px
+$go-to-left-offset-x: -64px
+$go-to-left-offset-y: 0px
+$go-to-left-width: 64px
+$go-to-left-height: 64px
+$go-to-left-total-width: 128px
+$go-to-left-total-height: 128px
+$go-to-left-image: '/img/sprite.png'
+$go-to-left: (64px, 0px, -64px, 0px, 64px, 64px, 128px, 128px, '/img/sprite.png', 'go_to_left', )
+$go-to-right-name: 'go_to_right'
+$go-to-right-x: 0px
+$go-to-right-y: 64px
+$go-to-right-offset-x: 0px
+$go-to-right-offset-y: -64px
+$go-to-right-width: 64px
+$go-to-right-height: 64px
+$go-to-right-total-width: 128px
+$go-to-right-total-height: 128px
+$go-to-right-image: '/img/sprite.png'
+$go-to-right: (0px, 64px, 0px, -64px, 64px, 64px, 128px, 128px, '/img/sprite.png', 'go_to_right', )
 $player-go-name: 'player-go_'
-$player-go-x: 43px
-$player-go-y: 0px
-$player-go-offset-x: -43px
-$player-go-offset-y: 0px
+$player-go-x: 64px
+$player-go-y: 96px
+$player-go-offset-x: -64px
+$player-go-offset-y: -96px
 $player-go-width: 13px
 $player-go-height: 32px
-$player-go-total-width: 64px
-$player-go-total-height: 32px
+$player-go-total-width: 128px
+$player-go-total-height: 128px
 $player-go-image: '/img/sprite.png'
-$player-go-: (43px, 0px, -43px, 0px, 13px, 32px, 64px, 32px, '/img/sprite.png', 'player-go_', )
+$player-go-: (64px, 96px, -64px, -96px, 13px, 32px, 128px, 128px, '/img/sprite.png', 'player-go_', )
 $steve-go-name: 'steve_go'
-$steve-go-x: 0px
-$steve-go-y: 0px
-$steve-go-offset-x: 0px
-$steve-go-offset-y: 0px
+$steve-go-x: 64px
+$steve-go-y: 64px
+$steve-go-offset-x: -64px
+$steve-go-offset-y: -64px
 $steve-go-width: 20px
 $steve-go-height: 32px
-$steve-go-total-width: 64px
-$steve-go-total-height: 32px
+$steve-go-total-width: 128px
+$steve-go-total-height: 128px
 $steve-go-image: '/img/sprite.png'
-$steve-go: (0px, 0px, 0px, 0px, 20px, 32px, 64px, 32px, '/img/sprite.png', 'steve_go', )
+$steve-go: (64px, 64px, -64px, -64px, 20px, 32px, 128px, 128px, '/img/sprite.png', 'steve_go', )
 $steve-jump-name: 'steve_jump'
-$steve-jump-x: 20px
-$steve-jump-y: 0px
-$steve-jump-offset-x: -20px
-$steve-jump-offset-y: 0px
+$steve-jump-x: 84px
+$steve-jump-y: 64px
+$steve-jump-offset-x: -84px
+$steve-jump-offset-y: -64px
 $steve-jump-width: 23px
 $steve-jump-height: 27px
-$steve-jump-total-width: 64px
-$steve-jump-total-height: 32px
+$steve-jump-total-width: 128px
+$steve-jump-total-height: 128px
 $steve-jump-image: '/img/sprite.png'
-$steve-jump: (20px, 0px, -20px, 0px, 23px, 27px, 64px, 32px, '/img/sprite.png', 'steve_jump', )
+$steve-jump: (84px, 64px, -84px, -64px, 23px, 27px, 128px, 128px, '/img/sprite.png', 'steve_jump', )
 $steve-stand-name: 'steve_stand'
-$steve-stand-x: 56px
-$steve-stand-y: 0px
-$steve-stand-offset-x: -56px
-$steve-stand-offset-y: 0px
+$steve-stand-x: 77px
+$steve-stand-y: 96px
+$steve-stand-offset-x: -77px
+$steve-stand-offset-y: -96px
 $steve-stand-width: 8px
 $steve-stand-height: 32px
-$steve-stand-total-width: 64px
-$steve-stand-total-height: 32px
+$steve-stand-total-width: 128px
+$steve-stand-total-height: 128px
 $steve-stand-image: '/img/sprite.png'
-$steve-stand: (56px, 0px, -56px, 0px, 8px, 32px, 64px, 32px, '/img/sprite.png', 'steve_stand', )
-$spritesheet-width: 64px
-$spritesheet-height: 32px
+$steve-stand: (77px, 96px, -77px, -96px, 8px, 32px, 128px, 128px, '/img/sprite.png', 'steve_stand', )
+$spritesheet-width: 128px
+$spritesheet-height: 128px
 $spritesheet-image: '/img/sprite.png'
-$spritesheet-sprites: ($player-go-, $steve-go, $steve-jump, $steve-stand, )
-$spritesheet: (64px, 32px, '/img/sprite.png', $spritesheet-sprites, )
+$spritesheet-sprites: ($go-jump, $go-to-left, $go-to-right, $player-go-, $steve-go, $steve-jump, $steve-stand, )
+$spritesheet: (128px, 128px, '/img/sprite.png', $spritesheet-sprites, )
 
 // The provided mixins are intended to be used with the array-like variables
 //

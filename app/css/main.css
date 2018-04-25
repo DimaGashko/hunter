@@ -15,3 +15,44 @@ html, body {
     position: absolute;
     left: 0;
     top: 0; }
+  .game__move {
+    display: none;
+    position: fixed;
+    background-color: transparent;
+    border: none;
+    bottom: 10px;
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
+            box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    outline: 0;
+    -webkit-transition: -webkit-transform .25s;
+    transition: -webkit-transform .25s;
+    transition: transform .25s;
+    transition: transform .25s, -webkit-transform .25s; }
+    @media screen and (max-width: 850px) {
+      .game__move {
+        display: block; } }
+    .game__move:active {
+      -webkit-transform: scale(1.2);
+              transform: scale(1.2); }
+    .game__move_left {
+      left: 10px;
+      background-image: url(/img/sprite.png);
+      background-position: -64px 0px;
+      width: 64px;
+      height: 64px; }
+    .game__move_right {
+      right: 10px;
+      background-image: url(/img/sprite.png);
+      background-position: 0px -64px;
+      width: 64px;
+      height: 64px; }
+    .game__move_jump {
+      left: 10px;
+      bottom: 84px;
+      background-image: url(/img/sprite.png);
+      background-position: 0px 0px;
+      width: 64px;
+      height: 64px; }
+  .game__statuses {
+    display: none; }
