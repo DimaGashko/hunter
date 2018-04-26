@@ -13,7 +13,7 @@
 
          globalEvents.trigger('game_add_coins', 1);
       }
-
+ 
       tik() { 
          super.tik.apply(this, arguments);
          this._animate();
