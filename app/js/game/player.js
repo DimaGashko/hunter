@@ -87,7 +87,6 @@
       _getElements() { 
          this.els.controls = document.querySelector('.game__controls');
       }
-   
 
       //Создает основные параметры испльзуемые конструктором
       //options - передаются из конструктора при иницилизации
