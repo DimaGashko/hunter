@@ -33,7 +33,7 @@
       }
 
       _initEvents() { 
-         touchDown(this.els.buttonsContainer, (target) => {
+         touchDown(this.els.controls, (target) => {
             if (target.classList.contains('game__move_left')) {
                this._moves.left = true;
                target.classList.add('game__move-active');
@@ -48,7 +48,7 @@
             }
          });
 
-         touchUp(this.els.buttonsContainer, (target) => { 
+         touchUp(this.els.controls, (target) => { 
             if (target.classList.contains('game__move_left')) {
                target.classList.remove('game__move-active');
                this._moves.left = false;
@@ -85,7 +85,7 @@
       }
 
       _getElements() { 
-         this.els.buttonsContainer = document.querySelector('.game__move_buttons');
+         this.els.controls = document.querySelector('.game__controls');
       }
    
 
