@@ -5,6 +5,7 @@
       constructor() {
          this._createParametrs();
          this._init();
+         this._initEvents();
 
          this.start();
       }
@@ -28,6 +29,10 @@
       }
 
       _init() {
+         this._getElements();
+
+         global.globalEvents = new Events();
+
          this.render = new Game.Render({
             eachTik: (dilation) => {
                this._tik(dilation);
@@ -41,6 +46,16 @@
 
          this.gravity = new Game.Gravity;
          this.collisions = new Game.Collisions;
+      }
+
+      _initEvents() { 
+         globalEvents.addEvent('game_add_coins', (n) => { 
+            this._addedCoins(n);
+         });
+
+         globalEvents.addEvent('game_remove_coins', (n) => { 
+            this._removedCoins(n);
+         });
       }
 
       _createLevel(levelConfig) {
@@ -95,8 +110,32 @@
          this.render.setCamera(this.camera.coords);
       }
 
+      _addedCoins(n) { 
+         this._coinsCount += n;
+         this._updateCoinsRest();
+      }
+
+      _removedCoins(n) { 
+         this._coinsFind += n;
+         this._updateCoinsRest();
+      }
+
+      _updateCoinsRest() { 
+         this.els.coinsStatus.innerHTML =
+            `Собрано предметов: ${this._coinsFind} из ${this._coinsCount}`;
+      }
+
+      _getElements() { 
+         var root = this.els.root = document.querySelector('.game');
+
+         this.els.coinsStatus = root.querySelector('.game__coins');
+      }
+
       _createParametrs() {
-         
+         this.els = {};
+
+         this._coinsCount = 0;
+         this._coinsFind = 0;
       }
 
    }

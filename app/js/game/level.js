@@ -14,12 +14,19 @@
          this.game = game;
 
          this._init();
+         this._initEvents();
          this.config = {};
       }
 
       _init() {
          this._createAllObjects();
          this.findVisible()
+      }
+
+      _initEvents() { 
+         globalEvents.addEvent('removed_coin', (coin) => { 
+            this._removeCoin(coin);
+         });
       }
 
       /**
@@ -177,6 +184,22 @@
             }
          }
       
+      }
+      
+      _removeCoin(coin) {
+         var chunks = this.allObjects.blocks.static;
+
+         for (var i = chunks.length - 1; i >= 0; i--) {
+            var coins = chunks[i].data;
+
+            for (var j = coins.length - 1; j >= 0; j--) {
+               if (coins[j] !== coin) continue;
+
+               coins.splice(j, 1);
+            }
+            
+         }
+         
       }
 
       _createParametrs(options) {

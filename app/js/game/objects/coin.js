@@ -10,6 +10,8 @@
       constructor(options, collisions) {
          options = extend(true, {}, DEF, options);
          super(options, collisions);
+
+         globalEvents.trigger('game_add_coins', 1);
       }
 
       tik() { 
@@ -40,7 +42,8 @@
       }
 
       respondInteraction(obj, side) {
-         this.size = new Vector(0, 0);
+         globalEvents.trigger('removed_coin', this);
+         globalEvents.trigger('game_remove_coins', 1);
       }
 
       _createParametrs() {
