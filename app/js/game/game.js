@@ -14,7 +14,7 @@
          this.mapManager.getLevel().then((mapConfig) => {
             console.log(mapConfig);
             
-            this._createLevel(mapConfig);
+            this.level.startLevel(mapConfig);
 
             this.camera.coords = this.level.player.person.getCenter();
             this.render.start();
@@ -40,9 +40,18 @@
          });
 
          this.mapManager = new Game.MapManager();
+
+         var self = this;
+         this.level = new Game.Level(this, {
+            isVisible: function() {
+               return self.render.isVisible.apply(self.render, arguments);
+            },
+         });
+
          this.camera = new Game.Camera({
             type: 'smart',
          });
+         
 
          this.gravity = new Game.Gravity;
          this.collisions = new Game.Collisions;
@@ -55,16 +64,6 @@
 
          globalEvents.addEvent('game_remove_coins', (n) => { 
             this._removedCoins(n);
-         });
-      }
-
-      _createLevel(levelConfig) {
-         var self = this;
-
-         this.level = new Game.Level(this, levelConfig, {
-            isVisible: function() {
-               return self.render.isVisible.apply(self.render, arguments);
-            },
          });
       }
 

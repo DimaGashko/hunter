@@ -1,7 +1,7 @@
 ﻿;(function(global){
    "use strict"
    
-   var game = new Game();
+   var game = window.g = new Game();
 
    //fps
    var fpsEl = document.createElement('div');

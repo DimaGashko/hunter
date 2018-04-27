@@ -5,17 +5,12 @@
 
       //Пути к картам
       levelsSrc: [
-         "maps/test.json",
-         "maps/test2.json",
-         "maps/test3.json",
          "maps/new_test.json",
-         "maps/new_test2.json",
-
          "maps/1.json",
       ],
 
       //Текущий уровень
-      curLevel: 5,
+      curLevel: 1, 
    }
 
 

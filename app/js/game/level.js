@@ -8,9 +8,8 @@
    }
 
    class Level {
-      constructor(game, config, options = {}) {
+      constructor(game, options = {}) {
          this._createParametrs(options);
-         this.config = config;
          this.game = game;
 
          this._init();
@@ -18,9 +17,16 @@
          this.config = {};
       }
 
-      _init() {
+      startLevel(config = {}) { 
+         this.config = config;
+
+         this._initContainers();
          this._createAllObjects();
-         this.findVisible()
+         this.findVisible();
+      }
+
+      _init() {
+         
       }
 
       _initEvents() { 
@@ -202,9 +208,7 @@
          
       }
 
-      _createParametrs(options) {
-         this.options = extend(true, {}, DEF, options);
-
+      _initContainers() { 
          this.allObjects = {
             blocks: {
                static: [],
@@ -222,6 +226,10 @@
             },
             actors: [],
          }
+      }
+
+      _createParametrs(options) {
+         this.options = extend(true, {}, DEF, options);
 
          this.objectTypes = {
             Steve: Game.Steve,
