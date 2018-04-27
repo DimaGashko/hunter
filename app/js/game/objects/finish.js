@@ -25,7 +25,6 @@
          console.log('Finish', side);
       }
    
-
       _init() {
          super._init.apply(this, arguments);
       }
