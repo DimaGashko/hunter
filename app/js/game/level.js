@@ -228,6 +228,7 @@
             Actor: Game.Actor,
             Coin: Game.Coin,
             Block: Game.Block,
+            Finish: Game.Finish,
          }
 
       }

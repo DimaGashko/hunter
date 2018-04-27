@@ -43,6 +43,9 @@ html
          script(defer, src="js/game/objects/persons/steve.js")
          script(defer, src="js/game/objects/coin.js")
 
+         script(defer, src="js/game/objects/finish.js")
+
+
          script(defer, src="js/game/player.js")
 
          script(defer, src="js/main.js?1")
@@ -58,15 +61,17 @@ html
          main.main
             .game
                .game__canvases
-                     canvas.game__canvas.game__main_canv   
+                  canvas.game__canvas.game__main_canv   
 
-               .game__controls
-                  .game__move_buttons
-                     button.game__move.game__move_left
-                     button.game__move.game__move_right
+               .game__dom 
 
-               .game__statuses   
-                  .game__coins 0/0   
+                  .game__controls
+                     .game__move_buttons
+                        button.game__move.game__move_left
+                        button.game__move.game__move_right
+
+                  .game__statuses   
+                     .game__coins 0/0   
 
          .footer
             //-include components/footer.jade

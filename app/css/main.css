@@ -4,9 +4,13 @@ html, body {
   overflow: hidden; }
 
 .game {
-  position: absolute;
+  position: fixed;
   left: 0;
-  top: 0; }
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; }
   .game__canvases {
     position: relative;
     width: 100%;
@@ -15,19 +19,29 @@ html, body {
     position: absolute;
     left: 0;
     top: 0; }
+  .game__dom {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2; }
   .game__controls {
-    position: fixed;
+    display: none;
+    position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
     z-index: 2; }
+    @media screen and (max-width: 850px) {
+      .game__controls {
+        display: block; } }
   .game__move {
-    display: none;
-    position: fixed;
+    position: absolute;
     background-color: transparent;
     border: none;
-    bottom: 10px;
+    bottom: 0px;
     -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
             box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
     border-radius: 50%;
@@ -36,20 +50,17 @@ html, body {
     transition: -webkit-transform .25s;
     transition: transform .25s;
     transition: transform .25s, -webkit-transform .25s; }
-    @media screen and (max-width: 850px) {
-      .game__move {
-        display: block; } }
     .game__move:active, .game__move-active {
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
     .game__move_left {
-      left: 10px;
+      left: 0px;
       background-image: url(../img/sprite.png);
       background-position: -64px 0px;
       width: 64px;
       height: 64px; }
     .game__move_right {
-      right: 10px;
+      right: 0px;
       background-image: url(../img/sprite.png);
       background-position: 0px -64px;
       width: 64px;

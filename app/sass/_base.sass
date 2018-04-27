@@ -4,9 +4,14 @@ html, body
    overflow: hidden
 
 .game
-   position: absolute
+   position: fixed
    left: 0
    top: 0
+   right: 0
+   bottom: 0
+
+   width: 100%
+   height: 100%
 
    &__canvases
       position: relative
@@ -17,39 +22,48 @@ html, body
       position: absolute
       left: 0
       top: 0
-
+      
+   &__dom
+      position: absolute
+      left: 10px
+      top: 10px
+      right: 10px
+      bottom: 10px
+      //background: rgba(0,255,0,0.2)
+      z-index: 2
+   
    &__controls
-      position: fixed
+      display: none   
+      position: absolute
       left: 0
       top: 0
       right: 0
       bottom: 0
       z-index: 2
 
+      @media screen and (max-width: 850px) 
+         display: block 
+
    //move buttons
    &__move
-      display: none
-      position: fixed
+      position: absolute
       background-color: transparent
       border: none
-      bottom: 10px
+      bottom: 0px
       box-shadow: 1px 1px 1px 0 rgba(0,0,0,.4)
       border-radius: 50%
       outline: 0
       transition: transform .25s
-
-      @media screen and (max-width: 850px) 
-         display: block
       
       &:active, &-active
          transform: scale(1.2)
 
       &_left
-         left: 10px
+         left: 0px
          @include sprite($go_to_left)
       
       &_right
-         right: 10px
+         right: 0px
          @include sprite($go_to_right)
 
    &__statuses

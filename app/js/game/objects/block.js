@@ -124,7 +124,7 @@
        * @param {Block} side - cторона взаимодействия (left, top, right, bottom)
        */
       respondInteraction(obj, side) {
-         this.speed = this.speed.plus(obj.speed.mul(-0.3));
+         //this.speed = this.speed.plus(obj.speed.mul(-0.3));
 
          //Если это именно блок
          if (obj.type === 'block') return;
