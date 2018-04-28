@@ -5,10 +5,10 @@
 
       //Пути к картам
       levelsSrc: [
-         //"maps/1.json",
-         //"maps/2.json",
-         //"maps/3.json",
-         //"maps/4.json",
+         "maps/1.json",
+         "maps/2.json",
+         "maps/3.json",
+         "maps/4.json",
          "maps/5.json",
 
          "maps/new_test.json"
