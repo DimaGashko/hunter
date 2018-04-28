@@ -394,14 +394,14 @@
                  "x":-288,
                  "y":-32
                 }],
-         "height":48,
+         "height":16,
          "name":"dinamic",
          "opacity":1,
          "startx":-304,
-         "starty":-48,
+         "starty":-32,
          "type":"tilelayer",
          "visible":true,
-         "width":64,
+         "width":32,
          "x":0,
          "y":0
         }, 
@@ -638,7 +638,7 @@
                 {
                  "height":0,
                  "id":11,
-                 "name":"Steve",
+                 "name":"Sprinter",
                  "point":true,
                  "rotation":0,
                  "type":"",

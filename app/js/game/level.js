@@ -233,6 +233,7 @@
 
          this.objectTypes = {
             Steve: Game.Steve,
+            Sprinter: Game.Sprinter,
             Actor: Game.Actor,
             Coin: Game.Coin,
             Block: Game.Block,

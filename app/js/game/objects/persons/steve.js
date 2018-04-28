@@ -2,9 +2,7 @@
    "use strict"
 
    var DEF = {
-      tileset: 'img/sprite.png',
-      tileW: 16,
-      tileH: 16,
+      
    }
 
    /**
@@ -26,151 +24,14 @@
     *    steve.start();
     * });
     */
-   class Steve extends Game.Actor {
+   class Steve extends Game.DinamicActor {
       constructor(options = {}, collisions) {
          options = extend(true, {}, DEF, options);
          super(options, collisions);
       }
 
-      goToLeft() {
-         super.goToLeft.apply(this, arguments);
-
-         this.mirrorX = true;
-         this.moveParametrs.go = true;
-      }
-
-      goToRight() {
-         super.goToRight.apply(this, arguments);
-         
-         this.mirrorX = false;
-         this.moveParametrs.go = true;
-      }
-
-      jump() {
-         this.moveParametrs.jump = true;
-
-         if (!this.moveStatus.jump) return;
-
-         super.jump.apply(this, arguments);
-      }
-
-      start() { 
-         this.sprite.start(this._state);
-      }
-
-      //Внешний код вызывает перед перемещением
-      beforeMove() { 
-         this.moveParametrs = {
-            go: false,
-            jump: false,
-         }
-      }
-
-      //Врешний код вызывает после перемещения
-      afterMove() { 
-         var req = this.mirrorX !== this.sprite.options.mirrorX;
-
-         var type = 'stand';
-
-         var p = this.moveParametrs;
-
-         if (p.go && p.jump) type = 'jump';
-         else if (p.go) type = 'go';
-
-         this.sprite.options.mirrorX = this.mirrorX;
-         this._setState(type);
-      }
-
-      /**
-       * Устанавливает состояние персонажа
-       * 
-       * @param {string} state 
-       */
-      _setState(state) {
-         this._state = state;
-         this.sprite.start(state);
-      }
-
-      _initSprite() { 
-         var o = this.options;
-         
-         this.sprite = new Game.Sprite({
-            tileset: o.tileset,
-            size: this.tileSize,
-            cadrs: this._cadrsConfig,
-         });
-      }
-
-      _init() {
-         this._setSize();
-
-         super._init.apply(this, arguments); 
-         
-         this._initEvents();
-      }
-
-      _initEvents() { 
-         this.sprite.addEvent('before_chande_cadr', (config, disallow) => {
-            var center = this.getCenter();
-
-            var prevCoords = this.coords;
-            var prevSize = this.size;
-
-            var newSize = new Vector(
-               config.metrics.w,
-               config.metrics.h,
-            ).diScale(this.tileSize);
-
-            //Немного уменьшаем, что бы не считать касания
-            this.size = newSize.mul(0.999);
-            this.setCenter(center);
-
-            if (this.collisions.objectAt(this)) { 
-               disallow();
-
-               this.size = prevSize;
-               this.coords = prevCoords;
-               this.setCenter(center);
-               return;
-            }
-
-            this.size = newSize;
-            this.setCenter(center);
-
-            /*this.sprite.changeSize(new Vector(
-               config.metrics.w,
-               config.metrics.h,
-            ));*/
-         });
-      }
-
-      /**
-       * Устанавливает размеры персонажа, 
-       * В зависимости от состояния (стоит, идет...)
-       * 
-       * Устанавливает два свойства:
-       * this.size - реальные размеры персонажа
-       * this.spriteSize - размеры спрайта
-       */
-      _setSize() { 
-         this.spriteSize = new Vector(
-            this._cadrsConfig[this._state].w,
-            this._cadrsConfig[this._state].h,
-         );
-
-         this.size = this.spriteSize.diScale(this.tileSize);
-      }
-
-      _createParametrs() { 
-         super._createParametrs.apply(this, arguments);
-
-         this.tileSize = new Vector(
-            this.options.tileW,
-            this.options.tileH,
-         );
-
+      _initConfig() { 
          this._state = 'stand'; //cостояние персонажа (стоит, идет...)
-         this.mirrorX = false;
       
          this._cadrsConfig = {
             'stand': [{
@@ -189,7 +50,6 @@
                duration: 200,
             }],
          }
-
       }
 
    }
