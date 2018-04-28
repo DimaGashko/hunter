@@ -54,13 +54,11 @@
 
             var src = this.options.levelsSrc[levelIndex || this.curLevel];
             console.time('load');
-            if (src in localStorage) {
+            if (src in localStorage && 0) {
                resolve(localStorage[src]);
                console.timeEnd('load');
                return;
             }
-
-            
 
             var xhr = new XMLHttpRequest();
             xhr.open('GET', src, true);

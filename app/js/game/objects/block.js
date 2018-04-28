@@ -10,7 +10,9 @@
 
       //Физические параметры блока
       props: {
-         
+         damage: 0,
+         armor: 0,
+         hurtInterval: 1000,
       },
 
       fillStyle: '', //Цвет, что будет использоваться, когда нет картинки
@@ -51,6 +53,23 @@
          
          this._createParametrs(options);
          this._init();
+      }
+
+      hurt(obj, startDamage) { 
+         var time = Date.now();
+         if (time - this._prevHurt < this._hurtInterval) { 
+            return;
+         }
+
+         this._prevHurt = time;
+
+         var damage = startDamage + this._damage;
+
+         obj.pain(damage);
+      }
+
+      pain() { 
+
       }
 
       /**
@@ -127,26 +146,34 @@
       respondInteraction(obj, side) {
          //this.speed = this.speed.plus(obj.speed.mul(-0.3));
 
+         var startDamage = 0;
+
          //Если это именно блок
          if (obj.type === 'block') return;
 
          if (side === 'top') {
+            startDamage += this._convertSpeedToPain(obj.speed.y);
             obj.speed.y = 0;
             obj.bottom = this.top;
 
          } else if (side === 'bottom') {
+            startDamage += this._convertSpeedToPain(obj.speed.y);
             obj.speed.y = 0;
             obj.top = this.bottom;
          
          } else if (side === 'left') {
+            startDamage += this._convertSpeedToPain(obj.speed.x);
             obj.speed.x = 0;
             obj.right = this.left;
          
          } else if (side === 'right') {
+            startDamage += this._convertSpeedToPain(obj.speed.x);
             obj.speed.x = 0;
             obj.left = this.right;
          
-         }        
+         }     
+         
+         this.hurt(obj, startDamage);
 
          //Если это персонаж или его наследники
          if (obj instanceof Game.Actor) {
@@ -161,6 +188,10 @@
          }
       }
 
+      _convertSpeedToPain(speed) { 
+         return Math.abs(speed);
+      }
+
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
 
@@ -172,6 +203,13 @@
          this.speed = new Vector(0, 0);
  
          this.sprite = null;
+
+         this._damage = this.options.props.damage;
+         this._armor = this.options.props.armor;
+         this._hurtInterval = this.options.props.hurtInterval;
+
+         this._prevHurt = 0;
+
       }
 
    }

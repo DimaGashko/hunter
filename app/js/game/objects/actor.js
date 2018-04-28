@@ -3,7 +3,7 @@
 
    var DEF = {   
       fillStyle: 'rgba(0,255,0,0.5)', //Цвет при отсутствии tileset-a
-
+      health: 1000,
    }
    
    /**
@@ -13,7 +13,15 @@
       constructor(options = {}, collisions) {
          options = extend(true, {}, DEF, options);
          super(options, collisions);
-      }
+		}
+		
+		pain(damage) { 
+			damage -= this._armor;
+			if (damage < this.minDamage) return;
+
+			this._health -= damage;
+			console.log(this._health);
+		}
 
       goToLeft() {
          if (this.ownSpeed.x > -this.speed.x) {
@@ -80,9 +88,11 @@
             goToRight: false,
             jump: false,
          }
+         
+			this._health = this.options.health || 0;
 
          this.ownSpeed = new Vector(0.12, 0.4);
-
+			this.minDamage = 40;
       }
    }
    
