@@ -90,9 +90,7 @@
       }
 
       _createAllObjects() {
-         console.time('test');
          this._createBlocks('static');
-         console.timeEnd('test');
          this._createBlocks('dinamic', Game.DinamicBlock);
          this._createBlocks('decorates');
          
