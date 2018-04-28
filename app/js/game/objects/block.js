@@ -171,7 +171,7 @@
             obj.speed.x = 0;
             obj.left = this.right;
          
-         }     
+         } 
          
          this.hurt(obj, startDamage);
 
@@ -189,7 +189,7 @@
       }
 
       _convertSpeedToPain(speed) { 
-         return Math.abs(speed);
+         return Math.pow(Math.abs(speed * 5), 4);
       }
 
       _createParametrs(options) {

@@ -1,9 +1,12 @@
 ;(function(global){
-   "use strict"
+	"use strict"
 
    var DEF = {   
       fillStyle: 'rgba(0,255,0,0.5)', //Цвет при отсутствии tileset-a
-      health: 1000,
+		
+		props: {
+			health: 1000,
+		}
    }
    
    /**
@@ -20,7 +23,7 @@
 			if (damage < this.minDamage) return;
 
 			this._health -= damage;
-			console.log(this._health);
+			console.log(damage, this._health);
 		}
 
       goToLeft() {
@@ -89,9 +92,10 @@
             jump: false,
          }
          
-			this._health = this.options.health || 0;
+			this._health = this.options.props.health || 0;
 
-         this.ownSpeed = new Vector(0.12, 0.4);
+			this.ownSpeed = new Vector(0.12, 0.4);
+			
 			this.minDamage = 40;
       }
    }
