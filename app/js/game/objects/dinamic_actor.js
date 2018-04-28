@@ -111,8 +111,6 @@
       }
 
       _init() {
-         this._setSize();
-
          super._init.apply(this, arguments); 
       }
 
@@ -161,10 +159,10 @@
        */
       _setSize() { 
          this.spriteSize = new Vector(
-            this._cadrsConfig[this._state].w,
-            this._cadrsConfig[this._state].h,
+            this._cadrsConfig[this._state][0].metrics.w,
+            this._cadrsConfig[this._state][0].metrics.h,
          );
-
+         
          this.size = this.spriteSize.diScale(this.tileSize);
       }
 
@@ -201,6 +199,9 @@
          this.mirrorX = false;
 
          this._initConfig();
+
+         this._setSize();
+         console.log(this.size)
       }
 
    }
