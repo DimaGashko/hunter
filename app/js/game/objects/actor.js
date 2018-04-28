@@ -24,6 +24,15 @@
 
 			this._health -= damage;
 			console.log(damage, this._health);
+
+			if (this._health < 0) {
+				this._health = 0;
+				this.die();
+			}
+		}
+
+		die() { 
+			globalEvents.trigger('actor_die', this);
 		}
 
       goToLeft() {

@@ -88,10 +88,23 @@
          });
          
          globalEvents.addEvent('on_finish', (object) => {
-            if (!this._finishReady) return; 
+            this._onFinish(object);
+         });
+
+         globalEvents.addEvent('actor_die', (object) => { 
+            if (!this._isPlayer(object)) return;
+
+            console.log('Die');
+
+            this.start();
+         });
+      }
+
+      _onFinish(object) { 
+         if (!this._finishReady) return; 
             this._finishReady = false;
 
-            if (this.level.player.person !== object) { 
+            if (!this._isPlayer(object)) { 
                return;
             };
             
@@ -106,7 +119,10 @@
             } else { 
                this._nextLevel();
             }
-         });
+      }
+
+      _isPlayer(obj) { 
+         return this.level.player.person === obj;
       }
 
       _tik(dilation) {
