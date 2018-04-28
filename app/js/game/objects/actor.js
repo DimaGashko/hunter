@@ -22,11 +22,17 @@
 			damage -= this._armor;
 			if (damage < this.minDamage) return;
 
-			this._health -= damage;
-			console.log(damage, this._health);
+			this.health -= damage;
 
-			if (this._health < 0) {
-				this._health = 0;
+			if (this.health < 0) {
+				this.health = 0;
+			}
+
+			console.log(damage, this.health);
+
+			this.trigger('pain');
+
+			if (this.health === 0) {
 				this.die();
 			}
 		}
@@ -101,7 +107,7 @@
             jump: false,
          }
          
-			this._health = this.options.props.health || 0;
+			this.health = this.options.props.health || 0;
 
 			this.ownSpeed = new Vector(0.12, 0.4);
 			

@@ -26,6 +26,7 @@
 
       _init() {
          this._getElements();
+         this._updateHealth();
       }
 
       _initEvents() { 
@@ -58,6 +59,14 @@
 
             } 
          });
+
+         this.person.addEvent('pain', () => { 
+            this._updateHealth();
+         });
+      }
+
+      _updateHealth() { 
+         console.log('Осталось: ', this.person.health);
       }
 
       move() {
