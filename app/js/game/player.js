@@ -26,10 +26,6 @@
 
       _init() {
          this._getElements();
-
-         this.person.sprite.addEvent('tileset_load', () => {
-            this.person.start();
-         });
       }
 
       _initEvents() { 

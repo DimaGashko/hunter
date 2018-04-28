@@ -30,6 +30,8 @@
       constructor(options = {}, collisions) {
          options = extend(true, {}, DEF, options);
          super(options, collisions);
+
+         this._initSprite();
       }
 
       goToLeft() {
@@ -55,6 +57,7 @@
       }
 
       start() { 
+         this._initEvents();
          this.sprite.start(this._state);
       }
 
@@ -68,6 +71,8 @@
 
       //Врешний код вызывает после перемещения
       afterMove() { 
+         if (!this.sprite) return;
+
          var req = this.mirrorX !== this.sprite.options.mirrorX;
 
          var type = 'stand';
@@ -99,14 +104,16 @@
             size: this.tileSize,
             cadrs: this._cadrsConfig,
          });
+
+         this.sprite.addEvent('tileset_load', () => {
+            this.start();
+         });
       }
 
       _init() {
          this._setSize();
 
          super._init.apply(this, arguments); 
-         
-         this._initEvents();
       }
 
       _initEvents() { 

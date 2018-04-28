@@ -14,7 +14,7 @@
          this.mapManager.getLevel().then((mapConfig) => {
             this.render.stop();
 
-            this._initLevelParametrs()
+            this._initLevelParametrs();
             
             this.level.startLevel(mapConfig);
 

@@ -58,6 +58,7 @@
        * (отрисовку спрайта)
        */
       start() {
+         if (!this.sprite) this._initSprite();
          this.sprite.start('base');
       }
 
@@ -66,7 +67,7 @@
        * (отрисовку спрайта)
        */
       stop() {
-         this.sprite.stop();
+         if (this.sprite) this.sprite.stop();
       }
 
       /**
@@ -78,13 +79,13 @@
             y: this.coords.y,
             w: this.size.x,
             h: this.size.y,
-            img: this.sprite.sprite,
+            img: (this.sprite) ? this.sprite.sprite : null,
             fillStyle: this.options.fillStyle,
          }
       }
 
       _init() {
-         this._initSprite();
+         
       }
       
       _initSprite() {

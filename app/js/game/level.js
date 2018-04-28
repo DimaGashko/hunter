@@ -14,7 +14,6 @@
 
          this._init();
          this._initEvents();
-         this.config = {};
       }
 
       startLevel(config = {}) { 
@@ -23,6 +22,8 @@
          this._initContainers();
          this._createAllObjects();
          this.findVisible();
+
+         this.config = {};
       }
 
       _init() {
@@ -89,11 +90,14 @@
       }
 
       _createAllObjects() {
+         console.time('test');
          this._createBlocks('static');
+         console.timeEnd('test');
          this._createBlocks('dinamic', Game.DinamicBlock);
          this._createBlocks('decorates');
-
+         
          this._createActors();
+
          this._createPlayer();
       }
 
@@ -103,18 +107,22 @@
 
          for (var i = chunks.length - 1; i >= 0; i--) {
             var chunk = chunks[i];
+            
+            var blocks = new Array(chunk.data.length);
+            
+            for (var j = chunk.data.length - 1; j >= 0; j--) {
+               var Constr = this.objectTypes[chunk.data[j].type]
+                  || defConstr || Game.Block;
+               
+               blocks[j] = new Constr(chunk.data[j], this.game.collisions);
+            }
 
             var res = {
                x: chunk.x,
                y: chunk.y,
                w: chunk.w,
                h: chunk.h,
-               data: chunk.data.map(item => {
-                  var Constr = this.objectTypes[item.type]
-                     || defConstr || Game.Block;
-                  
-                  return new Constr(item, this.game.collisions);
-               }),
+               data: blocks,
             }
 
             container.push(res);
