@@ -57,6 +57,19 @@
          this.collisions = new Game.Collisions;
       }
 
+      _win() { 
+         console.log('win');
+      }
+
+      _penalize() { 
+         console.log('Сначала соберите все предметы');
+      }
+
+      _nextLevel() { 
+         this.mapManager.nextLevel();
+         this.start();
+      }
+
       _initEvents() { 
          globalEvents.addEvent('game_add_coins', (n) => { 
             this._addedCoins(n);
@@ -64,6 +77,24 @@
 
          globalEvents.addEvent('game_remove_coins', (n) => { 
             this._removedCoins(n);
+         });
+         
+         globalEvents.addEvent('on_finish', (object) => { 
+            if (this.level.player.person !== object) return;
+            
+            if (this._coinsFind < this._coinsCount) {
+               //Штраф, за приход на финиш до сбора всех предметов
+               this._penalize(object);
+               return;
+            }
+
+            //this.render.stop();
+
+            if (this.mapManager.isLastMap()) {
+               this._win();
+            } else { 
+               this._nextLevel();
+            }
          });
       }
 

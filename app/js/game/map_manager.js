@@ -5,12 +5,12 @@
 
       //Пути к картам
       levelsSrc: [
-         "maps/new_test.json",
          "maps/1.json",
+         "maps/new_test.json",
       ],
 
       //Текущий уровень
-      curLevel: 1, 
+      curLevel: 0, 
    }
 
 
@@ -28,6 +28,14 @@
                reject("Не удалось загрузить карту");
             });
          });
+      }
+
+      isLastMap() { 
+         return this.curLevel === this.options.levelsSrc.length - 1;
+      } 
+      
+      nextLevel() { 
+         this.curLevel++;
       }
 
       //Загрузка карты текущего уровня (JSON)

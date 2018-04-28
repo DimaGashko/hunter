@@ -22,7 +22,7 @@
 
       respondInteraction(obj, side) { 
          super.respondInteraction.apply(this, arguments);
-         console.log('Finish', side);
+         globalEvents.trigger('on_finish', obj);
       }
    
       _init() {

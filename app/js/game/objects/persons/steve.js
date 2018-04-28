@@ -2,7 +2,7 @@
    "use strict"
 
    var DEF = {
-      
+      tileset: 'img/sprite.png',
    }
 
    /**
