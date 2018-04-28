@@ -5,14 +5,14 @@
 
       //Пути к картам
       levelsSrc: [
-         "maps/4.json",
-         "maps/3.json",
-         "maps/2.json",
          "maps/1.json",
+         "maps/2.json",
+         "maps/3.json",
+         "maps/4.json",
+         "maps/5.json",
 
-
-         "maps/new_test.json",
-      ],
+         "maps/new_test.json"
+      ].map(item => item + '?0'),
 
       //Текущий уровень
       curLevel: 0, 
@@ -26,6 +26,8 @@
 
       //Получение карты текущего уровня
       getLevel() {
+         console.log(this.curLevel);
+         
          return new Promise((resolve, reject) => {
             this._loadMap().then((JSONMap) => {
                resolve(this.parser.parse(JSONMap));
@@ -50,20 +52,15 @@
          return new Promise((resolve, reject) => {
             if (levelIndex === undefined) levelIndex = this.curLevel;
 
-            if (this._saveLevel.index === levelIndex) { 
-               resolve(this._saveLevel.JSONMap);
-               console.log('save');
-               return; 
+            var src = this.options.levelsSrc[levelIndex || this.curLevel];
+            console.time('load');
+            if (src in localStorage) {
+               resolve(localStorage[src]);
+               console.timeEnd('load');
+               return;
             }
 
-            var src = this.options.levelsSrc[levelIndex || this.curLevel];
-
-            /*if (src in localStorage) {
-               resolve(localStorage[src]);
-               return;
-            }*/
-
-            //console.time('load');
+            
 
             var xhr = new XMLHttpRequest();
             xhr.open('GET', src, true);
@@ -72,13 +69,13 @@
             xhr.onreadystatechange = () => {
                if (xhr.readyState != 4) return;
 
-               //console.timeEnd('load');
+               console.timeEnd('load');
 
                if (xhr.status != 200) {
                   reject();
                }
                else {
-                  //localStorage[src] = xhr.responseText;
+                  localStorage[src] = xhr.responseText;
                   resolve(xhr.responseText);
                }
             }
@@ -87,25 +84,13 @@
 
       _loadNextLevel() { 
          if (this.isLastMap()) return;
-
-         var index = this.curLevel + 1;
-
-         this._loadMap(index).then((JSONMap) => { 
-            this._saveLevel.index = 1;
-            this._saveLevel.JSONMap = JSONMap;
-         });
+         
+         this._loadMap(this.curLevel + 1);
       }
       
       _createParametrs(options) {
          this.options = extend(true, {}, DEF, options);
          this.curLevel = this.options.curLevel;
-
-         this.levels = [];
-
-         this._saveLevel = {
-            index: -1,
-            JSONMap: '',
-         }
 
          this.parser = new Game.MapParser();
       }
