@@ -16,8 +16,6 @@
       constructor(options = {}) {
          options = extend(true, {}, DEF, options);
          super(options);
-
-         console.log('Finish');
       }
 
       respondInteraction(obj, side) { 

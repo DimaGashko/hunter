@@ -131,7 +131,7 @@
 
       _createPlayer() {
          var config = this.config.player;
-         console.log(config)
+         
          var Constr = this.objectTypes[config.name] || Game.Actor;
          var person = new Constr(config, this.game.collisions);
 

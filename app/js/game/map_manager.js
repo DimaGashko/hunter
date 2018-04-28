@@ -23,7 +23,9 @@
       getLevel() {
          return new Promise((resolve, reject) => {
             this._loadMap().then((JSONMap) => {
-               resolve( this.parser.parse(JSONMap) );
+               resolve(this.parser.parse(JSONMap));
+               
+               this._loadNextLevel();
             }, () => {
                reject("Не удалось загрузить карту");
             });
@@ -39,9 +41,17 @@
       }
 
       //Загрузка карты текущего уровня (JSON)
-      _loadMap() {
+      _loadMap(levelIndex) {
          return new Promise((resolve, reject) => {
-            var src = this.options.levelsSrc[this.curLevel];
+            if (levelIndex === undefined) levelIndex = this.curLevel;
+
+            if (this._saveLevel.index === levelIndex) { 
+               resolve(this._saveLevel.JSONMap);
+               console.log('save');
+               return; 
+            }
+
+            var src = this.options.levelsSrc[levelIndex || this.curLevel];
 
             /*if (src in localStorage) {
                resolve(localStorage[src]);
@@ -68,6 +78,17 @@
                }
             }
          });
+      } 
+
+      _loadNextLevel() { 
+         if (this.isLastMap()) return;
+
+         var index = this.curLevel + 1;
+
+         this._loadMap(index).then((JSONMap) => { 
+            this._saveLevel.index = 1;
+            this._saveLevel.JSONMap = JSONMap;
+         });
       }
       
       _createParametrs(options) {
@@ -75,6 +96,11 @@
          this.curLevel = this.options.curLevel;
 
          this.levels = [];
+
+         this._saveLevel = {
+            index: -1,
+            JSONMap: '',
+         }
 
          this.parser = new Game.MapParser();
       }

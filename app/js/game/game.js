@@ -12,12 +12,16 @@
 
       start() {
          this.mapManager.getLevel().then((mapConfig) => {
-            console.log(mapConfig);
+            this.render.stop();
+
+            this._initLevelParametrs()
             
             this.level.startLevel(mapConfig);
 
             this.camera.coords = this.level.player.person.getCenter();
+            
             this.render.start();
+            this._finishReady = true;
          }, () => {
             console.log("error");
          });
@@ -59,6 +63,8 @@
 
       _win() { 
          console.log('win');
+         this.mapManager.curLevel = 0;
+         this.start();
       }
 
       _penalize() { 
@@ -66,6 +72,8 @@
       }
 
       _nextLevel() { 
+         this._initLevelParametrs();
+
          this.mapManager.nextLevel();
          this.start();
       }
@@ -76,19 +84,22 @@
          });
 
          globalEvents.addEvent('game_remove_coins', (n) => { 
-            this._removedCoins(n);
+            this._findedCoins(n);
          });
          
-         globalEvents.addEvent('on_finish', (object) => { 
-            if (this.level.player.person !== object) return;
+         globalEvents.addEvent('on_finish', (object) => {
+            if (!this._finishReady) return; 
+            this._finishReady = false;
+
+            if (this.level.player.person !== object) { 
+               return;
+            };
             
             if (this._coinsFind < this._coinsCount) {
                //Штраф, за приход на финиш до сбора всех предметов
                this._penalize(object);
                return;
             }
-
-            //this.render.stop();
 
             if (this.mapManager.isLastMap()) {
                this._win();
@@ -145,14 +156,22 @@
          this._updateCoinsRest();
       }
 
-      _removedCoins(n) { 
+      _findedCoins(n) { 
          this._coinsFind += n;
          this._updateCoinsRest();
+
+         this._finishReady = true;
       }
 
       _updateCoinsRest() { 
          this.els.coinsStatus.innerHTML =
             `Собрано предметов: ${this._coinsFind} из ${this._coinsCount}`;
+      }
+
+      _initLevelParametrs() { 
+         this._finishReady = false;
+         this._coinsCount = 0;
+         this._coinsFind = 0;
       }
 
       _getElements() { 
@@ -164,8 +183,7 @@
       _createParametrs() {
          this.els = {};
 
-         this._coinsCount = 0;
-         this._coinsFind = 0;
+         this._initLevelParametrs()
       }
 
    }

@@ -92,7 +92,7 @@
        * Пока не загружен tileste ничего не делает.
        */
       start(type, requiredStart) {
-         if (this.tileset === null) return;
+         if (this.tileset === null || this.ctx === null) return;
          
          if (!type) {
             console.error(
@@ -270,7 +270,7 @@
          this._prevDrawCofig = config;
 
          this._clear();
-
+         if (!this.ctx) console.log(this.canvas)
          this.ctx.save();
          
          this._setMirror(config);
