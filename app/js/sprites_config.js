@@ -17,19 +17,19 @@ var SPRITES = {
       "w": 64,
       "h": 64
    },
-   "health-0-5": {
+   "health-empty": {
       "x": 107,
       "y": 64,
       "w": 18,
       "h": 18
    },
-   "health-0": {
+   "health-full": {
       "x": 77,
       "y": 96,
       "w": 18,
       "h": 18
    },
-   "health-1": {
+   "health-half": {
       "x": 95,
       "y": 96,
       "w": 18,

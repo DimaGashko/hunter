@@ -41,39 +41,39 @@ $go-to-right-total-width: 136px
 $go-to-right-total-height: 128px
 $go-to-right-image: '../img/sprite.png'
 $go-to-right: (0px, 64px, 0px, -64px, 64px, 64px, 136px, 128px, '../img/sprite.png', 'go_to_right', )
-$health-0-5-name: 'health-0-5'
-$health-0-5-x: 107px
-$health-0-5-y: 64px
-$health-0-5-offset-x: -107px
-$health-0-5-offset-y: -64px
-$health-0-5-width: 18px
-$health-0-5-height: 18px
-$health-0-5-total-width: 136px
-$health-0-5-total-height: 128px
-$health-0-5-image: '../img/sprite.png'
-$health-0-5: (107px, 64px, -107px, -64px, 18px, 18px, 136px, 128px, '../img/sprite.png', 'health-0-5', )
-$health-0-name: 'health-0'
-$health-0-x: 77px
-$health-0-y: 96px
-$health-0-offset-x: -77px
-$health-0-offset-y: -96px
-$health-0-width: 18px
-$health-0-height: 18px
-$health-0-total-width: 136px
-$health-0-total-height: 128px
-$health-0-image: '../img/sprite.png'
-$health-0: (77px, 96px, -77px, -96px, 18px, 18px, 136px, 128px, '../img/sprite.png', 'health-0', )
-$health-1-name: 'health-1'
-$health-1-x: 95px
-$health-1-y: 96px
-$health-1-offset-x: -95px
-$health-1-offset-y: -96px
-$health-1-width: 18px
-$health-1-height: 18px
-$health-1-total-width: 136px
-$health-1-total-height: 128px
-$health-1-image: '../img/sprite.png'
-$health-1: (95px, 96px, -95px, -96px, 18px, 18px, 136px, 128px, '../img/sprite.png', 'health-1', )
+$health-empty-name: 'health-empty'
+$health-empty-x: 107px
+$health-empty-y: 64px
+$health-empty-offset-x: -107px
+$health-empty-offset-y: -64px
+$health-empty-width: 18px
+$health-empty-height: 18px
+$health-empty-total-width: 136px
+$health-empty-total-height: 128px
+$health-empty-image: '../img/sprite.png'
+$health-empty: (107px, 64px, -107px, -64px, 18px, 18px, 136px, 128px, '../img/sprite.png', 'health-empty', )
+$health-full-name: 'health-full'
+$health-full-x: 77px
+$health-full-y: 96px
+$health-full-offset-x: -77px
+$health-full-offset-y: -96px
+$health-full-width: 18px
+$health-full-height: 18px
+$health-full-total-width: 136px
+$health-full-total-height: 128px
+$health-full-image: '../img/sprite.png'
+$health-full: (77px, 96px, -77px, -96px, 18px, 18px, 136px, 128px, '../img/sprite.png', 'health-full', )
+$health-half-name: 'health-half'
+$health-half-x: 95px
+$health-half-y: 96px
+$health-half-offset-x: -95px
+$health-half-offset-y: -96px
+$health-half-width: 18px
+$health-half-height: 18px
+$health-half-total-width: 136px
+$health-half-total-height: 128px
+$health-half-image: '../img/sprite.png'
+$health-half: (95px, 96px, -95px, -96px, 18px, 18px, 136px, 128px, '../img/sprite.png', 'health-half', )
 $player-go-name: 'player-go_'
 $player-go-x: 64px
 $player-go-y: 96px
@@ -121,7 +121,7 @@ $steve-stand: (128px, 0px, -128px, 0px, 8px, 32px, 136px, 128px, '../img/sprite.
 $spritesheet-width: 136px
 $spritesheet-height: 128px
 $spritesheet-image: '../img/sprite.png'
-$spritesheet-sprites: ($go-jump, $go-to-left, $go-to-right, $health-0-5, $health-0, $health-1, $player-go-, $steve-go, $steve-jump, $steve-stand, )
+$spritesheet-sprites: ($go-jump, $go-to-left, $go-to-right, $health-empty, $health-full, $health-half, $player-go-, $steve-go, $steve-jump, $steve-stand, )
 $spritesheet: (136px, 128px, '../img/sprite.png', $spritesheet-sprites, )
 
 // The provided mixins are intended to be used with the array-like variables

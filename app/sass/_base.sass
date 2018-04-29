@@ -67,4 +67,48 @@ html, body
          @include sprite($go_to_right)
 
    &__statuses
-      
+
+
+//Health
+
+.health
+   position: absolute
+   bottom: 20px
+   white-space: nowrap
+   left: 50%
+   transform: translate(-50%)
+   margin: 0
+   padding: 0
+   font-size: 0
+
+   &__heart 
+      display: inline-block
+      margin: 0
+      padding: 0
+
+      @media screen and (max-width: 320px)
+         $width: 8px
+         width: $width
+         height: 10px
+
+         &-full
+            background: #c00
+
+         &-empty
+            background: #333
+
+         &-half
+            background: #c00
+            width: $width / 2
+
+      @media screen and (min-width: 320px)
+         margin-left: -2px
+
+         &-full
+            @include sprite($health-full) 
+
+         &-empty
+            @include sprite($health-empty) 
+
+         &-half
+            @include sprite($health-half) 

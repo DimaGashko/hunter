@@ -15,7 +15,7 @@
       ].map(item => item + '?0'),
 
       //Текущий уровень
-      curLevel: 0, 
+      curLevel: 5, 
    }
 
 

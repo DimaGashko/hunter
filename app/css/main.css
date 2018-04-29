@@ -65,3 +65,47 @@ html, body {
       background-position: 0px -64px;
       width: 64px;
       height: 64px; }
+
+.health {
+  position: absolute;
+  bottom: 20px;
+  white-space: nowrap;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  margin: 0;
+  padding: 0;
+  font-size: 0; }
+  .health__heart {
+    display: inline-block;
+    margin: 0;
+    padding: 0; }
+    @media screen and (max-width: 320px) {
+      .health__heart {
+        width: 8px;
+        height: 10px; }
+        .health__heart-full {
+          background: #c00; }
+        .health__heart-empty {
+          background: #333; }
+        .health__heart-half {
+          background: #c00;
+          width: 4px; } }
+    @media screen and (min-width: 320px) {
+      .health__heart {
+        margin-left: -2px; }
+        .health__heart-full {
+          background-image: url(../img/sprite.png);
+          background-position: -77px -96px;
+          width: 18px;
+          height: 18px; }
+        .health__heart-empty {
+          background-image: url(../img/sprite.png);
+          background-position: -107px -64px;
+          width: 18px;
+          height: 18px; }
+        .health__heart-half {
+          background-image: url(../img/sprite.png);
+          background-position: -95px -96px;
+          width: 18px;
+          height: 18px; } }
