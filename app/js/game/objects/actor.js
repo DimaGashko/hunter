@@ -18,7 +18,9 @@
          super(options, collisions);
 		}
 		
-		pain(damage) { 
+      pain(damage) { 
+         if (this._died) return;
+
 			damage -= this._armor;
 			if (damage < this.minDamage) return;
 
@@ -37,23 +39,34 @@
 			}
 		}
 
-		die() { 
-			globalEvents.trigger('actor_die', this);
+      die() { 
+         if (this._died) return;
+         this._died = true;
+
+         setTimeout(() => { 
+            //globalEvents.trigger('actor_die', this);
+         }, 1000);
 		}
 
       goToLeft() {
+         if (this._died) return;
+
          if (this.ownSpeed.x > -this.speed.x) {
             this.speed.x -= this.ownSpeed.x;
          }
       }
 
       goToRight() {
-            if (this.ownSpeed.x > this.speed.x) {
-               this.speed.x += this.ownSpeed.x;
-            } 
+         if (this._died) return;
+
+         if (this.ownSpeed.x > this.speed.x) {
+            this.speed.x += this.ownSpeed.x;
+         } 
       }
 
       jump() {
+         if (this._died) return;
+
          if (this.moveStatus.jump) {
             this.moveStatus.jump = false;
             if (this.ownSpeed.y > -this.speed.y) {
@@ -110,6 +123,7 @@
             goToRight: false,
             jump: false,
          }
+         this._died = false;
          
 			this.health = this.options.props.health || 0;
 

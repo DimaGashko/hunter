@@ -56,13 +56,13 @@ html, body {
     .game__move_left {
       left: 0px;
       background-image: url(../img/sprite.png);
-      background-position: -64px 0px;
+      background-position: 0px -64px;
       width: 64px;
       height: 64px; }
     .game__move_right {
       right: 0px;
       background-image: url(../img/sprite.png);
-      background-position: 0px -64px;
+      background-position: -64px 0px;
       width: 64px;
       height: 64px; }
 
@@ -96,16 +96,16 @@ html, body {
         margin-left: -2px; }
         .health__heart-full {
           background-image: url(../img/sprite.png);
-          background-position: -77px -96px;
+          background-position: -148px -59px;
           width: 18px;
           height: 18px; }
         .health__heart-empty {
           background-image: url(../img/sprite.png);
-          background-position: -107px -64px;
+          background-position: -148px -95px;
           width: 18px;
           height: 18px; }
         .health__heart-half {
           background-image: url(../img/sprite.png);
-          background-position: -95px -96px;
+          background-position: -148px -77px;
           width: 18px;
           height: 18px; } }

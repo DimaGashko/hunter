@@ -12,7 +12,7 @@
       props: {
          damage: 0,
          armor: 0,
-         hurtInterval: 1000,
+         hurtInterval: 500,
       },
 
       fillStyle: '', //Цвет, что будет использоваться, когда нет картинки

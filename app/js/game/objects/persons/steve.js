@@ -49,6 +49,10 @@
                metrics: SPRITES['steve_stand'],
                duration: 200,
             }],
+            
+            'died': [{
+               metrics: SPRITES['steve_died'],
+            }],
          }
       }
 

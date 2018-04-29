@@ -92,6 +92,8 @@
        * @param {string} state 
        */
       _setState(state) {
+         if (this._died) return
+
          this._state = state;
          this.sprite.start(state);
       }
