@@ -37,8 +37,11 @@
        * Обновляет значение жизней actor-а
        */
       update() {
-         this.root.innerHTML = `${this.actor.health ^ 0}/${this.actor.fullHealth ^ 0}`
-         console.log(`${this.actor.health ^ 0}/${this.actor.fullHealth ^ 0}`);
+         this.root.innerHTML = this.getHealthPercent() + '%';
+      }
+
+      getHealthPercent() { 
+         return Math.round(this.actor.health / this.actor.fullHealth * 100)
       }
 
       _init() {
