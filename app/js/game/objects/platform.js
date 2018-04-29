@@ -25,6 +25,11 @@
 
       _createParametrs() { 
          this._createParametrs.apply(this, arguments);
+
+         this.way = new Vector(
+            this.options.props.wayX,
+            this.options.props.wayY,
+         );
       }
 
    }

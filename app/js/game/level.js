@@ -129,7 +129,7 @@
 
       _createActors() {
          this.allObjects.actors = this.config.actors.map((item) => {
-            var Constr = this.objectTypes[item.type] || Game.Actor;
+            var Constr = this.objectTypes[item.name] || Game.Actor;
 
             return new Constr(item, this.game.collisions);
          });
@@ -243,7 +243,7 @@
             Actor: Game.Actor,
             Coin: Game.Coin,
             Lava: Game.Lava,
-            Platrofm: Game.Platrofm,
+            Platform: Game.Platform,
             Block: Game.Block,
             Finish: Game.Finish,
          }
