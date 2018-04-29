@@ -91,6 +91,10 @@
          this.moveStatus.goToRight = false;
          this.moveStatus.jump = false;
       }
+
+      get fullHealth() { 
+         return this.options.props.health;
+      }
  
       _createParametrs() {
          super._createParametrs.apply(this, arguments);
@@ -114,45 +118,6 @@
 			this.minDamage = 40;
       }
    }
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   /*
-
-      //Наносит урон (этому объекту)
-      pain(val) {
-         if (val < this.minPain) return;
-         
-         this.life -= val;
-         this._checkLife();
-
-         console.log(`Был нанесен урон: ${val^0}`,  `Осталось: ${Math.round(((this.life > 0 ? this.life : 0)/this.startLife)*100)}%`);
-      }
-
-      _checkLife() {
-         if (this.life < 0) {
-            console.log('die');
-         }
-      }
-
-   }*/
 
    Object.defineProperty(Actor.prototype, 'type', {
       value: 'actor',

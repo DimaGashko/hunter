@@ -19,6 +19,7 @@
             this.level.startLevel(mapConfig);
 
             this.camera.coords = this.level.player.person.getCenter();
+            this._initHealth();
             
             this.render.start();
             this._finishReady = true;
@@ -57,8 +58,14 @@
          });
          
 
-         this.gravity = new Game.Gravity;
-         this.collisions = new Game.Collisions;
+         this.gravity = new Game.Gravity();
+         this.collisions = new Game.Collisions();
+         
+         this.health = new Game.Health();
+      }
+
+      _initHealth() { 
+         this.health.setObject(this.level.player.person);
       }
 
       _win() { 
