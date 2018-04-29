@@ -19,7 +19,7 @@
          super(options, collisions);
 		}
 		
-      pain(damage) { 
+      pain(damage) {  
          var time = Date.now();
          if (time - this._prevPain < this._painInterval) { 
             return;
