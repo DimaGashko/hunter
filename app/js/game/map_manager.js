@@ -5,7 +5,7 @@
 
       //Пути к картам
       levelsSrc: [
-         "maps/_1.json",
+         "maps/level_1.json",
          "maps/1.json",
          "maps/2.json",
          "maps/3.json",
@@ -34,6 +34,8 @@
          this._loadTileset().then((JSONTileset) => {
             this.tileset = JSON.parse(JSONTileset);
             this.trigger('tileset_loaded');
+         }, () => { 
+            console.error(`Не удалось загрузить ${this.options.tilesetSrc}`);
          });
       }
 

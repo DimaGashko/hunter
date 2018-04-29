@@ -191,7 +191,7 @@
 
       _updateCoinsRest() { 
          this.els.coinsStatus.innerHTML =
-            `Собрано предметов: ${this._coinsFind} из ${this._coinsCount}`;
+            `${this._coinsFind}/${this._coinsCount}`;
       }
 
       _initLevelParametrs() { 
@@ -203,7 +203,7 @@
       _getElements() { 
          var root = this.els.root = document.querySelector('.game');
 
-         this.els.coinsStatus = root.querySelector('.game__coins');
+         this.els.coinsStatus = root.querySelector('.coins__val');
       }
 
       _createParametrs() {

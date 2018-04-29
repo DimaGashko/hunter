@@ -152,7 +152,6 @@
        */
       _parseObjByTileIndex(config, item, chunk, index) { 
          var tileset = config.tileset;
-         console.log(tileset);
          
          var tileParam = tileset.tiles[item] || {};
 

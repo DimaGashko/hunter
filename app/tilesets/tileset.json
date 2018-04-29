@@ -12,6 +12,10 @@
      "166":
         {
          "damage":50
+        },
+     "731":
+        {
+         "damage":500
         }
     },
  "tilepropertytypes":
@@ -19,13 +23,41 @@
      "166":
         {
          "damage":"int"
+        },
+     "731":
+        {
+         "damage":"int"
         }
     },
  "tiles":
     {
+     "111":
+        {
+         "type":"Coin"
+        },
+     "138":
+        {
+         "type":"Finish"
+        },
+     "151":
+        {
+         "type":"Coin"
+        },
      "166":
         {
          "probability":50
+        },
+     "187":
+        {
+         "type":"Coin"
+        },
+     "188":
+        {
+         "type":"Coin"
+        },
+     "275":
+        {
+         "type":"Coin"
         },
      "287":
         {
@@ -38,6 +70,38 @@
                  "duration":500,
                  "tileid":288
                 }]
+        },
+     "34":
+        {
+         "type":"Coin"
+        },
+     "35":
+        {
+         "type":"Coin"
+        },
+     "474":
+        {
+         "type":"Coin"
+        },
+     "624":
+        {
+         "type":"Coin"
+        },
+     "625":
+        {
+         "type":"Coin"
+        },
+     "626":
+        {
+         "type":"Coin"
+        },
+     "71":
+        {
+         "type":"Coin"
+        },
+     "731":
+        {
+         "type":"Lava"
         }
     },
  "tilewidth":16,
