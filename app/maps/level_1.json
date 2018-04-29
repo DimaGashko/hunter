@@ -79,22 +79,50 @@
                  "name":"Platform",
                  "properties":
                     {
-                     "speed":0.3,
-                     "wayX":5,
-                     "wayY":3
+                     "speedX":0.05,
+                     "speedY":0,
+                     "wayX":10,
+                     "wayY":10
                     },
                  "propertytypes":
                     {
-                     "speed":"float",
+                     "speedX":"float",
+                     "speedY":"float",
                      "wayX":"int",
                      "wayY":"int"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":16,
-                 "x":444,
-                 "y":-47
+                 "width":82,
+                 "x":435,
+                 "y":-46
+                }, 
+                {
+                 "gid":50,
+                 "height":16,
+                 "id":83,
+                 "name":"Platform",
+                 "properties":
+                    {
+                     "speedX":0.05,
+                     "speedY":0,
+                     "wayX":10,
+                     "wayY":10
+                    },
+                 "propertytypes":
+                    {
+                     "speedX":"float",
+                     "speedY":"float",
+                     "wayX":"int",
+                     "wayY":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":82,
+                 "x":607,
+                 "y":-46
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -124,7 +152,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":83,
+ "nextobjectid":84,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.4",

@@ -136,6 +136,8 @@
          result.type = actor.type;
          result.tileW = config.tilewidth;
          result.tileH = config.tileheight;
+         
+         result.props = extend(result.props, actor.properties);
 
          return result;
       }
