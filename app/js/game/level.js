@@ -242,6 +242,7 @@
             Sprinter: Game.Sprinter,
             Actor: Game.Actor,
             Coin: Game.Coin,
+            Lava: Game.Lava,
             Block: Game.Block,
             Finish: Game.Finish,
          }

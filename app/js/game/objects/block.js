@@ -55,7 +55,7 @@
          this._init();
       }
 
-      hurt(obj, startDamage) { 
+      hurt(obj, startDamage = 0) { 
          var time = Date.now();
          if (time - this._prevHurt < this._hurtInterval) { 
             return;
