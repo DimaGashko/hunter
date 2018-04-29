@@ -3,30 +3,36 @@
    
    var DEF = {
       props: {
-         damage: 100,
+         wayX: 2,
+         wayY: 0,
+         speed: 0.3,
       }
    }
    
-
    /**
-    * Lava
+    * Platform
     *
     * @class
     * @param {object} options - настройки (по умолчанию DEF)
    */
-   class Lava extends Game.Block {
+   class Platform extends Game.Actor {
       constructor(options = {}, collisions) {
          options = extend(true, {}, DEF, options);
          super(options, collisions);
+
+         console.log('Platform');
       }
-      
-      respondInteraction(obj, side) {
-         this.hurt(obj);
+
+      _createParametrs() { 
+         this._createParametrs.apply(this, arguments);
       }
 
    }
-   
-   global.Game.Lava = Lava;
-   
 
+   Object.defineProperty(Platform.prototype, 'gravity', {
+      value: false,
+   });
+   
+   global.Game.Platform = Platform;
+   
 }(window));

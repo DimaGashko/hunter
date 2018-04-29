@@ -217,6 +217,11 @@
    Object.defineProperty(Block.prototype, 'type', {
       value: 'block',
    });
+
+   //Действует ли на блок сила тяжести
+   Object.defineProperty(Block.prototype, 'gravity', {
+      value: false,
+   });
    
    global.Game.Block = Block;   
    

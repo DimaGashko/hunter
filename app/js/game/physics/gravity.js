@@ -21,6 +21,9 @@
        */
       use(actors) {
          actors.forEach((actor) => {
+            console.log(actor.gravity)
+            if (!actor.gravity) return;
+
             actor.speed = actor.speed.plus(this.g);
          });
       }

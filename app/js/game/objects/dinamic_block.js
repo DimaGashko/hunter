@@ -45,6 +45,10 @@
    Object.defineProperty(DinamicBlock.prototype, 'type', {
       value: 'dinamic_block',
    });
+
+   Object.defineProperty(DinamicBlock.prototype, 'gravity', {
+      value: true,
+   });
    
    global.Game.DinamicBlock = DinamicBlock;   
    

@@ -243,6 +243,7 @@
             Actor: Game.Actor,
             Coin: Game.Coin,
             Lava: Game.Lava,
+            Platrofm: Game.Platrofm,
             Block: Game.Block,
             Finish: Game.Finish,
          }

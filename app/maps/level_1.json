@@ -44,14 +44,14 @@
         }, 
         {
          "chunks":[],
-         "height":48,
+         "height":0,
          "name":"dinamic",
          "opacity":1,
          "startx":0,
-         "starty":-32,
+         "starty":0,
          "type":"tilelayer",
          "visible":true,
-         "width":48,
+         "width":0,
          "x":0,
          "y":0
         }, 
@@ -71,7 +71,31 @@
         {
          "draworder":"topdown",
          "name":"actors",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":50,
+                 "height":16,
+                 "id":80,
+                 "name":"Platform",
+                 "properties":
+                    {
+                     "speed":0.3,
+                     "wayX":5,
+                     "wayY":3
+                    },
+                 "propertytypes":
+                    {
+                     "speed":"float",
+                     "wayX":"int",
+                     "wayY":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":444,
+                 "y":-47
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -100,7 +124,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":80,
+ "nextobjectid":81,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.4",
