@@ -10,9 +10,7 @@
          "maps/2.json",
          "maps/3.json",
          "maps/4.json",
-         "maps/5.json",
-
-         "maps/new_test.json"
+         "maps/5.json"
       ].map(item => item + '?0'),
 
       tilesetSrc: "tilesets/tileset.json",

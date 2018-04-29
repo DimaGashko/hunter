@@ -38,7 +38,6 @@
       }
 
       _useBorders() { 
-         console.log(this.coords.x, this.borders.right)
          if (this.coords.x < this.borders.left) {
             this.coords.x = this.borders.left;
             this.speed.x = -this.speed.x;
