@@ -44,8 +44,8 @@
          this._died = true;
 
          setTimeout(() => { 
-            //globalEvents.trigger('actor_die', this);
-         }, 1000);
+            globalEvents.trigger('actor_die', this);
+         }, 200);
 		}
 
       goToLeft() {
