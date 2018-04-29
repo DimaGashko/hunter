@@ -74,8 +74,20 @@ html, body {
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
   margin: 0;
-  padding: 0;
-  font-size: 20px; }
+  padding: 0; }
+  .health__prev, .health__real {
+    font-size: 0;
+    position: relative; }
+  .health__real {
+    z-index: 3; }
+    .health__real-blink {
+      -webkit-animation: blink 0.5s steps(1, end) infinite;
+              animation: blink 0.5s steps(1, end) infinite; }
+  .health__prev {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2; }
   .health__heart {
     display: inline-block;
     margin: 0;
@@ -89,8 +101,17 @@ html, body {
         .health__heart-empty {
           background: #333; }
         .health__heart-half {
-          background: #c00;
-          width: 4px; } }
+          position: relative;
+          background: #333; }
+          .health__heart-half:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 50%;
+            bottom: 0;
+            background: #c00; } }
     @media screen and (min-width: 320px) {
       .health__heart {
         margin-left: -2px; }
@@ -109,3 +130,15 @@ html, body {
           background-position: -148px -77px;
           width: 18px;
           height: 18px; } }
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }

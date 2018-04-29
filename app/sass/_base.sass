@@ -79,7 +79,23 @@ html, body
    transform: translate(-50%)
    margin: 0
    padding: 0
-   font-size: 20px
+
+   &__prev,
+   &__real
+      font-size: 0
+      position: relative
+
+   &__real
+      z-index: 3
+
+      &-blink
+         animation: blink 0.5s steps(1, end) infinite;
+
+   &__prev 
+      position: absolute
+      left: 0
+      top: 0
+      z-index: 2
 
    &__heart 
       display: inline-block
@@ -87,8 +103,7 @@ html, body
       padding: 0
 
       @media screen and (max-width: 320px)
-         $width: 8px
-         width: $width
+         width: 8px
          height: 10px
 
          &-full
@@ -98,8 +113,18 @@ html, body
             background: #333
 
          &-half
-            background: #c00
-            width: $width / 2
+            position: relative
+            background: #333
+
+            &:before
+               content: ''
+               display: block
+               position: absolute
+               left: 0
+               top: 0
+               right: 50%
+               bottom: 0
+               background: #c00
 
       @media screen and (min-width: 320px)
          margin-left: -2px
@@ -112,3 +137,10 @@ html, body
 
          &-half
             @include sprite($health-half) 
+
+
+@keyframes blink
+   0%
+      opacity: 1
+   50%
+      opacity: 0
