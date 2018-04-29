@@ -73,56 +73,30 @@
          "name":"actors",
          "objects":[
                 {
-                 "gid":50,
+                 "gid":288,
                  "height":16,
-                 "id":80,
+                 "id":84,
                  "name":"Platform",
                  "properties":
                     {
-                     "speedX":0.05,
-                     "speedY":0,
-                     "wayX":10,
+                     "speedX":0,
+                     "speedY":0.05,
+                     "wayX":0,
                      "wayY":10
                     },
                  "propertytypes":
                     {
                      "speedX":"float",
                      "speedY":"float",
-                     "wayX":"int",
-                     "wayY":"int"
+                     "wayX":"float",
+                     "wayY":"float"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":82,
-                 "x":435,
-                 "y":-46
-                }, 
-                {
-                 "gid":50,
-                 "height":16,
-                 "id":83,
-                 "name":"Platform",
-                 "properties":
-                    {
-                     "speedX":0.05,
-                     "speedY":0,
-                     "wayX":10,
-                     "wayY":10
-                    },
-                 "propertytypes":
-                    {
-                     "speedX":"float",
-                     "speedY":"float",
-                     "wayX":"int",
-                     "wayY":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":82,
-                 "x":607,
-                 "y":-46
+                 "width":16,
+                 "x":274,
+                 "y":14
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -152,7 +126,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":84,
+ "nextobjectid":85,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.4",

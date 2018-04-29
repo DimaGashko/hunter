@@ -25,6 +25,12 @@
          console.log('Platform');
       }
 
+      respondInteraction(obj, side) {
+         var speed = this.speed;
+
+         super.respondInteraction.apply(this, arguments);
+      }
+
       updateCoords() { 
          super.updateCoords.apply(this, arguments);
 
