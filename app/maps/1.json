@@ -31,14 +31,14 @@
                  "x":-272,
                  "y":-16
                 }],
-         "height":32,
+         "height":624,
          "name":"static",
          "opacity":1,
-         "startx":-304,
+         "startx":-336,
          "starty":-32,
          "type":"tilelayer",
          "visible":true,
-         "width":48,
+         "width":80,
          "x":0,
          "y":0
         }, 

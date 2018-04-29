@@ -61,11 +61,11 @@
             return;
          }
 
-         this._prevHurt = time;
-
-         var damage = startDamage + this._damage;
+         var damage = startDamage + this.damage;
 
          obj.pain(damage);
+
+         this._prevHurt = time;
       }
 
       pain() { 
@@ -204,8 +204,8 @@
  
          this.sprite = null;
 
-         this._damage = this.options.props.damage;
-         this._armor = this.options.props.armor;
+         this.damage = this.options.props.damage;
+         this.armor = this.options.props.armor;
          this._hurtInterval = this.options.props.hurtInterval;
 
          this._prevHurt = 0;

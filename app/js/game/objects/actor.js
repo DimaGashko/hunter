@@ -5,7 +5,8 @@
       fillStyle: 'rgba(0,255,0,0.5)', //Цвет при отсутствии tileset-a
 		
 		props: {
-			health: 1000,
+         health: 1000,
+         painInterval: 250,
 		}
    }
    
@@ -19,9 +20,14 @@
 		}
 		
       pain(damage) { 
+         var time = Date.now();
+         if (time - this._prevPain < this._painInterval) { 
+            return;
+         }
+
          if (this._died) return;
 
-			damage -= this._armor;
+			damage -= this.armor;
 			if (damage < this.minDamage) return;
 
 			this.health -= damage;
@@ -36,7 +42,9 @@
 
 			if (this.health === 0) {
 				this.die();
-			}
+         }
+         
+         this._prevPain = time;
 		}
 
       die() { 
@@ -129,7 +137,10 @@
 
 			this.ownSpeed = new Vector(0.12, 0.4);
 			
-			this.minDamage = 40;
+         this.minDamage = 40;
+         
+         this._prevPain = 0;
+         this._painInterval = this.options.props.painInterval;
       }
    }
 

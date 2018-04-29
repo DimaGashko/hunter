@@ -19,8 +19,6 @@
       constructor(options = {}) {
          this._createParametrs(options);
          this._init();
-
-         console.log('Helth');
          
       }
 

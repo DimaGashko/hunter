@@ -60,6 +60,7 @@
 
          this.gravity = new Game.Gravity();
          this.collisions = new Game.Collisions();
+         this.worldBorders = new Game.WorldBorders();
          
          this.health = new Game.Health();
       }
@@ -138,6 +139,8 @@
          var dinamicObjects = this.level.getDinamicObjects();
 
          this.level.player.move();
+
+         this.worldBorders.use(dinamicObjects);
 
          dinamicObjects.forEach(obj => obj.tik());  
          this.level.objects.blocks.static.forEach(obj => obj.tik());  
