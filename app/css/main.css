@@ -75,6 +75,9 @@ html, body {
           transform: translate(-50%);
   margin: 0;
   padding: 0; }
+  .health-little_health {
+    -webkit-animation: littleHealth 0.3s infinite;
+            animation: littleHealth 0.3s infinite; }
   .health__prev, .health__real {
     font-size: 0;
     position: relative; }
@@ -142,3 +145,27 @@ html, body {
     opacity: 1; }
   50% {
     opacity: 0; } }
+
+@-webkit-keyframes littleHealth {
+  10% {
+    margin: -1px -1px; }
+  25% {
+    margin: 1px 1px; }
+  50% {
+    margin: 1px -1px; }
+  75% {
+    margin: -1px 1px; }
+  100% {
+    margin: 1px 1px; } }
+
+@keyframes littleHealth {
+  10% {
+    margin: -1px -1px; }
+  25% {
+    margin: 1px 1px; }
+  50% {
+    margin: 1px -1px; }
+  75% {
+    margin: -1px 1px; }
+  100% {
+    margin: 1px 1px; } }

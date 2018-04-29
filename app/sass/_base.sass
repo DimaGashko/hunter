@@ -80,6 +80,9 @@ html, body
    margin: 0
    padding: 0
 
+   &-little_health
+     animation: littleHealth 0.3s infinite
+
    &__prev,
    &__real
       font-size: 0
@@ -87,9 +90,9 @@ html, body
 
    &__real
       z-index: 3
-
+      
       &-blink
-         animation: blink 0.5s steps(1, end) infinite;
+         animation: blink 0.5s steps(1, end) infinite
 
    &__prev 
       position: absolute
@@ -144,3 +147,17 @@ html, body
       opacity: 1
    50%
       opacity: 0
+
+@keyframes littleHealth
+   10%
+      margin: -1px -1px
+   25%
+      margin: 1px 1px
+   50%
+      margin: 1px -1px
+   75%
+      margin: -1px 1px
+   100%
+      margin: 1px 1px
+      
+

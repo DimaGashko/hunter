@@ -44,6 +44,18 @@
          this.els.real.innerHTML = this._getHTML();
 
          if (!noAnimate) this.startBlink();
+
+         this.setHealthLevel();
+      }
+
+      setHealthLevel() { 
+         var cur = this.getHealthPercent();
+
+         var method = (cur <= this.littleHealsPercent) ?
+            'add' : 'remove';   
+
+         this.els.root.classList[method]('health-little_health');
+
       }
 
       startBlink() { 
@@ -115,6 +127,8 @@
          this.actor = null;
 
          this.blinkTimer = 0;
+
+         this.littleHealsPercent = 18;
 
       }
    
