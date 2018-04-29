@@ -20,8 +20,9 @@
        * 
        * @param {JSON string} JSONMap - строка карты в формате JSON
        */
-      parse(JSONMap) {
+      parse(JSONMap, tileset) {
          var config = JSON.parse(JSONMap);
+         config.tileset = tileset; 
 
          //Результат обработки
          var parsed = {
@@ -150,7 +151,9 @@
        * chunk передается только при обработке тайлов
        */
       _parseObjByTileIndex(config, item, chunk, index) { 
-         var tileset = config.tilesets[0];
+         var tileset = config.tileset;
+         console.log(tileset);
+         
          var tileParam = tileset.tiles[item] || {};
 
          var itemResolt = {
@@ -195,7 +198,7 @@
        * @param {object} cadr параметры кадра инимации из карты
        */
       _getCadrParam(config, cadr) {
-         var columns = config.tilesets[0].columns;
+         var columns = config.tileset.columns;
 
          return {
             metrics: {

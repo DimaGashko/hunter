@@ -5,6 +5,7 @@
 
       //Пути к картам
       levelsSrc: [
+         "maps/_1.json",
          "maps/1.json",
          "maps/2.json",
          "maps/3.json",
@@ -14,14 +15,57 @@
          "maps/new_test.json"
       ].map(item => item + '?0'),
 
+      tilesetSrc: "tilesets/tileset.json",
+
       //Текущий уровень
       curLevel: 0, 
    }
 
 
-   class MapManager {
+   class MapManager extends Events {
       constructor(options = {}) {
+         super(options);
+
          this._createParametrs(options);
+         this._init();
+      }
+
+      _init() {
+         this._loadTileset().then((JSONTileset) => {
+            this.tileset = JSON.parse(JSONTileset);
+            this.trigger('tileset_loaded');
+         });
+      }
+
+      _loadTileset() { 
+         return new Promise((resolve, reject) => {
+            var src = this.options.tilesetSrc;
+            console.time('load tileset');
+
+            if (src in localStorage && 0) {
+               resolve(localStorage[src]);
+               console.timeEnd('load tileset');
+               return;
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', src, true);
+            xhr.send();
+
+            xhr.onreadystatechange = () => {
+               if (xhr.readyState != 4) return;
+
+               console.timeEnd('load tileset');
+
+               if (xhr.status != 200) {
+                  reject();
+               }
+               else {
+                  localStorage[src] = xhr.responseText;
+                  resolve(xhr.responseText);
+               }
+            }
+         });
       }
 
       //Получение карты текущего уровня
@@ -30,7 +74,14 @@
          
          return new Promise((resolve, reject) => {
             this._loadMap().then((JSONMap) => {
-               resolve(this.parser.parse(JSONMap));
+               if (!this.tileset) {
+                  this.addEvent('tileset_loaded', () => {
+                     resolve(this.parser.parse(JSONMap, this.tileset));
+                  })
+               }
+               else {
+                  resolve(this.parser.parse(JSONMap, this.tileset));
+               }
                
                this._loadNextLevel();
             }, () => {
@@ -91,6 +142,8 @@
          this.curLevel = this.options.curLevel;
 
          this.parser = new Game.MapParser();
+
+         this.tileset = null;
       }
 
 

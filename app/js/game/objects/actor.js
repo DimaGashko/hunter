@@ -5,7 +5,7 @@
       fillStyle: 'rgba(0,255,0,0.5)', //Цвет при отсутствии tileset-a
 		
 		props: {
-         health: 100000,
+         health: 1000,
          painInterval: 250,
 		}
    }
