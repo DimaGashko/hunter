@@ -29,7 +29,7 @@
 
             else if (targ.classList.contains('won__restart')) {
                 els.won.classList.remove('won-show');
-                
+                game.restart();
             }
         });
 
