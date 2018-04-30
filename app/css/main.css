@@ -189,15 +189,18 @@ html, body {
     font-size: 18px; }
 
 .won {
+  visibility: hidden;
+  opacity: 0;
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s; }
+  -webkit-transition: visibility ease 0.5s, opacity 0.5s;
+  transition: visibility ease 0.5s, opacity 0.5s; }
   .won-show {
+    visibility: visible;
     opacity: 1; }
   .won__content {
     position: absolute;
