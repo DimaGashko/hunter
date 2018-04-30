@@ -101,7 +101,7 @@ html, body {
     display: inline-block;
     margin: 0;
     padding: 0; }
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 319px) {
       .health__heart {
         width: 8px;
         height: 10px; }

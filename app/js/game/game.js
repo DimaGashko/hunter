@@ -42,6 +42,11 @@
          this.render.stop();
       }
 
+      restart() { 
+         this.mapManager.curLevel = 0;
+         this.startLevel();
+      }
+
       _init() {
          this._getElements();
 

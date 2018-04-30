@@ -85,9 +85,19 @@ html
                         button.game__move.game__move_right
 
                   .game__statuses  
-                     .coins(style=font)
+                     .coins
                         .coins__label Собрано предметов:
                         .coins__val 0/0 
+            .won  
+               header.won__header
+                  .won__title
+
+               main.won__main
+                  .won__buttons
+                     button.won__restart Начать сначала
+                     button.won__resume Продолжить
+
+               footer.won__footer
 
          .footer
             //-include components/footer.jade
