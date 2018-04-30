@@ -88,16 +88,17 @@ html
                      .coins
                         .coins__label Собрано предметов:
                         .coins__val 0/0 
-            .won  
-               header.won__header
-                  .won__title
+            .won
+               .won__content
+                  header.won__header
+                     .won__title Вы победили!
 
-               main.won__main
-                  .won__buttons
-                     button.won__restart Начать сначала
-                     button.won__resume Продолжить
+                  main.won__main
+                     .won__buttons
+                        button.won__button.won__restart Начать сначала
+                        button.won__button.won__resume Продолжить
 
-               footer.won__footer
+                  footer.won__footer
 
          .footer
             //-include components/footer.jade

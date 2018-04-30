@@ -3,7 +3,10 @@ html, body {
   height: 100%;
   background: cornflowerblue;
   overflow: hidden;
-  font-display: swap; }
+  font-display: swap;
+  font-family: 'Russo One', fantasy, sans-serif;
+  font-size: 16px;
+  color: #111; }
 
 .game {
   position: fixed;
@@ -184,6 +187,59 @@ html, body {
     vertical-align: middle; }
   .coins__val {
     font-size: 18px; }
+
+.won {
+  display: none;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s; }
+  .won-show {
+    opacity: 1; }
+  .won__content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%; }
+  .won__header {
+    margin-bottom: 20px; }
+  .won__title {
+    text-align: center;
+    font-size: 25px; }
+  .won__buttons {
+    text-align: center;
+    -webkit-perspective: 500px;
+            perspective: 500px; }
+  .won__button {
+    width: 300px;
+    max-width: 100%;
+    font-family: 'Russo One', fantasy, sans-serif;
+    padding: 8px 0;
+    background: #c8c8c8;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+    margin-top: 10px;
+    -webkit-transition: background .5s;
+    transition: background .5s; }
+    .won__button:first-child {
+      margin-top: 0; }
+    .won__button:hover {
+      background: rgba(200, 200, 200, 0.6); }
+    .won__button:active {
+      -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+      -webkit-transition: background .5s, -webkit-transform 1s;
+      transition: background .5s, -webkit-transform 1s;
+      transition: background .5s, transform 1s;
+      transition: background .5s, transform 1s, -webkit-transform 1s; }
 
 .fps {
   position: absolute;
