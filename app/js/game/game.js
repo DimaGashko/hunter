@@ -8,10 +8,10 @@
          this._init();
          this._initEvents();
 
-         this.start();
+         this.startLevel();
       }
 
-      start() {
+      startLevel() {
          this.mapManager.getLevel().then((mapConfig) => {
             this.render.stop();
 
@@ -27,6 +27,14 @@
          }, () => {
             console.log("error");
          });
+      }
+
+      pause() { 
+         this.render.stop();
+      }
+
+      start() { 
+         this.render.start();
       }
 
       won() {
@@ -76,7 +84,7 @@
 
       _restart() { 
          this.mapManager.curLevel = 0;
-         this.start();
+         this.startLevel();
       }   
 
       _penalize() { 
@@ -87,7 +95,7 @@
          this._initLevelParametrs();
 
          this.mapManager.nextLevel();
-         this.start();
+         this.startLevel();
       }
 
       _initEvents() { 
@@ -108,7 +116,7 @@
 
             console.log('Die');
 
-            this.start();
+            this.startLevel();
          });
       }
 

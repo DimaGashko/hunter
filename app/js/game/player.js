@@ -72,7 +72,6 @@
       move() {
          this.person.beforeMove();
 
-
          if (keysPress[this.KEYS.left] || this._moves.left) {
             this.person.goToLeft();
          }
@@ -100,10 +99,10 @@
          this.els = {};
          
          this.KEYS = {
-            top: 87,
-            right: 68,
-            bottom: 83,
-            left: 65,
+            left:    [37, 65],
+            top:     [38, 87],
+            right:   [39, 68],
+            bottom:  [40, 40],
          };
 
          this._moves = {
