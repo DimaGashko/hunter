@@ -171,8 +171,8 @@ html, body {
     margin: 1px 1px; } }
 
 .coins {
-  font-family: fantasy;
-  font-size: 16px; }
+  font-family: 'Russo One', fantasy, sans-serif;
+  font-size: 18px; }
   .coins__label, .coins__val {
     display: inline-block;
     vertical-align: middle; }

@@ -7,6 +7,8 @@ html
          meta(charset="utf-8") 
          meta(name="viewport", content="width=device-width, initial-scale=1") 
          link(rel="shortcut icon", href="f.png", type="image/png")
+
+         <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">         
          
          //build:css css/main.css
          link(rel="stylesheet", href="css/lib/normalize.min.css")
@@ -91,8 +93,8 @@ html
                         button.game__move.game__move_left
                         button.game__move.game__move_right
 
-                  .game__statuses   
-                     .coins
+                  .game__statuses  
+                     .coins(style=font)
                         .coins__label Собрано предметов:
                         .coins__val 0/0 
 
