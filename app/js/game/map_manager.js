@@ -5,14 +5,14 @@
 
       //Пути к картам
       levelsSrc: [
-         "maps/level_10.json",
          "maps/level_1.json",
          "maps/1.json",
          "maps/2.json",
          "maps/3.json",
          "maps/4.json",
-         "maps/5.json"
-      ].map(item => item + '?0'),
+         "maps/5.json",
+         "maps/level_10.json"
+      ].map(item => item + '?1'),
 
       tilesetSrc: "tilesets/tileset.json",
 

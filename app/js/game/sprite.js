@@ -278,15 +278,15 @@
          this.ctx.drawImage(
             this.tileset,
 
-            config.x,
-            config.y,
-            config.w,
-            config.h,
+            config.x^0,
+            config.y^0,
+            config.w^0,
+            config.h^0,
 
             0,
             0,
-            this.options.size.x,
-            this.options.size.y
+            this.options.size.x^0,
+            this.options.size.y^0
          );
 
          this.ctx.restore();
@@ -382,6 +382,8 @@
       _createCanvas() {
          this.sprite = document.createElement('canvas');
          this.ctx = this.sprite.getContext('2d');
+         
+         this.ctx.imageSmoothingEnabled = false;    
       }
 
       _createParametrs(options) {

@@ -8,6 +8,13 @@ html, body {
   font-size: 16px;
   color: #111; }
 
+canvas {
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-pixelated;
+      image-rendering: pixelated; }
+
 .game {
   position: fixed;
   left: 0;

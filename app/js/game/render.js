@@ -209,6 +209,7 @@
 
       _getCtx() {
          this.ctx = this.canv.getContext('2d');
+         this.ctx.imageSmoothingEnabled = false;  
       }
 
       _getCanvas() {
