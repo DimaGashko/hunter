@@ -189,7 +189,6 @@ html, body {
     font-size: 18px; }
 
 .won {
-  display: none;
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
   left: 0;
@@ -234,12 +233,7 @@ html, body {
     .won__button:hover {
       background: rgba(200, 200, 200, 0.6); }
     .won__button:active {
-      -webkit-transform: rotateY(360deg);
-              transform: rotateY(360deg);
-      -webkit-transition: background .5s, -webkit-transform 1s;
-      transition: background .5s, -webkit-transform 1s;
-      transition: background .5s, transform 1s;
-      transition: background .5s, transform 1s, -webkit-transform 1s; }
+      background: #c8c8c8; }
 
 .fps {
   position: absolute;
