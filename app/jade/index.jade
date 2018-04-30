@@ -6,9 +6,7 @@ html
          
          meta(charset="utf-8") 
          meta(name="viewport", content="width=device-width, initial-scale=1") 
-         link(rel="shortcut icon", href="f.png", type="image/png")
-
-         <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">         
+         link(rel="shortcut icon", href="f.png", type="image/png")       
          
          //build:css css/main.css
          link(rel="stylesheet", href="css/lib/normalize.min.css")
@@ -56,9 +54,10 @@ html
 
          script(defer, src="js/game/objects/finish.js")
 
-
          script(defer, src="js/game/player.js")
          script(defer, src="js/game/health.js")
+
+         script(defer, src="js/fps_meter.js")
 
          script(defer, src="js/main.js?1")
 
@@ -74,18 +73,10 @@ html
                   canvas.game__canvas.game__main_canv   
 
                .game__dom 
+                  .fps 0
+
                   .health 
                      .health__prev
-                        .health__heart.health__heart-full
-                        .health__heart.health__heart-full
-                        .health__heart.health__heart-full
-                        .health__heart.health__heart-full
-                        .health__heart.health__heart-full
-                        .health__heart.health__heart-full
-                        .health__heart.health__heart-half
-                        .health__heart.health__heart-empty
-                        .health__heart.health__heart-empty
-                        .health__heart.health__heart-empty
                      .health__real
 
                   .game__controls

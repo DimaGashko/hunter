@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Russo+One");
 html, body {
   height: 100%;
   background: cornflowerblue;
-  overflow: hidden; }
+  overflow: hidden;
+  font-display: swap; }
 
 .game {
   position: fixed;
@@ -178,3 +180,12 @@ html, body {
     vertical-align: middle; }
   .coins__val {
     font-size: 18px; }
+
+.fps {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: arail;
+  fon-size: 16px;
+  color: #c00;
+  font-weight: bold; }

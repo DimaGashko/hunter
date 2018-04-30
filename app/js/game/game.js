@@ -1,8 +1,9 @@
 ;(function(global){
    "use strict"
 
-   class Game {
+   class Game extends Events {
       constructor() {
+         super(...arguments);
          this._createParametrs();
          this._init();
          this._initEvents();
@@ -70,10 +71,13 @@
       }
 
       _win() { 
-         console.log('win');
+         this.trigger('win');   
+      }
+
+      _restart() { 
          this.mapManager.curLevel = 0;
          this.start();
-      }
+      }   
 
       _penalize() { 
          console.log('Сначала соберите все предметы');
