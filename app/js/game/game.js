@@ -7,8 +7,6 @@
          this._createParametrs();
          this._init();
          this._initEvents();
-
-         this.startLevel();
       }
 
       startLevel() {

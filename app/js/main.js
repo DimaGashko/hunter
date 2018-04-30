@@ -9,6 +9,7 @@
     startFpsMeter(document.querySelector('.fps'));
 
     var game = window.g = new Game();
+    game.startLevel();
    
     game.addEvent('win', () => { 
         won();

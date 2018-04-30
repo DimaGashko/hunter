@@ -16,6 +16,10 @@
      "731":
         {
          "damage":350
+        },
+     "800":
+        {
+         "damage":300
         }
     },
  "tilepropertytypes":
@@ -25,6 +29,10 @@
          "damage":"int"
         },
      "731":
+        {
+         "damage":"int"
+        },
+     "800":
         {
          "damage":"int"
         }
@@ -101,6 +109,23 @@
         },
      "731":
         {
+         "type":"Lava"
+        },
+     "800":
+        {
+         "animation":[
+                {
+                 "duration":350,
+                 "tileid":800
+                }, 
+                {
+                 "duration":350,
+                 "tileid":802
+                }, 
+                {
+                 "duration":350,
+                 "tileid":803
+                }],
          "type":"Lava"
         }
     },

@@ -229,6 +229,7 @@ html, body {
     border-radius: 2px;
     outline: 0;
     margin-top: 10px;
+    display: block;
     -webkit-transition: background .5s;
     transition: background .5s; }
     .won__button:first-child {
@@ -237,6 +238,31 @@ html, body {
       background: rgba(200, 200, 200, 0.6); }
     .won__button:active {
       background: #c8c8c8; }
+  .won__imgs {
+    display: none; }
+  @media screen and (min-width: 500px) and (min-height: 500px) {
+    .won__imgs {
+      display: block; }
+    .won__gif {
+      position: absolute; }
+      .won__gif_1 {
+        left: -20px;
+        top: -120px; }
+      .won__gif_2 {
+        right: -30px;
+        top: -100px; } }
+
+@-webkit-keyframes hideTimeout {
+  100% {
+    width: 0;
+    height: 0;
+    overflow:hidden { } } }
+
+@keyframes hideTimeout {
+  100% {
+    width: 0;
+    height: 0;
+    overflow:hidden { } } }
 
 .fps {
   position: absolute;
