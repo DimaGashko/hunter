@@ -5,6 +5,7 @@
 
       //Пути к картам
       levelsSrc: [
+         "maps/level_10.json",
          "maps/level_1.json",
          "maps/1.json",
          "maps/2.json",
