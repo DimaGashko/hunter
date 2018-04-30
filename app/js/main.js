@@ -15,25 +15,24 @@
     });
 
     function won() { 
-        game.pause();
-
-
-
-        game.restart();
+        els.won.classList.add('won-show');
     }
 
-    function initEvents() { 
-        els.won.addEventListener('click', (event) => { 
+    ; (function initEvents() {
+
+        els.won.addEventListener('click', (event) => {
             var targ = event.target;
 
-            if (target.classList.contain('.won__resume')) {
-                console.log('resume');
+            if (targ.classList.contains('won__resume')) {
+                els.won.classList.remove('won-show');
             }
 
-            else if (target.classList.contain('.won__restart')) { 
-                console.log('restart');
+            else if (targ.classList.contains('won__restart')) {
+                els.won.classList.remove('won-show');
                 
             }
         });
-    };
+
+    }());
+
 }(window));

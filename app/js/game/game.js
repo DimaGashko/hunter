@@ -141,6 +141,11 @@
 
             if (this.mapManager.isLastMap()) {
                this._win();
+
+               setTimeout(() => { 
+                  this._finishReady = true; //Если уже выиграл, 
+                     //то всегда можно прийти на финиш
+               }, 5000);
             } else { 
                this._nextLevel();
             }
