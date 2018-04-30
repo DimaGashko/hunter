@@ -72,15 +72,15 @@
       move() {
          this.person.beforeMove();
 
-         if (keysPress[this.KEYS.left] || this._moves.left) {
+         if (this.KEYS.left.some(n => keysPress[n]) || this._moves.left) {
             this.person.goToLeft();
          }
 
-         if (keysPress[this.KEYS.right] || this._moves.right) {
+         if (this.KEYS.right.some(n => keysPress[n]) || this._moves.right) {
             this.person.goToRight();
          }
 
-         if (keysPress[this.KEYS.top] || this._moves.jump) {
+         if (this.KEYS.top.some(n => keysPress[n]) || this._moves.jump) {
             this.person.moveStatus.jump = true;
             this.person.moveParametrs.jump = true;
          }
