@@ -115,14 +115,14 @@
                  "x":-160,
                  "y":-16
                 }],
-         "height":64,
+         "height":32,
          "name":"static",
          "opacity":1,
          "startx":-304,
-         "starty":-64,
+         "starty":-32,
          "type":"tilelayer",
          "visible":true,
-         "width":256,
+         "width":160,
          "x":0,
          "y":0
         }, 
@@ -162,14 +162,14 @@
                  "x":-256,
                  "y":-16
                 }],
-         "height":48,
+         "height":32,
          "name":"decorates",
          "opacity":1,
-         "startx":-304,
-         "starty":-48,
+         "startx":-288,
+         "starty":-32,
          "type":"tilelayer",
          "visible":true,
-         "width":224,
+         "width":64,
          "x":0,
          "y":0
         }, 
@@ -196,8 +196,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":-4541,
-                 "y":-274
+                 "x":-4531,
+                 "y":-344
                 }],
          "opacity":1,
          "type":"objectgroup",

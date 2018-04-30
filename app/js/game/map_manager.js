@@ -95,7 +95,7 @@
       } 
       
       nextLevel() { 
-         this.curLevel++;
+         this.curLevel = (this.curLevel + 1) % this.options.levelsSrc.length;
       }
 
       //Загрузка карты текущего уровня (JSON)

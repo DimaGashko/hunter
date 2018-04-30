@@ -60,7 +60,7 @@
          if (this._died) return;
 
          if (this.ownSpeed.x > -this.speed.x) {
-            this.speed.x -= this.ownSpeed.x;
+            this.speed.x = -this.ownSpeed.x;
          }
       }
 
@@ -68,7 +68,7 @@
          if (this._died) return;
 
          if (this.ownSpeed.x > this.speed.x) {
-            this.speed.x += this.ownSpeed.x;
+            this.speed.x = this.ownSpeed.x;
          } 
       }
 

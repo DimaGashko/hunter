@@ -38,14 +38,14 @@
                  "x":48,
                  "y":0
                 }],
-         "height":176,
+         "height":32,
          "name":"static",
          "opacity":1,
-         "startx":-192,
+         "startx":0,
          "starty":-16,
          "type":"tilelayer",
          "visible":true,
-         "width":448,
+         "width":64,
          "x":0,
          "y":0
         }, 
@@ -107,7 +107,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":85,
+ "nextobjectid":86,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.4",
