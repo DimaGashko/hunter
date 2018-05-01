@@ -85,15 +85,15 @@
        */
       render(objects = []) {
         var ctx = this.ctx;
-
+        
          //проверка количества отрисовываемых объектов
          //console.log(objects.length); 
-
+         
          for (var i = objects.length - 1; i >= 0; i--) {
             var obj = this._getObjOnScreen(objects[i]);
             
             this.ctx.save();
-
+            
             if (objects[i].img) {
                ctx.drawImage(objects[i].img, obj.x^0, obj.y^0, obj.w^0, obj.h^0);
             } else {
@@ -109,7 +109,7 @@
       //Кадр анимации
       tik(dilation) {
          if (!this.status.start) return;
-
+         
          this.clear();
          this.options.eachTik(dilation);
       }
@@ -125,9 +125,12 @@
       //Переопределение размеров игрового
       resize() {
          this.updateMetrics();
-
+         
          this.canv.width = this.metrics.gameSize.x;
          this.canv.height = this.metrics.gameSize.y;
+
+         //Для отключения сглаживания (очень важно)
+         this.ctx.imageSmoothingEnabled = false; 
       }
 
       //Обновляет размеры используемые для расчетов
@@ -209,7 +212,6 @@
 
       _getCtx() {
          this.ctx = this.canv.getContext('2d');
-         this.ctx.imageSmoothingEnabled = false;  
       }
 
       _getCanvas() {

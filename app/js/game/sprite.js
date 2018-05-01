@@ -377,13 +377,13 @@
 
          this.sprite.width = this.options.size.x;
          this.sprite.height = this.options.size.y;
+
+         this.ctx.imageSmoothingEnabled = false; 
       }
 
       _createCanvas() {
          this.sprite = document.createElement('canvas');
-         this.ctx = this.sprite.getContext('2d');
-         
-         this.ctx.imageSmoothingEnabled = false;    
+         this.ctx = this.sprite.getContext('2d');   
       }
 
       _createParametrs(options) {

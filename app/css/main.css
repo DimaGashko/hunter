@@ -110,7 +110,12 @@ canvas {
   .health__heart {
     display: inline-block;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    -ms-interpolation-mode: nearest-neighbor;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-pixelated;
+        image-rendering: pixelated; }
     @media screen and (max-width: 319px) {
       .health__heart {
         width: 8px;
