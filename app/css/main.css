@@ -270,7 +270,11 @@ canvas {
   -webkit-transition: -webkit-transform ease .3s;
   transition: -webkit-transform ease .3s;
   transition: transform ease .3s;
-  transition: transform ease .3s, -webkit-transform ease .3s; }
+  transition: transform ease .3s, -webkit-transform ease .3s;
+  font-size: 20px; }
+  @media screen and (max-width: 300px) {
+    .early_on_finish {
+      font-size: 10px; } }
   .early_on_finish-show {
     -webkit-transform: translate(-50%, 100px);
             transform: translate(-50%, 100px); }
