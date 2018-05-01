@@ -254,3 +254,18 @@ canvas {
   fon-size: 16px;
   color: #c00;
   font-weight: bold; }
+
+.early_on_finish {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  white-space: nowrap;
+  -webkit-transform: translate(-50%, -150px);
+          transform: translate(-50%, -150px);
+  -webkit-transition: -webkit-transform ease .3s;
+  transition: -webkit-transform ease .3s;
+  transition: transform ease .3s;
+  transition: transform ease .3s, -webkit-transform ease .3s; }
+  .early_on_finish-show {
+    -webkit-transform: translate(-50%, 100px);
+            transform: translate(-50%, 100px); }

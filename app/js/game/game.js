@@ -94,10 +94,6 @@
          this.startLevel();
       }   
 
-      _penalize() { 
-         console.log('Сначала соберите все предметы');
-      }
-
       _nextLevel() { 
          this._initLevelParametrs();
 
@@ -136,18 +132,15 @@
             };
             
             if (this._coinsFind < this._coinsCount) {
-               //Штраф, за приход на финиш до сбора всех предметов
-               this._penalize(object);
+               //Приход на финиш до сбора всех предметов
+               this.trigger('early_on_finish');
+               this._onFinishTimout();
                return;
             }
 
             if (this.mapManager.isLastMap()) {
                this._win();
-
-               setTimeout(() => { 
-                  this._finishReady = true; //Если уже выиграл, 
-                     //то всегда можно прийти на финиш
-               }, 5000);
+               this._onFinishTimout();
             } else { 
                this._nextLevel();
             }
@@ -228,6 +221,13 @@
          var root = this.els.root = document.querySelector('.game');
 
          this.els.coinsStatus = root.querySelector('.coins__val');
+      }
+
+      //Разрешает прийты на финиш через некоторое время
+      _onFinishTimout() { 
+         setTimeout(() => { 
+            this._finishReady = true; 
+         }, 5000);
       }
 
       _createParametrs() {

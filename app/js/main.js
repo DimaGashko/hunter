@@ -3,7 +3,8 @@
 
     var els = {
         fps: document.querySelector('.fps'),
-        won: document.querySelector('.won')
+        won: document.querySelector('.won'),
+        earlyOnFinish: document.querySelector('.early_on_finish'),
     }
    
     startFpsMeter(document.querySelector('.fps'));
@@ -14,6 +15,22 @@
     game.addEvent('win', () => { 
         won();
     });
+
+    ; (function () {
+        var timer = 0;
+
+        game.addEvent('early_on_finish', () => { 
+            els.earlyOnFinish.classList.add('early_on_finish-show');
+            
+            if (timer !== 0) { 
+                clearTimeout(timer);
+            }
+
+            timer = setTimeout(() => { 
+                els.earlyOnFinish.classList.remove('early_on_finish-show');
+            }, 3000);
+        });
+    }());
 
     function won() { 
         els.won.classList.add('won-show');
