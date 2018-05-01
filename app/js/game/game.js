@@ -7,7 +7,7 @@
 
    class Game extends Events {
       constructor(options) {
-         super(...arguments);
+         super(...arguments); 
          this._createParametrs(options);
          this._init();
          this._initEvents();

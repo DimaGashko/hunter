@@ -9,6 +9,10 @@
  "tileheight":16,
  "tileproperties":
     {
+     "139":
+        {
+         "damage":100
+        },
      "166":
         {
          "damage":50
@@ -24,6 +28,10 @@
     },
  "tilepropertytypes":
     {
+     "139":
+        {
+         "damage":"int"
+        },
      "166":
         {
          "damage":"int"
@@ -90,6 +98,50 @@
      "474":
         {
          "type":"Coin"
+        },
+     "600":
+        {
+         "animation":[
+                {
+                 "duration":100,
+                 "tileid":600
+                }, 
+                {
+                 "duration":100,
+                 "tileid":601
+                }, 
+                {
+                 "duration":100,
+                 "tileid":602
+                }, 
+                {
+                 "duration":100,
+                 "tileid":603
+                }, 
+                {
+                 "duration":100,
+                 "tileid":604
+                }, 
+                {
+                 "duration":100,
+                 "tileid":605
+                }, 
+                {
+                 "duration":100,
+                 "tileid":606
+                }, 
+                {
+                 "duration":100,
+                 "tileid":607
+                }, 
+                {
+                 "duration":100,
+                 "tileid":608
+                }, 
+                {
+                 "duration":100,
+                 "tileid":609
+                }]
         },
      "624":
         {

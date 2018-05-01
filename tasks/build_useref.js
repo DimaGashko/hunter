@@ -10,6 +10,7 @@ module.exports = function(options) {
          .pipe($.if('*.js', $.babel({
             presets: ['es2015'],
          })))
+         .pipe($.if('*.js', $.uglify()))
          .pipe($.if('*.css', $.minifyCss()))
          .pipe(gulp.dest(options.dst));
    }

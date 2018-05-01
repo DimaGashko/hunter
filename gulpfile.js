@@ -35,7 +35,10 @@ lrTask('js', './tasks/js', {
 });
 
 lrTask('map', './tasks/js', {
-   src: 'app/maps/**/*.json',
+   src: [
+      'app/maps/**/*.json',
+      'app/tileset/**/*.json'
+   ],
 });
 
 lrTask('test', './tasks/test', {
@@ -49,7 +52,7 @@ lrTask('build:useref', './tasks/build_useref', {
 });
 
 lrTask('build:clean', './tasks/build_clean', {
-   src: 'dist',
+   src: 'dist/',
 });
 
 lrTask('build:img', './tasks/build_img', {
@@ -75,19 +78,28 @@ lrTask('build:connect', './tasks/build_connect', {
    }
 });
 
+gulp.task('build:maps', () => {
+   return gulp.src('app/{maps,tilesets}/**/*.json')
+      .pipe($.jsonMinify())
+      .pipe(gulp.dest('dist'));
+});
+
 gulp.task('build', gulp.series(
    'build:clean',
-   gulp.parallel(gulp.series('build:useref', 'build:html'), 'build:img')
+   gulp.parallel('build:useref', 'build:img', 'build:maps'),
+   'build:html'
 ));
 
 //WATCH
 gulp.task('watch', () => {
-   gulp.watch('app/sass/**/*.sass', gulp.parallel('css'));
-   gulp.watch('app/jade/**/*.jade', gulp.parallel('html'));
-   gulp.watch('app/js/**/*.js', gulp.parallel('js'));
+   gulp.watch('app/**/*.sass', gulp.parallel('css'));
+   gulp.watch('app/**/*.jade', gulp.parallel('html'));
+   gulp.watch('app/**/*.js', gulp.parallel('js'));
    gulp.watch('app/img/icons/*.*', gulp.parallel('sprites'));
 
    gulp.watch('app/maps/**/*.json', gulp.parallel('js'));
+   gulp.watch('app/tilesets/**/*.json', gulp.parallel('js'));
+   
    gulp.watch('app/test/**/*.*', gulp.parallel('test'));
 });
 

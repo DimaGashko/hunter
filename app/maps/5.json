@@ -277,11 +277,11 @@
          "height":48,
          "name":"decorates",
          "opacity":1,
-         "startx":-144,
+         "startx":-176,
          "starty":-48,
          "type":"tilelayer",
          "visible":true,
-         "width":64,
+         "width":96,
          "x":0,
          "y":0
         }, 
