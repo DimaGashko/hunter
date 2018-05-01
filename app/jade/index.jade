@@ -9,6 +9,8 @@ html
          link(rel="shortcut icon", href="favicon.png", type="image/png")       
 
          //build:js js/main.js defer
+         script(defer, src="js/polyfills.js")
+
          script(defer, src="js/functions.js")
          script(defer, src="js/sprites_config.js")
 
@@ -75,8 +77,8 @@ html
 
                   .game__controls
                      .game__move_buttons
-                        button.game__move.game__move_left <=
-                        button.game__move.game__move_right =>
+                        button.game__move.game__move_left Left
+                        button.game__move.game__move_right Right
 
                   .game__statuses  
                      .coins

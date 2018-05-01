@@ -25,6 +25,7 @@ canvas {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  text-shadow: 1px 1px rgba(200, 200, 200, 0.5);
   width: 100%;
   height: 100%; }
   .game__canvases {
@@ -225,7 +226,7 @@ canvas {
   .won__content {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     max-width: 90%;
@@ -263,7 +264,7 @@ canvas {
 
 .fps {
   position: absolute;
-  top: 100px;
+  top: 0;
   right: 0;
   font-family: arail;
   fon-size: 16px;
@@ -305,13 +306,14 @@ canvas {
   font-size: 0;
   cursor: pointer;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50px;
+  left: 0;
   z-index: 5;
   background-image: url(../img/sprite.png);
   background-position: 0px 0px;
   width: 64px;
-  height: 64px; }
+  height: 64px;
+  display: none; }
   .open_menu:active, .open_menu-active {
     -webkit-transform: scale(1.2);
             transform: scale(1.2); }
@@ -337,7 +339,7 @@ canvas {
   .menu__content {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     max-width: 90%;
