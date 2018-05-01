@@ -4,6 +4,7 @@
     var els = {
         game: document.querySelector('.game'),
         won: document.querySelector('.won'),
+        menu: document.querySelector('.menu'),
         earlyOnFinish: document.querySelector('.early_on_finish'),
         fps: document.querySelector('.fps'),
     }
@@ -48,7 +49,7 @@
             if (targ.classList.contains('game__resume')) {
                 game.start();
             
-            } else if (targ.classList.contains('game_level__restart')) {
+            } else if (targ.classList.contains('game__level_restart')) {
                 game.startLevel();
             
             } else if (targ.classList.contains('game__game_restart')) {
@@ -56,6 +57,24 @@
             
             } else if (targ.classList.contains('game__open_secret_level')) {
                 game.openSecterLevel();
+            
+            }
+        });
+
+        els.won.addEventListener('click', (event) => {
+            var targ = event.target;
+
+            if (targ.classList.contains('won__button')) {
+                els.won.classList.remove('won-show');
+            
+            }
+        });
+
+        els.menu.addEventListener('click', (event) => {
+            var targ = event.target;
+
+            if (targ.classList.contains('menu__button')) {
+                els.menu.classList.remove('menu-show');
             
             }
         });

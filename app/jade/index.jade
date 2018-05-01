@@ -66,7 +66,6 @@ html
             .game
                .game__canvases
                   canvas.game__canvas.game__main_canv   
-
                .game__dom 
                   .fps 0
 
@@ -86,21 +85,20 @@ html
 
                   .open_menu Menu 
 
-               .menu.menu
+               .menu.menu-show
                   .menu__content
                      header.menu__header
-                        .menu__title Вы победили!
+                        .menu__title Hunter
 
                      main.menu__main
                         .menu__buttons
                            button.menu__button.game__resume Продолжить
                            button.menu__button.game__level_restart Начать уровень сначала
                            button.menu__button.game__game_restart Начать игру сначала
-                           button.menu__button.menu__secret_level Секретный уровень
 
                      footer.menu__footer
 
-               .won.won-show
+               .won
                   .won__content
                      header.won__header
                         .won__title Вы победили!
@@ -112,8 +110,8 @@ html
                            button.won__button.game__open_secret_level Секретный уровень
 
                      footer.won__footer
-
-                  .early_on_finish Соберите все предметы
+                     
+            .early_on_finish Соберите все предметы
 
          .footer
             //-include components/footer.jade
