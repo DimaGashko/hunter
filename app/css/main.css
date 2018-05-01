@@ -198,7 +198,8 @@ canvas {
     display: inline-block;
     vertical-align: middle; }
   .coins__val {
-    font-size: 18px; }
+    font-size: 18px;
+    margin-left: 5px; }
 
 .won {
   visibility: hidden;
