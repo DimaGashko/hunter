@@ -11,7 +11,7 @@
          "maps/3.json",
          "maps/4.json",
          "maps/5.json",
-         //"maps/level_10.json",
+         "maps/level_10.json",
          "maps/secret_level.json"
       ].map(item => item + '?1'),
 

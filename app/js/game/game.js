@@ -1,10 +1,14 @@
-;(function(global){
+;(function(global) {
    "use strict"
 
+   var DEF = {
+      startLevel: 0,
+   }
+
    class Game extends Events {
-      constructor() {
+      constructor(options) {
          super(...arguments);
-         this._createParametrs();
+         this._createParametrs(options);
          this._init();
          this._initEvents();
       }
@@ -22,6 +26,8 @@
             
             this.render.start();
             this._finishReady = true;
+
+            this.trigger('change_level', this.mapManager.curLevel);
          }, () => {
             console.log("error");
          });
@@ -80,6 +86,12 @@
          this.worldBorders = new Game.WorldBorders();
          
          this.health = new Game.Health();
+
+         this._initGameParametrs();
+      }
+
+      _initGameParametrs() { 
+         this.mapManager.curLevel = +this.options.startLevel || 0;
       }
 
       _initHealth() { 
@@ -236,7 +248,9 @@
          }, 5000);
       }
 
-      _createParametrs() {
+      _createParametrs(options) {
+         this.options = extend(true, {}, DEF, options);
+
          this.els = {};
 
          this._initLevelParametrs()

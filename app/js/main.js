@@ -7,16 +7,23 @@
         earlyOnFinish: document.querySelector('.early_on_finish'),
     }
    
-    startFpsMeter(document.querySelector('.fps'));
+    startFpsMeter(els.fps);
 
-    var game = window.g = new Game();
+    var game = window.g = new Game({
+        startLevel: +localStorage['game-cur_level'] || 0,
+    });
+
     game.startLevel();
    
     game.addEvent('win', () => { 
-        won();
+        els.won.classList.add('won-show');
     });
 
-    ; (function () {
+    game.addEvent('change_level', (newLevel) => { 
+        localStorage['game-cur_level'] = newLevel;
+    });
+
+    (function () {
         var timer = 0;
 
         game.addEvent('early_on_finish', () => { 
@@ -32,11 +39,7 @@
         });
     }());
 
-    function won() { 
-        els.won.classList.add('won-show');
-    }
-
-    ; (function initEvents() {
+    (function initEvents() {
 
         els.won.addEventListener('click', (event) => {
             var targ = event.target;
