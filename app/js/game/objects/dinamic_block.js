@@ -20,9 +20,9 @@
        * Обновляет координаты блока
        * (прибавляет текущую скорость)
        */
-      updateCoords(dilation) {
+      updateCoords(dilation = 1) {
          this.prevCoords = this.coords;
-         this.coords = this.coords.plus(this.speed);
+         this.coords = this.coords.plus(this.speed.mul(dilation));
       }
 
       //Для DinamicBlock ничего не делает

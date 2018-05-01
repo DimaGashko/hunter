@@ -177,14 +177,14 @@
 
          this.worldBorders.use(dinamicObjects);
 
-         dinamicObjects.forEach(obj => obj.tik());  
-         this.level.objects.blocks.static.forEach(obj => obj.tik());  
+         dinamicObjects.forEach(obj => obj.tik(dilation));  
+         this.level.objects.blocks.static.forEach(obj => obj.tik(dilation));  
 
          this.collisions.setDinamicObjects(dinamicObjects); 
          this.collisions.setStaticObjects(this.level.objects.blocks.static);
 
-         this.gravity.use(dinamicObjects);
-
+         this.gravity.use(dinamicObjects, dilation);
+            
          dinamicObjects.forEach((obj) => {
             obj.updateCoords(dilation);
          });

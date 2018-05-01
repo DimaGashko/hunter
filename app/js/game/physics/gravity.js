@@ -19,12 +19,11 @@
        * @param {Array} actors объекты, к которым нужно применить гравитацию
        * Объекты должны содержать поле speed, которое является вектором
        */
-      use(actors) {
+      use(actors, dilation = 1) {
          actors.forEach((actor) => {
-            //console.log(actor.gravity)
             if (!actor.gravity) return;
-
-            actor.speed = actor.speed.plus(this.g);
+            
+            actor.speed = actor.speed.plus(this.g.mul(dilation));
          });
       }
       
