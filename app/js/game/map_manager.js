@@ -11,10 +11,9 @@
          "maps/3.json",
          "maps/4.json",
          "maps/5.json",
-         "maps/level_10.json"
+         //"maps/level_10.json",
+         "maps/secret_level.json"
       ].map(item => item + '?1'),
-
-      secretLevelSrc: "maps/secret_level.json",
 
       tilesetSrc: "tilesets/tileset.json",
 
@@ -72,13 +71,11 @@
       }
 
       //Получение карты текущего уровня
-      getLevel(secretLevel) {
+      getLevel() {
          console.log(this.curLevel);
          
          return new Promise((resolve, reject) => {
-            var src = secretLevel ? this.options.secretLevelSrc : undefined;
-
-            this._loadMap(undefined, src).then((JSONMap) => {
+            this._loadMap().then((JSONMap) => {
                if (!this.tileset) {
                   this.addEvent('tileset_loaded', () => {
                      resolve(this.parser.parse(JSONMap, this.tileset));
@@ -93,23 +90,21 @@
                reject("Не удалось загрузить карту");
             });
          });
-      }
-
-      isLastMap() { 
-         return this.curLevel === this.options.levelsSrc.length - 1;
       } 
       
       nextLevel() { 
          this.curLevel = (this.curLevel + 1) % this.options.levelsSrc.length;
       }
 
+      isLastMap() { 
+         return this.curLevel === this.options.levelsSrc.length - 1;
+      }
+
       //Загрузка карты текущего уровня (JSON)
       _loadMap(levelIndex, src) {
          return new Promise((resolve, reject) => {
-            if (!src) { 
-               if (levelIndex === undefined) levelIndex = this.curLevel;
-               src = this.options.levelsSrc[levelIndex || this.curLevel];
-            } 
+            if (levelIndex === undefined) levelIndex = this.curLevel;
+            src = this.options.levelsSrc[levelIndex || this.curLevel];
 
             console.time('load');
             if (src in localStorage && 0) {
@@ -142,6 +137,10 @@
          if (this.isLastMap()) return;
          
          this._loadMap(this.curLevel + 1);
+      }
+
+      get levelCount() { 
+         return this.options.levelsSrc.length;
       }
       
       _createParametrs(options) {

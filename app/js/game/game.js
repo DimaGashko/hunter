@@ -9,8 +9,8 @@
          this._initEvents();
       }
 
-      startLevel(secret) {
-         this.mapManager.getLevel(secret).then((mapConfig) => {
+      startLevel() {
+         this.mapManager.getLevel().then((mapConfig) => {
             this.render.stop();
 
             this._initLevelParametrs();
@@ -45,8 +45,9 @@
          this.startLevel();
       }
       
-      openSecterLevel() { 
-         this.startLevel('secret');
+      openSecterLevel() {
+         this.mapManager.curLevel = this.mapManager.levelCount - 1;
+         this.startLevel();
       }   
 
       _init() {
@@ -138,12 +139,17 @@
                return;
             }
 
-            if (this.mapManager.isLastMap()) {
+            if (this.isLastMap()) {
                this._win();
                this._onFinishTimout();
             } else { 
                this._nextLevel();
             }
+      }
+
+      isLastMap() { 
+         return this.mapManager.curLevel === this.mapManager.levelCount - 2;
+         //Последний уровень - секретный
       }
 
       _isPlayer(obj) { 
