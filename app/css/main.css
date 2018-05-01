@@ -234,7 +234,8 @@ canvas {
     margin-bottom: 20px; }
   .won__title {
     text-align: center;
-    font-size: 25px; }
+    font-size: 25px;
+    text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
   .won__buttons {
     text-align: center;
     -webkit-perspective: 500px;
@@ -280,7 +281,8 @@ canvas {
   transition: -webkit-transform ease .3s;
   transition: transform ease .3s;
   transition: transform ease .3s, -webkit-transform ease .3s;
-  font-size: 20px; }
+  font-size: 20px;
+  text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
   @media screen and (max-width: 300px) {
     .early_on_finish {
       font-size: 10px; } }
@@ -344,7 +346,8 @@ canvas {
     margin-bottom: 20px; }
   .menu__title {
     text-align: center;
-    font-size: 25px; }
+    font-size: 25px;
+    text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
   .menu__buttons {
     text-align: center;
     -webkit-perspective: 500px;
