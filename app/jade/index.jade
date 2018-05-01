@@ -7,11 +7,6 @@ html
          meta(charset="utf-8") 
          meta(name="viewport", content="width=device-width, initial-scale=1") 
          link(rel="shortcut icon", href="favicon.png", type="image/png")       
-         
-         //build:css css/main.css
-         link(rel="stylesheet", href="css/lib/normalize.min.css")
-         link(rel="stylesheet", href="css/main.css")
-         //endbuild 
 
          //build:js js/main.js defer
          script(defer, src="js/functions.js")
@@ -33,7 +28,7 @@ html
          script(defer, src="js/game/physics/collisions.js")
          script(defer, src="js/game/physics/world_borders.js") 
 
-         script(defer, src="js/game/map_manager.js?0")
+         script(defer, src="js/game/map_manager.js")
          script(defer, src="js/game/map_parser.js")
          script(defer, src="js/game/level.js")
 
@@ -59,7 +54,7 @@ html
 
          script(defer, src="js/fps_meter.js")
 
-         script(defer, src="js/main.js?2")
+         script(defer, src="js/main.js")
 
          //endbuild
      
@@ -109,3 +104,7 @@ html
             //-include components/footer.jade
                
                   
+   //build:css css/main.css
+   link(rel="stylesheet", href="css/lib/normalize.min.css")
+   link(rel="stylesheet", href="css/main.css")
+   //endbuild 
