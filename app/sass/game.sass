@@ -42,17 +42,8 @@
 
    //move buttons
    &__move
+      @include control_button()
       position: absolute
-      background-color: transparent
-      border: none
-      bottom: 0px
-      box-shadow: 1px 1px 1px 0 rgba(0,0,0,.4)
-      border-radius: 50%
-      outline: 0
-      transition: transform .25s
-      
-      &:active, &-active
-         transform: scale(1.2)
 
       &_left
          left: 0px

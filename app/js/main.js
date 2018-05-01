@@ -2,9 +2,10 @@
     "use strict"
 
     var els = {
-        fps: document.querySelector('.fps'),
+        game: document.querySelector('.game'),
         won: document.querySelector('.won'),
         earlyOnFinish: document.querySelector('.early_on_finish'),
+        fps: document.querySelector('.fps'),
     }
    
     startFpsMeter(els.fps);
@@ -41,18 +42,19 @@
 
     (function initEvents() {
 
-        els.won.addEventListener('click', (event) => {
+        els.game.addEventListener('click', (event) => {
             var targ = event.target;
 
-            if (targ.classList.contains('won__resume')) {
-                els.won.classList.remove('won-show');
+            if (targ.classList.contains('game__resume')) {
+                game.start();
             
-            } else if (targ.classList.contains('won__restart')) {
-                els.won.classList.remove('won-show');
+            } else if (targ.classList.contains('game_level__restart')) {
+                game.startLevel();
+            
+            } else if (targ.classList.contains('game__game_restart')) {
                 game.restart();
             
-            } else if (targ.classList.contains('won__secret_level')) {
-                els.won.classList.remove('won-show');
+            } else if (targ.classList.contains('game__open_secret_level')) {
                 game.openSecterLevel();
             
             }

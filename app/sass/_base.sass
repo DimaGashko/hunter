@@ -9,3 +9,83 @@ html, body
 
 canvas
    image-rendering: pixelated
+
+@mixin control_button
+   background-color: transparent
+   border: none
+   bottom: 0px
+   box-shadow: 1px 1px 1px 0 rgba(0,0,0,.4)
+   border-radius: 50%
+   outline: 0
+   transition: transform .25s
+   font-size: 0
+   cursor: pointer
+   
+   &:active, &-active
+      transform: scale(1.2)  
+
+   &:focus
+      transform: scale(1.05)   
+
+@mixin base_menu
+   visibility: hidden
+   opacity: 0
+   background: rgba(0,0,0,.4)
+   position: absolute
+   left: 0
+   top: 0
+   right: 0
+   bottom: 0
+   z-index: 10
+   transition: visibility ease 0.5s, opacity 0.5s 
+
+   &-show
+      visibility: visible
+      opacity: 1
+ 
+   &__content
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
+      max-width: 90%
+      max-height: 90%
+
+   //header
+   &__header
+      margin-bottom: 20px
+   
+   &__title
+      text-align: center
+      font-size: 25px   
+   
+   //main
+
+   &__buttons
+      text-align: center
+      perspective: 500px
+
+   &__button
+      width: 300px
+      max-width: 100%
+      font-family: 'Russo One', fantasy, sans-serif
+      padding: 8px 0
+      background: rgba(200,200,200,1)
+      border: 0
+      border-radius: 2px
+      outline: 0   
+      display: block
+      margin-top: 10px
+
+      transition: background .5s 
+
+      &:first-child
+         margin-top: 0
+
+      &:hover
+         background: rgba(200,200,200,0.6)
+
+      &:active
+         background: rgba(200,200,200,1)      
+ 
+

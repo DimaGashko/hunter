@@ -54,7 +54,6 @@ canvas {
       .game__controls {
         display: block; } }
   .game__move {
-    position: absolute;
     background-color: transparent;
     border: none;
     bottom: 0px;
@@ -65,20 +64,26 @@ canvas {
     -webkit-transition: -webkit-transform .25s;
     transition: -webkit-transform .25s;
     transition: transform .25s;
-    transition: transform .25s, -webkit-transform .25s; }
+    transition: transform .25s, -webkit-transform .25s;
+    font-size: 0;
+    cursor: pointer;
+    position: absolute; }
     .game__move:active, .game__move-active {
       -webkit-transform: scale(1.2);
               transform: scale(1.2); }
+    .game__move:focus {
+      -webkit-transform: scale(1.05);
+              transform: scale(1.05); }
     .game__move_left {
       left: 0px;
       background-image: url(../img/sprite.png);
-      background-position: 0px -64px;
+      background-position: -64px -64px;
       width: 64px;
       height: 64px; }
     .game__move_right {
       right: 0px;
       background-image: url(../img/sprite.png);
-      background-position: -64px 0px;
+      background-position: 0px -64px;
       width: 64px;
       height: 64px; }
 
@@ -141,17 +146,17 @@ canvas {
         margin-left: -2px; }
         .health__heart-full {
           background-image: url(../img/sprite.png);
-          background-position: -148px -59px;
+          background-position: -141px -80px;
           width: 18px;
           height: 18px; }
         .health__heart-empty {
           background-image: url(../img/sprite.png);
-          background-position: -148px -95px;
+          background-position: -18px -128px;
           width: 18px;
           height: 18px; }
         .health__heart-half {
           background-image: url(../img/sprite.png);
-          background-position: -148px -77px;
+          background-position: 0px -128px;
           width: 18px;
           height: 18px; } }
 
@@ -193,7 +198,8 @@ canvas {
 
 .coins {
   font-family: 'Russo One', fantasy, sans-serif;
-  font-size: 18px; }
+  font-size: 18px;
+  max-width: calc(100% - 80px); }
   .coins__label, .coins__val {
     display: inline-block;
     vertical-align: middle; }
@@ -210,6 +216,7 @@ canvas {
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 10;
   -webkit-transition: visibility ease 0.5s, opacity 0.5s;
   transition: visibility ease 0.5s, opacity 0.5s; }
   .won-show {
@@ -254,7 +261,7 @@ canvas {
 
 .fps {
   position: absolute;
-  top: 0;
+  top: 100px;
   right: 0;
   font-family: arail;
   fon-size: 16px;
@@ -279,3 +286,84 @@ canvas {
   .early_on_finish-show {
     -webkit-transform: translate(-50%, 100px);
             transform: translate(-50%, 100px); }
+
+.open_menu {
+  background-color: transparent;
+  border: none;
+  bottom: 0px;
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  outline: 0;
+  -webkit-transition: -webkit-transform .25s;
+  transition: -webkit-transform .25s;
+  transition: transform .25s;
+  transition: transform .25s, -webkit-transform .25s;
+  font-size: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  background-image: url(../img/sprite.png);
+  background-position: 0px 0px;
+  width: 64px;
+  height: 64px; }
+  .open_menu:active, .open_menu-active {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2); }
+  .open_menu:focus {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05); }
+
+.menu {
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  -webkit-transition: visibility ease 0.5s, opacity 0.5s;
+  transition: visibility ease 0.5s, opacity 0.5s; }
+  .menu-show {
+    visibility: visible;
+    opacity: 1; }
+  .menu__content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%; }
+  .menu__header {
+    margin-bottom: 20px; }
+  .menu__title {
+    text-align: center;
+    font-size: 25px; }
+  .menu__buttons {
+    text-align: center;
+    -webkit-perspective: 500px;
+            perspective: 500px; }
+  .menu__button {
+    width: 300px;
+    max-width: 100%;
+    font-family: 'Russo One', fantasy, sans-serif;
+    padding: 8px 0;
+    background: #c8c8c8;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+    display: block;
+    margin-top: 10px;
+    -webkit-transition: background .5s;
+    transition: background .5s; }
+    .menu__button:first-child {
+      margin-top: 0; }
+    .menu__button:hover {
+      background: rgba(200, 200, 200, 0.6); }
+    .menu__button:active {
+      background: #c8c8c8; }

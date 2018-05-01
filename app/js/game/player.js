@@ -54,7 +54,7 @@
                target.classList.remove('game__move-active');
                this._moves.right = false;
 
-            } else {
+            } else if (target.classList.contains('game__controls')) {
                this._moves.jump = false;
 
             } 

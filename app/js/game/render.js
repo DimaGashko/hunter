@@ -49,7 +49,7 @@
                var newTime = Date.now();
 
                //замедление времени от отклонения fps
-               var dilation = Math.min((newTime - time) / 16, 3)
+               var dilation = Math.min((newTime - time) / 16, 12)
 
                self.tik(dilation); //вызываем в условии, что бы при 
                   //остановки не отрисовывались лишние кадры
