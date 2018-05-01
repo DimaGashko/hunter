@@ -64,6 +64,9 @@
       _parseBlocks(config, parsed, layer) {
          var name = layer.name;
 
+         parsed.blocks[name] = parsed.blocks[name] || [];
+         var container = parsed.blocks[name];
+
          //Каждый слой блоков состоит из отдельных блоков (chunks)
          parsed.blocks[name] = layer.chunks.map(chunk => {
             var chunkResult = {
@@ -83,7 +86,7 @@
             });
 
             return chunkResult;
-         });
+         }).concat(parsed.blocks[name]);
       }
 
       /**
