@@ -5,6 +5,7 @@
         game: document.querySelector('.game'),
         won: document.querySelector('.won'),
         menu: document.querySelector('.menu'),
+        openMenu: document.querySelector('.open_menu'),
         earlyOnFinish: document.querySelector('.early_on_finish'),
         fps: document.querySelector('.fps'),
     }
@@ -78,6 +79,16 @@
             
             }
         });
+
+        els.openMenu.addEventListener('click', () => { 
+            els.menu.classList.add('menu-show');
+        });
+
+        document.addEventListener('keyup', (event) => { 
+            if (event.keyCode === 27) { 
+                els.menu.classList.toggle('menu-show');
+            }
+        })
 
     }());
 

@@ -250,6 +250,7 @@ canvas {
     outline: 0;
     display: block;
     margin-top: 10px;
+    cursor: pointer;
     -webkit-transition: background .5s;
     transition: background .5s; }
     .won__button:first-child {
@@ -359,6 +360,7 @@ canvas {
     outline: 0;
     display: block;
     margin-top: 10px;
+    cursor: pointer;
     -webkit-transition: background .5s;
     transition: background .5s; }
     .menu__button:first-child {
