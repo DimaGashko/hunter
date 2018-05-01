@@ -26,11 +26,15 @@
 
             if (targ.classList.contains('won__resume')) {
                 els.won.classList.remove('won-show');
-            }
-
-            else if (targ.classList.contains('won__restart')) {
+            
+            } else if (targ.classList.contains('won__restart')) {
                 els.won.classList.remove('won-show');
                 game.restart();
+            
+            } else if (targ.classList.contains('won__secret_level')) {
+                els.won.classList.remove('won-show');
+                game.openSecterLevel();
+            
             }
         });
 

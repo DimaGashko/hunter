@@ -9,8 +9,8 @@
          this._initEvents();
       }
 
-      startLevel() {
-         this.mapManager.getLevel().then((mapConfig) => {
+      startLevel(secret) {
+         this.mapManager.getLevel(secret).then((mapConfig) => {
             this.render.stop();
 
             this._initLevelParametrs();
@@ -44,6 +44,10 @@
          this.mapManager.curLevel = 0;
          this.startLevel();
       }
+      
+      openSecterLevel() { 
+         this.startLevel('secret');
+      }   
 
       _init() {
          this._getElements();

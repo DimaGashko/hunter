@@ -14,6 +14,8 @@
          "maps/level_10.json"
       ].map(item => item + '?1'),
 
+      secretLevelSrc: "maps/secret_level.json",
+
       tilesetSrc: "tilesets/tileset.json",
 
       //Текущий уровень
@@ -70,11 +72,13 @@
       }
 
       //Получение карты текущего уровня
-      getLevel() {
+      getLevel(secretLevel) {
          console.log(this.curLevel);
          
          return new Promise((resolve, reject) => {
-            this._loadMap().then((JSONMap) => {
+            var src = secretLevel ? this.options.secretLevelSrc : undefined;
+
+            this._loadMap(undefined, src).then((JSONMap) => {
                if (!this.tileset) {
                   this.addEvent('tileset_loaded', () => {
                      resolve(this.parser.parse(JSONMap, this.tileset));
@@ -100,11 +104,13 @@
       }
 
       //Загрузка карты текущего уровня (JSON)
-      _loadMap(levelIndex) {
+      _loadMap(levelIndex, src) {
          return new Promise((resolve, reject) => {
-            if (levelIndex === undefined) levelIndex = this.curLevel;
+            if (!src) { 
+               if (levelIndex === undefined) levelIndex = this.curLevel;
+               src = this.options.levelsSrc[levelIndex || this.curLevel];
+            } 
 
-            var src = this.options.levelsSrc[levelIndex || this.curLevel];
             console.time('load');
             if (src in localStorage && 0) {
                resolve(localStorage[src]);
