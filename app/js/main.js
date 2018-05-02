@@ -20,6 +20,7 @@
    
     game.addEvent('win', () => { 
         els.won.classList.add('won-show');
+        els.menu.classList.remove('menu-show');
     });
 
     game.addEvent('change_level', (newLevel) => { 
