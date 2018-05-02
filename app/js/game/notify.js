@@ -38,16 +38,26 @@
        * @param {string} title тест уведомления (необязательно)
        */
       show(title) { 
-         if (title) setTitle(title);
+         if (title) this.setTitle(title);
          
-         this.els.root.classList.add('.notify-show');
+         this.els.root.classList.add('notify-show');
+
+         if (this.options.autoHide) { 
+            if (this.autoHideTimer !== 0) { 
+               clearTimeout(this.autoHideTimer);
+            }
+
+            this.autoHideTimer = setTimeout(() => {
+               this.hide();
+            }, this.options.autoHideTime);
+         }
       }
 
       /**
        * Прячит уведомление
        */
       hide() { 
-         this.els.root.classList.remove('.notify-show');
+         this.els.root.classList.remove('notify-show');
       }
 
       /**
@@ -68,7 +78,7 @@
        */
       _create() { 
          var r = this.els.root = document.createElement('div');
-         r.className = `notify notify-${this.type}`;
+         r.className = `notify notify-${this.options.type}`;
 
          r.innerHTML = `
             <div class="notify__title"></div>
@@ -99,12 +109,13 @@
          this.els = {};
          this.title = '';
 
+         this.autoHideTimer = 0;
       }
    
 
    }
    
-   global.A = A;
+   global.Notify = Notify;
    
 
 }(window));

@@ -1,0 +1,15 @@
+.notify
+   position: absolute
+   left: 50%
+   top: 50px
+   white-space: nowrap
+   transform: translate(-50%, -150px)
+   transition: transform ease .3s
+   font-size: 20px
+   text-shadow: $game_text-shadow
+
+   @media screen and (max-width: 300px)
+      font-size: 10px
+
+   &-show
+      transform: translate(-50%, 100px)
