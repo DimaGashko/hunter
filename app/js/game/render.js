@@ -49,7 +49,7 @@
                var newTime = Date.now();
 
                //замедление времени от отклонения fps
-               var dilation = Math.min((newTime - time) / 16, 4)
+               var dilation = Math.min((newTime - time) / 16, 2.5)
 
                self.tik(dilation); //вызываем в условии, что бы при 
                   //остановки не отрисовывались лишние кадры
@@ -130,7 +130,7 @@
          this.canv.height = this.metrics.gameSize.y;
 
          //Для отключения сглаживания (очень важно)
-         this.ctx.imageSmoothingEnabled = false; 
+         setCanvasSmoothing(this.ctx, false);
       }
 
       //Обновляет размеры используемые для расчетов

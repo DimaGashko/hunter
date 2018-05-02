@@ -1,32 +1,15 @@
 /**
- * FPS meret - реализует простой счетчик FPS
- * 
- * Для использования, необходимо написать:
- * 
- * startFpsMeter(el) - где el - dom-элемент
+ * FPS meter - реализует простой счетчик FPS
  */
 
 (function (global) {
+   var events = new Events();
    var started = false; 
-   var roots = []; //Элементы, в которых нужно обновлять значение fps
-
    var fps = 0; 
-
-   //Запускает FpsMeter для переданного элемента
-   function startFpsMeter(root) { 
-      if ( !(root instanceof HTMLElement) ) { 
-         console.error('Передан не DOM-элемент');
-      }
-
-      start();
-
-      roots.push(root);
-   }
 
    //Непосредственно запускает и считает fps
    function start() { 
       if (started) return;
-      
       var started = true;
 
       var timeStart = performance.now();
@@ -44,21 +27,51 @@
             fps = counter;
             counter = 0;
             timeStart = now;
-            update();
+            
+            events.trigger('change');
          }
 
          requestAnimationFrame(tik);
       });
    }
 
-   //Обновляет значения fps для всех элементов
-   function update() { 
-      roots.forEach((root) => { 
-         root.innerHTML = fps;
-      });
+   /**
+    * 
+    *  
+    * @class
+    * @param {object} options - настройки (по умолчанию DEF)
+   */
+   class FPSMeter extends Events {
+      constructor() {
+         super();
+
+         this._createParametrs();
+         this._init();
+         this._initEvents();
+      }
+
+      _init() {
+         start();
+      }
+
+      _initEvents() { 
+         events.addEvent('change', () => {
+            this.trigger('change', this.fps);
+         });
+      }
+
+      get fps() { 
+         return fps;
+      }
+      
+      _createParametrs() {
+         
+      }
+
+
    }
 
-   global.startFpsMeter = startFpsMeter;
+   global.FPSMeter = FPSMeter;
 
 }(window));
          

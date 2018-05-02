@@ -94,6 +94,9 @@
 
     }());
 
-    startFpsMeter(els.fps);
+    var fpsMeter = new FPSMeter();
+    fpsMeter.addEvent('change', () => { 
+        els.fps.innerHTML = fpsMeter.fps;
+    });
 
 }(window));
