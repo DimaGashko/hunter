@@ -16,8 +16,13 @@
 
     game.startLevel();
 
-    var notify = new Notify({
+    var infoNotify = new Notify({
         autoHideTime: 3000,
+    });
+
+    var errorNotify = new Notify({
+        autoHideTime: 3000,
+        type: 'error',
     });
    
     game.addEvent('win', () => { 
@@ -30,10 +35,11 @@
     });
 
     game.addEvent('early_on_finish', () => {
-        notify.show('Соберите все предметы!');
+        infoNotify.show('Соберите все предметы!');
     });    
-
+    
     game.addEvent('error_level_load', () => { 
+        errorNotify.show('Не удалось загрузить уровень');
         game.restart();
     });
 
