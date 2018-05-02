@@ -36,8 +36,6 @@
 				this.health = 0;
 			}
 
-			console.log(damage, this.health);
-
 			this.trigger('pain');
 
 			if (this.health === 0) {

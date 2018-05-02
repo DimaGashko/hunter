@@ -12,7 +12,8 @@ module.exports = function(options) {
          })))
          //.pipe($.if('*.js', $.uglify()))
          .pipe($.if('*.css', $.minifyCss()))
-         .pipe(gulp.dest(options.dst));
+         .pipe(gulp.dest(options.dst))
+         .pipe($.connect.reload());
    }
 }
 

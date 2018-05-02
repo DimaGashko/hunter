@@ -77,7 +77,7 @@
          var full = hearts ^ 0;
          var half = (hearts - (hearts ^ 0) > 0) ? 1 : 0;
          var empty = HEARTS_COUNT - full - half;
-         console.log(full, half, empty)
+         
          var html = this._getHeartHtml('full', full);
 
          if (half) { 
@@ -85,7 +85,7 @@
          }
 
          html += this._getHeartHtml('empty', empty);
-         //console.log(html)
+         
          return html;
       }
 

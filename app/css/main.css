@@ -4,7 +4,7 @@ html, body {
   background: cornflowerblue;
   overflow: hidden;
   font-display: swap;
-  font-family: 'Russo One', fantasy, sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-size: 16px;
   color: #111; }
 
@@ -198,9 +198,8 @@ canvas {
     margin: 1px 1px; } }
 
 .coins {
-  font-family: 'Russo One', fantasy, sans-serif;
-  font-size: 18px;
-  max-width: calc(100% - 80px); }
+  font-family: 'Russo One', sans-serif;
+  font-size: 18px; }
   .coins__label, .coins__val {
     display: inline-block;
     vertical-align: middle; }
@@ -244,7 +243,7 @@ canvas {
   .won__button {
     width: 300px;
     max-width: 100%;
-    font-family: 'Russo One', fantasy, sans-serif;
+    font-family: 'Russo One', sans-serif;
     padding: 8px 0;
     background: #c8c8c8;
     border: 0;
@@ -357,7 +356,7 @@ canvas {
   .menu__button {
     width: 300px;
     max-width: 100%;
-    font-family: 'Russo One', fantasy, sans-serif;
+    font-family: 'Russo One', sans-serif;
     padding: 8px 0;
     background: #c8c8c8;
     border: 0;

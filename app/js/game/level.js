@@ -11,18 +11,18 @@
       constructor(game, options = {}) {
          this._createParametrs(options);
          this.game = game;
-
+         
          this._init();
          this._initEvents();
       }
 
       startLevel(config = {}) { 
          this.config = config;
-
+         
          this._initContainers();
          this._createAllObjects();
          this.findVisible();
-
+         
          this.config = {};
       }
 
@@ -53,7 +53,7 @@
       findVisible() {
          this._findVisibleBlocks('static');
          this._findVisibleBlocks('dinamic');
-         this._findVisibleBlocks('decorates');
+         this._findVisibleBlocks('decorates'); 
          this._findVisibleActors();
       }
 
@@ -90,20 +90,19 @@
       }
 
       _createAllObjects() {
-         this._createBlocks('static');
+         this._createBlocks('static');         
          this._createBlocks('dinamic', Game.DinamicBlock);
          this._createBlocks('decorates');
-         
          this._createActors();
-
          this._createPlayer();
       }
 
       _createBlocks(type, defConstr) {
          var container = this.allObjects.blocks[type];
          var chunks = this.config.blocks[type];
-
+         
          for (var i = chunks.length - 1; i >= 0; i--) {
+            
             var chunk = chunks[i];
             
             var blocks = new Array(chunk.data.length);
@@ -122,9 +121,9 @@
                h: chunk.h,
                data: blocks,
             }
-
             container.push(res);
          }
+         
       }
 
       _createActors() {
@@ -137,7 +136,6 @@
 
       _createPlayer() {
          var config = this.config.player;
-         
          var Constr = this.objectTypes[config.name] || Game.Actor;
          var person = new Constr(config, this.game.collisions);
 

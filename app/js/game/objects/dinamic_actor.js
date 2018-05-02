@@ -203,7 +203,6 @@
          this._initConfig();
 
          this._setSize();
-         console.log(this.size)
       }
 
    }

@@ -7,11 +7,11 @@
       levelsSrc: [
          "maps/level_1.json",
          "maps/level_2.json",
-         "maps/level_3.json",
-         "maps/level_4.json",
-         "maps/level_5.json",
-         "maps/level_6.json",
-         "maps/level_10.json",
+         //"maps/level_3.json",
+         //"maps/level_4.json",
+         //"maps/level_5.json",
+         //"maps/level_6.json",
+         //"maps/level_10.json",
          "maps/secret_level.json"
       ].map(item => item + '?1'),
 
@@ -72,8 +72,6 @@
 
       //Получение карты текущего уровня
       getLevel() {
-         console.log(this.curLevel);
-         
          return new Promise((resolve, reject) => {
             this._loadMap().then((JSONMap) => {
                if (!this.tileset) {

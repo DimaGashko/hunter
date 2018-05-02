@@ -13,7 +13,7 @@
          this._initEvents();
       }
 
-      startLevel() {
+      startLevel() {         
          this.mapManager.getLevel().then((mapConfig) => {
             this.render.stop();
 

@@ -14,7 +14,7 @@
 
     var game = window.g = new Game({
         startLevel: +localStorage['game-cur_level'] || 0,
-    });
+    });    
 
     game.startLevel();
    

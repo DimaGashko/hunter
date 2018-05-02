@@ -73,7 +73,7 @@ lrTask('build:html', './tasks/build_html', {
 lrTask('build:connect', './tasks/build_connect', {
    servOpt: {
       root: 'dist/',
-      livereload: false,
+      livereload: true,
       port: 8888,
    }
 });
@@ -103,10 +103,21 @@ gulp.task('watch', () => {
    gulp.watch('app/test/**/*.*', gulp.parallel('test'));
 });
 
+gulp.task('build:watch', () => {
+   gulp.watch('app/**/*.sass', gulp.parallel('build:useref'));
+   gulp.watch('app/**/*.jade', gulp.parallel('build:useref'));
+   gulp.watch('app/**/*.js', gulp.parallel('build:useref'));
+});
+
 //DEFAULT
 gulp.task('default', gulp.series(
    gulp.parallel('css', 'html', 'js', 'sprites'),
    gulp.parallel('connect', 'watch'),
+));
+
+gulp.task('buildDev', gulp.series(
+   gulp.parallel('build'),
+   gulp.parallel('build:connect', 'build:watch'),
 ));
 
 //SYSTEM
