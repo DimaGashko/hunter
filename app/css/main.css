@@ -286,8 +286,8 @@ canvas {
     .notify {
       font-size: 10px; } }
   .notify-show {
-    -webkit-transform: translate(-50%, 100px);
-            transform: translate(-50%, 100px); }
+    -webkit-transform: translate(-50%, 15vh);
+            transform: translate(-50%, 15vh); }
   .notify-error {
     color: #c00; }
   .notify-warning {
