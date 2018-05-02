@@ -29,7 +29,8 @@
 
             this.trigger('change_level', this.mapManager.curLevel);
          }, () => {
-            console.log("error");
+            console.log("Не удалось загрузить уровень");
+            this.trigger('error_level_load');
          });
       }
 

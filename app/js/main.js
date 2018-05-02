@@ -43,6 +43,10 @@
         });
     }());
 
+    game.addEvent('error_level_load', () => { 
+        game.restart();
+    });
+
     (function initEvents() {
 
         els.game.addEventListener('click', (event) => {
