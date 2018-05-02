@@ -378,7 +378,7 @@
          this.sprite.width = this.options.size.x;
          this.sprite.height = this.options.size.y;
 
-         setCanvasSmoothing(this.ctx, false);
+         global.setCanvasSmoothing(this.ctx, false);
       }
 
       _createCanvas() {

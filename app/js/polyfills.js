@@ -1,5 +1,5 @@
 (function (global) {
-    global.setCanvasSmoothing = function(ctx, val = false) { 
+    global.setCanvasSmoothing = function(ctx, val = false) {
         ctx.mozImageSmoothingEnabled = val;
         ctx.webkitImageSmoothingEnabled = val;
         ctx.msImageSmoothingEnabled = val;

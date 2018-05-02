@@ -136,7 +136,7 @@
          this.canv.height = this.metrics.gameSize.y;
 
          //Для отключения сглаживания (очень важно)
-         this.ctx.imageSmoothingEnabled = false; 
+         global.setCanvasSmoothing(this.ctx, false);
       }
 
       //Обновляет размеры используемые для расчетов
