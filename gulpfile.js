@@ -104,9 +104,9 @@ gulp.task('watch', () => {
 });
 
 gulp.task('build:watch', () => {
-   gulp.watch('app/**/*.sass', gulp.parallel('build:useref'));
-   gulp.watch('app/**/*.jade', gulp.parallel('build:useref'));
-   gulp.watch('app/**/*.js', gulp.parallel('build:useref'));
+   gulp.watch('app/**/*.sass', gulp.parallel('build'));
+   gulp.watch('app/**/*.jade', gulp.parallel('build'));
+   gulp.watch('app/**/*.js', gulp.parallel('build'));
 });
 
 //DEFAULT

@@ -43,6 +43,7 @@
          var start = startCount;
 
          var time = Date.now();
+         var prevDilation = 0;
 
          requestAnimationFrame(function tik() {
             if (start == startCount) {
@@ -50,11 +51,16 @@
 
                //замедление времени от отклонения fps
                var dilation = Math.min((newTime - time) / 16, 2.5)
+ 
+               //за один кадр замедление не должно 
+               //сильно уменьшаться (но увеличиваться может)
+               //dilation = Math.max(dilation, prevDilation * 0.9);
 
                self.tik(dilation); //вызываем в условии, что бы при 
                   //остановки не отрисовывались лишние кадры
 
-               time = newTime
+               time = newTime;
+               prevDilation = dilation;
                requestAnimationFrame(tik); 
             }
          });
@@ -130,7 +136,7 @@
          this.canv.height = this.metrics.gameSize.y;
 
          //Для отключения сглаживания (очень важно)
-         setCanvasSmoothing(this.ctx, false);
+         this.ctx.imageSmoothingEnabled = false; 
       }
 
       //Обновляет размеры используемые для расчетов

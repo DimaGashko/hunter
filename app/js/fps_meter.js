@@ -22,6 +22,7 @@
          
          if (time < 1000) {
             counter++;
+            fps = (1000 / time) * counter
             
          } else {
             fps = counter;
