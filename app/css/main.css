@@ -363,6 +363,21 @@ canvas {
     background: #fff;
     width: 90%;
     padding: 10px; }
+  .instruction__present {
+    float: left;
+    margin-right: 20px; }
+  .instruction__text {
+    font-family: arial; }
+
+.present_img {
+  width: 400px;
+  max-width: 100%;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-pixelated;
+      image-rendering: pixelated;
+  display: block; }
 
 .open_menu {
   background-color: transparent;
