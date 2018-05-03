@@ -6,7 +6,7 @@
         won: document.querySelector('.won'),
         menu: document.querySelector('.menu'),
         openMenu: document.querySelector('.open_menu'),
-        earlyOnFinish: document.querySelector('.early_on_finish'),
+        instruction: document.querySelector('.instruction'),
         fps: document.querySelector('.fps'),
     }
 
@@ -60,6 +60,9 @@
             } else if (targ.classList.contains('game__open_secret_level')) {
                 game.openSecterLevel();
             
+            } else if (targ.classList.contains('open_instruction')) {
+                els.instruction.classList.add('instruction-show');
+                
             }
         });
 
@@ -89,6 +92,7 @@
             if (event.keyCode === 27) {
                 els.menu.classList.toggle('menu-show');
                 els.won.classList.remove('won-show');
+                els.instruction.classList.remove('instruction-show');
             }
         })
 

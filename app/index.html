@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hunter - собери все ценные предметы и приди на финиш | простая и увлекательная 2d-игра</title>
-    <meta name="description" content="Сможешь пройти последний уровень в первого раза?.. Простая, но при этом увлекательная 2d-игра в стиле maincraft. Цель: собрать все ценные предметы и прийти на финиш. Играть можно везде (на смартфоне, планшете, ноутбуке, компьютере). Также вы можете...">
+    <title>Hunter - собери все ценные предметы на карте и приди на финиш</title>
+    <meta name="description" content="Сможешь пройти последний уровень в первого раза?.. Простая, но при этом увлекательная 2d-игра в стиле Maincraft. Цель: собрать все ценные предметы и прийти на финиш. Играть можно везде (на смартфоне, планшете, ноутбуке, компьютере). Также вы можете...">
     <meta name="Keywords" content="2d maincraft маинкрафт мейнкрафт game хантер hunter hunter-2d mobile">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,10 +45,18 @@
     <div class="wrapper">
       <header class="header"></header>
       <main class="main">
-        <div class="instruction" style="display: none">
-          <h1>Hunter</h1>
-        </div>
         <div class="game">
+          <div class="instruction">
+            <div class="instruction__content">
+              <header class="instruction__header">
+                <h1 class="instruction__title">Hunter - инструкция</h1>
+              </header>
+              <main class="menu__main">
+                <p>Инструкция</p>
+              </main>
+              <footer class="menu__footer"></footer>
+            </div>
+          </div>
           <div class="game__canvases">
             <canvas class="game__canvas game__main_canv">  </canvas>
           </div>
@@ -82,6 +90,7 @@
                   <button class="menu__button game__resume">Продолжить</button>
                   <button class="menu__button game__level_restart">Начать уровень сначала</button>
                   <button class="menu__button game__game_restart">Начать игру сначала</button>
+                  <button class="menu__button open_instruction">Инструкция</button>
                 </div>
               </main>
               <footer class="menu__footer"></footer>

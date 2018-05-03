@@ -293,6 +293,60 @@ canvas {
   .notify-warning {
     color: #ff8200; }
 
+.instruction {
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  -webkit-transition: visibility ease 0.5s, opacity 0.5s;
+  transition: visibility ease 0.5s, opacity 0.5s; }
+  .instruction-show {
+    visibility: visible;
+    opacity: 1; }
+  .instruction__content {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%; }
+  .instruction__header {
+    margin-bottom: 20px; }
+  .instruction__title {
+    text-align: center;
+    font-size: 25px;
+    text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
+  .instruction__buttons {
+    text-align: center;
+    -webkit-perspective: 500px;
+            perspective: 500px; }
+  .instruction__button {
+    width: 300px;
+    max-width: 100%;
+    font-family: 'Russo One', sans-serif;
+    padding: 8px 0;
+    background: #c8c8c8;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    -webkit-transition: background .5s;
+    transition: background .5s; }
+    .instruction__button:first-child {
+      margin-top: 0; }
+    .instruction__button:hover {
+      background: rgba(200, 200, 200, 0.6); }
+    .instruction__button:active {
+      background: #c8c8c8; }
+
 .open_menu {
   background-color: transparent;
   border: none;
