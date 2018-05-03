@@ -366,18 +366,25 @@ canvas {
   .instruction__present {
     float: left;
     margin-right: 20px; }
+    .instruction__present_img {
+      width: 400px;
+      max-width: 100%;
+      -ms-interpolation-mode: nearest-neighbor;
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: -moz-crisp-edges;
+          image-rendering: -o-pixelated;
+          image-rendering: pixelated;
+      display: block;
+      margin: 0;
+      padding: 0; }
+    @media screen and (max-width: 700px) {
+      .instruction__present {
+        margin-right: 0;
+        margin-bottom: 20px; }
+        .instruction__present_img {
+          width: 100%; } }
   .instruction__text {
     font-family: arial; }
-
-.present_img {
-  width: 400px;
-  max-width: 100%;
-  -ms-interpolation-mode: nearest-neighbor;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: -o-pixelated;
-      image-rendering: pixelated;
-  display: block; }
 
 .open_menu {
   background-color: transparent;

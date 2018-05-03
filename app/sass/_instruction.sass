@@ -11,13 +11,24 @@
       float: left
       margin-right: 20px
 
+      &_img
+         width: 400px
+         max-width: 100%
+         image-rendering: pixelated
+         display: block
+         margin: 0
+         padding: 0
+
+      @media screen and (max-width: 700px)
+         margin-right: 0
+         margin-bottom: 20px
+
+         &_img
+            width: 100%
+
+         
+
+
    &__text
       font-family: arial
-
-
-.present_img
-   width: 400px
-   max-width: 100%
-   image-rendering: pixelated
-   display: block
 
