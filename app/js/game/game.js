@@ -78,7 +78,7 @@
          });
 
          this.camera = new Game.Camera({
-            type: 'smart',
+            type: 'simple',
          });
          
 
