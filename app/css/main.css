@@ -105,8 +105,8 @@ canvas {
   .health__real {
     z-index: 3; }
     .health__real-blink {
-      -webkit-animation: blink 0.5s steps(1, end) infinite;
-              animation: blink 0.5s steps(1, end) infinite; }
+      -webkit-animation: blink 0.5s steps(1, end) 5;
+              animation: blink 0.5s steps(1, end) 5; }
   .health__prev {
     position: absolute;
     left: 0;
