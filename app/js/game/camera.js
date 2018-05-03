@@ -3,7 +3,7 @@
 
    var DEF = {
       type: 'smart',
-      offsetScale: new Vector(0.3, 0.2),
+      offsetScale: new Vector(0.1, 0.2),
    }
 
    /**
