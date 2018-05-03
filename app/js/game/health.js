@@ -57,8 +57,6 @@
       }
 
       startBlink() { 
-         var blinkCount = 0;
-
          if (this.blinkCount !== 0) { 
             clearTimeout(this.blinkTimer);
             this.blinkTimer = 0;
@@ -68,7 +66,7 @@
 
          this.blinkTimer = setTimeout(() => { 
             this.els.real.classList.remove('health__real-blink');
-         }, 1000);
+         }, 1200);
       }
 
       _getHTML() { 
