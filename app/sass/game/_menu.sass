@@ -1,0 +1,12 @@
+.open_menu
+   @include control_button()
+   position: absolute
+   top: 50px
+   left: 0
+   z-index: 5
+   @include sprite($open_menu)
+
+   display: none
+   
+.menu
+   @include base_menu()
