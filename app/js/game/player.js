@@ -39,7 +39,7 @@
                this._moves.right = true;
 
             } else {
-               this._moves.jump = true;
+               this._moves.jump = true; 
 
             }
          });
