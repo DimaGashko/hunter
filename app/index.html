@@ -17,7 +17,7 @@
     <meta property="twitter:site" content="Hunter">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.png" type="image/png"><!-- build:js js/main-1525467287257.js defer -->
+    <link rel="shortcut icon" href="favicon.png" type="image/png"><!-- build:js js/main-1525473396109.js defer -->
     <script defer src="js/polyfills.js"></script>
     <script defer src="js/functions.js"></script>
     <script defer src="js/sprites_config.js"></script>
@@ -52,9 +52,7 @@
     <script defer src="js/main.js"></script>
     <!--endbuild-->
     <style>
-      .menu, 
-      .won,
-      .instruction {
+      .game__menu_modal {
          visibility: hidden;
          opacity: 0;
       }
@@ -65,7 +63,7 @@
       <header class="header"></header>
       <main class="main">
         <div class="game">
-          <div class="instruction">
+          <div class="instruction game__menu_modal">
             <header class="instruction__header">
               <h1 class="instruction__title">Hunter</h1>
               <div class="instruction__exit">Продолжить игру</div>
@@ -111,7 +109,7 @@
             </div>
             <div class="open_menu">Menu </div>
           </div>
-          <div class="menu">
+          <div class="menu game__menu_modal">
             <header class="menu__header">
               <div class="menu__title">Hunter</div>
             </header>
@@ -120,11 +118,12 @@
                 <button class="menu__button game__resume">Продолжить</button>
                 <button class="menu__button game__level_restart">Начать уровень сначала</button>
                 <button class="menu__button game__game_restart">Начать игру сначала</button>
+                <button class="menu__button open_social">Поделиться</button>
                 <button class="menu__button open_instruction">Инструкция</button>
               </div>
             </div>
           </div>
-          <div class="won">
+          <div class="won game__menu_modal">
             <header class="won__header">
               <div class="won__title">Вы победили!</div>
             </header>
@@ -136,18 +135,30 @@
               </div>
             </div>
           </div>
+          <script src="https://vk.com/js/api/share.js?95"></script>
+          <div class="social game__menu_modal">
+            <div class="social social__button social__vk_share">
+              <script>
+                document.write(VK.Share.button(false,{type: "round", text: "Поделиться"}));
+                
+              </script>
+            </div>
+            <div class="social__button">
+              <div class="social__fb_share">
+                <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fhunter-2d.tk&amp;layout=button_count&amp;size=small&amp;mobile_iframe=true&amp;width=105&amp;height=20&amp;appId" width="105" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
       <div class="footer"></div>
-    </div><!-- build:css css/main-1525467287257.css -->
+    </div><!-- build:css css/main-1525473396109.css -->
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/lib/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
     <!--endbuild -->
     <style>
-      .menu, 
-      .won,
-      .instruction {
+      .game__menu_modal {
          visibility: visible;
          opacity: 1;
       }

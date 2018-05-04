@@ -7,6 +7,7 @@
         menu: document.querySelector('.menu'),
         openMenu: document.querySelector('.open_menu'),
         instruction: document.querySelector('.instruction'),
+        social: document.querySelector('.social'),
         fps: document.querySelector('.fps'),
     }
 
@@ -14,6 +15,7 @@
         won: new Modal(els.won),
         menu: new Modal(els.menu),
         instruction: new Modal(els.instruction),
+        social: new Modal(els.social),
     }
 
     var game = window.g = new Game({
@@ -68,6 +70,8 @@
             } else if (targ.classList.contains('open_instruction')) {
                 modals.instruction.show();
                 
+            } else if (targ.classList.contains('open_social')) { 
+                modals.social.show();
             }
         });
 
@@ -95,9 +99,10 @@
 
         document.addEventListener('keyup', (event) => {
             if (event.keyCode === 27) {
+                modals.menu.toggle();
                 modals.won.hide();
                 modals.instruction.hide();
-                modals.menu.toggle();
+                modals.social.hide();
             }
         })
 
