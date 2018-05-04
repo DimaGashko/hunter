@@ -15,7 +15,7 @@ html(lang="ru")
          include components/js_add.jade
          //endbuild
 
-         include components/start_style.jade
+         include components/set_start_style.jade
      
    body
       .wrapper
@@ -56,5 +56,7 @@ html(lang="ru")
       link(rel="stylesheet", href="css/lib/normalize.min.css")
       link(rel="stylesheet", href="css/main.css")
       //endbuild 
+
+      include components/reset_start_style.jade
 
       include components/analytics.jade

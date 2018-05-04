@@ -12,7 +12,7 @@
     * Modal - уведомления
     * 
     * use:
-    * var modal = new Modal(root, {
+    * var modal = new Modal(content, {
     *    . . .
     * });
     * 
@@ -21,15 +21,15 @@
     * @param {object} options - настройки (по умолчанию DEF)
    */
    class Modal extends Events {
-      constructor(root, options = {}) {
+      constructor(content, options = {}) {
          super();
 
-         if ( !(root instanceof HTMLElement) ) {
+         if ( !(content instanceof HTMLElement) ) {
             throw new Error('Первый параметр толжен быть html элементом');
             return;
          }
 
-         this.root = root;
+         this.content = content;
 
          this._createParametrs(options);
          this._init();
@@ -38,17 +38,20 @@
 
       show() {
          this.root.classList.add('modal-show');
-         overlay.classList.add('modal__overlay-show');
       }
 
       hide() { 
          this.root.classList.remove('modal-show');
-         overlay.classList.remove('modal__overlay-show');
+      }
+
+      toggle() { 
+         this.root.classList.toggle('modal-show');
       }
       
       _init() {
          this._create();
          this._getElements();
+         this._addToDom();
       }
    
       //Иницилизирует DOM-события
@@ -57,22 +60,19 @@
       }
 
       _create() { 
-         this.root.classList.add('modal');
-
-         this._createOverlay();
+         this.root = document.createElement('div');
+         this.root.className = 'modal';
+         this.root.innerHTML = tmpl.root(this.options);
       }
 
-      _createOverlay() { 
-         if (overlay) return;
-
-         overlay = document.createElement('div');
-         overlay.classList.add('modal__overlay');
+      _addToDom() { 
+         this.content.parentElement.appendChild(this.root);
+         this.els.main.appendChild(this.content);
       }
 
       _getElements() { 
-         
+         this.els.main = this.root.querySelector('.modal__main');
       }
-
    
       //Создает основные параметры испльзуемые конструктором
       //options - передаются из конструктора при иницилизации
@@ -80,8 +80,26 @@
          this.options = extend(true, {}, DEF, options);
          
          this.els = {};
+      }  
+
+   }
+
+   var tmpl = {
+
+      root: function (options) { 
+         return (`
+         <div class="modal__content">
+            <div class="modal__head">
+               ${(options.exitButton ? this.exitButton() : '')}
+            </div>
+            <div class="modal__main"></div>
+         </div>
+      `);    
+      },
+      
+      exitButton: function () { 
+         return `<div class="modal__exit"></div>`
       }
-   
 
    }
    
