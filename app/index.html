@@ -6,12 +6,18 @@
     <meta name="Keywords" content="2d maincraft маинкрафт мейнкрафт game хантер hunter hunter-2d mobile">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <link rel="shortcut icon" href="favicon.png" type="image/png"><!-- build:js js/main-1525414906711.js defer -->
+=======
+    <link rel="shortcut icon" href="favicon.png" type="image/png"><!-- build:js js/main-1525414792538.js defer -->
+>>>>>>> master
     <script defer src="js/polyfills.js"></script>
     <script defer src="js/functions.js"></script>
     <script defer src="js/sprites_config.js"></script>
     <script defer src="js/events.js"></script>
-    <script defer src="js/game/notify.js"></script>
+    <script defer src="js/plugins/notify.js"></script>
+    <script defer src="js/plugins/modal.js"></script>
+    <script defer src="js/plugins/fps_meter.js"></script>
     <script defer src="js/game/game.js"></script>
     <script defer src="js/game/geometry/vector.js"></script>
     <script defer src="js/game/geometry/rect.js"></script>
@@ -36,9 +42,16 @@
     <script defer src="js/game/objects/finish.js"></script>
     <script defer src="js/game/player.js"></script>
     <script defer src="js/game/health.js"></script>
-    <script defer src="js/fps_meter.js"></script>
     <script defer src="js/main.js"></script>
     <!--endbuild-->
+    <style>
+      .menu, 
+      .won,
+      .instruction {
+         visibility: hidden;
+         opacity: 0;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -51,347 +64,22 @@
                 <h1 class="instruction__title">Hunter - инструкция</h1>
               </header>
               <div class="instruction__main">
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкцияp Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
-                <p>Инструкция</p>
+                <div class="instruction__present"><img class="instruction__present_img" src="img/present.png"></div>
+                <div class="instruction__text">
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt accusamus nihil est vel rem omnis nobis voluptatibus, nemo nostrum pariatur aut molestias, iste eum aperiam quibusdam, optio nisi ducimus totam?</p>
+                </div>
               </div>
               <footer class="menu__footer"></footer>
             </div>
@@ -453,19 +141,17 @@
         </div>
       </main>
       <div class="footer"></div>
+<<<<<<< HEAD
     </div><!-- build:css css/main-1525414906711.css -->
+=======
+    </div><!-- build:css css/main-1525414792538.css -->
+>>>>>>> master
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/lib/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
     <!--endbuild -->
     <!--Global site tag (gtag.js) - Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118619668-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      gtag('config', 'UA-118619668-1');
-    </script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-118619668-1');</script>
   </body>
 </html>
