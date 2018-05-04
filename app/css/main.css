@@ -3,7 +3,7 @@ html, body {
   background: cornflowerblue;
   overflow: hidden;
   font-display: swap;
-  font-family: 'Russo One', sans-serif;
+  font-family: helvetica, arial, sans-serif;
   font-size: 16px;
   color: #111; }
 
@@ -13,6 +13,16 @@ canvas {
       image-rendering: -moz-crisp-edges;
       image-rendering: -o-pixelated;
       image-rendering: pixelated; }
+
+h1, h2, .won__title, .instruction__title, .instruction__exit, .menu__title {
+  font-family: 'Russo One', sans-serif;
+  text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
+
+h1 {
+  font-size: 20px; }
+
+h2 {
+  font-size: 16px; }
 
 .game {
   position: fixed;
@@ -205,102 +215,53 @@ canvas {
     font-size: 18px;
     margin-left: 5px; }
 
-.won {
-  visibility: hidden;
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  -webkit-transition: visibility ease 0.5s, opacity 0.5s;
-  transition: visibility ease 0.5s, opacity 0.5s; }
-  .won__content {
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    -webkit-transform: translate(-50%, -40%);
-            transform: translate(-50%, -40%);
-    max-width: 90%;
-    max-height: 90%;
-    overflow: auto;
-    z-index: -1; }
-  .won-show {
-    visibility: visible;
-    opacity: 1; }
-    .won-show_content {
-      z-index: 1; }
-  .won__header {
-    margin-bottom: 20px; }
-  .won__title {
-    text-align: center;
-    font-size: 25px;
-    text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
-  .won__buttons {
-    text-align: center;
-    -webkit-perspective: 500px;
-            perspective: 500px; }
-  .won__button {
-    width: 300px;
-    max-width: 100%;
-    font-family: 'Russo One', sans-serif;
-    padding: 8px 0;
-    background: #c8c8c8;
-    border: 0;
-    border-radius: 2px;
-    outline: 0;
-    text-shadow: 1px 1px rgba(200, 200, 200, 0.5);
-    display: block;
-    margin-top: 10px;
-    cursor: pointer;
-    -webkit-transition: background .5s;
-    transition: background .5s; }
-    .won__button:first-child {
-      margin-top: 0; }
-    .won__button:hover {
-      background: rgba(200, 200, 200, 0.6); }
-    .won__button:active {
-      background: #c8c8c8; }
+.won__header {
+  margin-bottom: 20px; }
+
+.won__title {
+  text-align: center;
+  font-size: 25px; }
+
+.won__buttons {
+  text-align: center;
+  -webkit-perspective: 500px;
+          perspective: 500px; }
+
+.won__button {
+  width: 300px;
+  max-width: 100%;
+  font-family: 'Russo One', sans-serif;
+  padding: 8px 0;
+  background: #c8c8c8;
+  border: 0;
+  border-radius: 2px;
+  outline: 0;
+  text-shadow: 1px 1px rgba(200, 200, 200, 0.5);
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+  -webkit-transition: background .5s;
+  transition: background .5s; }
+  .won__button:first-child {
+    margin-top: 0; }
+  .won__button:hover {
+    background: rgba(200, 200, 200, 0.6); }
+  .won__button:active {
+    background: #c8c8c8; }
 
 .instruction {
-  visibility: hidden;
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  -webkit-transition: visibility ease 0.5s, opacity 0.5s;
-  transition: visibility ease 0.5s, opacity 0.5s;
-  -webkit-user-select: normal;
-     -moz-user-select: normal;
-      -ms-user-select: normal;
-          user-select: normal; }
-  .instruction__content {
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    -webkit-transform: translate(-50%, -40%);
-            transform: translate(-50%, -40%);
-    max-width: 90%;
-    max-height: 90%;
-    overflow: auto;
-    z-index: -1; }
-  .instruction-show {
-    visibility: visible;
-    opacity: 1; }
-    .instruction-show_content {
-      z-index: 1; }
+  -webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+          user-select: auto;
+  background: #fff;
+  width: 90%;
+  padding: 10px; }
   .instruction__header {
     margin-bottom: 20px; }
   .instruction__title {
     text-align: center;
-    font-size: 25px;
-    text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
+    font-size: 25px; }
   .instruction__buttons {
     text-align: center;
     -webkit-perspective: 500px;
@@ -326,10 +287,6 @@ canvas {
       background: rgba(200, 200, 200, 0.6); }
     .instruction__button:active {
       background: #c8c8c8; }
-  .instruction__content {
-    background: #fff;
-    width: 90%;
-    padding: 10px; }
   .instruction__present {
     float: left;
     margin-right: 20px; }
@@ -350,8 +307,18 @@ canvas {
         margin-bottom: 20px; }
         .instruction__present_img {
           width: 100%; } }
+  .instruction__exit {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-transition: color .3s;
+    transition: color .3s; }
+    .instruction__exit:hover {
+      color: #c00; }
   .instruction__text {
-    font-family: arial; }
+    font-family: helvetica, arial, sans-serif; }
 
 .open_menu {
   background-color: transparent;
@@ -383,64 +350,39 @@ canvas {
     -webkit-transform: scale(1.05);
             transform: scale(1.05); }
 
-.menu {
-  visibility: hidden;
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  -webkit-transition: visibility ease 0.5s, opacity 0.5s;
-  transition: visibility ease 0.5s, opacity 0.5s; }
-  .menu__content {
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    -webkit-transform: translate(-50%, -40%);
-            transform: translate(-50%, -40%);
-    max-width: 90%;
-    max-height: 90%;
-    overflow: auto;
-    z-index: -1; }
-  .menu-show {
-    visibility: visible;
-    opacity: 1; }
-    .menu-show_content {
-      z-index: 1; }
-  .menu__header {
-    margin-bottom: 20px; }
-  .menu__title {
-    text-align: center;
-    font-size: 25px;
-    text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
-  .menu__buttons {
-    text-align: center;
-    -webkit-perspective: 500px;
-            perspective: 500px; }
-  .menu__button {
-    width: 300px;
-    max-width: 100%;
-    font-family: 'Russo One', sans-serif;
-    padding: 8px 0;
-    background: #c8c8c8;
-    border: 0;
-    border-radius: 2px;
-    outline: 0;
-    text-shadow: 1px 1px rgba(200, 200, 200, 0.5);
-    display: block;
-    margin-top: 10px;
-    cursor: pointer;
-    -webkit-transition: background .5s;
-    transition: background .5s; }
-    .menu__button:first-child {
-      margin-top: 0; }
-    .menu__button:hover {
-      background: rgba(200, 200, 200, 0.6); }
-    .menu__button:active {
-      background: #c8c8c8; }
+.menu__header {
+  margin-bottom: 20px; }
+
+.menu__title {
+  text-align: center;
+  font-size: 25px; }
+
+.menu__buttons {
+  text-align: center;
+  -webkit-perspective: 500px;
+          perspective: 500px; }
+
+.menu__button {
+  width: 300px;
+  max-width: 100%;
+  font-family: 'Russo One', sans-serif;
+  padding: 8px 0;
+  background: #c8c8c8;
+  border: 0;
+  border-radius: 2px;
+  outline: 0;
+  text-shadow: 1px 1px rgba(200, 200, 200, 0.5);
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+  -webkit-transition: background .5s;
+  transition: background .5s; }
+  .menu__button:first-child {
+    margin-top: 0; }
+  .menu__button:hover {
+    background: rgba(200, 200, 200, 0.6); }
+  .menu__button:active {
+    background: #c8c8c8; }
 
 .fps {
   position: absolute;
@@ -474,3 +416,28 @@ canvas {
     color: #c00; }
   .notify-warning {
     color: #ff8200; }
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: visibility ease 0.5s, opacity 0.5s;
+  transition: visibility ease 0.5s, opacity 0.5s; }
+  .modal__main > div {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    -webkit-transform: translate(-50%, -40%);
+            transform: translate(-50%, -40%);
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto; }
+  .modal-show {
+    visibility: visible;
+    opacity: 1;
+    z-index: 10; }

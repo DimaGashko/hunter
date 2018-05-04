@@ -1,11 +1,9 @@
 .instruction
    @include base_menu()
-   user-select: normal
-
-   &__content
-      background: #fff
-      width: 90%
-      padding: 10px
+   user-select: auto
+   background: #fff
+   width: 90%
+   padding: 10px
 
    &__present
       float: left
@@ -26,9 +24,20 @@
          &_img
             width: 100%
 
-         
+   &__exit 
+      @extend %game_font
 
+      position: absolute
+      left: 10px
+      top: 10px
+      font-size: 14px
+      cursor: pointer
+      transition: color .3s
+
+      &:hover
+         color: #c00
+      
 
    &__text
-      font-family: arial
+      font-family: helvetica, arial, sans-serif
 

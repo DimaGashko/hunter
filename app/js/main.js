@@ -1,4 +1,4 @@
-﻿;(function(global) {
+﻿(function (global) {
     "use strict"
 
     var els = {
@@ -8,6 +8,12 @@
         openMenu: document.querySelector('.open_menu'),
         instruction: document.querySelector('.instruction'),
         fps: document.querySelector('.fps'),
+    }
+
+    var modals = {
+        won: new Modal(els.won),
+        menu: new Modal(els.menu),
+        instruction: new Modal(els.instruction),
     }
 
     var game = window.g = new Game({
@@ -26,8 +32,7 @@
     });
    
     game.addEvent('win', () => { 
-        els.won.classList.add('won-show');
-        els.menu.classList.remove('menu-show');
+        won.show()
     });
 
     game.addEvent('change_level', (newLevel) => { 
@@ -61,7 +66,7 @@
                 game.openSecterLevel();
             
             } else if (targ.classList.contains('open_instruction')) {
-                els.instruction.classList.add('instruction-show');
+                modals.instruction.show();
                 
             }
         });
@@ -70,7 +75,7 @@
             var targ = event.target;
 
             if (targ.classList.contains('won__button')) {
-                els.won.classList.remove('won-show');
+                modals.won.show();
             
             }
         });
@@ -79,22 +84,30 @@
             var targ = event.target;
 
             if (targ.classList.contains('menu__button')) {
-                els.menu.classList.remove('menu-show');
+                modals.menu.hide();
             
             }
         });
 
         els.openMenu.addEventListener('click', () => { 
-            els.menu.classList.add('menu-show');
+            modals.menu.show();
         });
 
         document.addEventListener('keyup', (event) => {
             if (event.keyCode === 27) {
-                els.menu.classList.toggle('menu-show');
-                els.won.classList.remove('won-show');
-                els.instruction.classList.remove('instruction-show');
+                modals.won.hide();
+                modals.instruction.hide();
+                modals.menu.toggle();
             }
         })
+
+        els.instruction.addEventListener('click', (even) => { 
+            var targ = event.target;
+            
+            if (targ.classList.contains('instruction__exit')) { 
+                modals.instruction.hide();
+            }
+        });
 
     }());
 

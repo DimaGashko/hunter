@@ -3,12 +3,16 @@ html, body
    background: cornflowerblue
    overflow: hidden
    font-display: swap
-   font-family: 'Russo One', sans-serif
+   font-family: helvetica, arial, sans-serif
    font-size: 16px
    color: #111
 
 canvas
    image-rendering: pixelated
+
+%game_font
+   font-family: 'Russo One', sans-serif
+   text-shadow: $game_text-shadow
 
 @mixin control_button
    background-color: transparent
@@ -28,45 +32,14 @@ canvas
       transform: scale(1.05)   
 
 @mixin base_menu
-   visibility: hidden
-   opacity: 0
-   background: rgba(0,0,0,.4)
-   position: absolute
-   left: 0
-   top: 0
-   right: 0
-   bottom: 0
-   z-index: 10
-   transition: visibility ease 0.5s, opacity 0.5s 
- 
-   &__content
-      $top: 40%
-
-      position: absolute
-      left: 50%
-      top: $top
-      transform: translate(-50%, -$top)
-      max-width: 90%
-      max-height: 90%
-      overflow: auto
-      z-index: -1
-
-   &-show
-      visibility: visible
-      opacity: 1
-
-      &_content
-         z-index: 1
-
-
    //header
    &__header
       margin-bottom: 20px
    
    &__title
+      @extend %game_font
       text-align: center
       font-size: 25px  
-      text-shadow: $game_text-shadow
    
    //main
 
@@ -98,5 +71,11 @@ canvas
 
       &:active
          background: rgba(200,200,200,1)      
- 
 
+h1 
+   @extend %game_font
+   font-size: 20px
+
+h2 
+   @extend %game_font
+   font-size: 16px
