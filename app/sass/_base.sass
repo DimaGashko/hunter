@@ -3,12 +3,16 @@ html, body
    background: cornflowerblue
    overflow: hidden
    font-display: swap
-   font-family: 'Russo One', sans-serif
+   font-family: helvetica, arial, sans-serif
    font-size: 16px
    color: #111
 
 canvas
    image-rendering: pixelated
+
+%game_font
+   font-family: 'Russo One', sans-serif
+   text-shadow: $game_text-shadow
 
 @mixin control_button
    background-color: transparent
@@ -33,9 +37,9 @@ canvas
       margin-bottom: 20px
    
    &__title
+      @extend %game_font
       text-align: center
       font-size: 25px  
-      text-shadow: $game_text-shadow
    
    //main
 
@@ -67,5 +71,11 @@ canvas
 
       &:active
          background: rgba(200,200,200,1)      
- 
 
+h1 
+   @extend %game_font
+   font-size: 20px
+
+h2 
+   @extend %game_font
+   font-size: 16px

@@ -3,7 +3,7 @@ html, body {
   background: cornflowerblue;
   overflow: hidden;
   font-display: swap;
-  font-family: 'Russo One', sans-serif;
+  font-family: helvetica, arial, sans-serif;
   font-size: 16px;
   color: #111; }
 
@@ -13,6 +13,16 @@ canvas {
       image-rendering: -moz-crisp-edges;
       image-rendering: -o-pixelated;
       image-rendering: pixelated; }
+
+h1, h2, .won__title, .instruction__title, .instruction__exit, .menu__title {
+  font-family: 'Russo One', sans-serif;
+  text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
+
+h1 {
+  font-size: 20px; }
+
+h2 {
+  font-size: 16px; }
 
 .game {
   position: fixed;
@@ -210,8 +220,7 @@ canvas {
 
 .won__title {
   text-align: center;
-  font-size: 25px;
-  text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
+  font-size: 25px; }
 
 .won__buttons {
   text-align: center;
@@ -252,8 +261,7 @@ canvas {
     margin-bottom: 20px; }
   .instruction__title {
     text-align: center;
-    font-size: 25px;
-    text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
+    font-size: 25px; }
   .instruction__buttons {
     text-align: center;
     -webkit-perspective: 500px;
@@ -299,8 +307,18 @@ canvas {
         margin-bottom: 20px; }
         .instruction__present_img {
           width: 100%; } }
+  .instruction__exit {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-transition: color .3s;
+    transition: color .3s; }
+    .instruction__exit:hover {
+      color: #c00; }
   .instruction__text {
-    font-family: arial; }
+    font-family: helvetica, arial, sans-serif; }
 
 .open_menu {
   background-color: transparent;
@@ -337,8 +355,7 @@ canvas {
 
 .menu__title {
   text-align: center;
-  font-size: 25px;
-  text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
+  font-size: 25px; }
 
 .menu__buttons {
   text-align: center;

@@ -24,9 +24,20 @@
          &_img
             width: 100%
 
-         
+   &__exit 
+      @extend %game_font
 
+      position: absolute
+      left: 10px
+      top: 10px
+      font-size: 14px
+      cursor: pointer
+      transition: color .3s
+
+      &:hover
+         color: #c00
+      
 
    &__text
-      font-family: arial
+      font-family: helvetica, arial, sans-serif
 

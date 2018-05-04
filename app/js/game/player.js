@@ -91,9 +91,9 @@
          
          this.KEYS = {
             left:    [37, 65],
-            top:     [38, 87],
             right:   [39, 68],
             bottom:  [40, 40],
+            top:     [38, 87, 32],
          };
 
          this._moves = {

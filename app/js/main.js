@@ -10,9 +10,11 @@
         fps: document.querySelector('.fps'),
     }
 
-    var won = new Modal(els.won);
-    var menu = new Modal(els.menu);
-    var instruction = new Modal(els.instruction);
+    var modals = {
+        won: new Modal(els.won),
+        menu: new Modal(els.menu),
+        instruction: new Modal(els.instruction),
+    }
 
     var game = window.g = new Game({
         startLevel: +localStorage['game-cur_level'] || 0,
@@ -64,7 +66,7 @@
                 game.openSecterLevel();
             
             } else if (targ.classList.contains('open_instruction')) {
-                instruction.show();
+                modals.instruction.show();
                 
             }
         });
@@ -73,7 +75,7 @@
             var targ = event.target;
 
             if (targ.classList.contains('won__button')) {
-                won.show();
+                modals.won.show();
             
             }
         });
@@ -82,22 +84,30 @@
             var targ = event.target;
 
             if (targ.classList.contains('menu__button')) {
-                menu.hide();
+                modals.menu.hide();
             
             }
         });
 
         els.openMenu.addEventListener('click', () => { 
-            menu.show();
+            modals.menu.show();
         });
 
         document.addEventListener('keyup', (event) => {
             if (event.keyCode === 27) {
-                won.hide();
-                instruction.hide();
-                menu.toggle();
+                modals.won.hide();
+                modals.instruction.hide();
+                modals.menu.toggle();
             }
         })
+
+        els.instruction.addEventListener('click', (even) => { 
+            var targ = event.target;
+            
+            if (targ.classList.contains('instruction__exit')) { 
+                modals.instruction.hide();
+            }
+        });
 
     }());
 
