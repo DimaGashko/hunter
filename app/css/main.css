@@ -14,7 +14,7 @@ canvas {
       image-rendering: -o-pixelated;
       image-rendering: pixelated; }
 
-h1, h2, .won__title, .instruction__title, .instruction__exit, .menu__title {
+h1, h2, .won__title, .instruction__title, .instruction__exit, .menu__title, .notify {
   font-family: 'Russo One', sans-serif;
   text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
 
@@ -291,7 +291,7 @@ h2 {
     float: left;
     margin-right: 20px; }
     .instruction__present_img {
-      width: 400px;
+      width: 550px;
       max-width: 100%;
       -ms-interpolation-mode: nearest-neighbor;
           image-rendering: -webkit-optimize-contrast;
