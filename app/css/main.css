@@ -24,6 +24,10 @@ h1 {
 h2 {
   font-size: 16px; }
 
+ul {
+  list-style-position: inside;
+  padding: 10px; }
+
 .game {
   position: fixed;
   left: 0;
@@ -287,12 +291,24 @@ h2 {
       background: rgba(200, 200, 200, 0.6); }
     .instruction__button:active {
       background: #c8c8c8; }
+  @media screen and (min-width: 1500px) {
+    .instruction {
+      width: 1200px; } }
   .instruction__present {
     float: left;
-    margin-right: 20px; }
+    margin-right: 20px;
+    width: 550px; }
+    @media screen and (max-width: 800px) {
+      .instruction__present {
+        width: 50%; } }
+    @media screen and (max-width: 600px) {
+      .instruction__present {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+        float: none; } }
     .instruction__present_img {
-      width: 550px;
-      max-width: 100%;
+      width: 100%;
       -ms-interpolation-mode: nearest-neighbor;
           image-rendering: -webkit-optimize-contrast;
           image-rendering: -moz-crisp-edges;
@@ -301,12 +317,6 @@ h2 {
       display: block;
       margin: 0;
       padding: 0; }
-    @media screen and (max-width: 700px) {
-      .instruction__present {
-        margin-right: 0;
-        margin-bottom: 20px; }
-        .instruction__present_img {
-          width: 100%; } }
   .instruction__exit {
     position: absolute;
     left: 10px;
