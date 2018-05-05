@@ -18,7 +18,7 @@
          "maps/level_11.json",
          "maps/level_12.json",
          "maps/secret_level.json"
-      ].map(item => item + '?' + Date.now()),
+      ].map(item => item + '?' + 2),
   
       tilesetSrc: "tilesets/tileset.json",
 
@@ -68,8 +68,12 @@
                   reject();
                }
                else {
-                  localStorage[src] = xhr.responseText;
-                  resolve(xhr.responseText);
+                  try {
+                     localStorage[src] = xhr.responseText;
+                     resolve(xhr.responseText);
+                  } catch (err) {
+                     localStorage.clear();
+                  }
                }
             }
          });
@@ -129,8 +133,16 @@
                   reject();
                }
                else {
-                  localStorage[src] = xhr.responseText;
                   resolve(xhr.responseText);
+
+                  try {
+                     localStorage[src] = xhr.responseText;
+                  } catch (err) {
+                     localStorage.clear();
+                     console.log('clear');
+                     
+                  }
+                  
                }
             }
          });
