@@ -62,7 +62,7 @@
             this._getActorsForRender(),
             this._getBlocksForRender('dinamic'),
             this._getBlocksForRender('static'),
-            this._getBlocksForRender('decorates')
+               this._getBlocksForRender('decorates')
          );
 
       }
@@ -241,6 +241,7 @@
             Actor: Game.Actor,
             Coin: Game.Coin,
             Lava: Game.Lava,
+            Teleport: Game.Teleport,
             Platform: Game.Platform,
             Block: Game.Block,
             Finish: Game.Finish,
