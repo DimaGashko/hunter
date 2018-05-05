@@ -31,7 +31,7 @@
       }
 
       _initConfig() { 
-         this._state = 'stand'; //cостояние персонажа (стоит, идет...)
+         this._state = 'go'; //cостояние персонажа (стоит, идет...)
       
          this._cadrsConfig = {
             'stand': [{

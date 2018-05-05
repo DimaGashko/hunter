@@ -11,10 +11,15 @@
          "maps/level_4.json",
          "maps/level_5.json",
          "maps/level_6.json",
+         "maps/level_7.json",
+         "maps/level_8.json",
+         "maps/level_9.json",
          "maps/level_10.json",
+         "maps/level_11.json",
+         "maps/level_12.json",
          "maps/secret_level.json"
-      ].map(item => item + '?1'),
-
+      ].map(item => item + '?' + 2),
+  
       tilesetSrc: "tilesets/tileset.json",
 
       //Текущий уровень
@@ -63,8 +68,12 @@
                   reject();
                }
                else {
-                  localStorage[src] = xhr.responseText;
-                  resolve(xhr.responseText);
+                  try {
+                     localStorage[src] = xhr.responseText;
+                     resolve(xhr.responseText);
+                  } catch (err) {
+                     localStorage.clear();
+                  }
                }
             }
          });
@@ -124,8 +133,16 @@
                   reject();
                }
                else {
-                  localStorage[src] = xhr.responseText;
                   resolve(xhr.responseText);
+
+                  try {
+                     localStorage[src] = xhr.responseText;
+                  } catch (err) {
+                     localStorage.clear();
+                     console.log('clear');
+                     
+                  }
+                  
                }
             }
          });

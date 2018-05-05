@@ -25,6 +25,9 @@
             this._initHealth();
             
             this.render.start();
+
+            this._updateLevelProgress()
+
             this._finishReady = true;
 
             this.trigger('change_level', this.mapManager.curLevel);
@@ -56,6 +59,17 @@
          this.mapManager.curLevel = this.mapManager.levelCount - 1;
          this.startLevel();
       }   
+
+      //Возвращает индекс текущего уровня
+      get curLevel() { 
+         return this.mapManager.curLevel;
+      }
+
+      //Возвращает кличество уровней в игре
+      get levelsCount() { 
+         return this.mapManager.options.levelsSrc.length - 1;
+         //последный уровень - секретный 
+      }
 
       _init() {
          this._getElements();
@@ -215,19 +229,24 @@
 
       _addedCoins(n) { 
          this._coinsCount += n;
-         this._updateCoinsRest();
+         this._updateCoinsProgress();
       }
 
       _findedCoins(n) { 
          this._coinsFind += n;
-         this._updateCoinsRest();
+         this._updateCoinsProgress();
 
          this._finishReady = true;
       }
 
-      _updateCoinsRest() { 
-         this.els.coinsStatus.innerHTML =
+      _updateCoinsProgress() { 
+         this.els.coinsProgress.innerHTML =
             `${this._coinsFind}/${this._coinsCount}`;
+      }
+
+      _updateLevelProgress() { 
+         this.els.levelProgress.innerHTML =
+            `${this.curLevel + 1}/${this.levelsCount}`;
       }
 
       _initLevelParametrs() { 
@@ -239,7 +258,8 @@
       _getElements() { 
          var root = this.els.root = document.querySelector('.game');
 
-         this.els.coinsStatus = root.querySelector('.coins__val');
+         this.els.coinsProgress = root.querySelector('.coins_progress');
+         this.els.levelProgress = root.querySelector('.level_progress');
       }
 
       //Разрешает прийты на финиш через некоторое время

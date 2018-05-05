@@ -127,6 +127,10 @@
          
       }
 
+      clearMoveStatus() { 
+
+      }
+
       /**
        * Реакия на взаимодействие с другим объектом 
        * (изменяет параметры переданного объека)
@@ -186,6 +190,12 @@
             }
 
          }
+
+         obj.afterCollision();
+      }
+
+      afterCollision() { 
+         
       }
 
       _convertSpeedToPain(speed) { 

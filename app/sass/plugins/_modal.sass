@@ -1,13 +1,20 @@
 .modal
    visibility: hidden
    opacity: 0
-   background: rgba(0,0,0,.4)
    position: absolute
    left: 0
    top: 0
    right: 0
    bottom: 0
    transition: visibility ease 0.5s, opacity 0.5s 
+
+   &__overlay
+      background: rgba(0,0,0,.4)
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
 
    &__main > div
       $top: 40%

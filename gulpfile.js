@@ -30,7 +30,7 @@ lrTask('sprites', './tasks/sprites', {
 });
 
 lrTask('js', './tasks/js', {
-   src: 'app/js/**/*.js',
+   src: 'app/js/main.js',//'app/js/**/*.js',
    dst: 'app/js/',
 });
 

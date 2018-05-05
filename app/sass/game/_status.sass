@@ -1,0 +1,20 @@
+.game__statuses
+   max-width: calc(100% - 80px)
+      
+.status
+   @extend %game_font
+
+   font-size: 18px
+   margin-top: 5px
+
+   &:first-child 
+      margin-top: 0
+
+   &__label,
+   &__val
+      display: inline-block
+      vertical-align: middle
+
+   &__val 
+      font-size: 18px
+      margin-left: 5px

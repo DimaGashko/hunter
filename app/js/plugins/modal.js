@@ -1,7 +1,5 @@
 ;(function(global){
    'use strict'
-
-   var overlay = null; //оверлей-затемнение для модального окна
    
    var DEF = {
       exitButton: true //показывать кнопку закрытия
@@ -63,7 +61,13 @@
    
       //Иницилизирует DOM-события
       _initEvents() {
-         
+         this.root.addEventListener('click', (event) => { 
+            var targ = event.target;
+
+            if (targ.classList.contains('modal__overlay')) {
+               this.hide();
+            }
+         });
       }
 
       _create() { 
@@ -95,6 +99,7 @@
 
       root: function (options) { 
          return (`
+         <div class="modal__overlay"></div>
          <div class="modal__content">
             <div class="modal__head">
                ${(options.exitButton ? this.exitButton() : '')}
