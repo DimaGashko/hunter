@@ -25,7 +25,7 @@
          super();
 
          if ( !(content instanceof HTMLElement) ) {
-            throw new Error('Первый параметр толжен быть html элементом');
+            console.error('Первый параметр толжен быть html элементом');
             return;
          }
 

@@ -121,4 +121,6 @@
         els.fps.innerHTML = fpsMeter.fps;
     });
 
+    document.body.classList.add('page_ready');
+
 }(window));
