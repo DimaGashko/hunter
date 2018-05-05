@@ -383,10 +383,10 @@ ul {
       margin-left: 0; }
 
 .instruction {
-  -webkit-user-select: auto;
-     -moz-user-select: auto;
-      -ms-user-select: auto;
-          user-select: auto;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
   background: #fff;
   width: 90%;
   padding: 10px; }
