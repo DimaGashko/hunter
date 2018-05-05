@@ -8,6 +8,11 @@
    @media screen and (min-width: 1500px)
       width: 1200px
 
+   &-ready
+      .instruction__present_img
+         display: block
+
+
    &__present
       float: left
       margin-right: 20px
@@ -28,6 +33,8 @@
          display: block
          margin: 0
          padding: 0
+         display: none //что бы при открытии 
+            //страници сразу не грузилась картинка
 
    &__exit 
       @extend %game_font

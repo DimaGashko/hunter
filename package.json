@@ -30,6 +30,7 @@
     "gulp.spritesmith": "^6.9.0"
   },
   "dependencies": {
+    "gulp-replace": "^0.6.1",
     "gulp-rev-append": "^0.1.8"
   }
 }

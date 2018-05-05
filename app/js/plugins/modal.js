@@ -5,7 +5,6 @@
    
    var DEF = {
       exitButton: true //показывать кнопку закрытия
-
    }
    
    /**
@@ -25,7 +24,7 @@
          super();
 
          if ( !(content instanceof HTMLElement) ) {
-            throw new Error('Первый параметр толжен быть html элементом');
+            console.error('Первый параметр толжен быть html элементом');
             return;
          }
 
@@ -38,14 +37,22 @@
 
       show() {
          this.root.classList.add('modal-show');
+         this.trigger('show');
       }
 
       hide() { 
          this.root.classList.remove('modal-show');
+         this.trigger('hide');
       }
 
       toggle() { 
-         this.root.classList.toggle('modal-show');
+         if (this.root.classList.contains('modal-show')) {
+            this.hide();
+         
+         } else { 
+            this.show();
+
+         }
       }
       
       _init() {

@@ -1,3 +1,7 @@
+.page_ready .game__menu_modal
+   visibility: visible!important
+   opacity: 1!important
+      
 html, body 
    height: 100%
    background: cornflowerblue
@@ -11,7 +15,8 @@ canvas
    image-rendering: pixelated
 
 %game_font
-   font-family: 'Russo One', sans-serif
+   font-family: 'arial', sans-serif
+   font-weight: bold
    text-shadow: $game_text-shadow
 
 @mixin control_button
@@ -39,7 +44,7 @@ canvas
    &__title
       @extend %game_font
       text-align: center
-      font-size: 25px   
+      font-size: 30px   
    
    //main
 
@@ -47,10 +52,11 @@ canvas
       text-align: center
       perspective: 500px
 
-   &__button
+   &__button 
+      @extend %game_font
+
       width: 300px
       max-width: 100%
-      font-family: 'Russo One', sans-serif
       padding: 8px 0
       background: rgba(200,200,200,1)
       border: 0
@@ -74,7 +80,7 @@ canvas
 
 h1 
    @extend %game_font
-   font-size: 20px
+   font-size: 25px
 
 h2 
    @extend %game_font

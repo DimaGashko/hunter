@@ -1,15 +1,13 @@
 doctype html
 html(lang="ru")
-   head
-      block head       
-         include components/meta.jade     
+   head     
+      include components/meta.jade   
 
-         <!-- build:js js/main-#{Date.now()}.js defer -->
-         include components/js_add.jade
-         //endbuild
+      //build:css css/main.css
+      link(rel="stylesheet", href="css/lib/normalize.min.css")
+      link(rel="stylesheet", href="css/main.css")
+      //endbuild   
 
-         include components/set_start_style.jade
-     
    body
       .wrapper
          header.header
@@ -41,16 +39,12 @@ html(lang="ru")
 
                include components/menu.jade
                include components/won.jade
-               include components/social.jade
+               //include components/social.jade
 
          .footer
-                  
-      <!-- build:css css/main-#{Date.now()}.css -->
-      link(rel="stylesheet", href="css/fonts.css") 
-      link(rel="stylesheet", href="css/lib/normalize.min.css")
-      link(rel="stylesheet", href="css/main.css")
-      //endbuild 
 
-      include components/reset_start_style.jade
+   //build:js js/main.js
+   include components/js_add.jade
+   //endbuild
 
-      include components/analytics.jade
+   include components/analytics.jade

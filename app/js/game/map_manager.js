@@ -44,7 +44,7 @@
             var src = this.options.tilesetSrc;
             console.time('load tileset');
 
-            if (src in localStorage && 0) {
+            if (src in localStorage) {
                resolve(localStorage[src]);
                console.timeEnd('load tileset');
                return;
@@ -105,7 +105,7 @@
             src = this.options.levelsSrc[levelIndex || this.curLevel];
 
             console.time('load');
-            if (src in localStorage && 0) {
+            if (src in localStorage) {
                resolve(localStorage[src]);
                console.timeEnd('load');
                return;
