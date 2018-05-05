@@ -26,7 +26,7 @@ canvas {
       image-rendering: -o-pixelated;
       image-rendering: pixelated; }
 
-h1, h2, .coins, .notify, .menu__title, .menu__button, .won__title, .won__button, .instruction__title, .instruction__button, .instruction__exit {
+h1, h2, .coins, .notify, .open_menu, .menu__title, .menu__button, .won__title, .won__button, .instruction__title, .instruction__button, .instruction__exit {
   font-family: 'arial', sans-serif;
   font-weight: bold;
   text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
@@ -233,12 +233,14 @@ ul {
 
 .fps {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 60px;
+  left: 0;
   font-family: arail;
   font-size: 16px;
   color: #c00;
   font-weight: bold; }
+  .fps:before {
+    content: 'fps: '; }
 
 .notify {
   position: absolute;
@@ -291,34 +293,39 @@ ul {
     z-index: 10; }
 
 .open_menu {
-  background-color: transparent;
-  border: none;
-  bottom: 0px;
-  -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
-          box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
-  border-radius: 50%;
-  outline: 0;
-  -webkit-transition: -webkit-transform .25s;
-  transition: -webkit-transform .25s;
-  transition: transform .25s;
-  transition: transform .25s, -webkit-transform .25s;
-  font-size: 0;
-  cursor: pointer;
   position: absolute;
-  top: 50px;
-  left: 0;
+  top: 0;
+  right: 0;
   z-index: 5;
-  background-image: url(../img/sprite.png);
-  background-position: 0px 0px;
-  width: 64px;
-  height: 64px;
-  display: none; }
-  .open_menu:active, .open_menu-active {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2); }
-  .open_menu:focus {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05); }
+  border: none;
+  cursor: pointer;
+  background: none;
+  outline: none; }
+  @media screen and (max-width: 850px) {
+    .open_menu {
+      background-color: transparent;
+      border: none;
+      bottom: 0px;
+      -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
+              box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      outline: 0;
+      -webkit-transition: -webkit-transform .25s;
+      transition: -webkit-transform .25s;
+      transition: transform .25s;
+      transition: transform .25s, -webkit-transform .25s;
+      font-size: 0;
+      cursor: pointer;
+      background-image: url(../img/sprite.png);
+      background-position: 0px 0px;
+      width: 64px;
+      height: 64px; }
+      .open_menu:active, .open_menu-active {
+        -webkit-transform: scale(1.2);
+                transform: scale(1.2); }
+      .open_menu:focus {
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05); } }
 
 .menu__header {
   margin-bottom: 20px; }

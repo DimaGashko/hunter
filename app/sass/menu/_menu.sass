@@ -1,12 +1,18 @@
 .open_menu
-   @include control_button()
-   position: absolute
-   top: 50px
-   left: 0
-   z-index: 5
-   @include sprite($open_menu)
+   @extend %game_font
 
-   display: none
+   position: absolute
+   top: 0
+   right: 0
+   z-index: 5
+   border: none
+   cursor: pointer
+   background: none
+   outline: none   
+
+   @media screen and (max-width: 850px)
+      @include control_button()
+      @include sprite($open_menu)
    
 .menu
    @include base_menu()
