@@ -15,6 +15,8 @@
          "maps/level_8.json",
          "maps/level_9.json",
          "maps/level_10.json",
+         "maps/level_11.json",
+         "maps/level_12.json",
          "maps/secret_level.json"
       ].map(item => item + '?' + Date.now()),
   

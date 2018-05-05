@@ -23,12 +23,11 @@
       
       respondInteraction(obj, side) {
          super.respondInteraction.apply(this, arguments);
-         if (side === 'top') { 
-            console.log('asdf');
-            
+         if (side === 'top') {             
             obj.coords = this.coords.plus(this.teleportMove);
             obj.speed = new Vector();
          } 
+
       }
  
       _createParametrs() { 
@@ -38,6 +37,8 @@
             this.options.props.x,
             this.options.props.y
          );
+
+         this.coords = this.coords.minus(new Vector(0, 1));
       }
 
    }

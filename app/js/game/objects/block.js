@@ -128,7 +128,7 @@
       }
 
       clearMoveStatus() { 
-         
+
       }
 
       /**
@@ -190,6 +190,12 @@
             }
 
          }
+
+         obj.afterCollision();
+      }
+
+      afterCollision() { 
+         
       }
 
       _convertSpeedToPain(speed) { 
