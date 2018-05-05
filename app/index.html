@@ -23,7 +23,10 @@
     <!--build:css css/main.css-->
     <link rel="stylesheet" href="css/lib/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <!--endbuild   -->
+    <!--endbuild -->
+    <!--Global site tag (gtag.js) - Google Analytics-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118619668-1"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-118619668-1');</script>
   </head>
   <body>
     <div class="wrapper">
@@ -41,7 +44,7 @@
                 <p>Простая, но при этом увлекательная 2d-игра в стиле Maincraft. Играть можно как на компьютере, так и на смартфоне или планшене. </p>
                 <h2>Цель игры</h2>
                 <p>Целью игры является прохождение всех уровней. Что бы пройти уровень нужно собрать все ценные предметы, и только после этого прийти на финиш.</p>
-                <p>Если вы придете до финиша до того, как соберете все предметы, то ничего не произойдет.</p>
+                <p>Если вы придете на финиша до того, как соберете все предметы, то ничего не произойдет.</p>
                 <P>Сможете пройти последний уровень с первого раза?</P>
                 <h2>Управление</h2>
                 <p> В игре есть несколько способов управление:</p>
@@ -57,7 +60,6 @@
             <canvas class="game__canvas game__main_canv">  </canvas>
           </div>
           <div class="game__dom"> 
-            <div class="fps">0</div>
             <div class="health"> 
               <div class="health__prev"></div>
               <div class="health__real"></div>
@@ -69,12 +71,20 @@
               </div>
             </div>
             <div class="game__statuses"> 
-              <div class="coins">
-                <div class="coins__label">Собрано предметов:</div>
-                <div class="coins__val">0/0 </div>
+              <div class="status">
+                <div class="status__label">Собрано предметов:</div>
+                <div class="status__val coins_progress">0/0 </div>
+              </div>
+              <div class="status">
+                <div class="status__label">Уровень:</div>
+                <div class="status__val level_progress">0/0</div>
+              </div>
+              <div class="status">
+                <div class="status__label">fps:</div>
+                <div class="status__val fps">0</div>
               </div>
             </div>
-            <div class="open_menu">Menu </div>
+            <button class="open_menu">Menu </button>
           </div>
           <div class="menu game__menu_modal">
             <header class="menu__header">
@@ -134,6 +144,7 @@
   <script defer src="js/game/objects/actor.js"></script>
   <script defer src="js/game/objects/dinamic_actor.js"></script>
   <script defer src="js/game/objects/platform.js"></script>
+  <script defer src="js/game/objects/teleport.js"></script>
   <script defer src="js/game/objects/persons/sprinter.js"></script>
   <script defer src="js/game/objects/persons/steve.js"></script>
   <script defer src="js/game/objects/coin.js"></script>
@@ -142,7 +153,4 @@
   <script defer src="js/game/health.js"></script>
   <script defer src="js/main.js"></script>
   <!--endbuild-->
-  <!--Global site tag (gtag.js) - Google Analytics-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118619668-1"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-118619668-1');</script>
 </html>
