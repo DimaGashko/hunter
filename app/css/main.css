@@ -26,12 +26,13 @@ canvas {
       image-rendering: -o-pixelated;
       image-rendering: pixelated; }
 
-h1, h2, .notify, .menu__title, .won__title, .instruction__title, .instruction__exit {
-  font-family: 'Russo One', sans-serif;
+h1, h2, .coins, .notify, .menu__title, .menu__button, .won__title, .won__button, .instruction__title, .instruction__button, .instruction__exit {
+  font-family: 'arial', sans-serif;
+  font-weight: bold;
   text-shadow: 1px 1px rgba(200, 200, 200, 0.5); }
 
 h1 {
-  font-size: 20px; }
+  font-size: 25px; }
 
 h2 {
   font-size: 16px; }
@@ -222,7 +223,6 @@ ul {
     margin: 1px 1px; } }
 
 .coins {
-  font-family: 'Russo One', sans-serif;
   font-size: 18px; }
   .coins__label, .coins__val {
     display: inline-block;
@@ -325,7 +325,7 @@ ul {
 
 .menu__title {
   text-align: center;
-  font-size: 25px; }
+  font-size: 30px; }
 
 .menu__buttons {
   text-align: center;
@@ -335,7 +335,6 @@ ul {
 .menu__button {
   width: 300px;
   max-width: 100%;
-  font-family: 'Russo One', sans-serif;
   padding: 8px 0;
   background: #c8c8c8;
   border: 0;
@@ -359,7 +358,7 @@ ul {
 
 .won__title {
   text-align: center;
-  font-size: 25px; }
+  font-size: 30px; }
 
 .won__buttons {
   text-align: center;
@@ -369,7 +368,6 @@ ul {
 .won__button {
   width: 300px;
   max-width: 100%;
-  font-family: 'Russo One', sans-serif;
   padding: 8px 0;
   background: #c8c8c8;
   border: 0;
@@ -409,7 +407,7 @@ ul {
     margin-bottom: 20px; }
   .instruction__title {
     text-align: center;
-    font-size: 25px; }
+    font-size: 30px; }
   .instruction__buttons {
     text-align: center;
     -webkit-perspective: 500px;
@@ -417,7 +415,6 @@ ul {
   .instruction__button {
     width: 300px;
     max-width: 100%;
-    font-family: 'Russo One', sans-serif;
     padding: 8px 0;
     background: #c8c8c8;
     border: 0;
