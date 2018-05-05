@@ -60,7 +60,6 @@
             <canvas class="game__canvas game__main_canv">  </canvas>
           </div>
           <div class="game__dom"> 
-            <div class="fps">0</div>
             <div class="health"> 
               <div class="health__prev"></div>
               <div class="health__real"></div>
@@ -72,9 +71,17 @@
               </div>
             </div>
             <div class="game__statuses"> 
-              <div class="coins">
-                <div class="coins__label">Собрано предметов:</div>
-                <div class="coins__val">0/0 </div>
+              <div class="status">
+                <div class="status__label">Собрано предметов:</div>
+                <div class="status__val coins_progress">0/0 </div>
+              </div>
+              <div class="status">
+                <div class="status__label">Уровень:</div>
+                <div class="status__val level_progress">0/0</div>
+              </div>
+              <div class="status">
+                <div class="status__label">fps:</div>
+                <div class="status__val fps">0</div>
               </div>
             </div>
             <button class="open_menu">Menu </button>

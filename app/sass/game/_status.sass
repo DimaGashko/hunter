@@ -1,8 +1,14 @@
-.coins
+.game__statuses
+   max-width: calc(100% - 80px)
+      
+.status
    @extend %game_font
-   
+
    font-size: 18px
-   //max-width: calc(100% - 80px)
+   margin-top: 5px
+
+   &:first-child 
+      margin-top: 0
 
    &__label,
    &__val
