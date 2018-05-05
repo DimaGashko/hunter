@@ -57,6 +57,10 @@
          this.startLevel();
       }   
 
+      get curLevel() { 
+         return this.mapManager.curLevel;
+      }
+
       _init() {
          this._getElements();
 

@@ -66,7 +66,10 @@
                 game.startLevel();
             
             } else if (targ.classList.contains('game__game_restart')) {
-                game.restart();
+                var answ = game.curLevel === 0
+                    || confirm('Начать игру с начала?');
+                
+                if (answ) game.restart();
             
             } else if (targ.classList.contains('game__open_secret_level')) {
                 game.openSecterLevel();

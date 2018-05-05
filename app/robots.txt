@@ -1,4 +1,4 @@
 User-agent: *
 
 Sitemap: http://hunter-2d.tk/sitemap.xml
-Host: https://dimagashko.github.io/hunter/app/
+Host: hunter-2d.tk
