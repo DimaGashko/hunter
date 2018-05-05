@@ -26,9 +26,18 @@
          if (side === 'top') { 
             console.log('asdf');
             
-            obj.coords.x = this.coords.x + this.options.props.x;
-            obj.coords.y = this.coords.y + this.options.props.y;
-         }
+            obj.coords = this.coords.plus(this.teleportMove);
+            obj.speed = new Vector();
+         } 
+      }
+ 
+      _createParametrs() { 
+         super._createParametrs.apply(this, arguments);
+
+         this.teleportMove = new Vector(
+            this.options.props.x,
+            this.options.props.y
+         );
       }
 
    }

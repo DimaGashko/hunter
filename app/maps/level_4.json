@@ -115,11 +115,13 @@
                  "name":"Teleport",
                  "properties":
                     {
-                     "x":35
+                     "x":35,
+                     "y":-4
                     },
                  "propertytypes":
                     {
-                     "x":"int"
+                     "x":"int",
+                     "y":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -135,11 +137,13 @@
                  "name":"Teleport",
                  "properties":
                     {
-                     "x":-30
+                     "x":-35,
+                     "y":-4
                     },
                  "propertytypes":
                     {
-                     "x":"int"
+                     "x":"int",
+                     "y":"int"
                     },
                  "rotation":0,
                  "type":"",
