@@ -14,9 +14,13 @@
     var modals = {
         won: new Modal(els.won),
         menu: new Modal(els.menu),
-        instruction: new Modal(els.instruction),
+        instruction: new Modal(els.instruction,),
         //social: new Modal(els.social),
     }
+    
+    modals.instruction.addEvent('show', () => { 
+        els.instruction.classList.add('instruction-ready');
+    });
 
     var game = window.g = new Game({
         startLevel: +localStorage['game-cur_level'] || 0,

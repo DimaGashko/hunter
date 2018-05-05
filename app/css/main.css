@@ -1,3 +1,11 @@
+.game__menu_modal {
+  visibility: hidden;
+  opacity: 0; }
+
+.page_ready .game__menu_modal {
+  visibility: visible;
+  opacity: 1; }
+
 .page_ready .game__menu_modal {
   visibility: visible !important;
   opacity: 1 !important; }
@@ -430,6 +438,8 @@ ul {
   @media screen and (min-width: 1500px) {
     .instruction {
       width: 1200px; } }
+  .instruction-ready .instruction__present_img {
+    display: block; }
   .instruction__present {
     float: left;
     margin-right: 20px;
@@ -452,7 +462,8 @@ ul {
           image-rendering: pixelated;
       display: block;
       margin: 0;
-      padding: 0; }
+      padding: 0;
+      display: none; }
   .instruction__exit {
     position: absolute;
     left: 10px;
