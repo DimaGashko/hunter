@@ -1,6 +1,6 @@
 # Hunter
-Основной домен: http://hunter-2d.tk
-https://dimagashko.github.io/hunter/app
+- Основной домен: http://hunter-2d.tk
+- Страница на GitHub: https://dimagashko.github.io/hunter/app
 
 Доска на trello: https://trello.com/invite/b/bi0JZxrq/9a079e7992cd7c8b889bce8d40df1853/hunter
 
