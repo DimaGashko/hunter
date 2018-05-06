@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>    
     <title>Hunter - собери все ценные предметы на карте и приди на финиш</title>
+    <meta charset="utf-8">
     <meta name="description" content="Сможешь пройти последний уровень c первого раза?.. Простая, но при этом увлекательная 2d-игра в стиле Maincraft. Цель: собрать все ценные предметы и прийти на финиш. Играть можно везде (на смартфоне, планшете, ноутбуке, компьютере). Также вы можете...">
     <meta name="Keywords" content="hunter хантер 2d game игра maincraft 2d-maincraft 2d-маинкрафт 2в-маинкрафт маинкрафт мейнкрафт mobile искатель">
     <meta property="og:title" content="Hunter - собери все ценные предметы на карте и приди на финиш">
@@ -17,7 +18,6 @@
     <meta property="twitter:site" content="Hunter">
     <meta name="yandex-verification" content="78ea8f0e70ad95af">
     <meta name="google-site-verification" content="LjfqS1f2pJYbhyhRBDR3aVefdOwaqWV2fFnfYzpIcj0">
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <!--build:css css/main.css-->
@@ -41,7 +41,7 @@
             <div class="instruction__main">
               <div class="instruction__present"><img class="instruction__present_img" src="img/present.png" alt="Hunter, скриншот"></div>
               <div class="instruction__text">
-                <p>Простая, но при этом увлекательная 2d-игра в стиле Maincraft. Играть можно как на компьютере, так и на смартфоне или планшене. </p>
+                <p>Простая, но при этом увлекательная 2d-игра в стиле Maincraft. Играть можно как на компьютере, так и на смартфоне или планшете. </p>
                 <h2>Цель игры</h2>
                 <p>Целью игры является прохождение всех уровней. Что бы пройти уровень нужно собрать все ценные предметы, и только после этого прийти на финиш.</p>
                 <p>Если вы придете на финиша до того, как соберете все предметы, то ничего не произойдет.</p>
@@ -117,40 +117,40 @@
       </main>
       <div class="footer"></div>
     </div>
+    <!--build:js js/main.js-->
+    <script src="js/polyfills.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/sprites_config.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/plugins/notify.js"></script>
+    <script src="js/plugins/modal.js"></script>
+    <script src="js/plugins/fps_meter.js"></script>
+    <script src="js/game/game.js"></script>
+    <script src="js/game/geometry/vector.js"></script>
+    <script src="js/game/geometry/rect.js"></script>
+    <script src="js/game/sprite.js"></script>
+    <script src="js/game/render.js"></script>
+    <script src="js/game/camera.js"> </script>
+    <script src="js/game/physics/gravity.js"></script>
+    <script src="js/game/physics/collisions.js"></script>
+    <script src="js/game/physics/world_borders.js"> </script>
+    <script src="js/game/map_manager.js"></script>
+    <script src="js/game/map_parser.js"></script>
+    <script src="js/game/level.js"></script>
+    <script src="js/game/objects/block.js"></script>
+    <script src="js/game/objects/dinamic_block.js"></script>
+    <script src="js/game/objects/lava.js"></script>
+    <script src="js/game/objects/actor.js"></script>
+    <script src="js/game/objects/dinamic_actor.js"></script>
+    <script src="js/game/objects/platform.js"></script>
+    <script src="js/game/objects/teleport.js"></script>
+    <script src="js/game/objects/persons/sprinter.js"></script>
+    <script src="js/game/objects/persons/steve.js"></script>
+    <script src="js/game/objects/coin.js"></script>
+    <script src="js/game/objects/finish.js"></script>
+    <script src="js/game/player.js"></script>
+    <script src="js/game/health.js"></script>
+    <script src="js/main.js"></script>
+    <!--endbuild-->
   </body>
-  <!--build:js js/main.js-->
-  <script defer src="js/polyfills.js"></script>
-  <script defer src="js/functions.js"></script>
-  <script defer src="js/sprites_config.js"></script>
-  <script defer src="js/events.js"></script>
-  <script defer src="js/plugins/notify.js"></script>
-  <script defer src="js/plugins/modal.js"></script>
-  <script defer src="js/plugins/fps_meter.js"></script>
-  <script defer src="js/game/game.js"></script>
-  <script defer src="js/game/geometry/vector.js"></script>
-  <script defer src="js/game/geometry/rect.js"></script>
-  <script defer src="js/game/sprite.js"></script>
-  <script defer src="js/game/render.js"></script>
-  <script defer src="js/game/camera.js"> </script>
-  <script defer src="js/game/physics/gravity.js"></script>
-  <script defer src="js/game/physics/collisions.js"></script>
-  <script defer src="js/game/physics/world_borders.js"> </script>
-  <script defer src="js/game/map_manager.js"></script>
-  <script defer src="js/game/map_parser.js"></script>
-  <script defer src="js/game/level.js"></script>
-  <script defer src="js/game/objects/block.js"></script>
-  <script defer src="js/game/objects/dinamic_block.js"></script>
-  <script defer src="js/game/objects/lava.js"></script>
-  <script defer src="js/game/objects/actor.js"></script>
-  <script defer src="js/game/objects/dinamic_actor.js"></script>
-  <script defer src="js/game/objects/platform.js"></script>
-  <script defer src="js/game/objects/teleport.js"></script>
-  <script defer src="js/game/objects/persons/sprinter.js"></script>
-  <script defer src="js/game/objects/persons/steve.js"></script>
-  <script defer src="js/game/objects/coin.js"></script>
-  <script defer src="js/game/objects/finish.js"></script>
-  <script defer src="js/game/player.js"></script>
-  <script defer src="js/game/health.js"></script>
-  <script defer src="js/main.js"></script>
-  <!--endbuild-->
 </html>
