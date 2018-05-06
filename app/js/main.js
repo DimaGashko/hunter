@@ -130,4 +130,11 @@
 
     document.body.classList.add('page_ready'); 
 
+    //Touch
+    var isTouches = 'ontouchstart' in window;
+
+    if (isTouches) {
+        document.body.classList.add('is_touches');
+    }
+
 }(window));

@@ -113,6 +113,9 @@ ul {
       width: 64px;
       height: 64px; }
 
+body.is_touches .game__controls {
+  display: block !important; }
+
 .health {
   position: absolute;
   bottom: 20px;
