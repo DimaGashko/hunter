@@ -2,8 +2,6 @@
 - Основной домен: http://hunter-2d.tk
 - Страница на GitHub: https://dimagashko.github.io/hunter/app
 
-Доска на trello: https://trello.com/invite/b/bi0JZxrq/9a079e7992cd7c8b889bce8d40df1853/hunter
-
 ## Описание
 Простая, но при этом увлекательная 2d-игра в стиле Maincraft. Играть можно как на компьютере, так и на смартфоне или планшете.
 
