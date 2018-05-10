@@ -209,7 +209,7 @@
          var kw = gw * k;
          var kh = gh * k;
          
-         return isIntersectRect(
+         return intersectRect(
             -kw, gw + kw, -kh, gh + kh,
             obj.x, obj.x + obj.w, obj.y, obj.y + obj.h
          );

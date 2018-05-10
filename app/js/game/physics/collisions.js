@@ -266,7 +266,7 @@
       }
 
       intersetObjs(obj1, obj2) {
-         return isIntersectRect(
+         return intersectRect(
             obj1.left, obj1.right, obj1.top, obj1.bottom,
             obj2.left, obj2.right, obj2.top, obj2.bottom,
          );
