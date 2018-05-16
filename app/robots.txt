@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: 
 
 Sitemap: http://hunter-2d.tk/sitemap.xml
 Host: hunter-2d.tk

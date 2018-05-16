@@ -4,8 +4,8 @@ function intersectRect(ax1, ax2, ay1, ay2, bx1, bx2, by1, by2) {
 }
 
 function intersectLines(a1, a2, b1, b2) {
-	if (a1 <= b1) return b1 <= a2;
-	else return a1 <= b2;
+	if (a1 < b1) return b1 < a2;
+	else return a1 < b2;
 }
 
 (function (global) {

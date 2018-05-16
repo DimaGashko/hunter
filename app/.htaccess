@@ -1,3 +1,9 @@
+#cache
 <FilesMatch ".(gif|jpg|jpeg|png|ico|swf|js|css|json)$">
   Header set Cache-Control "max-age=99999999"
 </FilesMatch>
+
+#www.hunter-2d.tk -> hunter-2d.tk
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.hunter-2d\.tk$ [NC]
+RewriteRule ^(.*)$ http://hunter-2d.tk/$1 [R=301,L] 
