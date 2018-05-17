@@ -3,7 +3,7 @@
    
    var DEF = {
       damage: 50,
-      maxY: 250,
+      maxY: 100,
    }
    
 

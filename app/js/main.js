@@ -38,7 +38,7 @@
     });
    
     game.addEvent('win', () => { 
-        won.show()
+        modals.won.show()
     });
 
     game.addEvent('change_level', (newLevel) => { 
@@ -96,6 +96,15 @@
 
             if (targ.classList.contains('menu__button')) {
                 modals.menu.hide();
+            
+            }
+        });
+
+        els.won.addEventListener('click', (event) => {
+            var targ = event.target;
+
+            if (targ.classList.contains('won__button')) {
+                modals.won.hide();
             
             }
         });

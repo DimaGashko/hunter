@@ -3,6 +3,9 @@
 
    var DEF = {
       tileset: 'img/sprite.png',
+      props: {
+         health: 1000,
+      }
    }
 
    /**
