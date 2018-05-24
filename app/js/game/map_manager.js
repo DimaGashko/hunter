@@ -18,7 +18,7 @@
          "maps/level_11.json",
          "maps/level_12.json",
          "maps/secret_level.json"
-      ].map(item => item + '?' + 2),
+      ].map(item => item + '?' + 3),
   
       tilesetSrc: "tilesets/tileset.json",
 
