@@ -44,7 +44,7 @@
             }
          });
 
-         touchUp(this.els.controls, (target) => { 
+         touchUp(this.els.controls, (target) => {
             if (target.classList.contains('game__move_left')) {
                target.classList.remove('game__move-active');
                this._moves.left = false;
@@ -56,7 +56,7 @@
             } else if (target.classList.contains('game__controls')) {
                this._moves.jump = false;
 
-            } 
+            }
          });
       }
 
@@ -95,7 +95,7 @@
             bottom:  [40, 40],
             top:     [38, 87, 32],
          };
-
+         
          this._moves = {
             left: false,
             right: false,

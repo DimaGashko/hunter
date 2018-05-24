@@ -2,7 +2,9 @@
    'use strict'
    
    var DEF = {
-      exitButton: true //показывать кнопку закрытия
+      exitButton: true, //показывать кнопку закрытия
+      afterShow() { },
+      afterHide() { },
    }
 
    /**
@@ -36,11 +38,13 @@
       show() {
          this.root.classList.add('modal-show');
          this.trigger('show');
+         this.options.afterShow();
       }
 
       hide() { 
          this.root.classList.remove('modal-show');
          this.trigger('hide');
+         this.options.afterHide();
       }
 
       toggle() { 

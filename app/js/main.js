@@ -11,22 +11,32 @@
         fps: document.querySelector('.fps'),
     }
 
-    var modals = {
-        won: new Modal(els.won),
-        menu: new Modal(els.menu),
-        instruction: new Modal(els.instruction,),
-        //social: new Modal(els.social),
-    }
-    
-    modals.instruction.addEvent('show', () => { 
-        els.instruction.classList.add('instruction-ready');
-    });
-
     var game = window.g = new Game({
         startLevel: +localStorage['game-cur_level'] || 0,
     });    
 
     game.startLevel();
+
+    var modalsSet = {
+        afterShow() { 
+            game.stop();
+        },
+
+        afterHide() { 
+            game.start();
+        }
+    }
+
+    var modals = {
+        won: new Modal(els.won, modalsSet),
+        menu: new Modal(els.menu, modalsSet),
+        instruction: new Modal(els.instruction, modalsSet),
+        //social: new Modal(els.social, modalsSet),
+    }
+
+    modals.instruction.addEvent('show', () => { 
+        els.instruction.classList.add('instruction-ready');
+    });
 
     var infoNotify = new Notify({
         autoHideTime: 3000,
@@ -115,9 +125,9 @@
 
         document.addEventListener('keyup', (event) => {
             if (event.keyCode === 27) {
-                modals.menu.toggle();
                 modals.won.hide();
                 modals.instruction.hide();
+                modals.menu.toggle();
                 //modals.social.hide();
             }
         })
@@ -128,6 +138,10 @@
             if (targ.classList.contains('instruction__exit')) { 
                 modals.instruction.hide();
             }
+        });
+
+        document.addEventListener('keydown', (event) => { 
+            if (game.runing) event.preventDefault();
         });
 
     }());

@@ -67,7 +67,8 @@ canvas
       margin-top: 10px
       cursor: pointer
 
-      transition: background .5s 
+      transition: background .5s,
+         transform: .5s
 
       &:first-child
          margin-top: 0
@@ -76,7 +77,10 @@ canvas
          background: rgba(200,200,200,0.6)
 
       &:active
-         background: rgba(200,200,200,1)      
+         background: rgba(200,200,200,1) 
+
+      &:focus
+         background: rgba(180,180,180,1) 
 
 h1 
    @extend %game_font

@@ -334,14 +334,17 @@ body.is_touches .game__controls {
   display: block;
   margin-top: 10px;
   cursor: pointer;
-  -webkit-transition: background .5s;
-  transition: background .5s; }
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+    transition-transform: .5s; }
   .menu__button:first-child {
     margin-top: 0; }
   .menu__button:hover {
     background: rgba(200, 200, 200, 0.6); }
   .menu__button:active {
     background: #c8c8c8; }
+  .menu__button:focus {
+    background: #b4b4b4; }
 
 .won__header {
   margin-bottom: 20px; }
@@ -367,14 +370,17 @@ body.is_touches .game__controls {
   display: block;
   margin-top: 10px;
   cursor: pointer;
-  -webkit-transition: background .5s;
-  transition: background .5s; }
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+    transition-transform: .5s; }
   .won__button:first-child {
     margin-top: 0; }
   .won__button:hover {
     background: rgba(200, 200, 200, 0.6); }
   .won__button:active {
     background: #c8c8c8; }
+  .won__button:focus {
+    background: #b4b4b4; }
 
 .social {
   background: #fff; }
@@ -414,14 +420,17 @@ body.is_touches .game__controls {
     display: block;
     margin-top: 10px;
     cursor: pointer;
-    -webkit-transition: background .5s;
-    transition: background .5s; }
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s;
+      transition-transform: .5s; }
     .instruction__button:first-child {
       margin-top: 0; }
     .instruction__button:hover {
       background: rgba(200, 200, 200, 0.6); }
     .instruction__button:active {
       background: #c8c8c8; }
+    .instruction__button:focus {
+      background: #b4b4b4; }
   @media screen and (min-width: 1500px) {
     .instruction {
       width: 1200px; } }

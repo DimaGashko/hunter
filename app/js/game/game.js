@@ -44,6 +44,15 @@
       start() { 
          this.render.start();
       }
+      
+      stop() { 
+         this.render.stop();         
+      }
+      
+      get runing() {
+         return this.render.status.start;
+      }
+         
 
       won() {
          //- - - -
