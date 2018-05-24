@@ -140,8 +140,12 @@
             }
         });
 
-        document.addEventListener('keydown', (event) => { 
-            if (game.runing) event.preventDefault();
+        document.addEventListener('keydown', (event) => {
+            var k = event.keyCode;
+
+            if (game.runing && k === 32 || k === 16) {
+                event.preventDefault();
+            }
         });
 
     }());

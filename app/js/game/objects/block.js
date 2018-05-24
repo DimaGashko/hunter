@@ -56,6 +56,14 @@
       }
 
       hurt(obj, startDamage = 0) { 
+         var objHurtSize = new Game.Rect();
+         objHurtSize.size = obj.size.mul(0.9);
+         objHurtSize.setCenter(obj.getCenter());
+
+         if (!this.collisions.intersetObjs(this, objHurtSize)) {
+            return;
+         }
+
          var time = Date.now();
          if (time - this._prevHurt < this._hurtInterval) { 
             return;
