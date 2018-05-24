@@ -24,6 +24,18 @@
          this.hurt(obj);
       }
 
+      hurt(obj, startDamage) { 
+         var objHurtSize = new Game.Rect();
+         objHurtSize.size = obj.size.mul(0.9);
+         objHurtSize.setCenter(obj.getCenter());
+
+         if (this.collisions && !this.collisions.intersetObjs(this, objHurtSize)) {
+            return;
+         }
+
+         super.hurt.apply(this, arguments);
+      }
+
    }
    
    global.Game.Lava = Lava;
