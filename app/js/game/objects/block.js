@@ -60,7 +60,7 @@
          objHurtSize.size = obj.size.mul(0.9);
          objHurtSize.setCenter(obj.getCenter());
 
-         if (!this.collisions.intersetObjs(this, objHurtSize)) {
+         if (this.collisions && !this.collisions.intersetObjs(this, objHurtSize)) {
             return;
          }
 
@@ -160,6 +160,8 @@
 
          var startDamage = 0;
 
+         this.hurt(obj, startDamage);
+
          //Если это именно блок
          if (obj.type === 'block') return;
 
@@ -184,8 +186,6 @@
             obj.left = this.right;
          
          } 
-         
-         this.hurt(obj, startDamage);
 
          //Если это персонаж или его наследники
          if (obj instanceof Game.Actor) {

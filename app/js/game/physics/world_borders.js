@@ -2,7 +2,7 @@
    'use strict'
    
    var DEF = {
-      damage: 50,
+      damage: 300,
       maxY: 50,
    }
    
@@ -39,7 +39,7 @@
          if (object.coords.y > this.options.maxY) { 
             var armor = object.armor;
             var min = object.minDamage;
-            object.pain(100 + armor + min);
+            object.pain(this.options.damage + armor + min);
          }
       }
    
