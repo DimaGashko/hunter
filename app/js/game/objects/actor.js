@@ -12,6 +12,8 @@
    
    /**
     * Базовый класс игрового персонажа
+    * 
+    * @class
     */
    class Actor extends Game.DinamicBlock {
       constructor(options = {}, collisions) {

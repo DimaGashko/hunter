@@ -18,7 +18,7 @@
       /**
        * Возвращает разпарсенную карту в нужном игре формате
        * 
-       * @param {JSON string} JSONMap - строка карты в формате JSON
+       * @param {JSON} JSONMap - строка карты в формате JSON
        */
       parse(JSONMap, tileset) {
          var config = JSON.parse(JSONMap);
