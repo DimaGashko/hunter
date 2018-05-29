@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Rect</title>
+	<title>Documentation Class: Collisions</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,19 +72,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Rect</h1>
+	<h1 class="page-title">Class: Collisions</h1>
 <section>
 
 <header>
     
         <h2>
-        Rect
+        Collisions
         </h2>
         
-            <div class="class-description"><p>Аргументами в конструктор передаются координаты и размеры прямоугольника</p>
-<hr>
-<p>Наследует от Events, поэтому этот класс, и все классы, 
-Что наследуют от него имеют поддержку событий</p></div>
+            <div class="class-description"><p>Класс для обнаружения и решения столкновений</p></div>
         
     
 </header>
@@ -96,7 +93,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Rect"><span class="type-signature"></span>new Rect()</h4>
+    <h4 class="name" id="Collisions"><span class="type-signature"></span>new Collisions()</h4>
     
     
 </dt>
@@ -181,6 +178,575 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="_fixObject"><span class="type-signature"></span>_fixObject(obj, objects)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Исправляет столкновения переданого блока с передаными блоками</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Block.html">Block</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>блок, столконовение котого ищуются</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>objects</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="Block.html">Block</a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>блоки, с которыми 
+проверяются столкновения</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="objectAt"><span class="type-signature"></span>objectAt(rect, except)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Возвращает, находится ли в переданном прямоугольнике какой-либо объект
+(проверят, будет ли пересечения с каким-то объектом)</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>rect</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Rect.html">Rect</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>проверяемая область</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>except</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Rect.html">Rect</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>какой объект не учитывать</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setDinamicObjects"><span class="type-signature"></span>setDinamicObjects(objects)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Устанавливает объекты, которые буду учавствовать в колизиях
+(и являются динамическими объектамми)</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objects</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>передаваемые объекты
+ (DinamicBlock и его наследники)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setStaticObjects"><span class="type-signature"></span>setStaticObjects(objects)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Устанавливает объекты, которые буду учавствовать в колизиях
+(и являются статическими объектами - не взаимодействую друг с другом)</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objects</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>передаваемые объекты (Block и его наследники)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
     
 
     

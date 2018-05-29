@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Vector</title>
+	<title>Documentation Class: MapParser</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,18 +72,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Vector</h1>
+	<h1 class="page-title">Class: MapParser</h1>
 <section>
 
 <header>
     
         <h2>
-        Vector
+        MapParser
         </h2>
         
-            <div class="class-description"><p>Аргументами конструктора являются координаты x, y вектора
-По умолчанию координаты равны 0:0</p>
-<p>Все методы возвращают новый вектор</p></div>
+            <div class="class-description"><p>Разбирает карту из формата json в необходимый игре формат</p></div>
         
     
 </header>
@@ -95,7 +93,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Vector"><span class="type-signature"></span>new Vector()</h4>
+    <h4 class="name" id="MapParser"><span class="type-signature"></span>new MapParser()</h4>
     
     
 </dt>
@@ -187,7 +185,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="copy"><span class="type-signature"></span>copy()</h4>
+    <h4 class="name" id="_getCadrParam"><span class="type-signature"></span>_getCadrParam(config, cadr)</h4>
     
     
 </dt>
@@ -195,86 +193,7 @@
 
     
     <div class="description">
-        <p>Копирует вектор</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="diScale"><span class="type-signature"></span>diScale(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Делит координаты вектора на соответствующие 
-координаты переданного вектора</p>
+        <p>Возвращает объект параметров карты</p>
     </div>
     
 
@@ -309,13 +228,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">object</span>
 
 
 
@@ -326,7 +245,31 @@
 
             
 
-            <td class="description last"><p>вектор, на которой будет происходить деление</p></td>
+            <td class="description last"><p>разпарсенная карта</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cadr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>параметры кадра инимации из карты</p></td>
         </tr>
 
     
@@ -394,7 +337,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="div"><span class="type-signature"></span>div(n)</h4>
+    <h4 class="name" id="_parseActor"><span class="type-signature"></span>_parseActor(config, actor)</h4>
     
     
 </dt>
@@ -402,7 +345,7 @@
 
     
     <div class="description">
-        <p>Делит координаты вектора на переданное число</p>
+        <p>Парсит переданый объект Actor-а</p>
     </div>
     
 
@@ -437,7 +380,360 @@
 
         <tr>
             
-                <td class="name"><code>n</code></td>
+                <td class="name"><code>config</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>разпарсенная карта</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>параметры actor-a</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="_parseBlocks"><span class="type-signature"></span>_parseBlocks(config, parsed, layer)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Парсит переданный слой блоков. 
+Результат заносит в parsed.blocks</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>config</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>разпарсенная карта</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parsed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>результат обработки</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>layer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>обрабатываемый слой</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="_parseObjByTileIndex"><span class="type-signature"></span>_parseObjByTileIndex(config, item, chunk, index)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>По индексу тайла возвращает объект параметров этого тайла</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>config</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>разпарсеная карта</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
             
 
             <td class="type">
@@ -454,125 +750,20 @@
 
             
 
-            <td class="description last"><p>число, на которое будут поделены 
-координаты вектора</p></td>
+            <td class="description last"><p>индекс тайла в тайлсете</p></td>
         </tr>
 
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="isSame"><span class="type-signature"></span>isSame(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Проверяет, одинаковые ли параметры у ветора с переданным</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>chunk</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">object</span>
 
 
 
@@ -583,246 +774,14 @@
 
             
 
-            <td class="description last"><p>сравниваемый вектор</p></td>
+            <td class="description last"><p>часть карты, на которой находится объект</p></td>
         </tr>
 
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="minus"><span class="type-signature"></span>minus(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Вычитает векторы</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">vector</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>вектор, который будет вычтен</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="mul"><span class="type-signature"></span>mul(n)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Умножает координаты вектора на переданное число</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>n</code></td>
+                <td class="name"><code>index</code></td>
             
 
             <td class="type">
@@ -839,8 +798,8 @@
 
             
 
-            <td class="description last"><p>число, на которое будут умножены 
-координаты вектора</p></td>
+            <td class="description last"><p>индекс тайла в часте (chunk) карты</p>
+<p>chunk передается только при обработке тайлов</p></td>
         </tr>
 
     
@@ -908,7 +867,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="plus"><span class="type-signature"></span>plus(vector)</h4>
+    <h4 class="name" id="_parseObjects"><span class="type-signature"></span>_parseObjects(config, parsed, layer)</h4>
     
     
 </dt>
@@ -916,7 +875,9 @@
 
     
     <div class="description">
-        <p>Добавляет вектор</p>
+        <p>Парсит переданный слой объектов. 
+Результат заносит в parsed.actors или в parsed.player
+(В зависимости от имени слоя)</p>
     </div>
     
 
@@ -951,13 +912,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">object</span>
 
 
 
@@ -968,7 +929,55 @@
 
             
 
-            <td class="description last"><p>вектор, который будет добавлен</p></td>
+            <td class="description last"><p>разпарсенная карта</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parsed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>результат обработки</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>layer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>обрабатываемый слой</p></td>
         </tr>
 
     
@@ -1036,7 +1045,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="scalarAbs"><span class="type-signature"></span>scalarAbs()</h4>
+    <h4 class="name" id="parse"><span class="type-signature"></span>parse(JSONMap)</h4>
     
     
 </dt>
@@ -1044,86 +1053,7 @@
 
     
     <div class="description">
-        <p>Делает обе координаты положительными</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="scale"><span class="type-signature"></span>scale(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Умножает координаты вектора на соответствующие координаты
-переданного вектора</p>
+        <p>Возвращает разпарсенную карту в нужном игре формате</p>
     </div>
     
 
@@ -1158,13 +1088,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>JSONMap</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">JSON</span>
 
 
 
@@ -1175,7 +1105,7 @@
 
             
 
-            <td class="description last"><p>вектор, на который будет происходить умножение</p></td>
+            <td class="description last"><p>строка карты в формате JSON</p></td>
         </tr>
 
     

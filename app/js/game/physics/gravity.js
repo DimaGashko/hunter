@@ -7,6 +7,8 @@
 
    /**
     * Класс для применения гравитации к объектам
+    * 
+    * @class
     */
    class Gravity {
       constructor(options = {}) {

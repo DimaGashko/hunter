@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Rect</title>
+	<title>Documentation Class: Events</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,19 +72,31 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Rect</h1>
+	<h1 class="page-title">Class: Events</h1>
 <section>
 
 <header>
     
         <h2>
-        Rect
+        Events
         </h2>
         
-            <div class="class-description"><p>Аргументами в конструктор передаются координаты и размеры прямоугольника</p>
+            <div class="class-description"><p>Использование:
+1) Можно задавать явно:</p>
+<p>var events = new Events();
+events.addEvent('eventName', () =&gt; {
+   console.log('ok');
+})
+event.trigger('eventName');</p>
 <hr>
-<p>Наследует от Events, поэтому этот класс, и все классы, 
-Что наследуют от него имеют поддержку событий</p></div>
+<p>2) Также можно наследовать от Events в своих классах:</p>
+<p>class A extends Events {...}</p>
+<p>В таком случае класс А будет обретать все возможности Events</p>
+<p>var a = new A();
+a.addEvent('eventName', () =&gt; {
+   console.log('ok');
+})
+a.trigger('eventName');</p></div>
         
     
 </header>
@@ -96,7 +108,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Rect"><span class="type-signature"></span>new Rect()</h4>
+    <h4 class="name" id="Events"><span class="type-signature"></span>new Events()</h4>
     
     
 </dt>
@@ -181,6 +193,293 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="addEvent"><span class="type-signature"></span>addEvent(type, handler)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Добавляет событие
+Записывает функцию в массив this._handlers[type]
+Если такого события еще не было (нет свойства type - добавляет)</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>тип события</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>фунцкия, которую нужно выполнить</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="trigger"><span class="type-signature"></span>trigger(type)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Вызывает переданное событие</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>тип события</p>
+<p>Все параметры после первого будут переданны во все handler-ы</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
     
 
     

@@ -10,7 +10,7 @@
    
 
    /**
-    * Health
+    * Health - визуализация жизней игрока
     *
     * @class
     * @param {object} options - настройки (по умолчанию DEF)

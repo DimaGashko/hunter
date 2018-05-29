@@ -7,6 +7,11 @@
       },
    }
 
+   /**
+    * Уровень игры
+    * 
+    * @class
+    * */   
    class Level {
       constructor(game, options = {}) {
          this._createParametrs(options);

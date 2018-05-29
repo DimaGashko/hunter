@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Vector</title>
+	<title>Documentation Class: Render</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,18 +72,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Vector</h1>
+	<h1 class="page-title">Class: Render</h1>
 <section>
 
 <header>
     
         <h2>
-        Vector
+        Render
         </h2>
         
-            <div class="class-description"><p>Аргументами конструктора являются координаты x, y вектора
-По умолчанию координаты равны 0:0</p>
-<p>Все методы возвращают новый вектор</p></div>
+            <div class="class-description"><p>Управление отрисовкой игры</p></div>
         
     
 </header>
@@ -95,7 +93,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Vector"><span class="type-signature"></span>new Vector()</h4>
+    <h4 class="name" id="Render"><span class="type-signature"></span>new Render(options)</h4>
     
     
 </dt>
@@ -108,6 +106,59 @@
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>настройки (по умолчанию DEF)</p>
+<p>При рендере указываются реальные координаты
+При работе с классом нужно следить за положением камеры (метод setCamera)</p>
+<p>Для начала отрисовки необходимо вызвать метод start()</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -187,7 +238,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="copy"><span class="type-signature"></span>copy()</h4>
+    <h4 class="name" id="_getObjOnScreen"><span class="type-signature"></span>_getObjOnScreen(obj)</h4>
     
     
 </dt>
@@ -195,86 +246,8 @@
 
     
     <div class="description">
-        <p>Копирует вектор</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="diScale"><span class="type-signature"></span>diScale(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Делит координаты вектора на соответствующие 
-координаты переданного вектора</p>
+        <p>По передонному объекту с реальными коондинатами
+Возвращает объект координат и размеров прямоугольника на экране</p>
     </div>
     
 
@@ -309,13 +282,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">object</span>
 
 
 
@@ -326,7 +299,7 @@
 
             
 
-            <td class="description last"><p>вектор, на которой будет происходить деление</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -394,7 +367,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="div"><span class="type-signature"></span>div(n)</h4>
+    <h4 class="name" id="isVisible"><span class="type-signature"></span>isVisible(realObj, k)</h4>
     
     
 </dt>
@@ -402,7 +375,7 @@
 
     
     <div class="description">
-        <p>Делит координаты вектора на переданное число</p>
+        <p>Проверяет, будет ли отображатся переданным объект на экране</p>
     </div>
     
 
@@ -427,6 +400,8 @@
         
 
         
+        <th>Default</th>
+        
 
         <th class="last">Description</th>
     </tr>
@@ -437,7 +412,36 @@
 
         <tr>
             
-                <td class="name"><code>n</code></td>
+                <td class="name"><code>realObj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>объект вида {x, y, w, h} - 
+все значения - реальные</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>k</code></td>
             
 
             <td class="type">
@@ -453,9 +457,18 @@
             
 
             
+                <td class="default">
+                
+                    0.5
+                
+                </td>
+            
 
-            <td class="description last"><p>число, на которое будут поделены 
-координаты вектора</p></td>
+            <td class="description last"><p>изменение реальной области экрана
+если k = 0, то будут видимыми будут считаться только те объекты, 
+которые действительно будут видны</p>
+<p>если k &gt; 0, то область будет увеличина в k раз
+если k &lt; 0, то область будет уменьшина в k раз</p></td>
         </tr>
 
     
@@ -523,7 +536,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="isSame"><span class="type-signature"></span>isSame(vector)</h4>
+    <h4 class="name" id="render"><span class="type-signature"></span>render(objects)</h4>
     
     
 </dt>
@@ -531,7 +544,13 @@
 
     
     <div class="description">
-        <p>Проверяет, одинаковые ли параметры у ветора с переданным</p>
+        <p>Функция отрисовки объектов на экране</p>
+<p>Отисовывает переданные объекты в обратном порятке 
+(то есть первый объект в массиве будет отрисован последним,
+и следовательно будет находится над другими)</p>
+<p>Отрисовывает только прямоугольники</p>
+<p>Также функция не проверяет, будет ли объект виден на экране
+Это нужно проверять самостоятельно с помщью метода isVisible()</p>
     </div>
     
 
@@ -566,13 +585,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>objects</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">array</span>
 
 
 
@@ -583,7 +602,9 @@
 
             
 
-            <td class="description last"><p>сравниваемый вектор</p></td>
+            <td class="description last"><p>массив отрисовываемых объектов
+Каждый объект должен иметь вид: {x, y, w, h, img, fillStyle}
+Если есть свойство img, то fillStyle не используется</p></td>
         </tr>
 
     
@@ -651,7 +672,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="minus"><span class="type-signature"></span>minus(vector)</h4>
+    <h4 class="name" id="setCamera"><span class="type-signature"></span>setCamera(camera)</h4>
     
     
 </dt>
@@ -659,7 +680,7 @@
 
     
     <div class="description">
-        <p>Вычитает векторы</p>
+        <p>Установить положение (координаты камеры)</p>
     </div>
     
 
@@ -694,13 +715,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>camera</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type"><a href="Vector.html">Vector</a></span>
 
 
 
@@ -711,471 +732,7 @@
 
             
 
-            <td class="description last"><p>вектор, который будет вычтен</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="mul"><span class="type-signature"></span>mul(n)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Умножает координаты вектора на переданное число</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>n</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>число, на которое будут умножены 
-координаты вектора</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="plus"><span class="type-signature"></span>plus(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Добавляет вектор</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>vector</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">vector</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>вектор, который будет добавлен</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="scalarAbs"><span class="type-signature"></span>scalarAbs()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Делает обе координаты положительными</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="scale"><span class="type-signature"></span>scale(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Умножает координаты вектора на соответствующие координаты
-переданного вектора</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>vector</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">vector</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>вектор, на который будет происходить умножение</p></td>
+            <td class="description last"><p>вектор, сорержащий реальные координаты камеры</p></td>
         </tr>
 
     

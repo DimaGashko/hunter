@@ -8,7 +8,7 @@
    /**
     * Player
     *
-    * @constructor
+    * @class
     * @param {object} options - настройки (по умолчанию DEF)
    */
    class Player {

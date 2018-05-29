@@ -5,6 +5,11 @@
 
    }
 
+   /**
+    * Класс для обнаружения и решения столкновений
+    * 
+    * @class
+    */   
    class Collisions {
       constructor(options = {}) {
          this._createParametrs(options);

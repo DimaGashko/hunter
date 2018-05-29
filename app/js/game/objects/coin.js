@@ -6,6 +6,11 @@
       springDist: 0.1,
    }
 
+   /**
+    * Класс ценных предметов
+    * 
+    * @class
+    */
    class Coin extends Game.Block {
       constructor(options, collisions) {
          options = extend(true, {}, DEF, options);

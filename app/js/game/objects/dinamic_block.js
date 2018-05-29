@@ -9,6 +9,8 @@
    /**
     * Класс для создания игрового динамического блока
     * (содержит интерфейс для изменения положения)
+    * 
+    * @class
     */
    class DinamicBlock extends Game.Block { 
       constructor(options = {}, collisions) {

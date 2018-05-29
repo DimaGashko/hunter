@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Vector</title>
+	<title>Documentation Class: Sprite</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,18 +72,30 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Vector</h1>
+	<h1 class="page-title">Class: Sprite</h1>
 <section>
 
 <header>
     
         <h2>
-        Vector
+        Sprite
         </h2>
         
-            <div class="class-description"><p>Аргументами конструктора являются координаты x, y вектора
-По умолчанию координаты равны 0:0</p>
-<p>Все методы возвращают новый вектор</p></div>
+            <div class="class-description"><p>Класс для работы со спрайтами и их анимациями</p>
+<p>Конструктор получает объект настроек в формате DEF</p>
+<p>Порядок работы:</p>
+<ul>
+<li>содание екземпляра</li>
+<li>вызов метода start(type), когда нужно начать анимацию нужного типа</li>
+<li>вызов метода stop(), когда нужно остановить анимацию</li>
+</ul>
+<hr>
+<p>Класс Sprite наследует от Events
+Поэтому у него есть методы события
+(addEvent, trigger...)</p>
+<p>Поддерживаемые события:
+&quot;tileset_load&quot; - вызывается, после загрузки тайлсета
+&quot;before_chande_cadr&quot; - вызывается перед смене кадра</p></div>
         
     
 </header>
@@ -95,7 +107,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Vector"><span class="type-signature"></span>new Vector()</h4>
+    <h4 class="name" id="Sprite"><span class="type-signature"></span>new Sprite()</h4>
     
     
 </dt>
@@ -187,7 +199,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="copy"><span class="type-signature"></span>copy()</h4>
+    <h4 class="name" id="_draw"><span class="type-signature"></span>_draw(metrics, transform)</h4>
     
     
 </dt>
@@ -195,86 +207,7 @@
 
     
     <div class="description">
-        <p>Копирует вектор</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="diScale"><span class="type-signature"></span>diScale(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Делит координаты вектора на соответствующие 
-координаты переданного вектора</p>
+        <p>Рисует кадр спрайта</p>
     </div>
     
 
@@ -309,13 +242,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>metrics</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">Object</span>
 
 
 
@@ -326,7 +259,32 @@
 
             
 
-            <td class="description last"><p>вектор, на которой будет происходить деление</p></td>
+            <td class="description last"><p>положение и размеры спрайта в tileset-e</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transform</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Vector.html">Vector</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>трансформации (формат из options.cadr)</p>
+<p>Очищает холст перед рисованием очищает</p></td>
         </tr>
 
     
@@ -394,7 +352,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="div"><span class="type-signature"></span>div(n)</h4>
+    <h4 class="name" id="_drawNext"><span class="type-signature"></span>_drawNext(config)</h4>
     
     
 </dt>
@@ -402,7 +360,9 @@
 
     
     <div class="description">
-        <p>Делит координаты вектора на переданное число</p>
+        <p>Отрисовывает кадр, с переданными параметрами
+Выполняя все необходыми дополнительные действия
+(непосредственно рисует, и вызвает события)</p>
     </div>
     
 
@@ -437,13 +397,13 @@
 
         <tr>
             
-                <td class="name"><code>n</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">object</span>
 
 
 
@@ -454,8 +414,7 @@
 
             
 
-            <td class="description last"><p>число, на которое будут поделены 
-координаты вектора</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -523,7 +482,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="isSame"><span class="type-signature"></span>isSame(vector)</h4>
+    <h4 class="name" id="_getDrawConfig"><span class="type-signature"></span>_getDrawConfig(metrics, transforms)</h4>
     
     
 </dt>
@@ -531,7 +490,7 @@
 
     
     <div class="description">
-        <p>Проверяет, одинаковые ли параметры у ветора с переданным</p>
+        <p>Возвращает параметры кадра</p>
     </div>
     
 
@@ -566,13 +525,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>metrics</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">object</span>
 
 
 
@@ -583,7 +542,31 @@
 
             
 
-            <td class="description last"><p>сравниваемый вектор</p></td>
+            <td class="description last"><p>метрики кадра</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transforms</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>трансформации кадра</p></td>
         </tr>
 
     
@@ -651,7 +634,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="minus"><span class="type-signature"></span>minus(vector)</h4>
+    <h4 class="name" id="_isSameDrawConfig"><span class="type-signature"></span>_isSameDrawConfig(config1, config2)</h4>
     
     
 </dt>
@@ -659,7 +642,7 @@
 
     
     <div class="description">
-        <p>Вычитает векторы</p>
+        <p>Возвращает одинаковые ли переданные drawConfig-и</p>
     </div>
     
 
@@ -694,13 +677,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>config1</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">object</span>
 
 
 
@@ -711,7 +694,31 @@
 
             
 
-            <td class="description last"><p>вектор, который будет вычтен</p></td>
+            <td class="description last"><p>первый drawConfig</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>config2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>второй drawConfig</p></td>
         </tr>
 
     
@@ -779,7 +786,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="mul"><span class="type-signature"></span>mul(n)</h4>
+    <h4 class="name" id="_loadTileset"><span class="type-signature"></span>_loadTileset()</h4>
     
     
 </dt>
@@ -787,7 +794,87 @@
 
     
     <div class="description">
-        <p>Умножает координаты вектора на переданное число</p>
+        <p>Загружает tileset по адресу из options.tileset</p>
+<p>Кеширует tileset-ы, которые удалось и не удалось загрузить </p>
+<p>Возвращает промис</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="_setMirror"><span class="type-signature"></span>_setMirror(config)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Устанавливает отзеркаливание кадра</p>
     </div>
     
 
@@ -822,13 +909,13 @@
 
         <tr>
             
-                <td class="name"><code>n</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">object</span>
 
 
 
@@ -839,8 +926,7 @@
 
             
 
-            <td class="description last"><p>число, на которое будут умножены 
-координаты вектора</p></td>
+            <td class="description last"><p>drawConfig кадра</p></td>
         </tr>
 
     
@@ -908,7 +994,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="plus"><span class="type-signature"></span>plus(vector)</h4>
+    <h4 class="name" id="changeSize"><span class="type-signature"></span>changeSize(newSize)</h4>
     
     
 </dt>
@@ -916,7 +1002,7 @@
 
     
     <div class="description">
-        <p>Добавляет вектор</p>
+        <p>Меняет размеры канваса/спрайта</p>
     </div>
     
 
@@ -951,13 +1037,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>newSize</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type"><a href="Vector.html">Vector</a></span>
 
 
 
@@ -968,7 +1054,8 @@
 
             
 
-            <td class="description last"><p>вектор, который будет добавлен</p></td>
+            <td class="description last"><p>новый размер</p>
+<p>Все что нарисовано на спрайте будет стерто</p></td>
         </tr>
 
     
@@ -1036,7 +1123,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="scalarAbs"><span class="type-signature"></span>scalarAbs()</h4>
+    <h4 class="name" id="start"><span class="type-signature"></span>start(type, requiredStart)</h4>
     
     
 </dt>
@@ -1044,86 +1131,7 @@
 
     
     <div class="description">
-        <p>Делает обе координаты положительными</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="scale"><span class="type-signature"></span>scale(vector)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Умножает координаты вектора на соответствующие координаты
-переданного вектора</p>
+        <p>Начинает анимацию спрайта переданного типа</p>
     </div>
     
 
@@ -1158,13 +1166,13 @@
 
         <tr>
             
-                <td class="name"><code>vector</code></td>
+                <td class="name"><code>type</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">vector</span>
+<span class="param-type">string</span>
 
 
 
@@ -1175,7 +1183,34 @@
 
             
 
-            <td class="description last"><p>вектор, на который будет происходить умножение</p></td>
+            <td class="description last"><p>типа анимации</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>requiredStart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>запустить в любом случае</p>
+<p>Праметры типа - options.cadrs[type]
+Параметры должны содержать параметры хотя бы одного кадра</p>
+<p>Пока не загружен tileste ничего не делает.</p></td>
         </tr>
 
     

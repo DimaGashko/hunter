@@ -3,7 +3,7 @@
 describe('Класс Game.Gravity', () => {
   describe('Метод use()', () => {
 
-    it('Добавляет вектор притяжения к вектору скороти объектов', () => {  
+    /*it('Добавляет вектор притяжения к вектору скороти объектов', () => {  
       var gravity = new Game.Gravity({
         g: new Vector(1, -10),
       });
@@ -23,7 +23,7 @@ describe('Класс Game.Gravity', () => {
 
       assert.strictEqual(actor2.speed.x, -79);
       assert.strictEqual(actor2.speed.y, -30);
-    });
+    });*/
 
    
   });

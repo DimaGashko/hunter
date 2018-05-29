@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Rect</title>
+	<title>Documentation Class: Steve</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,19 +72,25 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Rect</h1>
+	<h1 class="page-title">Class: Steve</h1>
 <section>
 
 <header>
     
         <h2>
-        Rect
+        Steve
         </h2>
         
-            <div class="class-description"><p>Аргументами в конструктор передаются координаты и размеры прямоугольника</p>
-<hr>
-<p>Наследует от Events, поэтому этот класс, и все классы, 
-Что наследуют от него имеют поддержку событий</p></div>
+            <div class="class-description"><p>В options обязательно должны быть параметры tileW, tileH
+Они используются, для привидения размеров персонажа 
+Из размеров в пикселях к реальным размерам </p>
+<p>После иницилизации нужно вызвать метод start.
+Метод start нужно вызвыать, после загрузки тайлсера
+Например так:</p>
+<p>var steve = new Steve({...});</p>
+<p>steve.sprite.addEvent('tileset_load', () =&gt; {
+   steve.start();
+});</p></div>
         
     
 </header>
@@ -96,7 +102,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Rect"><span class="type-signature"></span>new Rect()</h4>
+    <h4 class="name" id="Steve"><span class="type-signature"></span>new Steve()</h4>
     
     
 </dt>

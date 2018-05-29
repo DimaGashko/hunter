@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Rect</title>
+	<title>Documentation Class: Block</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,19 +72,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Rect</h1>
+	<h1 class="page-title">Class: Block</h1>
 <section>
 
 <header>
     
         <h2>
-        Rect
+        Block
         </h2>
         
-            <div class="class-description"><p>Аргументами в конструктор передаются координаты и размеры прямоугольника</p>
-<hr>
-<p>Наследует от Events, поэтому этот класс, и все классы, 
-Что наследуют от него имеют поддержку событий</p></div>
+            <div class="class-description"><p>Класс для создания игрового блока</p></div>
         
     
 </header>
@@ -96,7 +93,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Rect"><span class="type-signature"></span>new Rect()</h4>
+    <h4 class="name" id="Block"><span class="type-signature"></span>new Block(options, collisions)</h4>
     
     
 </dt>
@@ -109,6 +106,80 @@
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>опции</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>collisions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Collisions.html">Collisions</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>collisions</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -181,6 +252,408 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="convertToRender"><span class="type-signature"></span>convertToRender()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Возвращает объект параметров для рендера</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="respondInteraction"><span class="type-signature"></span>respondInteraction(obj, side)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Реакия на взаимодействие с другим объектом 
+(изменяет параметры переданного объека)</p>
+<p>Обеспечивает такие эффекти на переданный обект:</p>
+<ul>
+<li>нормальная реакция опоры </li>
+<li>сила трения</li>
+<li>нанесение урона</li>
+<li>и др.</li>
+</ul>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Block.html">Block</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>другой объект (наследующий от Block)
+(на объекты типа block не влияет
+влияет на объекты dinamicBlock и их наследников)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>side</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Block.html">Block</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>cторона взаимодействия (left, top, right, bottom)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="start"><span class="type-signature"></span>start()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Включает все процессы, которые выполняются периодично
+(отрисовку спрайта)</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="stop"><span class="type-signature"></span>stop()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Выключает все процессы, которые выполняются периодично
+(отрисовку спрайта)</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
     
 
     

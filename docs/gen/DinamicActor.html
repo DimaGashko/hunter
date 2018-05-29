@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Rect</title>
+	<title>Documentation Class: DinamicActor</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,19 +72,25 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Rect</h1>
+	<h1 class="page-title">Class: DinamicActor</h1>
 <section>
 
 <header>
     
         <h2>
-        Rect
+        DinamicActor
         </h2>
         
-            <div class="class-description"><p>Аргументами в конструктор передаются координаты и размеры прямоугольника</p>
-<hr>
-<p>Наследует от Events, поэтому этот класс, и все классы, 
-Что наследуют от него имеют поддержку событий</p></div>
+            <div class="class-description"><p>В options обязательно должны быть параметры tileW, tileH
+Они используются, для привидения размеров персонажа 
+Из размеров в пикселях к реальным размерам </p>
+<p>После иницилизации нужно вызвать метод start.
+Метод start нужно вызвыать, после загрузки тайлсера
+Например так:</p>
+<p>var steve = new Steve({...});</p>
+<p>steve.sprite.addEvent('tileset_load', () =&gt; {
+   steve.start();
+});</p></div>
         
     
 </header>
@@ -96,7 +102,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Rect"><span class="type-signature"></span>new Rect()</h4>
+    <h4 class="name" id="DinamicActor"><span class="type-signature"></span>new DinamicActor()</h4>
     
     
 </dt>
@@ -181,6 +187,220 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="_setSize"><span class="type-signature"></span>_setSize()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Устанавливает размеры персонажа, 
+В зависимости от состояния (стоит, идет...)</p>
+<p>Устанавливает два свойства:
+this.size - реальные размеры персонажа
+this.spriteSize - размеры спрайта</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="_setState"><span class="type-signature"></span>_setState(state)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Устанавливает состояние персонажа</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
     
 
     

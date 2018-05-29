@@ -59,6 +59,8 @@
     * Поддерживаемые события:
     * "tileset_load" - вызывается, после загрузки тайлсета
     * "before_chande_cadr" - вызывается перед смене кадра
+    * 
+    * @class
     */
    class Sprite extends Events {
       constructor(options = {}) {

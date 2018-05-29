@@ -26,7 +26,11 @@
       curLevel: 0, 
    }
 
-
+   /**
+    * Загружает карты игры
+    * 
+    * @class
+    */
    class MapManager extends Events {
       constructor(options = {}) {
          super(options);

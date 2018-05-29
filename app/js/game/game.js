@@ -5,6 +5,11 @@
       startLevel: 0,
    }
 
+   /**
+    * Основной класс игры
+    * 
+    * @class
+    * */   
    class Game extends Events {
       constructor(options) {
          super(...arguments); 

@@ -37,7 +37,7 @@
    }
 
    /**
-    * 
+    * FPSMeter
     *  
     * @class
     * @param {object} options - настройки (по умолчанию DEF)

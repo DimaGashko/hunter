@@ -39,6 +39,8 @@
       
    /**
     * Класс для создания игрового блока
+    * 
+    * @class
     */
    class Block extends Game.Rect { 
 

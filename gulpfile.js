@@ -46,7 +46,7 @@ lrTask('test', './tasks/test', {
 });
 
 lrTask('jsdoc', './tasks/jsdoc', {
-   src: ['README.md', 'app/js/game/geometry/*.js'],
+   src: ['README.md', 'app/js/**/*.js'],
 });
 
 //BUILD
