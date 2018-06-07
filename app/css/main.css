@@ -101,13 +101,15 @@ ul {
       -webkit-transform: scale(1.05);
               transform: scale(1.05); }
     .game__move_left {
-      left: 0px;
+      left: 10px;
+      bottom: 20px;
       background-image: url(../img/sprite.png);
       background-position: -64px -64px;
       width: 64px;
       height: 64px; }
     .game__move_right {
-      right: 0px;
+      right: 10px;
+      bottom: 20px;
       background-image: url(../img/sprite.png);
       background-position: 0px -64px;
       width: 64px;
