@@ -1,0 +1,15 @@
+{
+  "name": "Hunter-2d",
+  "short_name": "Hunter",
+  "icons": [{
+      "src": "/favicon.png",
+      "sizes": "16x16 32x32 64x64 72x72 96x96 128x128 256x256",
+      "type": "image/png"
+    }],
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "background_color": "#6495ed",
+  "theme_color": "#5a8ce1",
+  "lang": "en-US",
+  "description": "Сможешь пройти последний уровень c первого раза?.. Простая, но при этом увлекательная 2d-игра в стиле Maincraft. Цель: собрать все ценные предметы и прийти на финиш. Играть можно везде (на смартфоне, планшете, ноутбуке, компьютере). Также вы можете..."
+}
