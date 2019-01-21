@@ -2,6 +2,8 @@
 - Try it now: http://hunter-2d.tk
 - YouTube: https://youtu.be/qnyXyxT71vg
 
+![Screenshot](https://github.com/DimaGashko/hunter/blob/master/modeling/screenshots/1-present.png)
+
 ## Описание
 Простая, но при этом увлекательная 2d-игра в стиле Maincraft. Играть можно как на компьютере, так и на смартфоне или планшете.
 
